@@ -1,6 +1,244 @@
-.layout {
-	padding: 32px;
+* {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
 }
-.layout h1 {
-	color: #f4e;
+body {
+	background-color: #03001c;
+	font-family: 'Roboto Flex', serif;
+}
+h1 {
+	font-size: 18px;
+	font-weight: 700;
+}
+h2 {
+	font-size: 16px;
+	font-weight: 800;
+}
+.hidden {
+	display: none;
+}
+
+.layout {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	margin-right: 10vw;
+	margin-left: 10vw;
+	color: white;
+}
+/* navbar */
+.navbar {
+	position: absolute;
+	background-color: #0a2647;
+	padding: 12px 10vw;
+	width: 100%;
+	top: 0;
+	right: 0;
+}
+.navbar__elements {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	justify-items: center;
+	align-items: center;
+	flex-wrap: wrap;
+}
+.navbar__content__mobile {
+	color: none;
+	position: relative;
+}
+#menu {
+	background: none;
+	border: none;
+	padding: 0;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+}
+#menu span {
+	font-size: 24px;
+	color: #fff;
+}
+.navbar__menu__content {
+	display: none;
+	flex-direction: column;
+	position: absolute;
+	top: 100%;
+	right: 0;
+	background-color: #2c3930;
+	padding: 20px;
+	border-radius: 6px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+	transition: max-height 0.3s ease-in-out;
+	overflow: hidden;
+}
+.navbar__menu__content.show {
+	display: flex;
+	flex-direction: column;
+	position: absolute;
+	max-height: 200px;
+	gap: 15px;
+}
+.navbar__content__wide {
+	display: none;
+	gap: 14px;
+}
+.navbar__link {
+	color: white;
+	text-decoration: none;
+} /* navbar */
+
+.content {
+	margin-top: 100px;
+}
+.content__me {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.content__img {
+	width: 200px;
+	height: 200px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.meImg {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center;
+	border-radius: 50%;
+}
+
+.content__me__info {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: start;
+	width: 100%;
+}
+
+.content__me__text {
+	font-size: 16px;
+	line-height: 1.5;
+}
+
+/* technologies */
+.content__technologies {
+	display: flex;
+	flex-direction: column;
+	margin-top: 32px;
+}
+.content__technologies h2 {
+	margin-bottom: 16px;
+}
+
+.content__technologies__img__grid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 12px;
+	justify-items: center;
+}
+
+/* Image container */
+.technologies__img__container {
+	width: 100%;
+	max-width: 80px;
+	aspect-ratio: 1.5;
+	overflow: hidden;
+	border-radius: 14px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Image */
+.technologies__img {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+	object-position: center;
+	border-radius: inherit;
+}
+
+/* Hover effect */
+.technologies__img__container:hover {
+	transform: scale(1.05);
+	cursor: pointer;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* technologies */
+
+.content__about__me {
+	margin-top: 32px;
+}
+.content__about__me h2 {
+	margin-bottom: 16px;
+}
+.content__experience {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+}
+.content__experience p:nth-child(1) {
+	font-size: 32px;
+	margin-right: 8px;
+}
+
+@media (min-width: 640px) {
+	.layout {
+		margin-right: 20vw;
+		margin-left: 20vw;
+	}
+
+	.navbar {
+		padding: 12px 20vw;
+	}
+
+	.content__technologies__img__grid {
+		grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+		gap: 10px;
+	}
+
+	.technologies__img__container {
+		max-width: 200px;
+		border-radius: 8px;
+		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	}
+}
+
+@media (min-width: 768px) {
+	h1 {
+		font-size: 24px;
+	}
+	h2 {
+		font-size: 16px;
+	}
+	.navbar__content__mobile {
+		display: none;
+	}
+	.navbar__content__wide {
+		display: flex;
+	}
+}
+
+@media (min-width: 1024px) {
+	.navbar__content__wide {
+		gap: 32px;
+	}
+
+	.content__technologies__img__grid {
+		grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+		gap: 14px;
+	}
+
+	.technologies__img__container {
+		max-width: 250px;
+		box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+	}
 }

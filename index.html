@@ -3,12 +3,100 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap" rel="stylesheet" />
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
 		<link rel="stylesheet" href="/src/index.css" />
-		<title>Document</title>
+		<title>KS_PORTFOLIO</title>
 	</head>
 	<body>
 		<main class="layout">
-			<h1>hello</h1>
+			<nav class="navbar">
+				<div class="navbar__elements">
+					<div class="navbar__brand">
+						<h2>Kellbis Salazar</h2>
+					</div>
+					<div class="navbar__content__mobile">
+						<button id="menu">
+							<span class="material-icons" id="menu-icon">menu</span>
+              <!-- <span class="material-icons">close</span> -->
+						</button>
+						<div class="navbar__menu__content">
+							<a href="#" class="navbar__link">Home</a>
+							<a href="#" class="navbar__link">Acerca de mi</a>
+							<a href="#" class="navbar__link">Proyectos</a>
+							<a href="#" class="navbar__link">Contacto</a>
+						</div>
+					</div>
+					<div class="navbar__content__wide">
+						<a href="#" class="navbar__link">Home</a>
+						<a href="#" class="navbar__link">Acerca de mi</a>
+						<a href="#" class="navbar__link">Proyectos</a>
+						<a href="#" class="navbar__link">Contacto</a>
+					</div>
+				</div>
+			</nav>
+      
+			<section class="content">
+
+        <div class="content__me">
+          <div class="content__me__info">
+            <h1>¡Hola! Soy Kellbis Salazar</h1>
+          </div>
+          <div class="content__img">
+            <img class="meImg" src="https://avatars.githubusercontent.com/u/106561967?v=4" alt="Foto de Kellbis Salazar">
+          </div>
+          <div class="content__me__info">
+            <p class="content__me__text">
+              Desarrollador freelance especializado en desarrollo frontend con conocimientos básicos de backend.
+            </p>
+          </div>
+        </div>
+
+        <div class="content__technologies">
+          <h2>Tecnologias</h2>
+          <div class="content__technologies__img__grid">
+            <div class="technologies__img__container">
+              <img class="technologies__img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" />
+            </div class="technologies__img__container">
+            <div class="technologies__img__container">
+              <img class="technologies__img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" />
+            </div>
+            <div class="technologies__img__container">
+              <img class="technologies__img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" />
+            </div>
+            <div class="technologies__img__container">
+              <img class="technologies__img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original-wordmark.svg" />
+            </div>
+            <div class="technologies__img__container">
+              <img class="technologies__img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" />
+            </div>
+            <div class="technologies__img__container">
+              <img class="technologies__img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg" />
+            </div>   
+            <div class="technologies__img__container">
+              <img class="technologies__img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original-wordmark.svg" />
+            </div>           
+            <div class="technologies__img__container">
+              <img class="technologies__img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" />
+            </div>
+          </div>
+        </div>
+          
+          
+          
+        
+
+        <div class="content__about__me">
+          <h2>Acerca de mi</h2>
+          <p>
+            Soy una persona proactiva con habilidades sólidas en el ecosistema de trabajo en JavaScript, tanto en el frontend como en el backend. Me destaco como un compañero de equipo excelente, organizado y responsable. Mi objetivo es colaborar en proyectos que ofrezcan soluciones funcionales y dinámicas, mejorando la experiencia del usuario
+          </p>
+          <span class="content__experience">
+            <p>+3 años</p>
+            <p>de experiencia desarrollando aplicaciones web</p>
+          </span>
+        </div>
 		</main>
 	</body>
 	<script src="/src/index.js"></script>
