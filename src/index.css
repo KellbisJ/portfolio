@@ -12,10 +12,13 @@ h1 {
 	font-size: 18px;
 	font-weight: 700;
 }
-h2,
+h2 {
+	font-size: 16px;
+	font-weight: 800;
+}
 h3,
 h4 {
-	font-size: 16px;
+	font-size: 14px;
 	font-weight: 800;
 }
 .hidden {
@@ -104,8 +107,8 @@ h4 {
 }
 
 .content__img {
-	width: 80px;
-	height: 80px;
+	width: 180px;
+	height: 180px;
 	margin-bottom: 14px;
 }
 
@@ -170,6 +173,9 @@ h4 {
 	margin: 4px;
 	cursor: pointer;
 }
+#mailIcon {
+	cursor: pointer;
+}
 .social-media-element {
 	position: relative;
 }
@@ -203,6 +209,7 @@ h4 {
 }
 .content__technologies__title i {
 	margin-right: 8px;
+	color: #4379f2;
 }
 
 .content__technologies__img__grid {
@@ -216,7 +223,6 @@ h4 {
 	width: 100%;
 	max-width: 80px;
 	aspect-ratio: 1.5;
-	overflow: hidden;
 	border-radius: 14px;
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 	transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -321,9 +327,60 @@ h4 {
 .tech-img {
 	width: 16px;
 	height: 16px;
+} /* PROJECTS */
+
+/* MY STUDIES */
+.content__my__studies {
+	max-width: 800px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	margin-top: 14px;
 }
 
-/* PROJECTS */
+.my-studies-title {
+	display: flex;
+	align-items: center;
+	margin-bottom: 20px;
+}
+
+.my-studies-title i {
+	margin-right: 10px;
+}
+
+.content__my__studies__info {
+	position: relative;
+}
+
+.study-item {
+	display: flex;
+	align-items: center;
+	margin-bottom: 20px;
+	position: relative;
+}
+
+.study-point {
+	width: 15px;
+	height: 15px;
+	background-color: #007bff;
+	border-radius: 50%;
+	margin-right: 10px;
+	position: relative;
+}
+
+.study-details {
+	flex: 1;
+}
+
+.study-details h3 {
+	margin: 0;
+	font-size: 1.2em;
+}
+
+.study-details p {
+	margin: 5px 0 0;
+	color: #666;
+}
+
+/* MY STUDIES */
 
 .content__about__me /* about me */ {
 	margin-top: 32px;
