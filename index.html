@@ -1,71 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
-		<link rel="stylesheet" href="/src/index.css" />
-    
-		<title>KS_PORTFOLIO</title>
-	</head>
-	<body>
-		<main class="layout">
-			<nav class="navbar">
-				<div class="navbar__elements">
-					<div class="navbar__brand">
-						<h2>Kellbis Salazar</h2>
-					</div>
-					<div class="navbar__content__mobile">
-						<button id="menu">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
+    />
+    <link rel="stylesheet" href="/src/index.css" />
+
+    <title>KS_PORTFOLIO</title>
+  </head>
+  <body>
+    <main class="layout">
+      <nav class="navbar">
+        <div class="navbar__elements">
+          <div class="navbar__brand">
+            <h2>Kellbis Salazar</h2>
+          </div>
+          <div class="navbar__content__mobile">
+            <button id="menu">
               <i class="fas fa-bars" id="menu-icon"></i>
-						</button>
-						<div class="navbar__menu__content">
-							<a href="#" class="navbar__link">Home</a>
-							<a href="#" class="navbar__link">Acerca de mi</a>
-							<a href="#" class="navbar__link">Proyectos</a>
-							<a href="#" class="navbar__link">Contacto</a>
-						</div>
-					</div>
-					<div class="navbar__content__wide">
-						<a href="#" class="navbar__link">Home</a>
-						<a href="#" class="navbar__link">Acerca de mi</a>
-						<a href="#" class="navbar__link">Proyectos</a>
-						<a href="#" class="navbar__link">Contacto</a>
-					</div>
-				</div>
-			</nav>
-      
-			<section class="content">
-        <div class="content__me">   
+            </button>
+            <div class="navbar__menu__content">
+              <a href="#" class="navbar__link">Home</a>
+              <a href="#" class="navbar__link">Acerca de mi</a>
+              <a href="#" class="navbar__link">Proyectos</a>
+              <a href="#" class="navbar__link">Contacto</a>
+            </div>
+          </div>
+          <div class="navbar__content__wide">
+            <a href="#" class="navbar__link">Home</a>
+            <a href="#" class="navbar__link">Acerca de mi</a>
+            <a href="#" class="navbar__link">Proyectos</a>
+            <a href="#" class="navbar__link">Contacto</a>
+          </div>
+        </div>
+      </nav>
+
+      <section class="content">
+        <div class="content__me">
           <div class="content__img">
-            <img class="meImg" src="/src/images/mainC-.jpg" alt="Foto de Kellbis Salazar">
+            <img
+              class="meImg"
+              src="/src/images/mainC-.jpg"
+              alt="Foto de Kellbis Salazar"
+            />
           </div>
           <div class="content__me__info">
             <h1>¡Hola! Soy Kellbis Salazar</h1>
             <p class="content__me__text">
-              Desarrollador freelance especializado en desarrollo frontend con conocimientos básicos de backend.
+              Desarrollador freelance especializado en desarrollo frontend con
+              conocimientos básicos de backend.
             </p>
             <div class="content__me__social__media">
-              <a href="https://github.com/KellbisJ"  target="_blank" rel="noopener noreferrer">
+              <a
+                href="https://github.com/KellbisJ"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <div class="social-media-element">
                   <i class="devicon-github-original"></i>
                 </div>
-                
               </a>
-              <a href="https://linkedin.com/in/kellbis-salazar-arnaez-3a844833a"  target="_blank" rel="noopener noreferrer">
+              <a
+                href="https://linkedin.com/in/kellbis-salazar-arnaez-3a844833a"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <div class="social-media-element">
                   <i class="devicon-linkedin-plain"></i>
                 </div>
               </a>
               <div class="social-media-element email__copy">
-              <p class="copy-text hidden" id="copyText">Copied!</p>
-              <i class="fa-regular fa-copy" id="copyElement"></i>
-              <i class="fa-solid fa-envelope" id="mailIcon"></i>
-              <input type="text" value="kellbisdevsw@gmail.com" id="emailInput" style="position: absolute; left: -9999px;">
+                <p class="copy-text hidden" id="copyText">Copied!</p>
+                <i class="fa-regular fa-copy" id="copyElement"></i>
+                <i class="fa-solid fa-envelope" id="mailIcon"></i>
+                <input
+                  type="text"
+                  value="kellbisdevsw@gmail.com"
+                  id="emailInput"
+                  style="position: absolute; left: -9999px"
+                />
+              </div>
             </div>
-            </div>            
           </div>
         </div>
 
@@ -74,32 +101,55 @@
             <i class="fa-solid fa-globe"></i>
             <h2>Tecnologias</h2>
           </div>
-          
-            <div class="content__technologies__img__grid">
-              <div class="technologies__img__container">
-                <img class="technologies__img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" />
-              </div class="technologies__img__container">
-              <div class="technologies__img__container">
-                <img class="technologies__img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" />
-              </div>
-              <div class="technologies__img__container">
-                <img class="technologies__img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" />
-              </div>
-              <div class="technologies__img__container">
-                <img class="technologies__img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original-wordmark.svg" />
-              </div>
-              <div class="technologies__img__container">
-                <img class="technologies__img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" />
-              </div>
-              <div class="technologies__img__container">
-                <img class="technologies__img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg" />
-              </div>   
-              <div class="technologies__img__container">
-                <img class="technologies__img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original-wordmark.svg" />
-              </div>           
-              <div class="technologies__img__container">
-                <img class="technologies__img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" />
-              </div>
+
+          <div class="content__technologies__img__grid">
+            <div class="technologies__img__container">
+              <img
+                class="technologies__img"
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg"
+              />
+            </div>
+            <div class="technologies__img__container">
+              <img
+                class="technologies__img"
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg"
+              />
+            </div>
+            <div class="technologies__img__container">
+              <img
+                class="technologies__img"
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg"
+              />
+            </div>
+            <div class="technologies__img__container">
+              <img
+                class="technologies__img"
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original-wordmark.svg"
+              />
+            </div>
+            <div class="technologies__img__container">
+              <img
+                class="technologies__img"
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"
+              />
+            </div>
+            <div class="technologies__img__container">
+              <img
+                class="technologies__img"
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg"
+              />
+            </div>
+            <div class="technologies__img__container">
+              <img
+                class="technologies__img"
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original-wordmark.svg"
+              />
+            </div>
+            <div class="technologies__img__container">
+              <img
+                class="technologies__img"
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg"
+              />
             </div>
           </div>
         </div>
@@ -112,166 +162,262 @@
 
           <div class="content__project__info">
             <figure class="content__project__img">
-              <img class="project-img" src="/src/images/MoviesKS.png" alt="Project">
-              <a href="https://movies-ks-frontend.vercel.app/" target="_blank" rel="noopener noreferrer">
-                <i class="fa-solid fa-up-right-from-square link-to-project-arrow"></i>       
-              </a> 
-              <a href="https://github.com/KellbisJ/MoviesKS" target="_blank" rel="noopener noreferrer">
-                <i class="devicon-github-original link-to-project-repository"></i>   
-              </a> 
+              <img
+                class="project-img"
+                src="/src/images/MoviesKS.png"
+                alt="Project"
+              />
+              <a
+                href="https://movies-ks-frontend.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i
+                  class="fa-solid fa-up-right-from-square link-to-project-arrow"
+                ></i>
+              </a>
+              <a
+                href="https://github.com/KellbisJ/MoviesKS"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i
+                  class="devicon-github-original link-to-project-repository"
+                ></i>
+              </a>
               <figcaption class="project-title">MoviesKS</figcaption>
             </figure>
             <div class="project-details">
-              <p class="project-description">Este proyecto es un sitio web de base de datos de películas que permite a los usuarios consumir información sobre películas.</p>
-                <div class="project-technologies">
-                  <span class="tech-badge">
-                    <i class="devicon-react-original colored"></i>
-                  </span>
-                  <span class="tech-badge">
-                    <img class="tech-img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitejs/vitejs-original.svg" />
-                  </span>
-                  <span class="tech-badge">
-                    <i class="devicon-typescript-plain colored"></i>
-                  </span>
-                  <span class="tech-badge">
-                    <i class="devicon-tailwindcss-original colored"></i>
-                  </span>
-                  <span class="tech-badge">
-                    <i class="devicon-express-original colored"></i>
-                  </span>
-                </div>
-            </div>
-          </div>
-          
-          <div class="content__project__info">
-            <figure class="content__project__img">
-                <img class="project-img" src="/src/images/MyEcm.png" alt="Project">
-                <a href="https://fakeshopiecm.netlify.app" target="_blank" rel="noopener noreferrer">
-                <i class="fa-solid fa-up-right-from-square link-to-project-arrow"></i>
-              </a>
-              <a href="https://github.com/KellbisJ/my-ecm" target="_blank" rel="noopener noreferrer">
-                <i class="devicon-github-original link-to-project-repository"></i>   
-              </a>
-              <figcaption class="project-title">MyEcm (fake ecommerce)</figcaption>
-            </figure>
-            <div class="project-details">
-              <p class="project-description">Un prototipo de ecommerce básico.</p>
-                <div class="project-technologies">
-                  <span class="tech-badge">
-                    <i class="devicon-react-original colored"></i>
-                  </span>
-                  <span class="tech-badge">
-                    <i class="devicon-javascript-plain colored"></i>
-                  </span>
-                  <span class="tech-badge">
-                    <i class="devicon-tailwindcss-original colored"></i>
-                  </span>
-                  <span class="tech-badge">
-                    <img class="tech-img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitejs/vitejs-original.svg" />
-                  </span>
-                </div>
+              <p class="project-description">
+                Este proyecto es un sitio web de base de datos de películas que
+                permite a los usuarios consumir información sobre películas.
+              </p>
+              <div class="project-technologies">
+                <span class="tech-badge">
+                  <i class="devicon-react-original colored"></i>
+                </span>
+                <span class="tech-badge">
+                  <img
+                    class="tech-img"
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitejs/vitejs-original.svg"
+                  />
+                </span>
+                <span class="tech-badge">
+                  <i class="devicon-typescript-plain colored"></i>
+                </span>
+                <span class="tech-badge">
+                  <i class="devicon-tailwindcss-original colored"></i>
+                </span>
+                <span class="tech-badge">
+                  <i class="devicon-express-original colored"></i>
+                </span>
+              </div>
             </div>
           </div>
 
           <div class="content__project__info">
             <figure class="content__project__img">
-                <img class="project-img" src="/src/images/Todo.png" alt="Project">
-                <a href="https://kellbisj.github.io/TODO-FOR-DO/" target="_blank" rel="noopener noreferrer">
-                  <i class="fa-solid fa-up-right-from-square link-to-project-arrow"></i>
-                </a>
-                <a href="https://github.com/KellbisJ/TODO-FOR-DO" target="_blank" rel="noopener noreferrer">
-                  <i class="devicon-github-original link-to-project-repository"></i>   
-                </a>
+              <img
+                class="project-img"
+                src="/src/images/MyEcm.png"
+                alt="Project"
+              />
+              <a
+                href="https://fakeshopiecm.netlify.app"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i
+                  class="fa-solid fa-up-right-from-square link-to-project-arrow"
+                ></i>
+              </a>
+              <a
+                href="https://github.com/KellbisJ/my-ecm"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i
+                  class="devicon-github-original link-to-project-repository"
+                ></i>
+              </a>
+              <figcaption class="project-title">
+                MyEcm (fake ecommerce)
+              </figcaption>
+            </figure>
+            <div class="project-details">
+              <p class="project-description">
+                Un prototipo de ecommerce básico.
+              </p>
+              <div class="project-technologies">
+                <span class="tech-badge">
+                  <i class="devicon-react-original colored"></i>
+                </span>
+                <span class="tech-badge">
+                  <i class="devicon-javascript-plain colored"></i>
+                </span>
+                <span class="tech-badge">
+                  <i class="devicon-tailwindcss-original colored"></i>
+                </span>
+                <span class="tech-badge">
+                  <img
+                    class="tech-img"
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitejs/vitejs-original.svg"
+                  />
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="content__project__info">
+            <figure class="content__project__img">
+              <img
+                class="project-img"
+                src="/src/images/Todo.png"
+                alt="Project"
+              />
+              <a
+                href="https://kellbisj.github.io/TODO-FOR-DO/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i
+                  class="fa-solid fa-up-right-from-square link-to-project-arrow"
+                ></i>
+              </a>
+              <a
+                href="https://github.com/KellbisJ/TODO-FOR-DO"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i
+                  class="devicon-github-original link-to-project-repository"
+                ></i>
+              </a>
               <figcaption class="project-title">To-do list</figcaption>
             </figure>
             <div class="project-details">
               <p class="project-description">Un simple todo list.</p>
-                <div class="project-technologies">
-                  <span class="tech-badge">
-                    <i class="devicon-react-original colored"></i>
-                  </span>
-                  <span class="tech-badge">
-                    <i class="devicon-javascript-plain colored"></i>
-                  </span>
-                  <span class="tech-badge">
-                    <i class="devicon-css3-plain-wordmark colored"></i>
-                  </span>
-                </div>
+              <div class="project-technologies">
+                <span class="tech-badge">
+                  <i class="devicon-react-original colored"></i>
+                </span>
+                <span class="tech-badge">
+                  <i class="devicon-javascript-plain colored"></i>
+                </span>
+                <span class="tech-badge">
+                  <i class="devicon-css3-plain-wordmark colored"></i>
+                </span>
+              </div>
             </div>
           </div>
 
           <div class="content__project__info">
             <figure class="content__project__img">
-                <img class="project-img" src="/src/images/ENjourney.png" alt="Project">
-                <a href="https://my-english-journey-kellbisj-kellbis-projects.vercel.app" target="_blank" rel="noopener noreferrer">
-                  <i class="fa-solid fa-up-right-from-square link-to-project-arrow"></i>
-                </a>
-                <a href="https://github.com/KellbisJ/my-english-journey" target="_blank" rel="noopener noreferrer">
-                  <i class="devicon-github-original link-to-project-repository"></i>   
-                </a>
-              
-              <figcaption class="project-title">English Journey Blog</figcaption>
+              <img
+                class="project-img"
+                src="/src/images/ENjourney.png"
+                alt="Project"
+              />
+              <a
+                href="https://my-english-journey-kellbisj-kellbis-projects.vercel.app"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i
+                  class="fa-solid fa-up-right-from-square link-to-project-arrow"
+                ></i>
+              </a>
+              <a
+                href="https://github.com/KellbisJ/my-english-journey"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i
+                  class="devicon-github-original link-to-project-repository"
+                ></i>
+              </a>
+
+              <figcaption class="project-title">
+                English Journey Blog
+              </figcaption>
             </figure>
             <div class="project-details">
-              <p class="project-description">Un blog para plasmar y documentar las muchas cosas aprendidas en inglés.</p>
-                <div class="project-technologies">
-                   <span class="tech-badge">
-                    <img class="tech-img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitejs/vitejs-original.svg" />
-                  </span>
-                  <span class="tech-badge">
-                    <i class="devicon-react-original colored"></i>
-                  </span>
-                  <span class="tech-badge">
-                    <i class="devicon-typescript-plain colored"></i>
-                  </span>
-                  <span class="tech-badge">
-                    <i class="devicon-tailwindcss-original colored"></i>
-                  </span>
-                </div>
+              <p class="project-description">
+                Un blog para plasmar y documentar las muchas cosas aprendidas en
+                inglés.
+              </p>
+              <div class="project-technologies">
+                <span class="tech-badge">
+                  <img
+                    class="tech-img"
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitejs/vitejs-original.svg"
+                  />
+                </span>
+                <span class="tech-badge">
+                  <i class="devicon-react-original colored"></i>
+                </span>
+                <span class="tech-badge">
+                  <i class="devicon-typescript-plain colored"></i>
+                </span>
+                <span class="tech-badge">
+                  <i class="devicon-tailwindcss-original colored"></i>
+                </span>
+              </div>
             </div>
-          </div> 
-          
+          </div>
         </div>
 
         <div class="content__my__studies">
-        <div class="my-studies-title">
+          <div class="my-studies-title">
             <i class="fa-solid fa-book"></i>
             <h2>Educación</h2>
-        </div>
+          </div>
 
-        <div class="content__my__studies__info">
+          <div class="content__my__studies__info">
             <div class="study-item">
-                <div class="study-point"></div>
-                <div class="study-details">
-                    <h3>Full Stack Developer con JavaScript</h3>
-                    <p>Platzi - 2024</p>
-                    <p>2024</p>
-                </div>
+              <div class="study-point"></div>
+              <div class="study-details">
+                <h3>Full Stack Developer con JavaScript</h3>
+                <p>Platzi - 2024</p>
+                <p>2024</p>
+              </div>
             </div>
             <div class="study-item">
-                <div class="study-point"></div>
-                <div class="study-details">
-                    <h3>Example</h3>
-                    <p>Example</p>
-                    <p>2024</p>
-                </div>
+              <div class="study-point"></div>
+              <div class="study-details">
+                <h3>Example</h3>
+                <p>Example</p>
+                <p>2024</p>
+              </div>
             </div>
             <div class="study-item">
-                <div class="study-point"></div>
-                <div class="study-details">
-                    <h3>Example</h3>
-                    <p>Example</p>
-                    <p>2024</p>
-                </div>
+              <div class="study-point"></div>
+              <div class="study-details">
+                <h3>Example</h3>
+                <p>Example</p>
+                <p>2024</p>
+              </div>
             </div>
-            <!-- Agrega más estudios aquí -->
+            <div class="study-item">
+              <div class="study-point"></div>
+              <div class="study-details">
+                <h3>Example</h3>
+                <p>Example</p>
+                <p>2024</p>
+              </div>
+            </div>
+          </div>
         </div>
-    </div>
 
         <div class="content__about__me">
           <h2>Acerca de mi</h2>
           <p>
-            Soy una persona proactiva con habilidades sólidas en el ecosistema de trabajo en JavaScript, tanto en el frontend como en el backend. Me destaco como un compañero de equipo excelente, organizado y responsable. Mi objetivo es colaborar en proyectos que ofrezcan soluciones funcionales y dinámicas, mejorando la experiencia del usuario
+            Soy una persona proactiva con habilidades sólidas en el ecosistema
+            de trabajo en JavaScript, tanto en el frontend como en el backend.
+            Me destaco como un compañero de equipo excelente, organizado y
+            responsable. Mi objetivo es colaborar en proyectos que ofrezcan
+            soluciones funcionales y dinámicas, mejorando la experiencia del
+            usuario
           </p>
           <span class="content__experience">
             <p>+3 años</p>
@@ -279,7 +425,7 @@
           </span>
         </div>
       </section>
-		</main>
-	</body>
-	<script src="/src/index.js"></script>
+    </main>
+  </body>
+  <script src="/src/index.js"></script>
 </html>
