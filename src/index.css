@@ -64,7 +64,7 @@ h4 {
 /* navbar */
 .navbar {
   position: absolute;
-  background-color: #0a2647;
+  background-color: #1a2647;
   padding: 12px 10vw;
   width: 100%;
   top: 0;
@@ -100,7 +100,7 @@ h4 {
   position: absolute;
   top: 100%;
   right: 0;
-  background-color: #0a2647;
+  background-color: #1a2647;
   padding: 20px;
   border-radius: 6px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -157,7 +157,7 @@ h4 {
 }
 
 .content__me__text {
-  /* background-color: #0a2647; */
+  /* background-color: #1a2647; */
   padding: 2px;
   /* border-radius: 6px; */
   margin-top: 14px;
@@ -184,7 +184,7 @@ h4 {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #0a2647;
+  background-color: #1a2647;
   padding: 6px;
   width: 200px;
   border-radius: 6px;
@@ -234,6 +234,9 @@ h4 {
   display: flex;
   align-items: center;
   margin-bottom: 14px;
+  padding: 18px;
+  background-color: #1a2647;
+  border-radius: 6px;
 }
 .content__technologies__title i {
   margin-right: 8px;
@@ -279,13 +282,24 @@ h4 {
 .projects-text {
   display: inline-flex;
   align-items: center;
+  padding: 18px;
+  background-color: #1a2647;
+  border-radius: 6px;
 }
 .projects-text i {
   margin-right: 8px;
   color: #007bff;
 }
+.content__project__info__container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  height: 100%;
+}
 .content__project__info {
-  border: 2px solid #0a2647;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid #1a2647;
   border-radius: 12px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   overflow: hidden;
@@ -300,7 +314,6 @@ h4 {
 }
 
 .content__project__img {
-  cursor: pointer;
   position: relative;
   margin: 0;
 }
@@ -332,24 +345,28 @@ h4 {
   letter-spacing: 1px;
 }
 .project-details {
+  display: flex;
+  flex-direction: column;
   padding: 14px;
   text-align: left;
+  height: 100%;
+  flex: 1;
 }
 .project-description {
+  flex: 8;
   font-size: 14px;
   margin-bottom: 14px;
 }
 .project-technologies {
+  flex: 2;
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
 }
 .tech-badge {
-  background-color: #0a2647;
-  color: white;
-  padding: 4px 8px;
+  padding: 4px;
   border-radius: 4px;
-  font-size: 16px;
+  font-size: 18px;
   display: inline-block;
 }
 .tech-img {
@@ -359,7 +376,6 @@ h4 {
 
 /* MY STUDIES */
 .content__my__studies {
-  max-width: 800px;
   /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
   margin-top: 14px;
 }
@@ -368,6 +384,9 @@ h4 {
   display: flex;
   align-items: center;
   margin-bottom: 20px;
+  padding: 18px;
+  background-color: #1a2647;
+  border-radius: 6px;
 }
 .my-studies-title i {
   color: #007bff;
@@ -407,41 +426,48 @@ h4 {
 .study-details {
   flex: 1;
   padding: 8px;
-  background-color: #0a2647;
+  background-color: #1a2647;
   border-radius: 6px;
   word-break: break-all;
 }
-
+.study-details a,
 .study-details p {
-  margin: 5px 0 0;
-  color: #b7b5b3;
+  text-decoration: none;
+  color: #d8d4d4;
+  font-size: small;
 }
 
 /* MY STUDIES */
 
-.content__about__me /* about me */ {
+.content__about__me /* ABOUT ME */ {
   margin-top: 32px;
 }
-.content__about__me h2 {
+.about-me-title {
+  display: flex;
+  align-items: center;
   margin-bottom: 14px;
 }
-.content__experience {
+.about-me-title i {
+  margin-right: 8px;
+  color: #007bff;
+}
+.content__about__me__info {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   align-items: center;
 }
-.content__experience p:nth-child(1) {
-  font-size: 32px;
-  margin-right: 8px;
-} /* about me */
+.content__about__me__info p {
+  margin-top: 14px;
+}
+/* ABOUT ME */
 
 @media (min-width: 640px) {
   .layout {
-    margin-right: 20vw;
-    margin-left: 20vw;
+    margin-right: 25vw;
+    margin-left: 25vw;
   }
   .navbar {
-    padding: 12px 20vw;
+    padding: 12px 25vw;
   }
   .content__technologies__img__grid {
     grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
@@ -452,8 +478,8 @@ h4 {
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
-  .content__project__info {
-    width: 45%;
+  .content__project__info__container {
+    grid-template-columns: 1fr 1fr;
   }
 
   .project-title {
@@ -477,6 +503,12 @@ h4 {
 }
 
 @media (min-width: 1024px) {
+  h1 {
+    font-size: 28px;
+  }
+  h2 {
+    font-size: 20px;
+  }
   .navbar__content__wide {
     gap: 32px;
   }
