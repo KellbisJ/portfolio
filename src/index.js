@@ -6,25 +6,22 @@
 
   let menuNavbarShowed = false;
 
-  const menuIcons = ["fa fa-bars", "fa-solid fa-x"];
+  const menuIcons = {
+    barsIcon: "fa fa-bars",
+    closeIcon: "fa-solid fa-x",
+  };
 
   const toggleMenu = () => {
     navbarMenuContent.classList.toggle("show");
 
-    navbarMenuContent.classList.contains("show")
-      ? ((menuIcon.classList = menuIcons[1]), (menuNavbarShowed = true))
-      : ((menuIcon.classList = menuIcons[0]), (menuNavbarShowed = false));
+    navbarMenuContent.classList.contains("show") ? ((menuIcon.classList = menuIcons.closeIcon), (menuNavbarShowed = true)) : ((menuIcon.classList = menuIcons.barsIcon), (menuNavbarShowed = false));
   };
 
   const handleBodyClick = (event) => {
-    if (
-      menuNavbarShowed &&
-      !navbarMenuContent.contains(event.target) &&
-      !menuButton.contains(event.target)
-    ) {
+    if (menuNavbarShowed && !navbarMenuContent.contains(event.target) && !menuButton.contains(event.target)) {
       navbarMenuContent.classList.remove("show");
       menuNavbarShowed = false;
-      menuIcon.classList = menuIcons[0];
+      menuIcon.classList = menuIcons.barsIcon;
     }
   };
 
@@ -76,4 +73,51 @@
 
   copyElement.addEventListener("click", copyAddres);
   mailIcon.addEventListener("click", openMailTo); // copy email logic
+
+  //NAVIGATION LOGIC
+  const technologiesContent = document.querySelector(".content__technologies");
+  const projectsContent = document.querySelector(".content__projects");
+  const myStudiesContent = document.querySelector(".content__my__studies");
+  const aboutMeContent = document.querySelector(".content__about__me");
+  const navbarLinkNavigation = document.querySelectorAll(".navbar__link");
+
+  const handleNavigation = (event) => {
+    // console.log(event.target);
+    // console.log(event.target.innerHTML);
+
+    const navbarLinkCaptured = event.target.innerHTML;
+    const scrollTop = document.documentElement.scrollTop;
+
+    const scrollToElement = (element) => {
+      const elementToNavigatePosition = element.getBoundingClientRect();
+      const position = elementToNavigatePosition.top + scrollTop;
+      window.scrollTo({ top: position });
+    };
+
+    switch (navbarLinkCaptured) {
+      case "Home":
+        window.scrollTo(0, 0);
+        break;
+      case "Tecnologias":
+        scrollToElement(technologiesContent);
+        break;
+      case "Proyectos":
+        scrollToElement(projectsContent);
+        break;
+      case "Educación":
+        scrollToElement(myStudiesContent);
+        break;
+      case "Acerca de mi":
+        scrollToElement(aboutMeContent);
+        break;
+      default:
+        break;
+    }
+  };
+
+  navbarLinkNavigation.forEach((link) => {
+    link.addEventListener("click", handleNavigation);
+  });
+
+  //NAVIGATION LOGIC
 })();
