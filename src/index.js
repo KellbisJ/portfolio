@@ -90,13 +90,15 @@
 
     const scrollToElement = (element) => {
       const elementToNavigatePosition = element.getBoundingClientRect();
-      const position = elementToNavigatePosition.top + scrollTop;
+      const position = elementToNavigatePosition.top + scrollTop - 40;
       window.scrollTo({ top: position });
+      toggleMenu();
     };
 
     switch (navbarLinkCaptured) {
       case "Home":
         window.scrollTo(0, 0);
+        toggleMenu();
         break;
       case "Tecnologias":
         scrollToElement(technologiesContent);
