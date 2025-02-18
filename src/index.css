@@ -41,7 +41,7 @@ h4 {
   height: 100%;
   z-index: -1;
 }
-/* navbar */
+/* NAVBAR */
 .navbar {
   position: fixed;
   background-color: #1a2647;
@@ -110,12 +110,13 @@ h4 {
   color: white;
   text-decoration: none;
   font-size: 12px;
-} /* navbar */
+} /* NAVBAR */
 
 .content /* all content container */ {
   margin-top: 80px;
 }
-.content__me /* about me preview */ {
+/* ABOUT ME PREVIEW */
+.content__me {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -178,12 +179,19 @@ h4 {
   padding: 6px;
   width: 200px;
   border-radius: 6px;
+  position: relative;
+  transition: background 0.3s ease;
+}
+.social-media-element:hover {
+  background: rgb(182, 255, 250, 0.5);
 }
 .email__copy {
   position: relative;
   width: 200px;
 }
-#copyElement {
+#copyMailPreviewField,
+#copyMailContactField,
+#copyPhonenumberField {
   font-size: 14px;
   position: absolute;
   top: 0;
@@ -194,10 +202,8 @@ h4 {
 #mailIcon {
   cursor: pointer;
 }
-.social-media-element {
-  position: relative;
-}
-.copy-text {
+.copy-mail-text,
+.copy-phonenumber-text {
   position: absolute;
   top: -10px;
   right: -36px;
@@ -207,15 +213,13 @@ h4 {
   font-size: 8px;
   border-radius: 20px;
 }
-.copy-text.hidden {
+.copy-mail-text.hidden {
   visibility: hidden;
 }
 .copy-success {
   color: #16c47f;
   transition: color 0.3s ease-in-out;
-}
-
-/* about me preview */
+} /* ABOUT ME PREVIEW */
 
 /* TECHNOLOGIES */
 .content__technologies {
@@ -241,6 +245,7 @@ h4 {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 12px;
+  padding: 12px;
   justify-items: center;
 }
 
@@ -437,17 +442,20 @@ h4 {
   text-decoration: none;
   color: #d8d4d4;
   font-size: small;
-}
+} /* MY STUDIES */
 
-/* MY STUDIES */
-
-.content__about__me /* ABOUT ME */ {
+/* ABOUT ME */
+.content__about__me {
   margin-top: 32px;
 }
 .about-me-title {
   display: flex;
   align-items: center;
   margin-bottom: 14px;
+  background-color: transparent;
+  padding: 18px;
+  border: 2px solid #1a2647;
+  border-radius: 6px;
 }
 .about-me-title i {
   margin-right: 8px;
@@ -460,8 +468,71 @@ h4 {
 }
 .content__about__me__info p {
   margin-top: 32px;
+} /* ABOUT ME */
+
+/* CONTACT */
+
+.content__contact {
+  display: flex;
+  flex-direction: column;
+  background-color: transparent;
+  color: #fff;
+  margin-top: 64px;
 }
-/* ABOUT ME */
+.contact__title {
+  display: flex;
+  align-items: center;
+  padding: 18px;
+  border: 2px solid #1a2647;
+  border-radius: 6px;
+}
+.contact__title i {
+  margin-right: 8px;
+  color: #b6fffa;
+}
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  margin-top: 24px;
+  width: 100%;
+  position: relative;
+}
+.contact-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 14px;
+  background-color: transparent;
+  border: 2px solid #1a2647;
+  border-radius: 6px;
+  padding: 8px;
+  word-break: break-all;
+  position: relative;
+  font-size: 14px;
+}
+.copy-phonenumber-text.hidden {
+  visibility: hidden;
+}
+.contact-item a {
+  color: #fff;
+  text-decoration: none;
+}
+.link-to-media {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 4px;
+  cursor: pointer;
+}
+.contact-item a:hover {
+  text-decoration: underline;
+}
+.copyright {
+  text-align: center;
+  padding: 28px;
+}
+/* CONTACT */
 
 @media (min-width: 450px) {
   .content__projects {
@@ -475,9 +546,19 @@ h4 {
   .navbar__menu__content {
     padding: 26px;
   }
+  .content__me__social__media {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+  }
+  .social-media-element {
+    width: 160px;
+  }
   .content__technologies__img__grid {
-    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-    gap: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 18px;
+    padding: 18px;
   }
   .technologies__img__container {
     max-width: 200px;
@@ -533,15 +614,6 @@ h4 {
   .navbar__link {
     font-size: 14px;
   }
-  .content__technologies__img__grid {
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-    gap: 14px;
-  }
-
-  .technologies__img__container {
-    max-width: 250px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-  }
 }
 
 @media (min-width: 1440px) {
@@ -553,5 +625,9 @@ h4 {
   }
   .navbar__link {
     font-size: 16px;
+  }
+  .content__technologies__img__grid {
+    gap: 24px;
+    padding: 24px;
   }
 }

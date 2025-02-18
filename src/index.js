@@ -32,38 +32,66 @@
     event.stopPropagation();
   }); // NAVBAR LOGIC
 
-  // COPY EMAIL LOGIC
+  // (MAIL, PHONENUMBER) COPY AND MAIL TO LOGIC
 
   const emailAddress = "kellbisdevsw@gmail.com";
 
-  const copyElement = document.getElementById("copyElement");
-  const mailIcon = document.getElementById("mailIcon");
-  const emailInput = document.getElementById("emailInput");
-  const copyText = document.getElementById("copyText");
+  const copyMailPreviewField = document.getElementById("copyMailPreviewField");
+  const copyMailContactField = document.getElementById("copyMailContactField");
+  const copyPhonenumberField = document.getElementById("copyPhonenumberField");
 
-  const copyAddres = async () => {
+  const mailIcon = document.getElementById("mailIcon");
+
+  const emailInputField = document.getElementById("emailInputField");
+  const phonenumberInputField = document.getElementById("phonenumberField");
+
+  const copyMailPreview = document.getElementById("copyMailPreview");
+  const copyMailContact = document.getElementById("copyMailContact");
+  const copyTextPhoneNumber = document.getElementById("copyTextPhoneNumber");
+
+  const copyAddres = async (event) => {
+    console.log(event.target);
+
     try {
-      await navigator.clipboard.writeText(emailInput.value);
-      copyElement.classList.add("copy-success");
-      copyText.classList.remove("hidden");
+      await navigator.clipboard.writeText(emailInputField.value);
+      if (event.target.id === "copyMailPreviewField") {
+        copyMailPreviewField.classList.add("copy-success");
+        copyMailPreview.classList.remove("hidden");
+      }
+      if (event.target.id === "copyMailContactField") {
+        copyMailContactField.classList.add("copy-success");
+        copyMailContact.classList.remove("hidden");
+      }
       setTimeout(() => {
-        copyElement.classList.remove("copy-success");
-        copyText.classList.add("hidden");
+        copyMailPreviewField.classList.remove("copy-success");
+        copyMailPreview.classList.add("hidden");
+        copyMailContactField.classList.remove("copy-success");
+        copyMailContact.classList.add("hidden");
       }, 1700);
     } catch (err) {
       console.error(`err copying text: ${err}`);
-      fallbackCopyAddress();
+      fallbackCopyAddress(event);
     }
   };
 
-  const fallbackCopyAddress = () => {
-    emailInput.select();
+  const fallbackCopyAddress = (event) => {
+    emailInputField.select();
     document.execCommand("copy");
-    copyElement.classList.add("copy-success");
-    copyText.classList.remove("hidden");
+
+    if (event.target.id === "copyMailPreviewField") {
+      copyMailPreviewField.classList.add("copy-success");
+      copyMailPreview.classList.remove("hidden");
+    }
+    if (event.target.id === "copyMailContactField") {
+      copyMailContactField.classList.add("copy-success");
+      copyMailContact.classList.remove("hidden");
+    }
+
     setTimeout(() => {
-      copyElement.classList.remove("copy-success");
-      copyText.classList.add("hidden");
+      copyMailPreviewField.classList.remove("copy-success");
+      copyMailPreview.classList.add("hidden");
+      copyMailContactField.classList.remove("copy-success");
+      copyMailContact.classList.add("hidden");
     }, 1700);
   };
 
@@ -71,14 +99,49 @@
     window.location.href = `mailto:${emailAddress}`;
   };
 
-  copyElement.addEventListener("click", copyAddres);
-  mailIcon.addEventListener("click", openMailTo); // COPY EMAIL LOGIC
+  const copyPhonenumber = async () => {
+    try {
+      await navigator.clipboard.writeText(phonenumberInputField.value);
+      copyPhonenumberField.classList.add("copy-success");
+      copyTextPhoneNumber.classList.remove("hidden");
+
+      setTimeout(() => {
+        copyPhonenumberField.classList.remove("copy-success");
+        copyTextPhoneNumber.classList.add("hidden");
+      }, 1700);
+    } catch (err) {
+      console.error(`err copying text: ${err}`);
+      fallbackCopyPhonenumber();
+    }
+  };
+
+  const fallbackCopyPhonenumber = () => {
+    phonenumberInputField.select();
+    document.execCommand("copy");
+
+    copyPhonenumberField.classList.add("copy-success");
+    copyTextPhoneNumber.classList.remove("hidden");
+
+    setTimeout(() => {
+      copyPhonenumberField.classList.remove("copy-success");
+      copyTextPhoneNumber.classList.add("hidden");
+    }, 1700);
+  };
+
+  copyMailPreviewField.addEventListener("click", copyAddres);
+  copyMailContactField.addEventListener("click", copyAddres);
+  copyPhonenumberField.addEventListener("click", copyPhonenumber);
+  mailIcon.addEventListener("click", openMailTo);
+
+  // (MAIL, PHONENUMBER) COPY AND MAIL TO LOGIC
 
   //NAVIGATION LOGIC
   const technologiesContent = document.querySelector(".content__technologies");
   const projectsContent = document.querySelector(".content__projects");
   const myStudiesContent = document.querySelector(".content__my__studies");
   const aboutMeContent = document.querySelector(".content__about__me");
+  const contactMeContent = document.querySelector(".content__contact");
+
   const navbarLinkNavigation = document.querySelectorAll(".navbar__link");
 
   const handleNavigation = (event) => {
@@ -111,6 +174,9 @@
         break;
       case "Acerca de mi":
         scrollToElement(aboutMeContent);
+        break;
+      case "Contacto":
+        scrollToElement(contactMeContent);
         break;
       default:
         break;
