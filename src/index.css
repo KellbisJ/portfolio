@@ -251,6 +251,7 @@ h4 {
   border-radius: 12px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
 }
 
 .technologies__img {
@@ -312,6 +313,9 @@ h4 {
 .content__project__img {
   position: relative;
   margin: 0;
+}
+.content__project__img i {
+  filter: drop-shadow(2px 2px 2px rgba(3, 0, 28, 0.572));
 }
 
 .project-img {
@@ -458,6 +462,14 @@ h4 {
   margin-top: 32px;
 }
 /* ABOUT ME */
+
+@media (min-width: 450px) {
+  .content__projects {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+}
 
 @media (min-width: 640px) {
   .navbar__menu__content {

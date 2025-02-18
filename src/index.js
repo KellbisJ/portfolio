@@ -1,5 +1,5 @@
 (() => {
-  // navbar logic
+  // NAVBAR LOGIC
   const menuButton = document.querySelector("#menu");
   const navbarMenuContent = document.querySelector(".navbar__menu__content");
   const menuIcon = document.querySelector("#menu-icon");
@@ -30,9 +30,9 @@
 
   navbarMenuContent.addEventListener("click", (event) => {
     event.stopPropagation();
-  }); // navbar logic
+  }); // NAVBAR LOGIC
 
-  // copy email logic
+  // COPY EMAIL LOGIC
 
   const emailAddress = "kellbisdevsw@gmail.com";
 
@@ -72,7 +72,7 @@
   };
 
   copyElement.addEventListener("click", copyAddres);
-  mailIcon.addEventListener("click", openMailTo); // copy email logic
+  mailIcon.addEventListener("click", openMailTo); // COPY EMAIL LOGIC
 
   //NAVIGATION LOGIC
   const technologiesContent = document.querySelector(".content__technologies");
