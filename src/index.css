@@ -37,7 +37,7 @@ h4 {
   z-index: 1;
 }
 #particles-js {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;

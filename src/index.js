@@ -1,62 +1,89 @@
 (() => {
-  // NAVBAR LOGIC
-  const menuButton = document.querySelector("#menu");
-  const navbarMenuContent = document.querySelector(".navbar__menu__content");
-  const menuIcon = document.querySelector("#menu-icon");
+  document.addEventListener("DOMContentLoaded", () => {
+    // NAVBAR LOGIC
+    const menuButton = document.querySelector("#menu");
+    const navbarMenuContent = document.querySelector(".navbar__menu__content");
+    const menuIcon = document.querySelector("#menu-icon");
 
-  let menuNavbarShowed = false;
+    let menuNavbarShowed = false;
 
-  const menuIcons = {
-    barsIcon: "fa fa-bars",
-    closeIcon: "fa-solid fa-x",
-  };
+    const menuIcons = {
+      barsIcon: "fa fa-bars",
+      closeIcon: "fa-solid fa-x",
+    };
 
-  const toggleMenu = () => {
-    navbarMenuContent.classList.toggle("show");
+    const toggleMenu = () => {
+      navbarMenuContent.classList.toggle("show");
 
-    navbarMenuContent.classList.contains("show") ? ((menuIcon.classList = menuIcons.closeIcon), (menuNavbarShowed = true)) : ((menuIcon.classList = menuIcons.barsIcon), (menuNavbarShowed = false));
-  };
+      navbarMenuContent.classList.contains("show") ? ((menuIcon.classList = menuIcons.closeIcon), (menuNavbarShowed = true)) : ((menuIcon.classList = menuIcons.barsIcon), (menuNavbarShowed = false));
+    };
 
-  const handleBodyClick = (event) => {
-    if (menuNavbarShowed && !navbarMenuContent.contains(event.target) && !menuButton.contains(event.target)) {
-      navbarMenuContent.classList.remove("show");
-      menuNavbarShowed = false;
-      menuIcon.classList = menuIcons.barsIcon;
-    }
-  };
+    const handleBodyClick = (event) => {
+      if (menuNavbarShowed && !navbarMenuContent.contains(event.target) && !menuButton.contains(event.target)) {
+        navbarMenuContent.classList.remove("show");
+        menuNavbarShowed = false;
+        menuIcon.classList = menuIcons.barsIcon;
+      }
+    };
 
-  menuButton.addEventListener("click", toggleMenu);
-  document.body.addEventListener("click", handleBodyClick);
+    menuButton.addEventListener("click", toggleMenu);
+    document.body.addEventListener("click", handleBodyClick);
 
-  navbarMenuContent.addEventListener("click", (event) => {
-    event.stopPropagation();
-  }); // NAVBAR LOGIC
+    navbarMenuContent.addEventListener("click", (event) => {
+      event.stopPropagation();
+    }); // NAVBAR LOGIC
 
-  // (MAIL, PHONENUMBER) COPY AND MAIL TO LOGIC
+    // (MAIL, PHONENUMBER) COPY AND MAIL TO LOGIC
 
-  const emailAddress = "kellbisdevsw@gmail.com";
+    const emailAddress = "kellbisdevsw@gmail.com";
 
-  const copyMailPreviewField = document.getElementById("copyMailPreviewField");
-  const copyMailContactField = document.getElementById("copyMailContactField");
-  const copyPhonenumberField = document.getElementById("copyPhonenumberField");
+    const copyMailPreviewField = document.getElementById("copyMailPreviewField");
+    const copyMailContactField = document.getElementById("copyMailContactField");
+    const copyPhonenumberField = document.getElementById("copyPhonenumberField");
 
-  const mailIcon = document.getElementById("mailIcon");
+    const mailIcon = document.getElementById("mailIcon");
 
-  const emailInputField = document.getElementById("emailInputField");
-  const phonenumberInputField = document.getElementById("phonenumberField");
+    const emailInputField = document.getElementById("emailInputField");
+    const phonenumberInputField = document.getElementById("phonenumberField");
 
-  const copyMailPreview = document.getElementById("copyMailPreview");
-  const copyMailContact = document.getElementById("copyMailContact");
-  const copyTextPhoneNumber = document.getElementById("copyTextPhoneNumber");
+    const copyMailPreview = document.getElementById("copyMailPreview");
+    const copyMailContact = document.getElementById("copyMailContact");
+    const copyTextPhoneNumber = document.getElementById("copyTextPhoneNumber");
 
-  const copyAddres = async (event) => {
-    console.log(event.target);
+    const copyAddres = async (event) => {
+      console.log(event.target);
 
-    try {
+      try {
+        emailInputField.select();
+        emailInputField.setSelectionRange(0, 99999);
+
+        await navigator.clipboard.writeText(emailInputField.value);
+
+        if (event.target.id === "copyMailPreviewField") {
+          copyMailPreviewField.classList.add("copy-success");
+          copyMailPreview.classList.remove("hidden");
+        }
+        if (event.target.id === "copyMailContactField") {
+          copyMailContactField.classList.add("copy-success");
+          copyMailContact.classList.remove("hidden");
+        }
+        setTimeout(() => {
+          copyMailPreviewField.classList.remove("copy-success");
+          copyMailPreview.classList.add("hidden");
+          copyMailContactField.classList.remove("copy-success");
+          copyMailContact.classList.add("hidden");
+        }, 1700);
+
+        console.log(`textcpied: ${emailInputField.value}`);
+      } catch (err) {
+        console.error(`err copying text: ${err}`);
+        fallbackCopyAddress(event);
+      }
+    };
+
+    const fallbackCopyAddress = (event) => {
       emailInputField.select();
-      emailInputField.setSelectionRange(0, 99999);
-
-      await navigator.clipboard.writeText(emailInputField.value);
+      document.execCommand("copy");
 
       if (event.target.id === "copyMailPreviewField") {
         copyMailPreviewField.classList.add("copy-success");
@@ -66,51 +93,42 @@
         copyMailContactField.classList.add("copy-success");
         copyMailContact.classList.remove("hidden");
       }
+
       setTimeout(() => {
         copyMailPreviewField.classList.remove("copy-success");
         copyMailPreview.classList.add("hidden");
         copyMailContactField.classList.remove("copy-success");
         copyMailContact.classList.add("hidden");
       }, 1700);
+    };
 
-      console.log(`textcpied: ${emailInputField.value}`);
-    } catch (err) {
-      console.error(`err copying text: ${err}`);
-      fallbackCopyAddress(event);
-    }
-  };
+    const openMailTo = () => {
+      window.location.href = `mailto:${emailAddress}`;
+    };
 
-  const fallbackCopyAddress = (event) => {
-    emailInputField.select();
-    document.execCommand("copy");
+    const copyPhonenumber = async () => {
+      try {
+        phonenumberInputField.select();
+        phonenumberInputField.setSelectionRange(0, 99999);
 
-    if (event.target.id === "copyMailPreviewField") {
-      copyMailPreviewField.classList.add("copy-success");
-      copyMailPreview.classList.remove("hidden");
-    }
-    if (event.target.id === "copyMailContactField") {
-      copyMailContactField.classList.add("copy-success");
-      copyMailContact.classList.remove("hidden");
-    }
+        await navigator.clipboard.writeText(phonenumberInputField.value);
 
-    setTimeout(() => {
-      copyMailPreviewField.classList.remove("copy-success");
-      copyMailPreview.classList.add("hidden");
-      copyMailContactField.classList.remove("copy-success");
-      copyMailContact.classList.add("hidden");
-    }, 1700);
-  };
+        copyPhonenumberField.classList.add("copy-success");
+        copyTextPhoneNumber.classList.remove("hidden");
 
-  const openMailTo = () => {
-    window.location.href = `mailto:${emailAddress}`;
-  };
+        setTimeout(() => {
+          copyPhonenumberField.classList.remove("copy-success");
+          copyTextPhoneNumber.classList.add("hidden");
+        }, 1700);
+      } catch (err) {
+        console.error(`err copying text: ${err}`);
+        fallbackCopyPhonenumber();
+      }
+    };
 
-  const copyPhonenumber = async () => {
-    try {
+    const fallbackCopyPhonenumber = () => {
       phonenumberInputField.select();
-      phonenumberInputField.setSelectionRange(0, 99999);
-
-      await navigator.clipboard.writeText(phonenumberInputField.value);
+      document.execCommand("copy");
 
       copyPhonenumberField.classList.add("copy-success");
       copyTextPhoneNumber.classList.remove("hidden");
@@ -119,83 +137,67 @@
         copyPhonenumberField.classList.remove("copy-success");
         copyTextPhoneNumber.classList.add("hidden");
       }, 1700);
-    } catch (err) {
-      console.error(`err copying text: ${err}`);
-      fallbackCopyPhonenumber();
-    }
-  };
-
-  const fallbackCopyPhonenumber = () => {
-    phonenumberInputField.select();
-    document.execCommand("copy");
-
-    copyPhonenumberField.classList.add("copy-success");
-    copyTextPhoneNumber.classList.remove("hidden");
-
-    setTimeout(() => {
-      copyPhonenumberField.classList.remove("copy-success");
-      copyTextPhoneNumber.classList.add("hidden");
-    }, 1700);
-  };
-
-  copyMailPreviewField.addEventListener("click", copyAddres);
-  copyMailContactField.addEventListener("click", copyAddres);
-  copyPhonenumberField.addEventListener("click", copyPhonenumber);
-  mailIcon.addEventListener("click", openMailTo);
-
-  // (MAIL, PHONENUMBER) COPY AND MAIL TO LOGIC
-
-  //NAVIGATION LOGIC
-  const technologiesContent = document.querySelector(".content__technologies");
-  const projectsContent = document.querySelector(".content__projects");
-  const myStudiesContent = document.querySelector(".content__my__studies");
-  const aboutMeContent = document.querySelector(".content__about__me");
-  const contactMeContent = document.querySelector(".content__contact");
-
-  const navbarLinkNavigation = document.querySelectorAll(".navbar__link");
-
-  const handleNavigation = (event) => {
-    // console.log(event.target);
-    // console.log(event.target.innerHTML);
-
-    const navbarLinkCaptured = event.target.innerHTML;
-    const scrollTop = document.documentElement.scrollTop;
-
-    const scrollToElement = (element) => {
-      const elementToNavigatePosition = element.getBoundingClientRect();
-      const position = elementToNavigatePosition.top + scrollTop - 40;
-      window.scrollTo({ top: position, behavior: "smooth" });
-      toggleMenu();
     };
 
-    switch (navbarLinkCaptured) {
-      case "Home":
-        window.scrollTo({ top: 0, behavior: "smooth" });
+    copyMailPreviewField.addEventListener("click", copyAddres);
+    copyMailContactField.addEventListener("click", copyAddres);
+    copyPhonenumberField.addEventListener("click", copyPhonenumber);
+    mailIcon.addEventListener("click", openMailTo);
+
+    // (MAIL, PHONENUMBER) COPY AND MAIL TO LOGIC
+
+    //NAVIGATION LOGIC
+    const technologiesContent = document.querySelector(".content__technologies");
+    const projectsContent = document.querySelector(".content__projects");
+    const myStudiesContent = document.querySelector(".content__my__studies");
+    const aboutMeContent = document.querySelector(".content__about__me");
+    const contactMeContent = document.querySelector(".content__contact");
+
+    const navbarLinkNavigation = document.querySelectorAll(".navbar__link");
+
+    const handleNavigation = (event) => {
+      // console.log(event.target);
+      // console.log(event.target.innerHTML);
+
+      const navbarLinkCaptured = event.target.innerHTML;
+      const scrollTop = document.documentElement.scrollTop;
+
+      const scrollToElement = (element) => {
+        const elementToNavigatePosition = element.getBoundingClientRect();
+        const position = elementToNavigatePosition.top + scrollTop - 40;
+        window.scrollTo({ top: position, behavior: "smooth" });
         toggleMenu();
-        break;
-      case "Tecnologias":
-        scrollToElement(technologiesContent);
-        break;
-      case "Proyectos":
-        scrollToElement(projectsContent);
-        break;
-      case "Educación":
-        scrollToElement(myStudiesContent);
-        break;
-      case "Acerca de mi":
-        scrollToElement(aboutMeContent);
-        break;
-      case "Contacto":
-        scrollToElement(contactMeContent);
-        break;
-      default:
-        break;
-    }
-  };
+      };
 
-  navbarLinkNavigation.forEach((link) => {
-    link.addEventListener("click", handleNavigation);
+      switch (navbarLinkCaptured) {
+        case "Home":
+          window.scrollTo({ top: 0, behavior: "smooth" });
+          toggleMenu();
+          break;
+        case "Tecnologias":
+          scrollToElement(technologiesContent);
+          break;
+        case "Proyectos":
+          scrollToElement(projectsContent);
+          break;
+        case "Educación":
+          scrollToElement(myStudiesContent);
+          break;
+        case "Acerca de mi":
+          scrollToElement(aboutMeContent);
+          break;
+        case "Contacto":
+          scrollToElement(contactMeContent);
+          break;
+        default:
+          break;
+      }
+    };
+
+    navbarLinkNavigation.forEach((link) => {
+      link.addEventListener("click", handleNavigation);
+    });
+
+    //NAVIGATION LOGIC
   });
-
-  //NAVIGATION LOGIC
 })();

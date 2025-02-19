@@ -1,21 +1,22 @@
 (() => {
-  const technologiesMaterial = {
-    globeTechIcon: "fa-solid fa-globe",
-    reactIconSrc: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg",
-    htmlIconSrc: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg",
-    cssIconSrc: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg",
-    tailwindcssIconSrc: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg",
-    javascriptIconSrc: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg",
-    typescriptIconSrc: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg",
-    nodejsIconSrc: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original-wordmark.svg",
-    gitIconSrc: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg",
-    viteIconSrc: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitejs/vitejs-original.svg",
-    expressIconSrc: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg",
-  };
+  document.addEventListener("DOMContentLoaded", () => {
+    const technologiesMaterial = {
+      globeTechIcon: "fa-solid fa-globe",
+      reactIconSrc: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg",
+      htmlIconSrc: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg",
+      cssIconSrc: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg",
+      tailwindcssIconSrc: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg",
+      javascriptIconSrc: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg",
+      typescriptIconSrc: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg",
+      nodejsIconSrc: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original-wordmark.svg",
+      gitIconSrc: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg",
+      viteIconSrc: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitejs/vitejs-original.svg",
+      expressIconSrc: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg",
+    };
 
-  const CONTENT_TECHNOLOGIES = document.querySelector(".content__technologies");
+    const CONTENT_TECHNOLOGIES = document.querySelector(".content__technologies");
 
-  const technologiesHTML = `
+    const technologiesHTML = `
     <div class="content__technologies__title">
             <i class="${technologiesMaterial.globeTechIcon}"></i>
             <h2>Tecnologias</h2>
@@ -64,5 +65,6 @@
             </div>
           </div>
   `;
-  CONTENT_TECHNOLOGIES.innerHTML += technologiesHTML;
+    CONTENT_TECHNOLOGIES.innerHTML += technologiesHTML;
+  });
 })();
