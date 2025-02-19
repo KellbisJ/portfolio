@@ -3,6 +3,9 @@
   padding: 0;
   margin: 0;
 }
+html {
+  scroll-behavior: smooth;
+}
 body {
   background-color: #03001c;
   font-family: "Roboto Flex", serif;
@@ -44,12 +47,11 @@ h4 {
 /* NAVBAR */
 .navbar {
   position: fixed;
-  background-color: transparent;
   padding: 0 10vw 0 10vw;
   width: 100%;
   top: 0;
   right: 0;
-  z-index: 10;
+  z-index: 1;
 }
 .navbar__elements {
   width: 100%;
@@ -58,8 +60,11 @@ h4 {
   justify-items: center;
   align-items: center;
   padding: 12px;
-  background-color: #03001ce6;
+  background-color: #b6fffa2d;
   border-radius: 0 0 18px 18px;
+  backdrop-filter: blur(12px);
+  position: relative;
+  z-index: 2;
 }
 .navbar__content__mobile {
   color: none;
@@ -81,11 +86,10 @@ h4 {
   visibility: hidden;
   flex-direction: column;
   position: absolute;
-  top: 150%;
+  top: 175%;
   right: 0;
-  padding: 20px;
-  border-radius: 6px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 18px;
+  border-radius: 18px;
   overflow: hidden;
   max-height: 0;
   opacity: 0;
@@ -99,9 +103,9 @@ h4 {
   max-height: fit-content;
   opacity: 1;
   position: absolute;
-  right: -10vw;
+  right: -3vw;
   gap: 14px;
-  background-color: #03001ce6;
+  background-color: #b6fffa2d;
   pointer-events: auto;
 }
 .navbar__content__wide {
@@ -109,22 +113,39 @@ h4 {
   width: 100%;
   justify-content: space-between;
 }
-.navbar__content__wide a {
-  padding: 8px;
-  border-radius: 12px;
-  background-color: #b3bbba1b;
-  color: #b6fffa;
-  transition: background 1s;
-}
-
-.navbar__content__wide a:hover {
-  background: linear-gradient(45deg, #b6fffa, #445687);
-}
-
 .navbar__link {
-  color: white;
+  position: relative;
+  background-color: #03001c41;
   text-decoration: none;
   font-size: 12px;
+  padding: 8px;
+  border-radius: 12px;
+  color: #b6fffa;
+  text-align: center;
+  transition: box-shadow 0.4s ease;
+  overflow: hidden;
+}
+.navbar__link::before {
+  content: "";
+  top: 0;
+  left: 0;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  border-radius: 12px;
+  z-index: -1;
+  background-color: #03001c41;
+  background-image: linear-gradient(to bottom right, #b6fffa, #445687);
+  transition: opacity 0.4s ease;
+  opacity: 0;
+}
+
+.navbar__link:hover::before {
+  opacity: 1;
+}
+.navbar__link:hover {
+  z-index: 0;
+  box-shadow: 20px 0 60px #b6fffa2d;
 } /* NAVBAR */
 
 .content /* all content container */ {
