@@ -44,8 +44,8 @@ h4 {
 /* NAVBAR */
 .navbar {
   position: fixed;
-  background-color: #1a2647;
-  padding: 12px 10vw;
+  background-color: transparent;
+  padding: 0 10vw 0 10vw;
   width: 100%;
   top: 0;
   right: 0;
@@ -57,6 +57,9 @@ h4 {
   justify-content: space-between;
   justify-items: center;
   align-items: center;
+  padding: 12px;
+  background-color: #03001ce6;
+  border-radius: 0 0 18px 18px;
 }
 .navbar__content__mobile {
   color: none;
@@ -98,7 +101,7 @@ h4 {
   position: absolute;
   right: -10vw;
   gap: 14px;
-  background-color: #1a2647;
+  background-color: #03001ce6;
   pointer-events: auto;
 }
 .navbar__content__wide {
@@ -106,6 +109,18 @@ h4 {
   width: 100%;
   justify-content: space-between;
 }
+.navbar__content__wide a {
+  padding: 8px;
+  border-radius: 12px;
+  background-color: #b3bbba1b;
+  color: #b6fffa;
+  transition: background 1s;
+}
+
+.navbar__content__wide a:hover {
+  background: linear-gradient(45deg, #b6fffa, #445687);
+}
+
 .navbar__link {
   color: white;
   text-decoration: none;
@@ -183,7 +198,7 @@ h4 {
   transition: background 0.3s ease;
 }
 .social-media-element:hover {
-  background: rgb(182, 255, 250, 0.5);
+  background: #b6fffa80;
 }
 .email__copy {
   position: relative;
@@ -279,15 +294,15 @@ h4 {
   flex-direction: column;
   margin-top: 32px;
 }
-.projects-text {
-  display: inline-flex;
+.projects-title {
+  display: flex;
   align-items: center;
   padding: 18px;
   background-color: transparent;
   border: 2px solid #1a2647;
   border-radius: 6px;
 }
-.projects-text i {
+.projects-title i {
   margin-right: 8px;
   color: #b6fffa;
 }
@@ -535,7 +550,7 @@ h4 {
 /* CONTACT */
 
 @media (min-width: 450px) {
-  .content__projects {
+  .content__project__info__container {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
@@ -595,9 +610,7 @@ h4 {
     margin-left: 26vw;
   }
   .navbar {
-    position: absolute;
-    background-color: transparent;
-    padding: 12px 26vw;
+    padding: 0 26vw 0 26vw;
   }
   .navbar__elements {
     justify-content: center;
@@ -612,7 +625,7 @@ h4 {
     display: flex;
   }
   .navbar__link {
-    font-size: 14px;
+    font-size: 12px;
   }
 }
 

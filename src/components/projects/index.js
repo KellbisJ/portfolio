@@ -50,6 +50,24 @@
 
   const CONTENT_PROJECTS = document.querySelector(".content__projects");
 
+  const projectTitle = document.createElement("div");
+  projectTitle.classList.add("projects-title");
+
+  const title = document.createElement("h2");
+  title.textContent = "Proyectos";
+
+  const codeIcon = document.createElement("i");
+  codeIcon.className = "fa-solid fa-code";
+
+  projectTitle.appendChild(codeIcon);
+  projectTitle.appendChild(title);
+
+  const contentProjectInfoContainer = document.createElement("div");
+  contentProjectInfoContainer.classList.add("content__project__info__container");
+
+  CONTENT_PROJECTS.appendChild(projectTitle);
+  CONTENT_PROJECTS.appendChild(contentProjectInfoContainer);
+
   function createProjectElement(project) {
     const projectInfoContainer = document.createElement("div");
     projectInfoContainer.classList.add("content__project__info");
@@ -134,6 +152,6 @@
 
   projects.forEach((project) => {
     const projectElement = createProjectElement(project);
-    CONTENT_PROJECTS.appendChild(projectElement);
+    contentProjectInfoContainer.appendChild(projectElement);
   });
 })();
