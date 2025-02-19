@@ -53,7 +53,11 @@
     console.log(event.target);
 
     try {
+      emailInputField.select();
+      emailInputField.setSelectionRange(0, 99999);
+
       await navigator.clipboard.writeText(emailInputField.value);
+
       if (event.target.id === "copyMailPreviewField") {
         copyMailPreviewField.classList.add("copy-success");
         copyMailPreview.classList.remove("hidden");
@@ -68,6 +72,8 @@
         copyMailContactField.classList.remove("copy-success");
         copyMailContact.classList.add("hidden");
       }, 1700);
+
+      console.log(`textcpied: ${emailInputField.value}`);
     } catch (err) {
       console.error(`err copying text: ${err}`);
       fallbackCopyAddress(event);
@@ -101,7 +107,11 @@
 
   const copyPhonenumber = async () => {
     try {
+      phonenumberInputField.select();
+      phonenumberInputField.setSelectionRange(0, 99999);
+
       await navigator.clipboard.writeText(phonenumberInputField.value);
+
       copyPhonenumberField.classList.add("copy-success");
       copyTextPhoneNumber.classList.remove("hidden");
 

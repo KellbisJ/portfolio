@@ -107,6 +107,11 @@ h4 {
   gap: 14px;
   background-color: #b6fffa2d;
   pointer-events: auto;
+  box-shadow: 0 18px 32px rgba(0, 0, 0, 0.3);
+}
+.navbar__menu__content.show a {
+  background-color: #03001cb3;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 .navbar__content__wide {
   display: none;
@@ -219,7 +224,7 @@ h4 {
   transition: background 0.3s ease;
 }
 .social-media-element:hover {
-  background: #b6fffa80;
+  background-color: #b6fffa2d;
 }
 .email__copy {
   position: relative;
@@ -286,21 +291,33 @@ h4 {
 }
 
 .technologies__img__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   width: 100%;
-  max-width: 80px;
+  height: 100%;
+  max-width: 120px;
   aspect-ratio: 1.5;
   border-radius: 12px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   text-align: center;
+  background-color: #b6fffa2d;
+  padding: 6px;
 }
 
 .technologies__img {
-  width: 100%;
-  height: 100%;
+  width: 65%;
+  height: 65%;
   object-fit: contain;
   object-position: center;
   border-radius: inherit;
+}
+.technologies__img__container p {
+  font-size: 12px;
+  font-weight: bold;
+  margin-top: 6px;
 }
 
 .technologies__img__container:hover {
@@ -336,7 +353,7 @@ h4 {
 .content__project__info {
   display: flex;
   flex-direction: column;
-  background-color: transparent;
+  background-color: #b6fffa2d;
   border: 2px solid #1a2647;
   border-radius: 12px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
@@ -468,7 +485,7 @@ h4 {
 .study-details {
   flex: 1;
   padding: 8px;
-  background-color: transparent;
+  background-color: #b6fffa2d;
   border: 2px solid #1a2647;
   border-radius: 6px;
   word-break: break-all;
@@ -501,6 +518,9 @@ h4 {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 16px;
+  background-color: #b6fffa2d;
+  border-radius: 6px;
 }
 .content__about__me__info p {
   margin-top: 32px;
@@ -529,9 +549,13 @@ h4 {
 .contact-info {
   display: flex;
   flex-direction: column;
+  align-items: center;
   margin-top: 24px;
   width: 100%;
   position: relative;
+}
+.contact-info p {
+  font-weight: bold;
 }
 .contact-item {
   width: 100%;
@@ -539,7 +563,7 @@ h4 {
   align-items: center;
   gap: 10px;
   margin-top: 14px;
-  background-color: transparent;
+  background-color: #b6fffa2d;
   border: 2px solid #1a2647;
   border-radius: 6px;
   padding: 8px;
@@ -576,6 +600,14 @@ h4 {
     grid-template-columns: 1fr 1fr;
     gap: 20px;
   }
+  .content__technologies__img__grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    padding: 18px;
+  }
+  .contact-item {
+    width: 70%;
+  }
 }
 
 @media (min-width: 640px) {
@@ -592,7 +624,7 @@ h4 {
     width: 160px;
   }
   .content__technologies__img__grid {
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
     gap: 18px;
     padding: 18px;
   }
@@ -601,12 +633,18 @@ h4 {
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
+  .technologies__img {
+    width: 50%;
+    height: 50%;
+  }
   .content__project__info__container {
     grid-template-columns: 1fr 1fr;
   }
-
   .project-title {
     font-size: 16px;
+  }
+  .contact-item {
+    width: 50%;
   }
 }
 
@@ -616,6 +654,10 @@ h4 {
   }
   h2 {
     font-size: 16px;
+  }
+  .technologies__img {
+    width: 65%;
+    height: 65%;
   }
 }
 
@@ -645,8 +687,12 @@ h4 {
   .navbar__content__wide {
     display: flex;
   }
-  .navbar__link {
-    font-size: 12px;
+  .social-media-element {
+    width: 140px;
+  }
+  .contact-info p {
+    font-size: 18px;
+    font-weight: bold;
   }
 }
 
@@ -658,10 +704,44 @@ h4 {
     font-size: 24px;
   }
   .navbar__link {
+    font-size: 14px;
+  }
+  .social-media-element {
+    width: 180px;
+  }
+  .content__technologies__img__grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    padding: 24px;
+  }
+  .technologies__img__container {
+    max-width: 480px;
+  }
+  .technologies__img {
+    width: 70%;
+    height: 70%;
+  }
+}
+
+@media (min-width: 1600px) {
+  h1 {
+    font-size: 40px;
+  }
+  h2 {
+    font-size: 32px;
+  }
+  .navbar__link {
     font-size: 16px;
   }
   .content__technologies__img__grid {
-    gap: 24px;
-    padding: 24px;
+    gap: 32px;
+    padding: 32px;
+  }
+  .technologies__img {
+    width: 40%;
+    height: 40%;
+  }
+  .contact-item {
+    width: 40%;
   }
 }

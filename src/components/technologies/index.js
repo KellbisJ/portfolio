@@ -4,11 +4,13 @@
     reactIconSrc: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg",
     htmlIconSrc: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg",
     cssIconSrc: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg",
-    tailwindcssIconSrc: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original-wordmark.svg",
+    tailwindcssIconSrc: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg",
     javascriptIconSrc: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg",
     typescriptIconSrc: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg",
     nodejsIconSrc: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original-wordmark.svg",
     gitIconSrc: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg",
+    viteIconSrc: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitejs/vitejs-original.svg",
+    expressIconSrc: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg",
   };
 
   const CONTENT_TECHNOLOGIES = document.querySelector(".content__technologies");
@@ -51,6 +53,14 @@
             <div class="technologies__img__container">
               <img class="technologies__img" src="${technologiesMaterial.gitIconSrc}" />
               <p>Git</p>
+            </div>
+            <div class="technologies__img__container">
+              <img class="technologies__img" src="${technologiesMaterial.viteIconSrc}" />
+              <p>Vite.js</p>
+            </div>
+            <div class="technologies__img__container">
+              <img class="technologies__img" src="${technologiesMaterial.expressIconSrc}" style="color: #fff;" />
+              <p>Express.js</p>
             </div>
           </div>
   `;
