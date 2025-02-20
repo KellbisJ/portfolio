@@ -1,21 +1,26 @@
 (() => {
   document.addEventListener("DOMContentLoaded", () => {
     // NAVBAR HTML RENDER
-    const navbarMaterial = {
+
+    const pageNavigation = Object.freeze(["#home", "#tecnologias", "#proyectos", "#educación", "#acerca-de-mi", "#contacto"]);
+    const linkContent = Object.freeze(["Home", "Tecnologias", "Proyectos", "Educación", "Acerca de mi", "Contacto"]);
+
+    const navbarIcons = {
       briefcaseIcon: "fa-solid fa-briefcase",
       barsIcon: "fas fa-bars",
+    };
 
-      mobileContent: {
-        navBarLinksContent: {
-          pageNavigation: ["#home", "#tecnologias", "#proyectos", "#educación", "#acerca-de-mi", "#contacto"],
-          linkContent: ["Home", "Tecnologias", "Proyectos", "Educación", "Acerca de mi", "Contacto"],
-        },
+    const mobileContent = {
+      navBarLinksContent: {
+        pageNavigation: [...pageNavigation],
+        linkContent: [...linkContent],
       },
-      wideContent: {
-        navBarLinksContent: {
-          pageNavigation: ["#home", "#tecnologias", "#proyectos", "#educación", "#acerca-de-mi", "#contacto"],
-          linkContent: ["Home", "Tecnologias", "Proyectos", "Educación", "Acerca de mi", "Contacto"],
-        },
+    };
+
+    const wideContent = {
+      navBarLinksContent: {
+        pageNavigation: [...pageNavigation],
+        linkContent: [...linkContent],
       },
     };
 
@@ -25,7 +30,7 @@
     navbarElementsContainer.classList.add("navbar__elements");
 
     function createNavbarContents(content) {
-      if (content === navbarMaterial.mobileContent) {
+      if (content === mobileContent) {
         const navbarContentMobile = document.createElement("div");
         const navbarBrand = document.createElement("div");
         const navbarMenuContent = document.createElement("div");
@@ -34,10 +39,10 @@
         button.id = "menu";
 
         const iBriefCase = document.createElement("i");
-        iBriefCase.className = navbarMaterial.briefcaseIcon;
+        iBriefCase.className = navbarIcons.briefcaseIcon;
 
         const iFaBars = document.createElement("i");
-        iFaBars.className = navbarMaterial.barsIcon;
+        iFaBars.className = navbarIcons.barsIcon;
         iFaBars.id = "menu-icon";
 
         navbarContentMobile.classList.add("navbar__content__mobile");
@@ -64,7 +69,7 @@
 
         return navbarContentMobile;
       }
-      if (content === navbarMaterial.wideContent) {
+      if (content === wideContent) {
         const navbarContentWide = document.createElement("div");
 
         navbarContentWide.classList.add("navbar__content__wide");
@@ -85,7 +90,7 @@
       }
     }
 
-    const contents = [navbarMaterial.mobileContent, navbarMaterial.wideContent];
+    const contents = [mobileContent, wideContent];
 
     contents.forEach((content) => {
       const navbarElements = createNavbarContents(content);

@@ -18,7 +18,7 @@
     const copyTextPhoneNumber = document.getElementById("copyTextPhoneNumber");
 
     const copyAddres = async (event) => {
-      console.log(event.target);
+      // console.log(event.target);
 
       try {
         emailInputField.select();
@@ -41,7 +41,7 @@
           copyMailContact.classList.add("hidden");
         }, 1700);
 
-        console.log(`textcpied: ${emailInputField.value}`);
+        // console.log(`textcpied: ${emailInputField.value}`);
       } catch (err) {
         console.error(`err copying text: ${err}`);
         fallbackCopyAddress(event);

@@ -17,7 +17,7 @@
 
       moviesKs: {
         title: "MoviesKS",
-        imageSrc: "/src/images/MoviesKS.png",
+        imageSrc: "https://drive.google.com/thumbnail?id=1TlLMcsTrJThYEr1hIR9z5ZsjT-kYqoBx&sz=s600",
         projectUrl: "https://movies-ks-frontend.vercel.app/",
         repositoryUrl: "https://github.com/KellbisJ/MoviesKS",
         description: "Este proyecto es un sitio web que permite a los usuarios consumir información sobre películas y series.",
@@ -25,7 +25,7 @@
       },
       myEcm: {
         title: "MyEcm (fake ecommerce)",
-        imageSrc: "/src/images/MyEcm.png",
+        imageSrc: "https://drive.google.com/thumbnail?id=11_1VVkIf5Jf9WZtUT8HcTjwc0w3VZs-_&sz=s600",
         projectUrl: "https://fakeshopiecm.netlify.app",
         repositoryUrl: "https://github.com/KellbisJ/my-ecm",
         description: "Un prototipo de ecommerce básico.",
@@ -33,7 +33,7 @@
       },
       toDo: {
         title: "To-do list",
-        imageSrc: "/src/images/Todo.png",
+        imageSrc: "https://drive.google.com/thumbnail?id=1ZgeADNEGW9C44VIH903tisv4Tb79QcIB&sz=s600",
         projectUrl: "https://kellbisj.github.io/TODO-FOR-DO/",
         repositoryUrl: "https://github.com/KellbisJ/TODO-FOR-DO",
         description: "Un simple todo list.",
@@ -41,7 +41,7 @@
       },
       englishJourney: {
         title: "English Journey Blog",
-        imageSrc: "/src/images/ENjourney.png",
+        imageSrc: "https://drive.google.com/thumbnail?id=1EDlOKTvSd-wMQIx5BO3yhknAHxvlUMfE&sz=s600",
         projectUrl: "https://my-english-journey-kellbisj-kellbis-projects.vercel.app",
         repositoryUrl: "https://github.com/KellbisJ/my-english-journey",
         description: "Un blog para plasmar y documentar las muchas cosas aprendidas en inglés.",
