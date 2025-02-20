@@ -1,38 +1,5 @@
 (() => {
   document.addEventListener("DOMContentLoaded", () => {
-    // NAVBAR LOGIC
-    const menuButton = document.querySelector("#menu");
-    const navbarMenuContent = document.querySelector(".navbar__menu__content");
-    const menuIcon = document.querySelector("#menu-icon");
-
-    let menuNavbarShowed = false;
-
-    const menuIcons = {
-      barsIcon: "fa fa-bars",
-      closeIcon: "fa-solid fa-x",
-    };
-
-    const toggleMenu = () => {
-      navbarMenuContent.classList.toggle("show");
-
-      navbarMenuContent.classList.contains("show") ? ((menuIcon.classList = menuIcons.closeIcon), (menuNavbarShowed = true)) : ((menuIcon.classList = menuIcons.barsIcon), (menuNavbarShowed = false));
-    };
-
-    const handleBodyClick = (event) => {
-      if (menuNavbarShowed && !navbarMenuContent.contains(event.target) && !menuButton.contains(event.target)) {
-        navbarMenuContent.classList.remove("show");
-        menuNavbarShowed = false;
-        menuIcon.classList = menuIcons.barsIcon;
-      }
-    };
-
-    menuButton.addEventListener("click", toggleMenu);
-    document.body.addEventListener("click", handleBodyClick);
-
-    navbarMenuContent.addEventListener("click", (event) => {
-      event.stopPropagation();
-    }); // NAVBAR LOGIC
-
     // (MAIL, PHONENUMBER) COPY AND MAIL TO LOGIC
 
     const emailAddress = "kellbisdevsw@gmail.com";
@@ -145,59 +112,5 @@
     mailIcon.addEventListener("click", openMailTo);
 
     // (MAIL, PHONENUMBER) COPY AND MAIL TO LOGIC
-
-    //NAVIGATION LOGIC
-    const technologiesContent = document.querySelector(".content__technologies");
-    const projectsContent = document.querySelector(".content__projects");
-    const myStudiesContent = document.querySelector(".content__my__studies");
-    const aboutMeContent = document.querySelector(".content__about__me");
-    const contactMeContent = document.querySelector(".content__contact");
-
-    const navbarLinkNavigation = document.querySelectorAll(".navbar__link");
-
-    const handleNavigation = (event) => {
-      // console.log(event.target);
-      // console.log(event.target.innerHTML);
-
-      const navbarLinkCaptured = event.target.innerHTML;
-      const scrollTop = document.documentElement.scrollTop;
-
-      const scrollToElement = (element) => {
-        const elementToNavigatePosition = element.getBoundingClientRect();
-        const position = elementToNavigatePosition.top + scrollTop - 40;
-        window.scrollTo({ top: position, behavior: "smooth" });
-        toggleMenu();
-      };
-
-      switch (navbarLinkCaptured) {
-        case "Home":
-          window.scrollTo({ top: 0, behavior: "smooth" });
-          toggleMenu();
-          break;
-        case "Tecnologias":
-          scrollToElement(technologiesContent);
-          break;
-        case "Proyectos":
-          scrollToElement(projectsContent);
-          break;
-        case "Educación":
-          scrollToElement(myStudiesContent);
-          break;
-        case "Acerca de mi":
-          scrollToElement(aboutMeContent);
-          break;
-        case "Contacto":
-          scrollToElement(contactMeContent);
-          break;
-        default:
-          break;
-      }
-    };
-
-    navbarLinkNavigation.forEach((link) => {
-      link.addEventListener("click", handleNavigation);
-    });
-
-    //NAVIGATION LOGIC
   });
 })();

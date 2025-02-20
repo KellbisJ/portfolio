@@ -158,9 +158,10 @@ h4 {
 .navbar__link:hover {
   z-index: 0;
   box-shadow: 20px 0 60px #b6fffa2d;
-} /* NAVBAR */
+}
+/* NAVBAR */
 
-.content /* all content container */ {
+.content /* ALL CONTENT CONTAINER */ {
   margin-top: 80px;
 }
 /* ABOUT ME PREVIEW */
@@ -195,9 +196,7 @@ h4 {
 }
 
 .content__me__text {
-  /* background-color: #1a2647; */
   padding: 2px;
-  /* border-radius: 6px; */
   margin-top: 32px;
   font-size: 16px;
   text-align: center;
@@ -267,7 +266,8 @@ h4 {
 .copy-success {
   color: #16c47f;
   transition: color 0.3s ease-in-out;
-} /* ABOUT ME PREVIEW */
+}
+/* ABOUT ME PREVIEW */
 
 /* TECHNOLOGIES */
 .content__technologies {
@@ -331,7 +331,8 @@ h4 {
   transform: scale(1.05);
   cursor: pointer;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-} /* TECHNOLOGIES */
+}
+/* TECHNOLOGIES */
 
 /* PROJECTS */
 .content__projects {
@@ -437,11 +438,11 @@ h4 {
 .tech-img {
   width: 16px;
   height: 16px;
-} /* PROJECTS */
+}
+/* PROJECTS */
 
 /* MY STUDIES */
 .content__my__studies {
-  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
   margin-top: 32px;
 }
 
@@ -502,7 +503,8 @@ h4 {
   text-decoration: none;
   color: #d8d4d4;
   font-size: small;
-} /* MY STUDIES */
+}
+/* MY STUDIES */
 
 /* ABOUT ME */
 .content__about__me {
@@ -531,10 +533,10 @@ h4 {
 }
 .content__about__me__info p {
   margin-top: 32px;
-} /* ABOUT ME */
+}
+/* ABOUT ME */
 
 /* CONTACT */
-
 .content__contact {
   display: flex;
   flex-direction: column;
@@ -679,12 +681,6 @@ h4 {
     margin-right: 26vw;
     margin-left: 26vw;
   }
-  /* .navbar {
-    padding: 0 26vw 0 26vw;
-  } */
-  /* .navbar__elements {
-    justify-content: center;
-  } */
   .navbar__content__mobile {
     display: none;
   }
