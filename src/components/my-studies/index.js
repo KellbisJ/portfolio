@@ -97,7 +97,18 @@
       const studyDetailsLinks = document.createElement("div");
       studyDetailsLinks.classList.add("study-details-links");
 
-      if (content === studiesContent.javascript || content === studiesContent.english) {
+      if (content === studiesContent.highSchool) {
+        const studiesInformationReferences = content.studiesInformation[0].highSchoolStudiesReferences;
+
+        const studyDetailsReferences = document.createElement("p");
+        studyDetailsReferences.textContent = studiesInformationReferences;
+        const studyDetailsCronologyShowModalBtn = document.createElement("button");
+        studyDetailsCronologyShowModalBtn.classList.add("btn", "physicalCertificate");
+        studyDetailsCronologyShowModalBtn.textContent = "Certificado en físico";
+
+        studyDetails.appendChild(studyDetailsReferences);
+        studyDetails.appendChild(studyDetailsCronologyShowModalBtn);
+      } else {
         const studiesInformationReferences = content.studiesInformation[0].jsStudiesReferences || content.studiesInformation[0].englishStudiesReferences;
         const englishStudiesTextContent = content.studiesInformation[0].jsStudiesTextContent || content.studiesInformation[0].englishStudiesTextContent;
 
@@ -113,18 +124,7 @@
         });
         const studyDetailsCronologyShowModalBtn = document.createElement("button");
         studyDetailsCronologyShowModalBtn.classList.add("btn", "show-certificate-btn");
-        studyDetailsCronologyShowModalBtn.textContent = "Ver certificado/s";
-        studyDetails.appendChild(studyDetailsCronologyShowModalBtn);
-      } else if (content === studiesContent.highSchool) {
-        const studiesInformationReferences = content.studiesInformation[0].highSchoolStudiesReferences;
-
-        const studyDetailsReferences = document.createElement("p");
-        studyDetailsReferences.textContent = studiesInformationReferences;
-        const studyDetailsCronologyShowModalBtn = document.createElement("button");
-        studyDetailsCronologyShowModalBtn.classList.add("btn", "physicalCertificate");
-        studyDetailsCronologyShowModalBtn.textContent = "Certificado en fisico";
-
-        studyDetails.appendChild(studyDetailsReferences);
+        studyDetailsCronologyShowModalBtn.textContent = "Ver certificado";
         studyDetails.appendChild(studyDetailsCronologyShowModalBtn);
       }
 
