@@ -12,38 +12,13 @@
   <body>
     <main class="layout">
       <nav class="navbar">
-        <!-- <h1>/src/components/navbar/index.js</h1> -->
+        <!-- ./src/components/navbar/index.js</h1> -->
+        <i class="fa-solid fa-language"></i>
       </nav>
 
       <section class="content">
         <div class="content__me">
-          <div class="content__img">
-            <!-- <img class="meImg" src="/src/images/mainC-.jpg" alt="me" /> -->
-            <img class="meImg" src="https://drive.google.com/thumbnail?id=1LFZJjC2IIP45n1aqvehgqCktbgEqEsQJ&sz=s300" />
-            <!-- <iframe class="meImg" src="https://drive.google.com/file/d/1LFZJjC2IIP45n1aqvehgqCktbgEqEsQJ/preview" width="640" height="480" allow="autoplay" ></iframe> -->
-          </div>
-          <div class="content__me__info">
-            <h1>¡Hola! Soy Kellbis Salazar</h1>
-            <p class="content__me__text">Desarrollador freelance especializado en desarrollo frontend con conocimientos básicos de backend.</p>
-            <div class="content__me__social__media">
-              <a href="https://github.com/KellbisJ" target="_blank" rel="noopener noreferrer">
-                <div class="social-media-element">
-                  <i class="devicon-github-original"></i>
-                </div>
-              </a>
-              <a href="https://linkedin.com/in/kellbis-salazar-arnaez-3a844833a" target="_blank" rel="noopener noreferrer">
-                <div class="social-media-element">
-                  <i class="devicon-linkedin-plain"></i>
-                </div>
-              </a>
-              <div class="social-media-element email__copy">
-                <p class="copy-mail-text hidden" id="copyMailPreview">Copied!</p>
-                <i class="fa-regular fa-copy" id="copyMailPreviewField"></i>
-                <i class="fa-solid fa-envelope" id="mailIcon"></i>
-                <input type="text" value="kellbisdevsw@gmail.com" id="emailInputField" style="position: absolute; left: -9999px" />
-              </div>
-            </div>
-          </div>
+          <!-- ./src/components/content-me/index.js -->
         </div>
 
         <div class="content__technologies">
@@ -98,13 +73,16 @@
       </section>
     </main>
     <div id="particles-js"></div>
-    <script src="/src/index.js"></script>
-    <script src="/src/components/navbar/index.js"></script>
-    <script src="/src/components/technologies/index.js"></script>
-    <script src="/src/components/projects/index.js"></script>
-    <script src="/src/components/my-studies/index.js"></script>
-    <script src="/src/components/about-me/index.js"></script>
-    <script src="/src/scripts/particles-js/index.js"></script>
+    <script type="module" src="/src/index.js"></script>
+    <script type="module" src="/src/language/index.js"></script>
+    <script type="module" src="/src/components/navbar/index.js"></script>
+    <script type="module" src="/src/components/content-me/index.js"></script>
+    <script type="module" src="/src/components/technologies/index.js"></script>
+    <script type="module" src="/src/components/projects/index.js"></script>
+    <script type="module" src="/src/components/my-studies/index.js"></script>
+    <script type="module" src="/src/components/about-me/index.js"></script>
+    <script type="module" src="/src/scripts/particles-js/index.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
   </body>
 </html>

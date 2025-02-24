@@ -62,7 +62,7 @@
       },
     };
 
-    console.log(studiesContent.highSchool.studiesInformation);
+    // console.log(studiesContent.highSchool.studiesInformation);
 
     const CONTENT_MY_STUDIES = document.querySelector(".content__my__studies");
     const myStudiesTitleHeader = document.createElement("div");
@@ -156,7 +156,7 @@
     const showCertificateBtn = document.querySelectorAll(".show-certificate-btn");
 
     const toggleShowCertificate = (event, studyDetails) => {
-      console.log(event.target);
+      // console.log(event.target);
       let target = event.target;
 
       const CERTIFICATE_MODAL = studyDetails.querySelector(".modal"); // search for the .modal element within that specific studyDetails element
@@ -167,7 +167,7 @@
         if (target.classList.contains("btn") && target.classList.contains("show-certificate-btn")) {
           const h3Element = studyDetails.querySelector("h3");
           if (h3Element) {
-            console.log(h3Element.textContent);
+            // console.log(h3Element.textContent);
             let link;
             switch (h3Element.textContent) {
               case studiesContent.javascript.title:

@@ -1,9 +1,12 @@
+import { selectedLanguage, setSelectedLanguage, LANGUAGES } from "../../language/index.js";
+
 (() => {
   document.addEventListener("DOMContentLoaded", () => {
-    const languages = {
-      spanish: true,
-      english: false,
-    };
+    if (LANGUAGES) {
+      console.log("Languages:", LANGUAGES);
+    } else {
+      console.error("Languages object is not available.");
+    }
 
     const general = {
       imgAboutMe: "https://drive.google.com/thumbnail?id=1nSsUx0u4Y1mQAEy_PzTqRupyBFKqAw6Y&sz=s300",
@@ -59,7 +62,7 @@
       const contentRoadMap = document.createElement("div");
       contentRoadMap.classList.add("content__roadmap");
 
-      if (languages.spanish) {
+      if (selectedLanguage === LANGUAGES.SPANISH) {
         aboutMeTitle.textContent = aboutMeContentES.headerTitleES;
         aboutMeHeaderTitle.appendChild(aboutMeTitle);
 
