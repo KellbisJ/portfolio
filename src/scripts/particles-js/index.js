@@ -1,5 +1,3 @@
 (() => {
-  document.addEventListener("DOMContentLoaded", () => {
-    particlesJS.load("particles-js", "particles.json");
-  });
+  particlesJS.load("particles-js", "particles.json");
 })();
