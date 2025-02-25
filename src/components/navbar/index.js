@@ -46,9 +46,14 @@ import { LANGUAGES, selectedLanguage, setSelectedLanguage } from "../../language
   const handleBodyClick = (event, navbarMenuContent, iFaBarsToggle) => {
     if (menuNavbarShowed && !navbarMenuContent.contains(event.target) && !iFaBarsToggle.contains(event.target)) {
       navbarMenuContent.classList.remove("show");
+      console.log(navbarMenuContent);
+
       menuNavbarShowed = false;
-      iFaBarsToggle.classList.remove(...navbarIcons.closeIcon);
-      iFaBarsToggle.classList.add(...navbarIcons.barsIcon);
+      const isFaBarsToggle = iFaBarsToggle.classList.contains(...navbarIcons.closeIcon);
+      if (isFaBarsToggle) {
+        iFaBarsToggle.classList.remove(...navbarIcons.closeIcon);
+        iFaBarsToggle.classList.add(...navbarIcons.barsIcon);
+      }
     }
   };
 
@@ -117,6 +122,7 @@ import { LANGUAGES, selectedLanguage, setSelectedLanguage } from "../../language
       // NAVBAR TOGGLE LOGIC
       menuButton.addEventListener("click", () => {
         toggleMenu(navbarMenuContent, menuBarsIcon);
+        translateOptionsMenu.classList.remove("show");
       });
 
       document.body.addEventListener("click", (event) => {
@@ -187,18 +193,20 @@ import { LANGUAGES, selectedLanguage, setSelectedLanguage } from "../../language
 
     const navbarLinkCaptured = event.target.innerHTML;
     const scrollTop = document.documentElement.scrollTop;
+    const navbarMenuContent = document.querySelector(".navbar__menu__content");
+    const menuBarsIcon = document.querySelector("#menu-icon");
 
     const scrollToElement = (element) => {
       const elementToNavigatePosition = element.getBoundingClientRect();
       const position = elementToNavigatePosition.top + scrollTop - 60;
       window.scrollTo({ top: position, behavior: "smooth" });
-      toggleMenu();
+      toggleMenu(navbarMenuContent, menuBarsIcon);
     };
 
     switch (navbarLinkCaptured) {
       case "Home":
         window.scrollTo({ top: 0, behavior: "smooth" });
-        toggleMenu();
+        toggleMenu(navbarMenuContent, menuBarsIcon);
         break;
       case "Tecnologias":
         scrollToElement(technologiesContent);

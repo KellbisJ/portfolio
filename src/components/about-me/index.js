@@ -43,6 +43,32 @@ import { languageEmitter } from "../../language/eventEmitter.js";
 
   const CONTENT_ABOUT_ME = document.querySelector(".content__about__me");
 
+  const renderContentAboutMeSection = () => {
+    const title_AM = document.querySelector(".title_AM");
+    const contentText = document.querySelector(".content__text");
+    contentText.innerHTML = "";
+
+    if (selectedLanguage === LANGUAGES.SPANISH) {
+      title_AM.textContent = aboutMeHeaderTitle.headerTitle_ES;
+
+      aboutMeContent_ES.forEach((objectText) => {
+        const text = objectText.text;
+        const textSpan = document.createElement("p");
+        textSpan.textContent = text;
+        contentText.appendChild(textSpan);
+      });
+    } else if (selectedLanguage === LANGUAGES.ENGLISH) {
+      title_AM.textContent = aboutMeHeaderTitle.headerTitle_EN;
+
+      aboutMeContent_EN.forEach((objectText) => {
+        const text = objectText.text;
+        const textSpan = document.createElement("p");
+        textSpan.textContent = text;
+        contentText.appendChild(textSpan);
+      });
+    }
+  };
+
   const createAboutMeSection = () => {
     const aboutMeHeaderTitle = document.createElement("div");
     aboutMeHeaderTitle.classList.add("about-me-title");
@@ -79,32 +105,6 @@ import { languageEmitter } from "../../language/eventEmitter.js";
     renderContentAboutMeSection();
 
     return CONTENT_ABOUT_ME;
-  };
-
-  const renderContentAboutMeSection = () => {
-    const title_AM = document.querySelector(".title_AM");
-    const contentText = document.querySelector(".content__text");
-    contentText.innerHTML = "";
-
-    if (selectedLanguage === LANGUAGES.SPANISH) {
-      title_AM.textContent = aboutMeHeaderTitle.headerTitle_ES;
-
-      aboutMeContent_ES.forEach((objectText) => {
-        const text = objectText.text;
-        const textSpan = document.createElement("p");
-        textSpan.textContent = text;
-        contentText.appendChild(textSpan);
-      });
-    } else if (selectedLanguage === LANGUAGES.ENGLISH) {
-      title_AM.textContent = aboutMeHeaderTitle.headerTitle_EN;
-
-      aboutMeContent_EN.forEach((objectText) => {
-        const text = objectText.text;
-        const textSpan = document.createElement("p");
-        textSpan.textContent = text;
-        contentText.appendChild(textSpan);
-      });
-    }
   };
 
   languageEmitter.on("languageChanged", renderContentAboutMeSection);

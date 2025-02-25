@@ -1,9 +1,15 @@
+import { LANGUAGES, selectedLanguage, setSelectedLanguage } from "../../language/index.js";
+import { languageEmitter } from "../../language/eventEmitter.js";
+
 (() => {
   // MY STUDIES CONTENT
 
-  const studiesData = {
-    jsStudies: {
-      jsStudiesReferences: {
+  const studiesContent_ES = [
+    {
+      title: "Full Stack Developer con JavaScript",
+      chronology: "2019 - Actualidad [2025]",
+      certificateUrl: "https://drive.google.com/file/d/1E28ok_rk0Xx4Hoc8wExadZ-97qT0SVXk/preview",
+      studiesReferences: {
         platzi: "https://platzi.com/home/",
         w3Schools: "https://www.w3schools.com",
         neetCode: "https://neetcode.io/",
@@ -11,7 +17,7 @@
         freeCode: "https://www.freecodecamp.org/",
         youtubeResources: "https://www.youtube.com/@midudev",
       },
-      jsStudiesTextContent: {
+      studiesTextContent: {
         platzi: "Platzi,",
         w3Schools: "W3schools,",
         neetCode: "NeetCode,",
@@ -20,15 +26,18 @@
         youtubeResources: "YouTube resources...",
       },
     },
-    englishStudies: {
-      englishStudiesReferences: {
+    {
+      title: "Inglés Intermedio B2",
+      chronology: "2023 - Actualidad [2025]",
+      certificateUrl: "https://drive.google.com/file/d/1G-pkLSrAmyPV0_kLDWoSjBH4ZVMwP89k/preview",
+      studiesReferences: {
         realLifeApp: "https://reallifeglobal.com/app/",
         platzi: "https://platzi.com/escuela/ingles/",
         cambridgeDictionary: "https://dictionary.cambridge.org",
         lingolia: "https://english.lingolia.com/en/grammar/tenses",
         youtubeResources: "https://www.youtube.com/@LearnEnglishWithTVSeries",
       },
-      englishStudiesTextContent: {
+      studiesTextContent: {
         realLifeApp: "RealLifeApp,",
         platzi: "Platzi,",
         cambridgeDictionary: "Cambridge Dictionary,",
@@ -36,30 +45,63 @@
         youtubeResources: "YouTube resources...",
       },
     },
-    highSchoolStudies: {
-      highSchoolStudiesReferences: "Bachiller. Educación Media General. Republica Bolivariana de Venezuela, ciudad de origen.",
-    },
-  };
-
-  const studiesContent = {
-    javascript: {
-      title: "Full Stack Developer con JavaScript",
-      studiesInformation: [{ ...studiesData.jsStudies }],
-      chronology: "2019 - Actualidad [2025]",
-      certificateUrl: "https://drive.google.com/file/d/1E28ok_rk0Xx4Hoc8wExadZ-97qT0SVXk/preview",
-    },
-    english: {
-      title: "Inglés Intermedio B2",
-      studiesInformation: [{ ...studiesData.englishStudies }],
-      chronology: "2023 - Actualidad [2025]",
-      certificateUrl: "https://drive.google.com/file/d/1G-pkLSrAmyPV0_kLDWoSjBH4ZVMwP89k/preview",
-    },
-    highSchool: {
+    {
       title: "Escuela Secundaria",
-      studiesInformation: [{ ...studiesData.highSchoolStudies }],
       chronology: "2019 - 2024",
+      studiesReferences: {
+        highSchoolStudiesReferences: "Bachiller. Educación Media General. Republica Bolivariana de Venezuela, ciudad de origen.",
+      },
     },
-  };
+  ];
+  const studiesContent_EN = [
+    {
+      title: "Full Stack Developer with JavaScript",
+      chronology: "2019 - Present [2025]",
+      certificateUrl: "https://drive.google.com/file/d/1E28ok_rk0Xx4Hoc8wExadZ-97qT0SVXk/preview",
+      studiesReferences: {
+        platzi: "https://platzi.com/home/",
+        w3Schools: "https://www.w3schools.com",
+        neetCode: "https://neetcode.io/",
+        mdn: "https://developer.mozilla.org/en-US/",
+        freeCode: "https://www.freecodecamp.org/",
+        youtubeResources: "https://www.youtube.com/@midudev",
+      },
+      studiesTextContent: {
+        platzi: "Platzi,",
+        w3Schools: "W3schools,",
+        neetCode: "NeetCode,",
+        mdn: "MDN,",
+        freeCode: "FreeCodeCamp,",
+        youtubeResources: "YouTube resources...",
+      },
+    },
+    {
+      title: "Intermediate English B2",
+      chronology: "2023 - Present [2025]",
+      certificateUrl: "https://drive.google.com/file/d/1G-pkLSrAmyPV0_kLDWoSjBH4ZVMwP89k/preview",
+      studiesReferences: {
+        realLifeApp: "https://reallifeglobal.com/app/",
+        platzi: "https://platzi.com/escuela/ingles/",
+        cambridgeDictionary: "https://dictionary.cambridge.org",
+        lingolia: "https://english.lingolia.com/en/grammar/tenses",
+        youtubeResources: "https://www.youtube.com/@LearnEnglishWithTVSeries",
+      },
+      studiesTextContent: {
+        realLifeApp: "RealLifeApp,",
+        platzi: "Platzi,",
+        cambridgeDictionary: "Cambridge Dictionary,",
+        lingolia: "Lingolia,",
+        youtubeResources: "YouTube resources...",
+      },
+    },
+    {
+      title: "High School",
+      chronology: "2019 - 2024",
+      studiesReferences: {
+        highSchoolStudiesReferences: "Bachelor. General Education. Bolivarian Republic of Venezuela, city of origin.",
+      },
+    },
+  ];
 
   // console.log(studiesContent.highSchool.studiesInformation);
 
@@ -71,13 +113,32 @@
 
   myStudiesTitleHeader.classList.add("my-studies-title");
   iconTitleHeader.classList.add("fa-solid", "fa-book");
-  myStudiesTitle.textContent = "Educación";
   contentMyStudiesInfo.classList.add("content__my__studies__info");
 
   myStudiesTitleHeader.appendChild(iconTitleHeader);
   myStudiesTitleHeader.appendChild(myStudiesTitle);
 
   CONTENT_MY_STUDIES.appendChild(myStudiesTitleHeader);
+
+  const renderContentStudies = () => {
+    CONTENT_MY_STUDIES.innerHTML = "";
+
+    CONTENT_MY_STUDIES.appendChild(myStudiesTitleHeader);
+
+    let studiesContent;
+    if (selectedLanguage === LANGUAGES.SPANISH) {
+      studiesContent = studiesContent_ES;
+      myStudiesTitle.textContent = "Educación";
+    } else if (selectedLanguage === LANGUAGES.ENGLISH) {
+      studiesContent = studiesContent_EN;
+      myStudiesTitle.textContent = "Education";
+    }
+
+    studiesContent.forEach((studyContent) => {
+      const studyMetaData = createStudiesContents(studyContent);
+      CONTENT_MY_STUDIES.appendChild(studyMetaData);
+    });
+  };
 
   const createStudiesContents = (content) => {
     const studyItemContent = document.createElement("div");
@@ -96,20 +157,20 @@
     const studyDetailsLinks = document.createElement("div");
     studyDetailsLinks.classList.add("study-details-links");
 
-    if (content === studiesContent.highSchool) {
-      const studiesInformationReferences = content.studiesInformation[0].highSchoolStudiesReferences;
+    if (content.title === "Escuela Secundaria" || content.title === "High School") {
+      const studiesInformationReferences = content.studiesReferences.highSchoolStudiesReferences;
 
       const studyDetailsReferences = document.createElement("p");
       studyDetailsReferences.textContent = studiesInformationReferences;
+      studyDetails.appendChild(studyDetailsReferences);
+
       const studyDetailsCronologyShowModalBtn = document.createElement("button");
       studyDetailsCronologyShowModalBtn.classList.add("btn", "physicalCertificate");
-      studyDetailsCronologyShowModalBtn.textContent = "Certificado en físico";
-
-      studyDetails.appendChild(studyDetailsReferences);
+      studyDetailsCronologyShowModalBtn.textContent = selectedLanguage === LANGUAGES.SPANISH ? "Certificado en físico" : "Physical certificate";
       studyDetails.appendChild(studyDetailsCronologyShowModalBtn);
     } else {
-      const studiesInformationReferences = content.studiesInformation[0].jsStudiesReferences || content.studiesInformation[0].englishStudiesReferences;
-      const englishStudiesTextContent = content.studiesInformation[0].jsStudiesTextContent || content.studiesInformation[0].englishStudiesTextContent;
+      const studiesInformationReferences = content.studiesReferences;
+      const englishStudiesTextContent = content.studiesTextContent;
 
       Object.keys(studiesInformationReferences).forEach((key) => {
         const studyDetailsReferenceLinks = document.createElement("a");
@@ -119,35 +180,34 @@
         studyDetailsReferenceLinks.textContent = englishStudiesTextContent[key];
 
         studyDetailsLinks.appendChild(studyDetailsReferenceLinks);
-        studyDetails.appendChild(studyDetailsLinks);
       });
+
+      studyDetails.appendChild(studyDetailsLinks);
+
       const studyDetailsCronologyShowModalBtn = document.createElement("button");
       studyDetailsCronologyShowModalBtn.classList.add("btn", "show-certificate-btn");
-      studyDetailsCronologyShowModalBtn.textContent = "Ver certificado";
+      studyDetailsCronologyShowModalBtn.textContent = selectedLanguage === LANGUAGES.SPANISH ? "Ver certificado" : "View certificate";
       studyDetails.appendChild(studyDetailsCronologyShowModalBtn);
     }
 
     const studyDetailsCronology = document.createElement("p");
     studyDetailsCronology.textContent = content.chronology;
+    studyDetails.appendChild(studyDetailsCronology);
+
     const studyDetailsModal = document.createElement("div");
     studyDetailsModal.classList.add("modal");
-
-    studyDetails.appendChild(studyDetailsCronology);
     studyDetails.appendChild(studyDetailsModal);
 
     studyItemContent.appendChild(studyItemContentPoint);
     studyItemContent.appendChild(studyDetails);
 
-    contentMyStudiesInfo.appendChild(studyItemContent);
-
     return studyItemContent;
   };
-  const myStudiesContents = [studiesContent.javascript, studiesContent.english, studiesContent.highSchool];
 
-  myStudiesContents.forEach((studyContent) => {
-    const studyMetaData = createStudiesContents(studyContent);
-    CONTENT_MY_STUDIES.appendChild(studyMetaData);
-  });
+  renderContentStudies();
+
+  languageEmitter.on("languageChanged", renderContentStudies);
+
   // MY STUDIES CONTENT
 
   // SHOW CERTIFICATE LOGIC

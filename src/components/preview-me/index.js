@@ -29,12 +29,12 @@ import { copyFieldText } from "../../utils/copy-field/index.js";
 
   const contentMe_ES = {
     greetingText_ES: `¡Hola! Soy Kellbis Salazar`,
-    contentMeText_ES: `Desarrollador freelance especializado en desarrollo frontend con conocimientos en backend.`,
+    contentMeText_ES: `Desarrollador autodidacta especializado en desarrollo frontend con conocimientos de backend.`,
     copiedTextElement_ES: `¡Copiado!`,
   };
   const contentMe_EN = {
     greetingText_EN: `Hi! I'm Kellbis Salazar`,
-    contentMeText_EN: `Freelance developer specialized in frontend development with backend knowledge.`,
+    contentMeText_EN: `Self-taught developer specialized in frontend development with backend knowledge.`,
     copiedTextElement_EN: `Copied!`,
   };
 
