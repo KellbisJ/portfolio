@@ -1,6 +1,4 @@
 const copyFieldText = async (inputField, copyButton, successMessage) => {
-  console.log("holaa");
-
   try {
     inputField.select();
     inputField.setSelectionRange(0, 99999);

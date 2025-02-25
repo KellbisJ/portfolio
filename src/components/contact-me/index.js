@@ -125,7 +125,20 @@ import { copyFieldText } from "../../utils/copy-field/index.js";
         copyMailText.id = "copyMailContact";
         copyMailText.setAttribute("aria-live", "polite");
         copyMailText.textContent = selectedLanguage === LANGUAGES.SPANISH ? contactMeContent_ES.copiedText : contactMeContent_EN.copiedText;
+
+        const input = document.createElement("input");
+        input.type = "text";
+        input.value = contactManners[viaContact].mail;
+        // input.id = "phonenumberField";
+        input.style.position = "absolute";
+        input.style.left = "-9999px";
+
+        copyIcon.addEventListener("click", () => {
+          copyFieldText(input, copyIcon, copyMailText);
+        });
+
         contactItem.appendChild(copyMailText);
+        contactItem.appendChild(input);
       } else if (viaContact === "viaPhone") {
         const span = document.createElement("span");
         span.textContent = contactManners[viaContact].phonenumber;
@@ -149,9 +162,14 @@ import { copyFieldText } from "../../utils/copy-field/index.js";
         const input = document.createElement("input");
         input.type = "text";
         input.value = contactManners[viaContact].phonenumber;
-        input.id = "phonenumberField";
+        // input.id = "phonenumberField";
         input.style.position = "absolute";
         input.style.left = "-9999px";
+
+        copyIcon.addEventListener("click", () => {
+          copyFieldText(input, copyIcon, copyPhoneText);
+        });
+
         contactItem.appendChild(input);
       } else if (viaContact === "viaLinkedin") {
         const span = document.createElement("span");

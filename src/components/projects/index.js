@@ -1,51 +1,82 @@
+import { LANGUAGES, selectedLanguage, setSelectedLanguage } from "../../language/index.js";
+import { languageEmitter } from "../../language/eventEmitter.js";
+
 (() => {
-  const projectsMaterial = {
+  const projectsContentIcons = {
     codeIcon: "fa-solid fa-code",
     diagonalArrowIcon: "fa-solid fa-up-right-from-square link-to-project-arrow",
     githubIcon: "devicon-github-original link-to-project-repository",
+  };
 
-    technologies: {
-      react: "devicon-react-original colored",
-      vite: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitejs/vitejs-original.svg",
-      typescript: "devicon-typescript-plain colored",
-      tailwindcss: "devicon-tailwindcss-original colored",
-      express: "devicon-express-original",
-      javascript: "devicon-javascript-plain colored",
-      css: "devicon-css3-plain-wordmark colored",
-    },
-
+  const projectDescription = {
     moviesKs: {
+      spanish: "Este proyecto es un sitio web que permite a los usuarios consumir información sobre películas y series.",
+      english: "This project is a website that allows users to consume information about movies and series.",
+    },
+    myEcm: {
+      spanish: "Un prototipo de ecommerce básico.",
+      english: "A basic ecommerce prototype.",
+    },
+    toDo: {
+      spanish: "Un simple to-do list.",
+      english: "A simple to-do list.",
+    },
+    englishJourney: {
+      spanish: "Un blog para plasmar y documentar las muchas cosas aprendidas en inglés.",
+      english: "A blog to capture and document the many things learned in English.",
+    },
+  };
+
+  const projectsMaterial = {
+    react: "devicon-react-original colored",
+    vite: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitejs/vitejs-original.svg",
+    typescript: "devicon-typescript-plain colored",
+    tailwindcss: "devicon-tailwindcss-original colored",
+    express: "devicon-express-original",
+    javascript: "devicon-javascript-plain colored",
+    css: "devicon-css3-plain-wordmark colored",
+  };
+
+  const myProjects = [
+    {
       title: "MoviesKS",
       imageSrc: "https://drive.google.com/thumbnail?id=1TlLMcsTrJThYEr1hIR9z5ZsjT-kYqoBx&sz=s600",
       projectUrl: "https://movies-ks-frontend.vercel.app/",
       repositoryUrl: "https://github.com/KellbisJ/MoviesKS",
-      description: "Este proyecto es un sitio web que permite a los usuarios consumir información sobre películas y series.",
+      description: projectDescription.moviesKs.spanish,
       technologies: ["react", "vite", "typescript", "tailwindcss", "express"],
     },
-    myEcm: {
+    {
       title: "MyEcm (fake ecommerce)",
       imageSrc: "https://drive.google.com/thumbnail?id=11_1VVkIf5Jf9WZtUT8HcTjwc0w3VZs-_&sz=s600",
       projectUrl: "https://fakeshopiecm.netlify.app",
       repositoryUrl: "https://github.com/KellbisJ/my-ecm",
-      description: "Un prototipo de ecommerce básico.",
+      description: projectDescription.myEcm.spanish,
       technologies: ["react", "vite", "tailwindcss", "javascript"],
     },
-    toDo: {
+    {
       title: "To-do list",
       imageSrc: "https://drive.google.com/thumbnail?id=1ZgeADNEGW9C44VIH903tisv4Tb79QcIB&sz=s600",
       projectUrl: "https://kellbisj.github.io/TODO-FOR-DO/",
       repositoryUrl: "https://github.com/KellbisJ/TODO-FOR-DO",
-      description: "Un simple todo list.",
+      description: projectDescription.toDo.spanish,
       technologies: ["react", "javascript", "css"],
     },
-    englishJourney: {
+    {
       title: "English Journey Blog",
       imageSrc: "https://drive.google.com/thumbnail?id=1EDlOKTvSd-wMQIx5BO3yhknAHxvlUMfE&sz=s600",
       projectUrl: "https://my-english-journey-kellbisj-kellbis-projects.vercel.app",
       repositoryUrl: "https://github.com/KellbisJ/my-english-journey",
-      description: "Un blog para plasmar y documentar las muchas cosas aprendidas en inglés.",
+      description: projectDescription.englishJourney.spanish,
       technologies: ["react", "typescript", "tailwindcss", "vite"],
     },
+  ];
+
+  const projectTitleMapping = {
+    MoviesKS: "moviesKs",
+    "MyEcm (fake ecommerce)": "myEcm",
+    "To-do list": "toDo",
+    "English Journey Blog": "englishJourney",
   };
 
   const CONTENT_PROJECTS = document.querySelector(".content__projects");
@@ -54,7 +85,6 @@
   projectTitle.classList.add("projects-title");
 
   const title = document.createElement("h2");
-  title.textContent = "Proyectos";
 
   const codeIcon = document.createElement("i");
   codeIcon.className = "fa-solid fa-code";
@@ -68,8 +98,8 @@
   CONTENT_PROJECTS.appendChild(projectTitle);
   CONTENT_PROJECTS.appendChild(contentProjectInfoContainer);
 
-  function createProjectElement(project) {
-    const projectInfoContainer = document.createElement("div");
+  const createProjectElement = (project) => {
+    const projectInfoContainer = document.createElement("article");
     projectInfoContainer.classList.add("content__project__info");
 
     const figure = document.createElement("figure");
@@ -86,7 +116,7 @@
     projectLink.rel = "noopener noreferrer";
 
     const diagonalArrowIcon = document.createElement("i");
-    diagonalArrowIcon.className = projectsMaterial.diagonalArrowIcon;
+    diagonalArrowIcon.className = projectsContentIcons.diagonalArrowIcon;
 
     const repositoryLink = document.createElement("a");
     repositoryLink.href = project.repositoryUrl;
@@ -94,7 +124,7 @@
     repositoryLink.rel = "noopener noreferrer";
 
     const githubIcon = document.createElement("i");
-    githubIcon.className = projectsMaterial.githubIcon;
+    githubIcon.className = projectsContentIcons.githubIcon;
 
     const figcaption = document.createElement("figcaption");
     figcaption.classList.add("project-title");
@@ -125,14 +155,14 @@
       const techBadge = document.createElement("span");
       techBadge.classList.add("tech-badge");
 
-      if (projectsMaterial.technologies[tech].startsWith("http")) {
+      if (projectsMaterial[tech] && projectsMaterial[tech].startsWith("http")) {
         const techImg = document.createElement("img");
         techImg.classList.add("tech-img");
-        techImg.src = projectsMaterial.technologies[tech];
+        techImg.src = projectsMaterial[tech];
         techBadge.appendChild(techImg);
       } else {
         const techIcon = document.createElement("i");
-        techIcon.className = projectsMaterial.technologies[tech];
+        techIcon.className = projectsMaterial[tech];
         techBadge.appendChild(techIcon);
       }
 
@@ -146,12 +176,36 @@
     projectInfoContainer.appendChild(projectDetails);
 
     return projectInfoContainer;
-  }
+  };
 
-  const projects = [projectsMaterial.moviesKs, projectsMaterial.myEcm, projectsMaterial.toDo, projectsMaterial.englishJourney];
+  const updateProjectDescriptions = () => {
+    myProjects.forEach((project) => {
+      const descriptionKey = projectTitleMapping[project.title];
+      if (selectedLanguage === LANGUAGES.SPANISH) {
+        project.description = projectDescription[descriptionKey].spanish;
+      } else if (selectedLanguage === LANGUAGES.ENGLISH) {
+        project.description = projectDescription[descriptionKey].english;
+      }
+    });
+    renderProjects();
+  };
 
-  projects.forEach((project) => {
-    const projectElement = createProjectElement(project);
-    contentProjectInfoContainer.appendChild(projectElement);
-  });
+  const renderProjects = () => {
+    contentProjectInfoContainer.innerHTML = "";
+    if (selectedLanguage === LANGUAGES.SPANISH) {
+      title.textContent = "Proyectos";
+    } else if (selectedLanguage === LANGUAGES.ENGLISH) {
+      title.textContent = "Projects";
+    }
+
+    myProjects.forEach((project) => {
+      const projectElement = createProjectElement(project);
+      contentProjectInfoContainer.appendChild(projectElement);
+    });
+  };
+
+  languageEmitter.on("languageChanged", updateProjectDescriptions);
+
+  updateProjectDescriptions();
+  renderProjects();
 })();

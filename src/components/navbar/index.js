@@ -1,3 +1,5 @@
+import { LANGUAGES, selectedLanguage, setSelectedLanguage } from "../../language/index.js";
+
 (() => {
   // NAVBAR HTML RENDER
 
@@ -5,8 +7,9 @@
   const linkContent = Object.freeze(["Home", "Tecnologias", "Proyectos", "Educación", "Acerca de mi", "Contacto"]);
 
   const navbarIcons = {
-    briefcaseIcon: "fa-solid fa-briefcase",
-    barsIcon: "fas fa-bars",
+    barsIcon: ["fas", "fa-bars"],
+    languageIcon: ["fa-solid", "fa-language"],
+    closeIcon: ["fa-solid", "fa-x"],
   };
 
   const mobileContent = {
@@ -28,30 +31,74 @@
 
   navbarElementsContainer.classList.add("navbar__elements");
 
+  // NAVBAR TOGGLE LOGIC
+
+  let menuNavbarShowed = false;
+
+  const toggleMenu = (navbarMenuContent, iFaBarsToggle) => {
+    navbarMenuContent.classList.toggle("show");
+
+    navbarMenuContent.classList.contains("show")
+      ? (iFaBarsToggle.classList.remove(...navbarIcons.barsIcon), iFaBarsToggle.classList.add(...navbarIcons.closeIcon), (menuNavbarShowed = true))
+      : (iFaBarsToggle.classList.remove(...navbarIcons.closeIcon), iFaBarsToggle.classList.add(...navbarIcons.barsIcon), (menuNavbarShowed = false));
+  };
+
+  const handleBodyClick = (event, navbarMenuContent, iFaBarsToggle) => {
+    if (menuNavbarShowed && !navbarMenuContent.contains(event.target) && !iFaBarsToggle.contains(event.target)) {
+      navbarMenuContent.classList.remove("show");
+      menuNavbarShowed = false;
+      iFaBarsToggle.classList.remove(...navbarIcons.closeIcon);
+      iFaBarsToggle.classList.add(...navbarIcons.barsIcon);
+    }
+  };
+
+  // NAVBAR TOGGLE LOGIC
+
   function createNavbarContents(content) {
+    const translateButton = document.createElement("button");
+    translateButton.addEventListener("click", () => {
+      translateOptionsMenu.classList.toggle("show");
+    });
+
+    const translateOptionsMenu = document.createElement("div");
+    translateOptionsMenu.classList.add("translate-menu-options");
+
+    Object.keys(LANGUAGES).forEach((language) => {
+      const langBtn = document.createElement("button");
+      langBtn.classList.add("btn", "nav__button");
+      langBtn.textContent = LANGUAGES[language];
+
+      langBtn.addEventListener("click", () => {
+        setSelectedLanguage(LANGUAGES[language]);
+        console.log(selectedLanguage);
+      });
+
+      translateOptionsMenu.appendChild(langBtn);
+    });
+
     if (content === mobileContent) {
       const navbarContentMobile = document.createElement("div");
-      const navbarBrand = document.createElement("div");
-      const navbarMenuContent = document.createElement("div");
-
-      const button = document.createElement("button");
-      button.id = "menu";
-
-      const iBriefCase = document.createElement("i");
-      iBriefCase.className = navbarIcons.briefcaseIcon;
-
-      const iFaBars = document.createElement("i");
-      iFaBars.className = navbarIcons.barsIcon;
-      iFaBars.id = "menu-icon";
-
       navbarContentMobile.classList.add("navbar__content__mobile");
-      navbarBrand.classList.add("navbar__brand");
 
-      button.appendChild(iFaBars);
-      navbarBrand.appendChild(iBriefCase);
+      const navbarMenuContent = document.createElement("div");
+      navbarMenuContent.classList.add("navbar__menu__content");
+
+      const menuButton = document.createElement("button");
+      menuButton.id = "menu";
+
+      translateButton.classList.add("btn-nav-initial", "navbar-mobile-left-icon");
+
+      const translateIcon = document.createElement("i");
+      translateIcon.classList.add(...navbarIcons.languageIcon);
+
+      const menuBarsIcon = document.createElement("i");
+      menuBarsIcon.classList.add(...navbarIcons.barsIcon);
+      menuBarsIcon.id = "menu-icon";
+
+      menuButton.appendChild(menuBarsIcon);
+      translateButton.appendChild(translateIcon);
 
       const linkElementContent = content.navBarLinksContent;
-      navbarMenuContent.classList.add("navbar__menu__content");
 
       linkElementContent.pageNavigation.forEach((path, index) => {
         const navbarLink = document.createElement("a");
@@ -62,9 +109,24 @@
         navbarMenuContent.appendChild(navbarLink);
       });
 
-      navbarContentMobile.appendChild(navbarBrand);
-      navbarContentMobile.appendChild(button);
+      navbarContentMobile.appendChild(translateButton);
+      navbarContentMobile.appendChild(menuButton);
       navbarContentMobile.appendChild(navbarMenuContent);
+      navbarContentMobile.appendChild(translateOptionsMenu);
+
+      // NAVBAR TOGGLE LOGIC
+      menuButton.addEventListener("click", () => {
+        toggleMenu(navbarMenuContent, menuBarsIcon);
+      });
+
+      document.body.addEventListener("click", (event) => {
+        handleBodyClick(event, navbarMenuContent, menuBarsIcon);
+      });
+
+      navbarMenuContent.addEventListener("click", (event) => {
+        event.stopPropagation();
+      });
+      // NAVBAR TOGGLE LOGIC
 
       return navbarContentMobile;
     }
@@ -85,6 +147,16 @@
         navbarContentWide.appendChild(navbarLink);
       });
 
+      translateButton.classList.add("btn-nav-wide", "navbar__link");
+      const translateIcon = document.createElement("i");
+      translateIcon.classList.add(...navbarIcons.languageIcon);
+
+      // translateOptionsMenu.style = "right: 0";
+
+      translateButton.appendChild(translateIcon);
+      navbarContentWide.appendChild(translateButton);
+      navbarContentWide.appendChild(translateOptionsMenu);
+
       return navbarContentWide;
     }
   }
@@ -99,39 +171,6 @@
   nav.appendChild(navbarElementsContainer);
 
   // NAVBAR HTML RENDER
-
-  // NAVBAR LOGIC
-  const menuButton = document.querySelector("#menu");
-  const navbarMenuContent = document.querySelector(".navbar__menu__content");
-  const menuIcon = document.querySelector("#menu-icon");
-
-  let menuNavbarShowed = false;
-
-  const menuIcons = {
-    barsIcon: "fa fa-bars",
-    closeIcon: "fa-solid fa-x",
-  };
-
-  const toggleMenu = () => {
-    navbarMenuContent.classList.toggle("show");
-
-    navbarMenuContent.classList.contains("show") ? ((menuIcon.classList = menuIcons.closeIcon), (menuNavbarShowed = true)) : ((menuIcon.classList = menuIcons.barsIcon), (menuNavbarShowed = false));
-  };
-
-  const handleBodyClick = (event) => {
-    if (menuNavbarShowed && !navbarMenuContent.contains(event.target) && !menuButton.contains(event.target)) {
-      navbarMenuContent.classList.remove("show");
-      menuNavbarShowed = false;
-      menuIcon.classList = menuIcons.barsIcon;
-    }
-  };
-
-  menuButton.addEventListener("click", toggleMenu);
-  document.body.addEventListener("click", handleBodyClick);
-
-  navbarMenuContent.addEventListener("click", (event) => {
-    event.stopPropagation();
-  }); // NAVBAR LOGIC
 
   //NAVIGATION LOGIC
   const technologiesContent = document.querySelector(".content__technologies");
@@ -151,7 +190,7 @@
 
     const scrollToElement = (element) => {
       const elementToNavigatePosition = element.getBoundingClientRect();
-      const position = elementToNavigatePosition.top + scrollTop - 40;
+      const position = elementToNavigatePosition.top + scrollTop - 60;
       window.scrollTo({ top: position, behavior: "smooth" });
       toggleMenu();
     };

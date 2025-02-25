@@ -1,3 +1,4 @@
+import { languageEmitter } from "../../language/eventEmitter.js";
 import { selectedLanguage, LANGUAGES } from "../../language/index.js";
 import { copyFieldText } from "../../utils/copy-field/index.js";
 
@@ -52,6 +53,7 @@ import { copyFieldText } from "../../utils/copy-field/index.js";
     contentMeInfo.classList.add("content__me__info");
 
     const greetingTextH1 = document.createElement("h1");
+    greetingTextH1.classList.add("greeting-text");
 
     const contentMeText = document.createElement("p");
     contentMeText.classList.add("content__me__text");
@@ -78,19 +80,8 @@ import { copyFieldText } from "../../utils/copy-field/index.js";
     const inputMailField = document.createElement("input");
     inputMailField.type = "text";
     inputMailField.value = "kellbisdevsw@gmail.com";
-    inputMailField.id = "emailInputField";
+    // inputMailField.id = "emailInputField";
     inputMailField.style = "position: absolute; left: -9999px";
-
-    if (selectedLanguage === LANGUAGES.SPANISH) {
-      greetingTextH1.textContent = contentMe_ES.greetingText_ES;
-      contentMeText.textContent = contentMe_ES.contentMeText_ES;
-      copiedMailText.textContent = contentMe_ES.copiedTextElement_ES;
-    }
-    if (selectedLanguage === LANGUAGES.ENGLISH) {
-      greetingTextH1.textContent = contentMe_EN.greetingText_EN;
-      contentMeText.textContent = contentMe_EN.contentMeText_EN;
-      copiedMailText.textContent = contentMe_EN.copiedTextElement_EN;
-    }
 
     Object.keys(socialMediaLinks).forEach((socialMediaLink) => {
       const { url, icon } = socialMediaLinks[socialMediaLink];
@@ -132,7 +123,27 @@ import { copyFieldText } from "../../utils/copy-field/index.js";
 
     CONTENT_ME.appendChild(contentImg);
     CONTENT_ME.appendChild(contentMeInfo);
-    return CONTENT_ME;
+
+    updateContentBasedOnSelectedLanguage();
   };
+
+  const updateContentBasedOnSelectedLanguage = () => {
+    const greetingTextH1 = document.querySelector(".greeting-text");
+    const contentMeText = document.querySelector(".content__me__text");
+    const copiedMailText = document.querySelector(".copy-mail-text");
+
+    if (selectedLanguage === LANGUAGES.SPANISH) {
+      greetingTextH1.textContent = contentMe_ES.greetingText_ES;
+      contentMeText.textContent = contentMe_ES.contentMeText_ES;
+      copiedMailText.textContent = contentMe_ES.copiedTextElement_ES;
+    } else if (selectedLanguage === LANGUAGES.ENGLISH) {
+      greetingTextH1.textContent = contentMe_EN.greetingText_EN;
+      contentMeText.textContent = contentMe_EN.contentMeText_EN;
+      copiedMailText.textContent = contentMe_EN.copiedTextElement_EN;
+    }
+  };
+
+  languageEmitter.on("languageChanged", updateContentBasedOnSelectedLanguage);
+
   createPreviewMe();
 })();

@@ -1,14 +1,15 @@
 (() => {
   document.addEventListener("DOMContentLoaded", () => {
-    const normalScripts = [
+    const moduleScripts = [
       "/src/language/index.js",
       "/src/components/navbar/index.js",
       "/src/components/preview-me/index.js",
-      "/src/components/technologies/index.js",
       "/src/components/projects/index.js",
+      "/src/components/technologies/index.js",
       "/src/components/my-studies/index.js",
       "/src/components/about-me/index.js",
       "/src/components/contact-me/index.js",
+      "/src/language/eventEmitter.js",
       "/src/scripts/particles-js/index.js",
     ];
 
@@ -22,8 +23,8 @@
         document.body.appendChild(script);
       });
     };
-    loadScripts(normalScripts, "module");
 
     loadScripts(cdnScripts, "text/javascript");
+    loadScripts(moduleScripts, "module");
   });
 })();
