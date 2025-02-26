@@ -3,28 +3,36 @@ import { LANGUAGES, selectedLanguage, setSelectedLanguage } from "../../language
 (() => {
   // NAVBAR HTML RENDER
 
-  const pageNavigation = Object.freeze(["#home", "#tecnologias", "#proyectos", "#educación", "#acerca-de-mi", "#contacto"]);
-  const linkContent = Object.freeze(["Home", "Tecnologias", "Proyectos", "Educación", "Acerca de mi", "Contacto"]);
+  const barsIcon = ["fas", "fa-bars"];
+  const languageIcon = ["fa-solid", "fa-language"];
+  const closeIcon = ["fa-solid", "fa-x"];
 
   const navbarIcons = {
-    barsIcon: ["fas", "fa-bars"],
-    languageIcon: ["fa-solid", "fa-language"],
-    closeIcon: ["fa-solid", "fa-x"],
+    barsIcon,
+    languageIcon,
+    closeIcon,
   };
 
-  const mobileContent = {
-    navBarLinksContent: {
-      pageNavigation: [...pageNavigation],
-      linkContent: [...linkContent],
-    },
+  const navBarLinksContent_ES = {
+    pageNavigation: ["#inicio", "#tecnologias", "#proyectos", "#educación", "#acerca-de-mi", "#contacto"],
+    linkContent: ["Inicio", "Tecnologias", "Proyectos", "Educación", "Acerca de mi", "Contacto"],
   };
 
-  const wideContent = {
-    navBarLinksContent: {
-      pageNavigation: [...pageNavigation],
-      linkContent: [...linkContent],
-    },
+  const navBarLinksContent_EN = {
+    pageNavigation: ["#home", "#technologies", "#projects", "#education", "#about-me", "#contact"],
+    linkContent: ["Home", "Technologies", "Projects", "Education", "About Me", "Contact"],
   };
+
+  const navbarContent_ES = {
+    ...navBarLinksContent_ES,
+  };
+
+  const navbarContent_EN = {
+    ...navBarLinksContent_EN,
+  };
+
+  // // To access the values, you can do something like this:
+  // const { pageNavigation, linkContent } = navbarContent_ES.navBarLinksContent;
 
   const nav = document.querySelector(".navbar");
   const navbarElementsContainer = document.createElement("div");
@@ -59,122 +67,128 @@ import { LANGUAGES, selectedLanguage, setSelectedLanguage } from "../../language
 
   // NAVBAR TOGGLE LOGIC
 
-  function createNavbarContents(content) {
-    const translateButton = document.createElement("button");
-    translateButton.addEventListener("click", () => {
-      translateOptionsMenu.classList.toggle("show");
+  const createNavbarContents = (content) => {
+    const translateButton__mobile = document.createElement("button");
+    const translateButton__wide = document.createElement("button");
+    translateButton__mobile.classList.add("btn-nav-initial", "navbar-mobile-left-icon");
+    translateButton__wide.classList.add("btn-nav-wide", "navbar__link");
+
+    const translateOptionsMenu__mobile = document.createElement("div");
+    translateOptionsMenu__mobile.classList.add("translate-menu-options");
+
+    const translateOptionsMenu__wide = document.createElement("div");
+    translateOptionsMenu__wide.classList.add("translate-menu-options");
+
+    translateButton__mobile.addEventListener("click", () => {
+      translateOptionsMenu__mobile.classList.toggle("show");
     });
 
-    const translateOptionsMenu = document.createElement("div");
-    translateOptionsMenu.classList.add("translate-menu-options");
+    translateButton__wide.addEventListener("click", () => {
+      translateOptionsMenu__wide.classList.toggle("show");
+    });
 
     Object.keys(LANGUAGES).forEach((language) => {
-      const langBtn = document.createElement("button");
-      langBtn.classList.add("btn", "nav__button");
-      langBtn.textContent = LANGUAGES[language];
+      const langBtn__mobile = document.createElement("button");
+      langBtn__mobile.classList.add("btn", "nav__button");
+      langBtn__mobile.textContent = LANGUAGES[language];
 
-      langBtn.addEventListener("click", () => {
+      langBtn__mobile.addEventListener("click", () => {
         setSelectedLanguage(LANGUAGES[language]);
-        console.log(selectedLanguage);
+        translateOptionsMenu__mobile.classList.remove("show");
+        // console.log(selectedLanguage);
       });
 
-      translateOptionsMenu.appendChild(langBtn);
+      const langBtn__wide = document.createElement("button");
+      langBtn__wide.classList.add("btn", "nav__button");
+      langBtn__wide.textContent = LANGUAGES[language];
+
+      langBtn__wide.addEventListener("click", () => {
+        setSelectedLanguage(LANGUAGES[language]);
+        translateOptionsMenu__wide.classList.remove("show");
+        // console.log(selectedLanguage);
+      });
+
+      translateOptionsMenu__mobile.appendChild(langBtn__mobile);
+      translateOptionsMenu__wide.appendChild(langBtn__wide);
     });
 
-    if (content === mobileContent) {
-      const navbarContentMobile = document.createElement("div");
-      navbarContentMobile.classList.add("navbar__content__mobile");
+    const navbarContentMobile = document.createElement("div");
+    const navbarContentWide = document.createElement("div");
 
-      const navbarMenuContent = document.createElement("div");
-      navbarMenuContent.classList.add("navbar__menu__content");
+    navbarContentMobile.classList.add("navbar__content__mobile");
+    navbarContentWide.classList.add("navbar__content__wide");
 
-      const menuButton = document.createElement("button");
-      menuButton.id = "menu";
+    const navbarMenuContent = document.createElement("div");
+    navbarMenuContent.classList.add("navbar__menu__content");
 
-      translateButton.classList.add("btn-nav-initial", "navbar-mobile-left-icon");
+    const menuButton = document.createElement("button");
+    menuButton.id = "menu";
 
-      const translateIcon = document.createElement("i");
-      translateIcon.classList.add(...navbarIcons.languageIcon);
+    const translateIcon__mobile = document.createElement("i");
+    translateIcon__mobile.classList.add(...navbarIcons.languageIcon);
 
-      const menuBarsIcon = document.createElement("i");
-      menuBarsIcon.classList.add(...navbarIcons.barsIcon);
-      menuBarsIcon.id = "menu-icon";
+    const translateIcon__wide = document.createElement("i");
+    translateIcon__wide.classList.add(...navbarIcons.languageIcon);
 
-      menuButton.appendChild(menuBarsIcon);
-      translateButton.appendChild(translateIcon);
+    const menuBarsIcon = document.createElement("i");
+    menuBarsIcon.classList.add(...navbarIcons.barsIcon);
+    menuBarsIcon.id = "menu-icon";
 
-      const linkElementContent = content.navBarLinksContent;
+    menuButton.appendChild(menuBarsIcon);
 
-      linkElementContent.pageNavigation.forEach((path, index) => {
-        const navbarLink = document.createElement("a");
-        navbarLink.classList.add("navbar__link");
-        navbarLink.href = path;
-        navbarLink.textContent = linkElementContent.linkContent[index];
+    translateButton__mobile.appendChild(translateIcon__mobile);
+    translateButton__wide.appendChild(translateIcon__wide);
 
-        navbarMenuContent.appendChild(navbarLink);
-      });
+    // const { pageNavigation, linkContent } = content;
 
-      navbarContentMobile.appendChild(translateButton);
-      navbarContentMobile.appendChild(menuButton);
-      navbarContentMobile.appendChild(navbarMenuContent);
-      navbarContentMobile.appendChild(translateOptionsMenu);
+    content.pageNavigation.forEach((path, index) => {
+      const navbarLinkMobile = document.createElement("a");
+      const navbarLinkWide = document.createElement("a");
+      navbarLinkMobile.classList.add("navbar__link");
+      navbarLinkWide.classList.add("navbar__link");
 
-      // NAVBAR TOGGLE LOGIC
-      menuButton.addEventListener("click", () => {
-        toggleMenu(navbarMenuContent, menuBarsIcon);
-        translateOptionsMenu.classList.remove("show");
-      });
+      navbarLinkMobile.href = path;
+      navbarLinkMobile.textContent = content.linkContent[index];
 
-      document.body.addEventListener("click", (event) => {
-        handleBodyClick(event, navbarMenuContent, menuBarsIcon);
-      });
+      navbarLinkWide.href = path;
+      navbarLinkWide.textContent = content.linkContent[index];
 
-      navbarMenuContent.addEventListener("click", (event) => {
-        event.stopPropagation();
-      });
-      // NAVBAR TOGGLE LOGIC
+      navbarMenuContent.appendChild(navbarLinkMobile);
+      navbarContentWide.appendChild(navbarLinkWide);
+    });
 
-      return navbarContentMobile;
-    }
-    if (content === wideContent) {
-      const navbarContentWide = document.createElement("div");
+    navbarContentMobile.appendChild(translateButton__mobile);
+    navbarContentMobile.appendChild(menuButton);
+    navbarContentMobile.appendChild(navbarMenuContent);
+    navbarContentMobile.appendChild(translateOptionsMenu__mobile);
 
-      navbarContentWide.classList.add("navbar__content__wide");
+    navbarContentWide.appendChild(translateButton__wide);
+    navbarContentWide.appendChild(translateOptionsMenu__wide);
 
-      const linkElementContent = content.navBarLinksContent;
+    // NAVBAR TOGGLE LOGIC
+    menuButton.addEventListener("click", () => {
+      toggleMenu(navbarMenuContent, menuBarsIcon);
+      translateOptionsMenu__mobile.classList.remove("show");
+    });
 
-      linkElementContent.pageNavigation.forEach((path, index) => {
-        const navbarLink = document.createElement("a");
-        navbarLink.classList.add("navbar__link");
-        navbarLink.href = path;
-        navbarLink.textContent = path;
-        navbarLink.textContent = linkElementContent.linkContent[index];
+    document.body.addEventListener("click", (event) => {
+      handleBodyClick(event, navbarMenuContent, menuBarsIcon);
+    });
 
-        navbarContentWide.appendChild(navbarLink);
-      });
+    navbarMenuContent.addEventListener("click", (event) => {
+      event.stopPropagation();
+    });
+    // NAVBAR TOGGLE LOGIC
 
-      translateButton.classList.add("btn-nav-wide", "navbar__link");
-      const translateIcon = document.createElement("i");
-      translateIcon.classList.add(...navbarIcons.languageIcon);
+    navbarElementsContainer.appendChild(navbarContentMobile);
+    navbarElementsContainer.appendChild(navbarContentWide);
 
-      // translateOptionsMenu.style = "right: 0";
+    return navbarElementsContainer;
+  };
 
-      translateButton.appendChild(translateIcon);
-      navbarContentWide.appendChild(translateButton);
-      navbarContentWide.appendChild(translateOptionsMenu);
+  const navbarElements = createNavbarContents(navbarContent_ES);
 
-      return navbarContentWide;
-    }
-  }
-
-  const contents = [mobileContent, wideContent];
-
-  contents.forEach((content) => {
-    const navbarElements = createNavbarContents(content);
-    navbarElementsContainer.appendChild(navbarElements);
-  });
-
-  nav.appendChild(navbarElementsContainer);
+  nav.appendChild(navbarElements);
 
   // NAVBAR HTML RENDER
 
@@ -204,23 +218,29 @@ import { LANGUAGES, selectedLanguage, setSelectedLanguage } from "../../language
     };
 
     switch (navbarLinkCaptured) {
+      case "Inicio":
       case "Home":
         window.scrollTo({ top: 0, behavior: "smooth" });
         toggleMenu(navbarMenuContent, menuBarsIcon);
         break;
       case "Tecnologias":
+      case "Technologies":
         scrollToElement(technologiesContent);
         break;
       case "Proyectos":
+      case "Projects":
         scrollToElement(projectsContent);
         break;
       case "Educación":
+      case "Education":
         scrollToElement(myStudiesContent);
         break;
       case "Acerca de mi":
+      case "About Me":
         scrollToElement(aboutMeContent);
         break;
       case "Contacto":
+      case "Contact":
         scrollToElement(contactMeContent);
         break;
       default:
