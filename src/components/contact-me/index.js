@@ -1,4 +1,5 @@
 import { LANGUAGES, selectedLanguage } from "../../language/index.js";
+import { languageEmitter } from "../../language/eventEmitter.js";
 import { copyFieldText } from "../../utils/copy-field/index.js";
 
 (() => {
@@ -57,6 +58,8 @@ import { copyFieldText } from "../../utils/copy-field/index.js";
   const CONTENT_CONTACT = document.querySelector(".content__contact");
 
   const createContactMeContent = () => {
+    CONTENT_CONTACT.innerHTML = ""; // underrated line code to update language content
+
     const contactTitle = document.createElement("div");
     contactTitle.classList.add("contact__title");
     const iconTitle = document.createElement("i");
@@ -222,4 +225,6 @@ import { copyFieldText } from "../../utils/copy-field/index.js";
     return CONTENT_CONTACT;
   };
   createContactMeContent();
+
+  languageEmitter.on("languageChanged", createContactMeContent);
 })();

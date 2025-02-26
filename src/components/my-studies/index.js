@@ -138,6 +138,7 @@ import { languageEmitter } from "../../language/eventEmitter.js";
       const studyMetaData = createStudiesContents(studyContent);
       CONTENT_MY_STUDIES.appendChild(studyMetaData);
     });
+    // showCertificateDocument();
   };
 
   const createStudiesContents = (content) => {
@@ -211,8 +212,6 @@ import { languageEmitter } from "../../language/eventEmitter.js";
   // MY STUDIES CONTENT
 
   // SHOW CERTIFICATE LOGIC
-  // const CERTIFICATE_MODAL = document.querySelector(".modal");
-  const showCertificateBtn = document.querySelectorAll(".show-certificate-btn");
 
   const toggleShowCertificate = (event, studyDetails) => {
     // console.log(event.target);
@@ -229,12 +228,14 @@ import { languageEmitter } from "../../language/eventEmitter.js";
           // console.log(h3Element.textContent);
           let link;
           switch (h3Element.textContent) {
-            case studiesContent.javascript.title:
-              link = studiesContent.javascript.certificateUrl;
+            case studiesContent_ES[0].title:
+            case studiesContent_EN[0].title:
+              link = studiesContent_ES[0].certificateUrl || studiesContent_EN[0].certificateUrl;
               insertCertificateDocument(link, CERTIFICATE_MODAL);
               break;
-            case studiesContent.english.title:
-              link = studiesContent.english.certificateUrl;
+            case studiesContent_ES[1].title:
+            case studiesContent_EN[1].title:
+              link = studiesContent_ES[1].certificateUrl || studiesContent_EN[1].certificateUrl;
               insertCertificateDocument(link, CERTIFICATE_MODAL);
               break;
             default:
@@ -282,9 +283,15 @@ import { languageEmitter } from "../../language/eventEmitter.js";
     return CERTIFICATE_MODAL.appendChild(modalContent);
   };
 
-  showCertificateBtn.forEach((btn) => {
-    const studyDetails = btn.closest(".study-details");
-    btn.addEventListener("click", (event) => toggleShowCertificate(event, studyDetails));
-  }); // certificate modal logic ended, my head hurts causa.
+  const showCertificateDocument = () => {
+    const showCertificateBtn = document.querySelectorAll(".show-certificate-btn");
+    showCertificateBtn.forEach((btn) => {
+      const studyDetails = btn.closest(".study-details");
+      btn.addEventListener("click", (event) => toggleShowCertificate(event, studyDetails));
+    }); // certificate modal logic ended, my head hurts causa.
+  };
+
+  showCertificateDocument();
+  languageEmitter.on("languageChanged", showCertificateDocument);
   // SHOW CERTIFICATE LOGIC
 })();
