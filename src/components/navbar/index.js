@@ -1,4 +1,5 @@
 import { LANGUAGES, selectedLanguage, setSelectedLanguage } from "../../language/index.js";
+import { languageEmitter } from "../../language/eventEmitter.js";
 
 (() => {
   // NAVBAR HTML RENDER
@@ -54,7 +55,7 @@ import { LANGUAGES, selectedLanguage, setSelectedLanguage } from "../../language
   const handleBodyClick = (event, navbarMenuContent, iFaBarsToggle) => {
     if (menuNavbarShowed && !navbarMenuContent.contains(event.target) && !iFaBarsToggle.contains(event.target)) {
       navbarMenuContent.classList.remove("show");
-      console.log(navbarMenuContent);
+      // console.log(navbarMenuContent);
 
       menuNavbarShowed = false;
       const isFaBarsToggle = iFaBarsToggle.classList.contains(...navbarIcons.closeIcon);
@@ -186,9 +187,20 @@ import { LANGUAGES, selectedLanguage, setSelectedLanguage } from "../../language
     return navbarElementsContainer;
   };
 
-  const navbarElements = createNavbarContents(navbarContent_ES);
+  const renderNavbarElements = () => {
+    navbarElementsContainer.innerHTML = "";
+    if (selectedLanguage === LANGUAGES.SPANISH) {
+      const navbarElements = createNavbarContents(navbarContent_ES);
+      nav.appendChild(navbarElements);
+    } else if (selectedLanguage === LANGUAGES.ENGLISH) {
+      const navbarElements = createNavbarContents(navbarContent_EN);
+      nav.appendChild(navbarElements);
+    }
+  };
 
-  nav.appendChild(navbarElements);
+  renderNavbarElements();
+
+  languageEmitter.on("languageChanged", renderNavbarElements);
 
   // NAVBAR HTML RENDER
 
@@ -199,13 +211,13 @@ import { LANGUAGES, selectedLanguage, setSelectedLanguage } from "../../language
   const aboutMeContent = document.querySelector(".content__about__me");
   const contactMeContent = document.querySelector(".content__contact");
 
-  const navbarLinkNavigation = document.querySelectorAll(".navbar__link");
-
   const handleNavigation = (event) => {
     // console.log(event.target);
     // console.log(event.target.innerHTML);
 
     const navbarLinkCaptured = event.target.innerHTML;
+    console.log(navbarLinkCaptured);
+
     const scrollTop = document.documentElement.scrollTop;
     const navbarMenuContent = document.querySelector(".navbar__menu__content");
     const menuBarsIcon = document.querySelector("#menu-icon");
@@ -248,9 +260,16 @@ import { LANGUAGES, selectedLanguage, setSelectedLanguage } from "../../language
     }
   };
 
-  navbarLinkNavigation.forEach((link) => {
-    link.addEventListener("click", handleNavigation);
-  });
+  const createNavbarLinksNavigation = () => {
+    const navbarLinkNavigation = document.querySelectorAll(".navbar__link");
+    navbarLinkNavigation.forEach((link) => {
+      link.addEventListener("click", handleNavigation);
+    });
+  };
+
+  createNavbarLinksNavigation();
+
+  languageEmitter.on("languageChanged", createNavbarLinksNavigation);
 
   //NAVIGATION LOGIC
 })();
