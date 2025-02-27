@@ -27,9 +27,9 @@ import { languageEmitter } from "../../language/eventEmitter.js";
       },
     },
     {
-      title: "Inglés Intermedio B2",
+      title: "Inglés Intermedio B1",
       chronology: "2023 - Actualidad [2025]",
-      certificateUrl: "https://drive.google.com/file/d/1G-pkLSrAmyPV0_kLDWoSjBH4ZVMwP89k/preview",
+      certificateUrl: "https://drive.google.com/file/d/1JSkOY1jn-W4wbfwBjmN53zdR_t4DnW7P/preview",
       studiesReferences: {
         realLifeApp: "https://reallifeglobal.com/app/",
         platzi: "https://platzi.com/escuela/ingles/",
@@ -76,9 +76,9 @@ import { languageEmitter } from "../../language/eventEmitter.js";
       },
     },
     {
-      title: "Intermediate English B2",
+      title: "Intermediate English B1",
       chronology: "2023 - Present [2025]",
-      certificateUrl: "https://drive.google.com/file/d/1G-pkLSrAmyPV0_kLDWoSjBH4ZVMwP89k/preview",
+      certificateUrl: "https://drive.google.com/file/d/1JSkOY1jn-W4wbfwBjmN53zdR_t4DnW7P/preview",
       studiesReferences: {
         realLifeApp: "https://reallifeglobal.com/app/",
         platzi: "https://platzi.com/escuela/ingles/",

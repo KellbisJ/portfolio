@@ -94,9 +94,10 @@ import { languageEmitter } from "../../language/eventEmitter.js";
       langBtn__mobile.textContent = LANGUAGES[language];
 
       langBtn__mobile.addEventListener("click", () => {
-        setSelectedLanguage(LANGUAGES[language]);
+        if (selectedLanguage !== LANGUAGES[language]) {
+          setSelectedLanguage(LANGUAGES[language]);
+        }
         translateOptionsMenu__mobile.classList.remove("show");
-        // console.log(selectedLanguage);
       });
 
       const langBtn__wide = document.createElement("button");
@@ -104,9 +105,10 @@ import { languageEmitter } from "../../language/eventEmitter.js";
       langBtn__wide.textContent = LANGUAGES[language];
 
       langBtn__wide.addEventListener("click", () => {
-        setSelectedLanguage(LANGUAGES[language]);
+        if (selectedLanguage !== LANGUAGES[language]) {
+          setSelectedLanguage(LANGUAGES[language]);
+        }
         translateOptionsMenu__wide.classList.remove("show");
-        // console.log(selectedLanguage);
       });
 
       translateOptionsMenu__mobile.appendChild(langBtn__mobile);
