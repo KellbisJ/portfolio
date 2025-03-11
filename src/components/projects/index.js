@@ -64,8 +64,8 @@ import { languageEmitter } from "../../language/eventEmitter.js";
     },
     {
       title: "English Journey Blog",
-      imageSrc: "https://drive.google.com/thumbnail?id=1EDlOKTvSd-wMQIx5BO3yhknAHxvlUMfE&sz=s600",
-      projectUrl: "https://my-english-journey-kellbisj-kellbis-projects.vercel.app",
+      imageSrc: "https://drive.google.com/thumbnail?id=1FYbcvI3Lq7HisgqPKORA6eTMqBb-930w&sz=s600",
+      projectUrl: "https://my-english-journey.vercel.app",
       repositoryUrl: "https://github.com/KellbisJ/my-english-journey",
       description: projectDescription.englishJourney.spanish,
       technologies: ["react", "typescript", "tailwindcss", "vite"],
