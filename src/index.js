@@ -15,22 +15,42 @@
 
     const cdnScripts = ["https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"];
 
-    const loadScripts = (scripts, type, callback) => {
-      let loadedScripts = 0;
+    const cssFiles = ["src/index.css", "src/components/about-me/index.css"];
+
+    const loadScriptsAndComponents = (scripts, type, callback) => {
+      let loadedData = 0;
+
       scripts.forEach((src) => {
-        const script = document.createElement("script");
-        script.type = type;
-        script.src = src;
-        script.onload = () => {
-          loadedScripts++;
-          if (loadedScripts === scripts.length) {
-            callback();
-          }
-        };
-        // script.onerror = () => {
-        //   console.error(`erorr: ${src}`);
-        // };
-        document.body.appendChild(script);
+        if (type === "text/css") {
+          const script = document.createElement("link");
+          script.rel = "stylesheet";
+          script.type = type;
+          script.href = src;
+          script.onload = () => {
+            loadedData++;
+            if (loadedData === scripts.length) {
+              callback();
+            }
+          };
+
+          document.head.appendChild(script);
+        }
+
+        if (type === "text/javascript" || type === "module") {
+          const script = document.createElement("script");
+          script.type = type;
+          script.src = src;
+          script.onload = () => {
+            loadedData++;
+            if (loadedData === scripts.length) {
+              callback();
+            }
+          };
+          // script.onerror = () => {
+          //   console.error(`erorr: ${src}`);
+          // };
+          document.body.appendChild(script);
+        }
       });
     };
 
@@ -50,14 +70,16 @@
       }
     };
 
-    loadScripts(cdnScripts, "text/javascript", () => {
-      loadScripts(moduleScripts, "module", () => {
-        if (loadingMetadataTimeout) {
-          clearTimeout(loadingMetadataTimeout);
-        }
-        loadingMetadataTimeout = setTimeout(() => {
-          hideLoadingMetaData();
-        }, 800);
+    loadScriptsAndComponents(cssFiles, "text/css", () => {
+      loadScriptsAndComponents(cdnScripts, "text/javascript", () => {
+        loadScriptsAndComponents(moduleScripts, "module", () => {
+          if (loadingMetadataTimeout) {
+            clearTimeout(loadingMetadataTimeout);
+          }
+          loadingMetadataTimeout = setTimeout(() => {
+            hideLoadingMetaData();
+          }, 800);
+        });
       });
     });
   });
