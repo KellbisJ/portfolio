@@ -9,7 +9,7 @@ import { languageEmitter } from "../../language/eventEmitter.js";
   // }
 
   const general = {
-    imgAboutMe: "https://drive.google.com/thumbnail?id=1iCW_9S2psHLlWgUncy2T-M1dqrc61enP&sz=s300",
+    imgAboutMe: "https://drive.google.com/thumbnail?id=187QRSWF_euK9mOE7GFRJk1TAtY2jwAT7&sz=s300",
     userTieIcon: ["fa-solid", "fa-user-tie"],
   };
 

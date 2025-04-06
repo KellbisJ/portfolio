@@ -40,7 +40,8 @@ import { languageEmitter } from "../../language/eventEmitter.js";
   const myProjects = [
     {
       title: "MoviesKS",
-      imageSrc: "https://drive.google.com/thumbnail?id=1TlLMcsTrJThYEr1hIR9z5ZsjT-kYqoBx&sz=s600",
+      imageSrc: "https://drive.google.com/thumbnail?id=1Zr3eR92tATgtI9nmOWa1zaIU_GXhPLj2&sz=s800",
+
       projectUrl: "https://movies-ks-frontend.vercel.app/",
       repositoryUrl: "https://github.com/KellbisJ/MoviesKS",
       description: projectDescription.moviesKs.spanish,
@@ -48,7 +49,7 @@ import { languageEmitter } from "../../language/eventEmitter.js";
     },
     {
       title: "MyEcm (fake ecommerce)",
-      imageSrc: "https://drive.google.com/thumbnail?id=11_1VVkIf5Jf9WZtUT8HcTjwc0w3VZs-_&sz=s600",
+      imageSrc: "https://drive.google.com/thumbnail?id=11TS5UQOsJ4r0y5LJXY5SF-TdiVHtr8N8&sz=s800",
       projectUrl: "https://fakeshopiecm.netlify.app",
       repositoryUrl: "https://github.com/KellbisJ/my-ecm",
       description: projectDescription.myEcm.spanish,
@@ -56,7 +57,7 @@ import { languageEmitter } from "../../language/eventEmitter.js";
     },
     {
       title: "To-do list",
-      imageSrc: "https://drive.google.com/thumbnail?id=1ZgeADNEGW9C44VIH903tisv4Tb79QcIB&sz=s600",
+      imageSrc: "https://drive.google.com/thumbnail?id=1gXmm6AxjjaUOfWiR_scDUXfAb57MEPsw&sz=s800",
       projectUrl: "https://kellbisj.github.io/TODO-FOR-DO/",
       repositoryUrl: "https://github.com/KellbisJ/TODO-FOR-DO",
       description: projectDescription.toDo.spanish,
@@ -64,7 +65,7 @@ import { languageEmitter } from "../../language/eventEmitter.js";
     },
     {
       title: "English Journey Blog",
-      imageSrc: "https://drive.google.com/thumbnail?id=1FYbcvI3Lq7HisgqPKORA6eTMqBb-930w&sz=s600",
+      imageSrc: "https://drive.google.com/thumbnail?id=1y2V1eOB-4uti9yohU5kkt-sB_bh7UVxy&sz=s800",
       projectUrl: "https://my-english-journey.vercel.app",
       repositoryUrl: "https://github.com/KellbisJ/my-english-journey",
       description: projectDescription.englishJourney.spanish,

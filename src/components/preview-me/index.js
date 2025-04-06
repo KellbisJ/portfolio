@@ -4,7 +4,7 @@ import { copyFieldText } from "../../utils/copy-field/index.js";
 
 (() => {
   const general = {
-    meImgUrl: "https://drive.google.com/thumbnail?id=1LFZJjC2IIP45n1aqvehgqCktbgEqEsQJ&sz=s300",
+    meImgUrl: "https://drive.google.com/thumbnail?id=1lc5LifIPbK1Xz7ndSobTdMWuVsBf_5G_&sz=s300",
     gitHubProfile: "https://github.com/KellbisJ",
     linkedinProfile: "https://linkedin.com/in/kellbis-salazar-arnaez-3a844833a",
   };
