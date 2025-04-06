@@ -1,0 +1,130 @@
+/* ABOUT ME PREVIEW */
+.content__me {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.content__img {
+  width: 180px;
+  height: 180px;
+  margin-bottom: 14px;
+}
+
+.meImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
+}
+.content__me__info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}
+
+.content__me__text {
+  padding: 2px;
+  margin-top: 32px;
+  font-size: 16px;
+  text-align: center;
+}
+
+.content__me__social__media {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 32px;
+  font-size: 20px;
+  outline: none;
+  text-decoration: none;
+  align-items: center;
+}
+.content__me__social__media a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.social-media-element {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  border: 2px solid #1a2647;
+  padding: 6px;
+  width: 200px;
+  border-radius: 6px;
+  position: relative;
+  transition: background 0.3s ease;
+}
+.social-media-element:hover {
+  background-color: #b6fffa2d;
+}
+.email__copy {
+  position: relative;
+  width: 200px;
+}
+#copyMailPreviewField,
+#copyMailContactField,
+#copyPhonenumberField {
+  font-size: 14px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 4px;
+  cursor: pointer;
+}
+#mailIcon {
+  cursor: pointer;
+}
+.copy-mail-text,
+.copy-phonenumber-text {
+  position: absolute;
+  top: -10px;
+  right: -36px;
+  color: #fff;
+  background-color: #16c47f;
+  padding: 4px;
+  font-size: 8px;
+  border-radius: 20px;
+}
+.copy-mail-text.hidden {
+  visibility: hidden;
+}
+.copy-phonenumber-text.hidden {
+  visibility: hidden;
+}
+.copy-success {
+  color: #16c47f;
+  transition: color 0.3s ease-in-out;
+}
+/* ABOUT ME PREVIEW */
+
+@media (min-width: 640px) {
+  .content__me__social__media {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+  }
+  .social-media-element {
+    width: 160px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .social-media-element {
+    width: 140px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .social-media-element {
+    width: 180px;
+  }
+}

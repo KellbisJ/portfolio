@@ -218,7 +218,7 @@ import { languageEmitter } from "../../language/eventEmitter.js";
     // console.log(event.target.innerHTML);
 
     const navbarLinkCaptured = event.target.innerHTML;
-    console.log(navbarLinkCaptured);
+    // console.log(navbarLinkCaptured);
 
     const scrollTop = document.documentElement.scrollTop;
     const navbarMenuContent = document.querySelector(".navbar__menu__content");

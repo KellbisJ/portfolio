@@ -2,7 +2,7 @@ import { languageEmitter } from "./eventEmitter.js";
 import { barLoadingAnimation } from "../utils/bar-loading-animation/index.js";
 
 const LANGUAGES = {
-  SPANISH: "Spanish",
+  SPANISH: "Español",
   ENGLISH: "English",
 };
 

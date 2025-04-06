@@ -1,0 +1,127 @@
+/* PROJECTS */
+.content__projects {
+  display: flex;
+  flex-direction: column;
+  margin-top: 32px;
+}
+.projects-title,
+.content__technologies__title,
+.my-studies-title,
+.about-me-title,
+.contact__title {
+  display: flex;
+  align-items: center;
+  padding: 18px;
+  background-color: transparent;
+  border: 2px solid #1a2647;
+  /* border-radius: 6px; */
+  margin-bottom: 32px;
+}
+.projects-title i {
+  margin-right: 8px;
+  color: #b6fffa;
+}
+.content__project__info__container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  height: 100%;
+}
+.content__project__info {
+  display: flex;
+  flex-direction: column;
+  background-color: #b6fffa2d;
+  /* border: 2px solid #1a2647;
+  border-radius: 12px; */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  width: 100%;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.content__project__info:hover {
+  transform: translateY(-5px);
+}
+
+.content__project__img {
+  position: relative;
+  margin: 0;
+}
+.content__project__img i {
+  filter: drop-shadow(2px 2px 2px rgba(3, 0, 28, 0.572));
+}
+
+.project-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.link-to-project-arrow {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 12px;
+  color: #b6fffa;
+}
+.link-to-project-repository {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 12px;
+  color: #b6fffa;
+}
+.project-title {
+  font-size: 14px;
+  font-weight: bold;
+  margin: 14px 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.project-details {
+  display: flex;
+  flex-direction: column;
+  padding: 14px;
+  text-align: left;
+  height: 100%;
+  flex: 1;
+}
+.project-description {
+  flex: 8;
+  font-size: 14px;
+  margin-bottom: 14px;
+}
+.project-technologies {
+  flex: 2;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.tech-badge {
+  padding: 4px;
+  border-radius: 4px;
+  font-size: 18px;
+  display: inline-block;
+}
+.tech-img {
+  width: 16px;
+  height: 16px;
+}
+/* PROJECTS */
+
+@media (min-width: 450px) {
+  .content__project__info__container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+}
+
+@media (min-width: 640px) {
+  .content__project__info__container {
+    grid-template-columns: 1fr 1fr;
+  }
+  .project-title {
+    font-size: 16px;
+  }
+}

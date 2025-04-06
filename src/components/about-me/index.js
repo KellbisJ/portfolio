@@ -2,11 +2,11 @@ import { selectedLanguage, setSelectedLanguage, LANGUAGES } from "../../language
 import { languageEmitter } from "../../language/eventEmitter.js";
 
 (() => {
-  if (LANGUAGES) {
-    console.log("Languages:", LANGUAGES);
-  } else {
-    console.error("Languages object is not available.");
-  }
+  // if (LANGUAGES) {
+  //   console.log("Languages:", LANGUAGES);
+  // } else {
+  //   console.error("Languages object is not available.");
+  // }
 
   const general = {
     imgAboutMe: "https://drive.google.com/thumbnail?id=1iCW_9S2psHLlWgUncy2T-M1dqrc61enP&sz=s300",

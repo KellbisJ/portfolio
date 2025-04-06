@@ -15,9 +15,19 @@
 
     const cdnScripts = ["https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"];
 
-    const cssFiles = ["src/index.css", "src/components/about-me/index.css"];
+    const cssFiles = [
+      "src/index.css",
+      "src/components/index.css",
+      "src/components/about-me/index.css",
+      "src/components/navbar/index.css",
+      "src/components/preview-me/index.css",
+      "src/components/projects/index.css",
+      "src/components/technologies/index.css",
+      "src/components/my-studies/index.css",
+      "src/components/contact-me/index.css",
+    ];
 
-    const loadScriptsAndComponents = (scripts, type, callback) => {
+    const loadScripts = (scripts, type, callback) => {
       let loadedData = 0;
 
       scripts.forEach((src) => {
@@ -70,9 +80,9 @@
       }
     };
 
-    loadScriptsAndComponents(cssFiles, "text/css", () => {
-      loadScriptsAndComponents(cdnScripts, "text/javascript", () => {
-        loadScriptsAndComponents(moduleScripts, "module", () => {
+    loadScripts(cssFiles, "text/css", () => {
+      loadScripts(cdnScripts, "text/javascript", () => {
+        loadScripts(moduleScripts, "module", () => {
           if (loadingMetadataTimeout) {
             clearTimeout(loadingMetadataTimeout);
           }
