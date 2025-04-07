@@ -2,12 +2,6 @@ import { LANGUAGES, selectedLanguage, setSelectedLanguage } from "../../language
 import { languageEmitter } from "../../language/eventEmitter.js";
 
 (() => {
-  const projectImageUrl = {
-    moviesKsCardImg: "https://drive.google.com/thumbnail?id=1Zr3eR92tATgtI9nmOWa1zaIU_GXhPLj2&sz=s800",
-    myEcmCardImg: "https://drive.google.com/thumbnail?id=11TS5UQOsJ4r0y5LJXY5SF-TdiVHtr8N8&sz=s800",
-    todoCardImg: "https://drive.google.com/thumbnail?id=1gXmm6AxjjaUOfWiR_scDUXfAb57MEPsw&sz=s800",
-    englishJourneyCardImg: "https://drive.google.com/thumbnail?id=1y2V1eOB-4uti9yohU5kkt-sB_bh7UVxy&sz=s800",
-  };
   const techImageUrl = {
     vitejs: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitejs/vitejs-original.svg",
   };
@@ -50,7 +44,7 @@ import { languageEmitter } from "../../language/eventEmitter.js";
   const myProjects = [
     {
       title: "MoviesKS",
-      imageSrc: "",
+      imageSrc: "https://ik.imagekit.io/137/Portfolio/MoviesKSCARD.webp?updatedAt=1744037093138",
       projectUrl: "https://movies-ks-frontend.vercel.app/",
       repositoryUrl: "https://github.com/KellbisJ/MoviesKS",
       description: projectDescription.moviesKs.spanish,
@@ -58,7 +52,7 @@ import { languageEmitter } from "../../language/eventEmitter.js";
     },
     {
       title: "MyEcm (fake ecommerce)",
-      imageSrc: "",
+      imageSrc: "https://ik.imagekit.io/137/Portfolio/MyEcmCARD.webp?updatedAt=1744037093039",
       projectUrl: "https://fakeshopiecm.netlify.app",
       repositoryUrl: "https://github.com/KellbisJ/my-ecm",
       description: projectDescription.myEcm.spanish,
@@ -66,7 +60,7 @@ import { languageEmitter } from "../../language/eventEmitter.js";
     },
     {
       title: "To-do list",
-      imageSrc: "",
+      imageSrc: "https://ik.imagekit.io/137/Portfolio/TodoCARD.webp?updatedAt=1744037092983",
       projectUrl: "https://kellbisj.github.io/TODO-FOR-DO/",
       repositoryUrl: "https://github.com/KellbisJ/TODO-FOR-DO",
       description: projectDescription.toDo.spanish,
@@ -74,7 +68,7 @@ import { languageEmitter } from "../../language/eventEmitter.js";
     },
     {
       title: "English Journey Blog",
-      imageSrc: "",
+      imageSrc: "https://ik.imagekit.io/137/Portfolio/engjourneyCARD.webp?updatedAt=1744037093009",
       projectUrl: "https://my-english-journey.vercel.app",
       repositoryUrl: "https://github.com/KellbisJ/my-english-journey",
       description: projectDescription.englishJourney.spanish,
@@ -221,9 +215,6 @@ import { languageEmitter } from "../../language/eventEmitter.js";
   window.addEventListener("load", () => {
     // load all this after page is loaded
     projectsMaterial.vite = techImageUrl.vitejs;
-    myProjects.forEach((project, index) => {
-      project.imageSrc = Object.values(projectImageUrl)[index];
-    });
 
     renderProjects();
   });

@@ -4,7 +4,7 @@ import { copyFieldText } from "../../utils/copy-field/index.js";
 
 (() => {
   const general = {
-    meImgUrl: "",
+    meImgUrl: "https://ik.imagekit.io/137/Portfolio/mainCWEBP.webp?updatedAt=1744037093889",
     gitHubProfile: "https://github.com/KellbisJ",
     linkedinProfile: "https://linkedin.com/in/kellbis-salazar-arnaez-3a844833a",
   };
@@ -150,8 +150,6 @@ import { copyFieldText } from "../../utils/copy-field/index.js";
   };
 
   languageEmitter.on("languageChanged", updateContentBasedOnSelectedLanguage);
-  window.addEventListener("load", () => {
-    general.meImgUrl = "https://drive.google.com/thumbnail?id=1lc5LifIPbK1Xz7ndSobTdMWuVsBf_5G_&sz=s300";
-    createPreviewMe();
-  });
+
+  createPreviewMe();
 })();
