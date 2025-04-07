@@ -4,7 +4,7 @@ import { copyFieldText } from "../../utils/copy-field/index.js";
 
 (() => {
   const general = {
-    meImgUrl: "https://drive.google.com/thumbnail?id=1lc5LifIPbK1Xz7ndSobTdMWuVsBf_5G_&sz=s300",
+    meImgUrl: "",
     gitHubProfile: "https://github.com/KellbisJ",
     linkedinProfile: "https://linkedin.com/in/kellbis-salazar-arnaez-3a844833a",
   };
@@ -45,8 +45,14 @@ import { copyFieldText } from "../../utils/copy-field/index.js";
     contentImg.classList.add("content__img");
     const meImg = document.createElement("img");
     meImg.classList.add("meImg");
+    document.addEventListener("allMainImagesPreloaded", (event) => {
+      if (event.detail.previewMeImg) {
+        meImg.src = event.detail.previewMeImg;
+      }
+    });
     meImg.src = general.meImgUrl;
     meImg.alt = "meImg";
+
     contentImg.appendChild(meImg);
 
     const contentMeInfo = document.createElement("div");
@@ -144,6 +150,8 @@ import { copyFieldText } from "../../utils/copy-field/index.js";
   };
 
   languageEmitter.on("languageChanged", updateContentBasedOnSelectedLanguage);
-
-  createPreviewMe();
+  window.addEventListener("load", () => {
+    general.meImgUrl = "https://drive.google.com/thumbnail?id=1lc5LifIPbK1Xz7ndSobTdMWuVsBf_5G_&sz=s300";
+    createPreviewMe();
+  });
 })();

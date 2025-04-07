@@ -2,6 +2,16 @@ import { LANGUAGES, selectedLanguage, setSelectedLanguage } from "../../language
 import { languageEmitter } from "../../language/eventEmitter.js";
 
 (() => {
+  const projectImageUrl = {
+    moviesKsCardImg: "https://drive.google.com/thumbnail?id=1Zr3eR92tATgtI9nmOWa1zaIU_GXhPLj2&sz=s800",
+    myEcmCardImg: "https://drive.google.com/thumbnail?id=11TS5UQOsJ4r0y5LJXY5SF-TdiVHtr8N8&sz=s800",
+    todoCardImg: "https://drive.google.com/thumbnail?id=1gXmm6AxjjaUOfWiR_scDUXfAb57MEPsw&sz=s800",
+    englishJourneyCardImg: "https://drive.google.com/thumbnail?id=1y2V1eOB-4uti9yohU5kkt-sB_bh7UVxy&sz=s800",
+  };
+  const techImageUrl = {
+    vitejs: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitejs/vitejs-original.svg",
+  };
+
   const projectsContentIcons = {
     codeIcon: "fa-solid fa-code",
     diagonalArrowIcon: "fa-solid fa-up-right-from-square link-to-project-arrow",
@@ -29,7 +39,7 @@ import { languageEmitter } from "../../language/eventEmitter.js";
 
   const projectsMaterial = {
     react: "devicon-react-original colored",
-    vite: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitejs/vitejs-original.svg",
+    vite: "",
     typescript: "devicon-typescript-plain colored",
     tailwindcss: "devicon-tailwindcss-original colored",
     express: "devicon-express-original",
@@ -40,8 +50,7 @@ import { languageEmitter } from "../../language/eventEmitter.js";
   const myProjects = [
     {
       title: "MoviesKS",
-      imageSrc: "https://drive.google.com/thumbnail?id=1Zr3eR92tATgtI9nmOWa1zaIU_GXhPLj2&sz=s800",
-
+      imageSrc: "",
       projectUrl: "https://movies-ks-frontend.vercel.app/",
       repositoryUrl: "https://github.com/KellbisJ/MoviesKS",
       description: projectDescription.moviesKs.spanish,
@@ -49,7 +58,7 @@ import { languageEmitter } from "../../language/eventEmitter.js";
     },
     {
       title: "MyEcm (fake ecommerce)",
-      imageSrc: "https://drive.google.com/thumbnail?id=11TS5UQOsJ4r0y5LJXY5SF-TdiVHtr8N8&sz=s800",
+      imageSrc: "",
       projectUrl: "https://fakeshopiecm.netlify.app",
       repositoryUrl: "https://github.com/KellbisJ/my-ecm",
       description: projectDescription.myEcm.spanish,
@@ -57,7 +66,7 @@ import { languageEmitter } from "../../language/eventEmitter.js";
     },
     {
       title: "To-do list",
-      imageSrc: "https://drive.google.com/thumbnail?id=1gXmm6AxjjaUOfWiR_scDUXfAb57MEPsw&sz=s800",
+      imageSrc: "",
       projectUrl: "https://kellbisj.github.io/TODO-FOR-DO/",
       repositoryUrl: "https://github.com/KellbisJ/TODO-FOR-DO",
       description: projectDescription.toDo.spanish,
@@ -65,7 +74,7 @@ import { languageEmitter } from "../../language/eventEmitter.js";
     },
     {
       title: "English Journey Blog",
-      imageSrc: "https://drive.google.com/thumbnail?id=1y2V1eOB-4uti9yohU5kkt-sB_bh7UVxy&sz=s800",
+      imageSrc: "",
       projectUrl: "https://my-english-journey.vercel.app",
       repositoryUrl: "https://github.com/KellbisJ/my-english-journey",
       description: projectDescription.englishJourney.spanish,
@@ -208,5 +217,14 @@ import { languageEmitter } from "../../language/eventEmitter.js";
   languageEmitter.on("languageChanged", updateProjectDescriptions);
 
   updateProjectDescriptions();
-  renderProjects();
+
+  window.addEventListener("load", () => {
+    // load all this after page is loaded
+    projectsMaterial.vite = techImageUrl.vitejs;
+    myProjects.forEach((project, index) => {
+      project.imageSrc = Object.values(projectImageUrl)[index];
+    });
+
+    renderProjects();
+  });
 })();
