@@ -8,7 +8,7 @@ import { languageEmitter } from "../../language/eventEmitter.js";
     {
       title: "Full Stack Developer con JavaScript",
       chronology: "2019 - Actualidad [2025]",
-      certificateUrl: "https://drive.google.com/file/d/1E28ok_rk0Xx4Hoc8wExadZ-97qT0SVXk/preview",
+      certificateUrl: "https://drive.google.com/file/d/1r-zq1e9jTiMPruH6_wv5PwJsUawaXeML/preview",
       studiesReferences: {
         platzi: "https://platzi.com/home/",
         w3Schools: "https://www.w3schools.com",
@@ -27,9 +27,9 @@ import { languageEmitter } from "../../language/eventEmitter.js";
       },
     },
     {
-      title: "Inglés Intermedio B1",
+      title: "Inglés Intermedio B2",
       chronology: "2023 - Actualidad [2025]",
-      certificateUrl: "https://drive.google.com/file/d/1JSkOY1jn-W4wbfwBjmN53zdR_t4DnW7P/preview",
+      certificateUrl: "https://drive.google.com/file/d/1yyYZFYjRSNJ0H_m_6unZEbuZsznfb0HC/preview",
       studiesReferences: {
         realLifeApp: "https://reallifeglobal.com/app/",
         platzi: "https://platzi.com/escuela/ingles/",
@@ -57,7 +57,7 @@ import { languageEmitter } from "../../language/eventEmitter.js";
     {
       title: "Full Stack Developer with JavaScript",
       chronology: "2019 - Present [2025]",
-      certificateUrl: "https://drive.google.com/file/d/1E28ok_rk0Xx4Hoc8wExadZ-97qT0SVXk/preview",
+      certificateUrl: "https://drive.google.com/file/d/1r-zq1e9jTiMPruH6_wv5PwJsUawaXeML/preview",
       studiesReferences: {
         platzi: "https://platzi.com/home/",
         w3Schools: "https://www.w3schools.com",
@@ -76,9 +76,9 @@ import { languageEmitter } from "../../language/eventEmitter.js";
       },
     },
     {
-      title: "Intermediate English B1",
+      title: "Intermediate English B2",
       chronology: "2023 - Present [2025]",
-      certificateUrl: "https://drive.google.com/file/d/1JSkOY1jn-W4wbfwBjmN53zdR_t4DnW7P/preview",
+      certificateUrl: "https://drive.google.com/file/d/1yyYZFYjRSNJ0H_m_6unZEbuZsznfb0HC/preview",
       studiesReferences: {
         realLifeApp: "https://reallifeglobal.com/app/",
         platzi: "https://platzi.com/escuela/ingles/",
