@@ -3,7 +3,13 @@
     let mainContentLoaded = false;
 
     // ### MAIN CONTENT ### //
-    const mainModuleScripts = ["src/language/index.js", "src/components/navbar/index.js", "src/components/preview-me/index.js", "src/components/projects/index.js"]; // MAIN JS SCRIPTS COMPONENTS
+    const mainModuleScripts = [
+      "src/language/index.js",
+      "src/components/content-me-filtered/index.js",
+      "src/components/navbar/index.js",
+      "src/components/preview-me/index.js",
+      "src/components/projects/index.js",
+    ]; // MAIN JS SCRIPTS COMPONENTS
 
     const mainCssFiles = ["src/index.css", "src/components/index.css", "src/components/navbar/index.css", "src/components/preview-me/index.css", "src/components/projects/index.css"]; // MAIN CSS STYLES;
 
@@ -96,7 +102,7 @@
       "src/components/about-me/index.js",
       "src/components/contact-me/index.js",
       "src/language/eventEmitter.js",
-      "src/scripts/particles-js/index.js",
+      // "src/scripts/particles-js/index.js",
     ]; // DEFERRED JS SCRIPTS COMPONENTS
 
     const deferredCSS = ["src/components/technologies/index.css", "src/components/my-studies/index.css", "src/components/about-me/index.css", "src/components/contact-me/index.css"]; // DEFERRED CSS STYLES
@@ -120,15 +126,13 @@
     const loadDeferredContent = () => {
       loadLinkStylesheetResources();
       loadScripts(deferredCSS, "stylesheet", () => {
-        loadScripts(cdnScripts, "text/javascript", () => {
-          loadScripts(deferredModuleScripts, "module", () => {
-            if (loadingMetadataTimeout) {
-              clearTimeout(loadingMetadataTimeout);
-            }
-            loadingMetadataTimeout = setTimeout(() => {
-              hideLoadingMetaData();
-            }, 500);
-          });
+        loadScripts(deferredModuleScripts, "module", () => {
+          if (loadingMetadataTimeout) {
+            clearTimeout(loadingMetadataTimeout);
+          }
+          loadingMetadataTimeout = setTimeout(() => {
+            hideLoadingMetaData();
+          }, 500);
         });
       });
     };

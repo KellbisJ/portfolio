@@ -79,8 +79,8 @@ h4 {
     font-size: 20px;
   }
   .layout {
-    margin-right: 26vw;
-    margin-left: 26vw;
+    margin-right: 24vw;
+    margin-left: 24vw;
   }
 }
 
@@ -90,9 +90,5 @@ h4 {
   }
   h2 {
     font-size: 32px;
-  }
-  .layout {
-    margin-right: 30vw;
-    margin-left: 30vw;
   }
 }

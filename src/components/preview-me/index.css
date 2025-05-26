@@ -5,8 +5,26 @@
   align-items: center;
   width: 100%;
   box-sizing: border-box;
+  gap: 12px;
 }
-
+.my__content__categories {
+  display: flex;
+  gap: 12px;
+}
+.btn_my_content {
+  padding: 8px;
+  min-width: 120px;
+  border-radius: 8px;
+  background-color: #7f8caa48;
+  outline: none;
+  border: none;
+  color: #b6fffa;
+  cursor: pointer;
+}
+.btn_my_content:hover {
+  background-color: #7f8caa;
+  transition-duration: 300ms;
+}
 .content__img {
   width: 180px;
   height: 180px;

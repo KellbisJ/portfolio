@@ -1,7 +1,7 @@
 import { LANGUAGES, selectedLanguage, setSelectedLanguage } from "../../language/index.js";
 import { languageEmitter } from "../../language/eventEmitter.js";
 
-(() => {
+const myStudiesContent = () => {
   // MY STUDIES CONTENT
 
   const studiesContent_ES = [
@@ -105,7 +105,8 @@ import { languageEmitter } from "../../language/eventEmitter.js";
 
   // console.log(studiesContent.highSchool.studiesInformation);
 
-  const CONTENT_MY_STUDIES = document.querySelector(".content__my__studies");
+  const CONTENT_MY_STUDIES = document.createElement("div");
+  CONTENT_MY_STUDIES.classList.add("content__my__studies");
   const myStudiesTitleHeader = document.createElement("div");
   const iconTitleHeader = document.createElement("i");
   const myStudiesTitle = document.createElement("h2");
@@ -294,4 +295,8 @@ import { languageEmitter } from "../../language/eventEmitter.js";
   showCertificateDocument();
   languageEmitter.on("languageChanged", showCertificateDocument);
   // SHOW CERTIFICATE LOGIC
-})();
+
+  return CONTENT_MY_STUDIES;
+};
+
+export { myStudiesContent };

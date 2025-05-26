@@ -1,13 +1,7 @@
 import { selectedLanguage, setSelectedLanguage, LANGUAGES } from "../../language/index.js";
 import { languageEmitter } from "../../language/eventEmitter.js";
 
-(() => {
-  // if (LANGUAGES) {
-  //   console.log("Languages:", LANGUAGES);
-  // } else {
-  //   console.error("Languages object is not available.");
-  // }
-
+const aboutMeContent = () => {
   const general = {
     imgAboutMe: "https://ik.imagekit.io/137/Portfolio/mainC2WEBP.webp?updatedAt=1744037093277",
     userTieIcon: ["fa-solid", "fa-user-tie"],
@@ -99,8 +93,8 @@ import { languageEmitter } from "../../language/eventEmitter.js";
     aboutMeHeaderTitle.appendChild(aboutMeTitle);
     contentAboutMeInfo.appendChild(contentText);
 
-    CONTENT_ABOUT_ME.appendChild(aboutMeHeaderTitle);
-    CONTENT_ABOUT_ME.appendChild(contentAboutMeInfo);
+    // CONTENT_ABOUT_ME.appendChild(aboutMeHeaderTitle);
+    // CONTENT_ABOUT_ME.appendChild(contentAboutMeInfo);
 
     renderContentAboutMeSection();
 
@@ -110,4 +104,6 @@ import { languageEmitter } from "../../language/eventEmitter.js";
   languageEmitter.on("languageChanged", renderContentAboutMeSection);
 
   createAboutMeSection();
-})();
+};
+
+export { aboutMeContent };

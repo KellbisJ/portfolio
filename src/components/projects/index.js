@@ -1,7 +1,7 @@
 import { LANGUAGES, selectedLanguage, setSelectedLanguage } from "../../language/index.js";
 import { languageEmitter } from "../../language/eventEmitter.js";
 
-(() => {
+const projectsContent = () => {
   const techImageUrl = {
     vitejs: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitejs/vitejs-original.svg",
   };
@@ -83,7 +83,8 @@ import { languageEmitter } from "../../language/eventEmitter.js";
     "English Journey Blog": "englishJourney",
   };
 
-  const CONTENT_PROJECTS = document.querySelector(".content__projects");
+  const CONTENT_PROJECTS = document.createElement("div");
+  CONTENT_PROJECTS.classList.add("content__projects");
 
   const projectTitle = document.createElement("div");
   projectTitle.classList.add("projects-title");
@@ -218,4 +219,8 @@ import { languageEmitter } from "../../language/eventEmitter.js";
 
     renderProjects();
   });
-})();
+
+  return CONTENT_PROJECTS;
+};
+
+export { projectsContent };

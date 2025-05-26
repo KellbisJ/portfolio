@@ -1,7 +1,7 @@
 import { LANGUAGES, selectedLanguage, setSelectedLanguage } from "../../language/index.js";
 import { languageEmitter } from "../../language/eventEmitter.js";
 
-(() => {
+const technologiesContent = () => {
   const technologiesMaterial = {
     globeTechIcon: "fa-solid fa-globe",
     icons: [
@@ -56,8 +56,8 @@ import { languageEmitter } from "../../language/eventEmitter.js";
       contentTechnologiesGrid.appendChild(technologyImgContainer);
     });
 
-    CONTENT_TECHNOLOGIES.appendChild(contentTechnologiesTitle);
-    CONTENT_TECHNOLOGIES.appendChild(contentTechnologiesGrid);
+    // CONTENT_TECHNOLOGIES.appendChild(contentTechnologiesTitle);
+    // CONTENT_TECHNOLOGIES.appendChild(contentTechnologiesGrid);
 
     updateContentBasedOnSelectedLanguage();
   };
@@ -74,4 +74,6 @@ import { languageEmitter } from "../../language/eventEmitter.js";
   languageEmitter.on("languageChanged", updateContentBasedOnSelectedLanguage);
 
   createTechnologiesContent();
-})();
+};
+
+export { technologiesContent };

@@ -2,7 +2,7 @@ import { LANGUAGES, selectedLanguage } from "../../language/index.js";
 import { languageEmitter } from "../../language/eventEmitter.js";
 import { copyFieldText } from "../../utils/copy-field/index.js";
 
-(() => {
+const contactMeContent = () => {
   const icons = {
     bookPersonIcon: ["fa-solid", "fa-address-book"],
     mailIcon: ["fas", "fa-envelope"],
@@ -227,4 +227,6 @@ import { copyFieldText } from "../../utils/copy-field/index.js";
   createContactMeContent();
 
   languageEmitter.on("languageChanged", createContactMeContent);
-})();
+};
+
+export { contactMeContent };

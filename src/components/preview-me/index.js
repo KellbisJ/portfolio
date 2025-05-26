@@ -1,6 +1,9 @@
 import { languageEmitter } from "../../language/eventEmitter.js";
 import { selectedLanguage, LANGUAGES } from "../../language/index.js";
 import { copyFieldText } from "../../utils/copy-field/index.js";
+import { filteredContent } from "../content-me-filtered/index.js";
+import { projectsContent } from "../projects/index.js";
+import { myStudiesContent } from "../my-studies/index.js";
 
 (() => {
   const general = {
@@ -37,8 +40,12 @@ import { copyFieldText } from "../../utils/copy-field/index.js";
     contentMeText_EN: `Self-taught developer specialized in frontend development with backend knowledge.`,
     copiedTextElement_EN: `Copied!`,
   };
+  const myContentCategories_ES = ["Proyectos", "Certificaciones", "Contacto"];
+  const myContentCategories_EN = ["Projects", "Certifications", "Contact"];
 
   const CONTENT_ME = document.querySelector(".content__me");
+  const my_content_categories = document.createElement("div");
+  my_content_categories.classList.add("my__content__categories");
 
   const createPreviewMe = () => {
     const contentImg = document.createElement("div");
@@ -107,6 +114,7 @@ import { copyFieldText } from "../../utils/copy-field/index.js";
       aElement.appendChild(socialMediaElement);
       contentMeSocialMedia.appendChild(aElement);
     });
+
     emailCopyElement.appendChild(copiedMailText);
     emailCopyElement.appendChild(copyMailFieldIcon);
     emailCopyElement.appendChild(mailICon);
@@ -129,11 +137,13 @@ import { copyFieldText } from "../../utils/copy-field/index.js";
 
     CONTENT_ME.appendChild(contentImg);
     CONTENT_ME.appendChild(contentMeInfo);
+    CONTENT_ME.appendChild(my_content_categories);
 
     updateContentBasedOnSelectedLanguage();
   };
 
   const updateContentBasedOnSelectedLanguage = () => {
+    my_content_categories.innerHTML = "";
     const greetingTextH1 = document.querySelector(".greeting-text");
     const contentMeText = document.querySelector(".content__me__text");
     const copiedMailText = document.querySelector(".copy-mail-text");
@@ -146,6 +156,37 @@ import { copyFieldText } from "../../utils/copy-field/index.js";
       greetingTextH1.textContent = contentMe_EN.greetingText_EN;
       contentMeText.textContent = contentMe_EN.contentMeText_EN;
       copiedMailText.textContent = contentMe_EN.copiedTextElement_EN;
+    }
+
+    function createContentCategoriesBtn(classs, btnTextContent) {
+      const content_btn = document.createElement("button");
+      content_btn.classList.add(classs);
+      content_btn.textContent = btnTextContent;
+
+      content_btn.addEventListener("click", () => {
+        if (btnTextContent === "Proyectos" || btnTextContent === "Projects") {
+          filteredContent(projectsContent());
+        } else if (btnTextContent === "Certificaciones" || btnTextContent === "Certifications") {
+          filteredContent(myStudiesContent());
+        }
+      });
+      return content_btn;
+    }
+
+    if (selectedLanguage === LANGUAGES.SPANISH) {
+      myContentCategories_ES.forEach((content) => {
+        const classs = "btn_my_content";
+        const myContentBtn = createContentCategoriesBtn(classs, content);
+        my_content_categories.appendChild(myContentBtn);
+      });
+    } else if (selectedLanguage === LANGUAGES.ENGLISH) {
+      myContentCategories_EN.forEach((content) => {
+        const classs = "btn_my_content";
+        const myContentBtn = createContentCategoriesBtn(classs, content);
+        my_content_categories.appendChild(myContentBtn);
+      });
+    } else {
+      console.log("something weird ocurred waaaaaa");
     }
   };
 
