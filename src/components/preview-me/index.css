@@ -6,12 +6,15 @@
   width: 100%;
   box-sizing: border-box;
   gap: 12px;
+  color: #f6f0f0;
 }
 .my__content__categories {
   display: flex;
   gap: 12px;
 }
 .btn_my_content {
+  font-family: "Manrope", sans-serif;
+  font-weight: 600;
   padding: 8px;
   min-width: 120px;
   border-radius: 8px;

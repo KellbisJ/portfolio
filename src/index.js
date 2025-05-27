@@ -80,7 +80,7 @@
     // ### DEFERRED CONTENT ### //
 
     const linkStylesheetResources = [
-      "https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz@8..144&display=swap",
+      "https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap",
       "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css",
       "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css",
     ]; // FONTS, CDNS, LIBRARIES, ETC.

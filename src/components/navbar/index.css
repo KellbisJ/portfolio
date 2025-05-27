@@ -21,10 +21,26 @@
   width: 100%;
   top: 0;
   z-index: 1;
-  position: sticky;
+  /* position: sticky;
   position: -webkit-sticky;
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px); */
   padding: 6px;
+  gap: 24px;
+  margin-top: 32px;
+}
+/* .navbarContent {
+  display: flex;
+} */
+.box__left__lg {
+  width: 100%;
+  padding: 18px;
+  background-color: #92b4ec;
+  border-radius: 24px;
+}
+.box__dot__sm {
+  padding: 18px;
+  background-color: #92b4ec;
+  border-radius: 100%;
 }
 .navbar__elements {
   position: sticky;

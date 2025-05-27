@@ -2,6 +2,7 @@ import { languageEmitter } from "../../language/eventEmitter.js";
 import { selectedLanguage, LANGUAGES } from "../../language/index.js";
 import { copyFieldText } from "../../utils/copy-field/index.js";
 import { filteredContent } from "../content-me-filtered/index.js";
+import { technologiesContent } from "../technologies/index.js";
 import { projectsContent } from "../projects/index.js";
 import { myStudiesContent } from "../my-studies/index.js";
 
@@ -19,7 +20,7 @@ import { myStudiesContent } from "../my-studies/index.js";
     mailIcon: ["fa-solid", "fa-envelope"],
   };
 
-  const categoryBtnIcons = ["fa-solid fa-code", "fa-solid fa-globe", "fa-solid fa-book"];
+  const categoryBtnIcons = ["fa-solid fa-microchip", "fa-solid fa-code", "fa-solid fa-globe", "fa-solid fa-book"];
 
   const socialMediaLinks = {
     github: {
@@ -42,8 +43,8 @@ import { myStudiesContent } from "../my-studies/index.js";
     contentMeText_EN: `Self-taught developer specialized in frontend development with backend knowledge.`,
     copiedTextElement_EN: `Copied!`,
   };
-  const myContentCategories_ES = ["Proyectos", "Certificaciones", "Contacto"];
-  const myContentCategories_EN = ["Projects", "Certifications", "Contact"];
+  const myContentCategories_ES = ["Tecnologías", "Proyectos", "Certificaciones", "Contacto"];
+  const myContentCategories_EN = ["Technologies", "Projects", "Certifications", "Contact"];
 
   const CONTENT_ME = document.querySelector(".content__me");
   const my_content_categories = document.createElement("div");
@@ -176,7 +177,7 @@ import { myStudiesContent } from "../my-studies/index.js";
       const textBtn = document.createTextNode(" " + btnTextContent);
       content_btn.appendChild(textBtn);
 
-      if (btnTextContent === "Proyectos" || btnTextContent === "Projects") content_btn.classList.add("btn_my_content__selected");
+      if (btnTextContent === "Tecnologías" || btnTextContent === "Technologies") content_btn.classList.add("btn_my_content__selected");
 
       content_btn.addEventListener("click", (e) => {
         const btns = document.querySelectorAll(`.${classs}`);
@@ -187,11 +188,28 @@ import { myStudiesContent } from "../my-studies/index.js";
 
         e.target.classList.add("btn_my_content__selected");
 
-        if (btnTextContent === "Proyectos" || btnTextContent === "Projects") {
-          filteredContent(projectsContent());
-        } else if (btnTextContent === "Certificaciones" || btnTextContent === "Certifications") {
-          filteredContent(myStudiesContent());
+        switch (btnTextContent) {
+          case "Tecnologías":
+          case "Technologies":
+            filteredContent(technologiesContent());
+            break;
+          case "Proyectos":
+          case "Projects":
+            filteredContent(projectsContent());
+            break;
+          case "Certificaciones":
+          case "Certifications":
+            filteredContent(myStudiesContent());
+            break;
+          default:
+            console.warn("A fucking error occurred");
         }
+
+        // if (btnTextContent === "Proyectos" || btnTextContent === "Projects") {
+        //   filteredContent(projectsContent());
+        // } else if (btnTextContent === "Certificaciones" || btnTextContent === "Certifications") {
+        //   filteredContent(myStudiesContent());
+        // }
       });
       return content_btn;
     }

@@ -23,7 +23,8 @@ const technologiesContent = () => {
     english: "Technologies",
   };
 
-  const CONTENT_TECHNOLOGIES = document.querySelector(".content__technologies");
+  const CONTENT_TECHNOLOGIES = document.createElement("div");
+  CONTENT_TECHNOLOGIES.classList.add("content__technologies");
 
   const createTechnologiesContent = () => {
     const contentTechnologiesTitle = document.createElement("div");
@@ -57,23 +58,25 @@ const technologiesContent = () => {
     });
 
     // CONTENT_TECHNOLOGIES.appendChild(contentTechnologiesTitle);
-    // CONTENT_TECHNOLOGIES.appendChild(contentTechnologiesGrid);
+    CONTENT_TECHNOLOGIES.appendChild(contentTechnologiesGrid);
 
-    updateContentBasedOnSelectedLanguage();
+    // updateContentBasedOnSelectedLanguage();
   };
 
-  const updateContentBasedOnSelectedLanguage = () => {
-    const techTitle = document.querySelector(".tech-title");
-    if (selectedLanguage === LANGUAGES.SPANISH) {
-      techTitle.textContent = technologiesText.spanish;
-    } else if (selectedLanguage === LANGUAGES.ENGLISH) {
-      techTitle.textContent = technologiesText.english;
-    }
-  };
+  // const updateContentBasedOnSelectedLanguage = () => {
+  //   const techTitle = document.querySelector(".tech-title");
+  //   if (selectedLanguage === LANGUAGES.SPANISH) {
+  //     techTitle.textContent = technologiesText.spanish;
+  //   } else if (selectedLanguage === LANGUAGES.ENGLISH) {
+  //     techTitle.textContent = technologiesText.english;
+  //   }
+  // };
 
-  languageEmitter.on("languageChanged", updateContentBasedOnSelectedLanguage);
+  // languageEmitter.on("languageChanged", updateContentBasedOnSelectedLanguage);
 
   createTechnologiesContent();
+
+  return CONTENT_TECHNOLOGIES;
 };
 
 export { technologiesContent };
