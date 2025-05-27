@@ -19,6 +19,8 @@ import { myStudiesContent } from "../my-studies/index.js";
     mailIcon: ["fa-solid", "fa-envelope"],
   };
 
+  const categoryBtnIcons = ["fa-solid fa-code", "fa-solid fa-globe", "fa-solid fa-book"];
+
   const socialMediaLinks = {
     github: {
       url: general.gitHubProfile,
@@ -115,6 +117,9 @@ import { myStudiesContent } from "../my-studies/index.js";
       contentMeSocialMedia.appendChild(aElement);
     });
 
+    const fineLine = document.createElement("hr");
+    fineLine.classList.add("fine__line");
+
     emailCopyElement.appendChild(copiedMailText);
     emailCopyElement.appendChild(copyMailFieldIcon);
     emailCopyElement.appendChild(mailICon);
@@ -138,6 +143,7 @@ import { myStudiesContent } from "../my-studies/index.js";
     CONTENT_ME.appendChild(contentImg);
     CONTENT_ME.appendChild(contentMeInfo);
     CONTENT_ME.appendChild(my_content_categories);
+    CONTENT_ME.appendChild(fineLine);
 
     updateContentBasedOnSelectedLanguage();
   };
@@ -158,12 +164,29 @@ import { myStudiesContent } from "../my-studies/index.js";
       copiedMailText.textContent = contentMe_EN.copiedTextElement_EN;
     }
 
-    function createContentCategoriesBtn(classs, btnTextContent) {
+    function createContentCategoriesBtn(classs, btnTextContent, index) {
       const content_btn = document.createElement("button");
       content_btn.classList.add(classs);
-      content_btn.textContent = btnTextContent;
 
-      content_btn.addEventListener("click", () => {
+      const btnIcon = document.createElement("i");
+      btnIcon.classList = categoryBtnIcons[index];
+      btnIcon.style.background = "none";
+      content_btn.appendChild(btnIcon);
+
+      const textBtn = document.createTextNode(" " + btnTextContent);
+      content_btn.appendChild(textBtn);
+
+      if (btnTextContent === "Proyectos" || btnTextContent === "Projects") content_btn.classList.add("btn_my_content__selected");
+
+      content_btn.addEventListener("click", (e) => {
+        const btns = document.querySelectorAll(`.${classs}`);
+
+        btns.forEach((btn) => {
+          btn.classList.remove("btn_my_content__selected");
+        });
+
+        e.target.classList.add("btn_my_content__selected");
+
         if (btnTextContent === "Proyectos" || btnTextContent === "Projects") {
           filteredContent(projectsContent());
         } else if (btnTextContent === "Certificaciones" || btnTextContent === "Certifications") {
@@ -174,15 +197,19 @@ import { myStudiesContent } from "../my-studies/index.js";
     }
 
     if (selectedLanguage === LANGUAGES.SPANISH) {
-      myContentCategories_ES.forEach((content) => {
+      myContentCategories_ES.forEach((content, index) => {
         const classs = "btn_my_content";
-        const myContentBtn = createContentCategoriesBtn(classs, content);
+
+        const myContentBtn = createContentCategoriesBtn(classs, content, index);
+
         my_content_categories.appendChild(myContentBtn);
       });
     } else if (selectedLanguage === LANGUAGES.ENGLISH) {
-      myContentCategories_EN.forEach((content) => {
+      myContentCategories_EN.forEach((content, index) => {
         const classs = "btn_my_content";
-        const myContentBtn = createContentCategoriesBtn(classs, content);
+
+        const myContentBtn = createContentCategoriesBtn(classs, content, index);
+
         my_content_categories.appendChild(myContentBtn);
       });
     } else {

@@ -33,7 +33,7 @@ const projectsContent = () => {
 
   const projectsMaterial = {
     react: "devicon-react-original colored",
-    vite: "",
+    vite: techImageUrl.vitejs,
     typescript: "devicon-typescript-plain colored",
     tailwindcss: "devicon-tailwindcss-original colored",
     express: "devicon-express-original",
@@ -86,21 +86,9 @@ const projectsContent = () => {
   const CONTENT_PROJECTS = document.createElement("div");
   CONTENT_PROJECTS.classList.add("content__projects");
 
-  const projectTitle = document.createElement("div");
-  projectTitle.classList.add("projects-title");
-
-  const title = document.createElement("h2");
-
-  const codeIcon = document.createElement("i");
-  codeIcon.className = "fa-solid fa-code";
-
-  projectTitle.appendChild(codeIcon);
-  projectTitle.appendChild(title);
-
   const contentProjectInfoContainer = document.createElement("div");
   contentProjectInfoContainer.classList.add("content__project__info__container");
 
-  CONTENT_PROJECTS.appendChild(projectTitle);
   CONTENT_PROJECTS.appendChild(contentProjectInfoContainer);
 
   const createProjectElement = (project) => {
@@ -197,11 +185,6 @@ const projectsContent = () => {
 
   const renderProjects = () => {
     contentProjectInfoContainer.innerHTML = "";
-    if (selectedLanguage === LANGUAGES.SPANISH) {
-      title.textContent = "Proyectos";
-    } else if (selectedLanguage === LANGUAGES.ENGLISH) {
-      title.textContent = "Projects";
-    }
 
     myProjects.forEach((project) => {
       const projectElement = createProjectElement(project);
@@ -213,10 +196,7 @@ const projectsContent = () => {
 
   updateProjectDescriptions();
 
-  window.addEventListener("load", () => {
-    // load all this after page is loaded
-    projectsMaterial.vite = techImageUrl.vitejs;
-
+  window.addEventListener("DOMContentLoaded", () => {
     renderProjects();
   });
 

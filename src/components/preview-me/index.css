@@ -25,6 +25,17 @@
   background-color: #7f8caa;
   transition-duration: 300ms;
 }
+.btn_my_content__selected {
+  background-color: #7f8caa;
+}
+
+.fine__line {
+  width: 100%;
+  border: none;
+  height: 1px;
+  background-color: #7f8caa;
+  margin: 12px 0 12px 0;
+}
 .content__img {
   width: 180px;
   height: 180px;
