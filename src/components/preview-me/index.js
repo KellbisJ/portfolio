@@ -34,12 +34,12 @@ import { myStudiesContent } from "../my-studies/index.js";
   };
 
   const contentMe_ES = {
-    greetingText_ES: `¡Hola! Soy Kellbis Salazar`,
+    greetingText_ES: `Kellbis Salazar 🗿`,
     contentMeText_ES: `Desarrollador autodidacta especializado en desarrollo frontend con conocimientos de backend.`,
     copiedTextElement_ES: `¡Copiado!`,
   };
   const contentMe_EN = {
-    greetingText_EN: `Hi! I'm Kellbis Salazar`,
+    greetingText_EN: `Kellbis Salazar 🗿`,
     contentMeText_EN: `Self-taught developer specialized in frontend development with backend knowledge.`,
     copiedTextElement_EN: `Copied!`,
   };
@@ -51,6 +51,12 @@ import { myStudiesContent } from "../my-studies/index.js";
   my_content_categories.classList.add("my__content__categories");
 
   const createPreviewMe = () => {
+    const contentMePresentation = document.createElement("div");
+    contentMePresentation.classList.add("content__me__presentation");
+
+    const contentMeBrand = document.createElement("div");
+    contentMeBrand.classList.add("content__me__brand");
+
     const contentImg = document.createElement("div");
     contentImg.classList.add("content__img");
     const meImg = document.createElement("img");
@@ -65,8 +71,8 @@ import { myStudiesContent } from "../my-studies/index.js";
 
     contentImg.appendChild(meImg);
 
-    const contentMeInfo = document.createElement("div");
-    contentMeInfo.classList.add("content__me__info");
+    const contentMeSocialMedia = document.createElement("div");
+    contentMeSocialMedia.classList.add("content__me__socialMedia");
 
     const greetingTextH1 = document.createElement("h1");
     greetingTextH1.classList.add("greeting-text");
@@ -74,8 +80,9 @@ import { myStudiesContent } from "../my-studies/index.js";
     const contentMeText = document.createElement("p");
     contentMeText.classList.add("content__me__text");
 
-    const contentMeSocialMedia = document.createElement("div");
-    contentMeSocialMedia.classList.add("content__me__social__media");
+    contentMeBrand.appendChild(contentImg);
+    contentMeBrand.appendChild(greetingTextH1);
+    contentMeBrand.appendChild(greetingTextH1);
 
     const emailCopyElement = document.createElement("div");
     emailCopyElement.classList.add("social-media-element", "email__copy");
@@ -127,10 +134,6 @@ import { myStudiesContent } from "../my-studies/index.js";
     emailCopyElement.appendChild(inputMailField);
     contentMeSocialMedia.appendChild(emailCopyElement);
 
-    contentMeInfo.appendChild(greetingTextH1);
-    contentMeInfo.appendChild(contentMeText);
-    contentMeInfo.appendChild(contentMeSocialMedia);
-
     //listeners
     copyMailFieldIcon.addEventListener("click", () => {
       copyFieldText(inputMailField, copyMailFieldIcon, copiedMailText);
@@ -141,8 +144,11 @@ import { myStudiesContent } from "../my-studies/index.js";
       window.location.href = `mailto:${emailAddress}`;
     }); // SendEmail
 
-    CONTENT_ME.appendChild(contentImg);
-    CONTENT_ME.appendChild(contentMeInfo);
+    contentMeBrand.appendChild(contentMeSocialMedia);
+    contentMePresentation.appendChild(contentMeBrand);
+    contentMePresentation.appendChild(contentMeText);
+
+    CONTENT_ME.appendChild(contentMePresentation);
     CONTENT_ME.appendChild(my_content_categories);
     CONTENT_ME.appendChild(fineLine);
 
@@ -204,12 +210,6 @@ import { myStudiesContent } from "../my-studies/index.js";
           default:
             console.warn("A fucking error occurred");
         }
-
-        // if (btnTextContent === "Proyectos" || btnTextContent === "Projects") {
-        //   filteredContent(projectsContent());
-        // } else if (btnTextContent === "Certificaciones" || btnTextContent === "Certifications") {
-        //   filteredContent(myStudiesContent());
-        // }
       });
       return content_btn;
     }
