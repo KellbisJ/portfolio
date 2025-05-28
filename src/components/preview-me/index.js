@@ -20,7 +20,7 @@ import { myStudiesContent } from "../my-studies/index.js";
     mailIcon: ["fa-solid", "fa-envelope"],
   };
 
-  const categoryBtnIcons = ["fa-solid fa-microchip", "fa-solid fa-code", "fa-solid fa-globe", "fa-solid fa-book"];
+  const categoryBtnIcons = ["fa-solid fa-microchip", "fa-solid fa-code", "fa-solid fa-book", "fa-solid fa-user-tie"];
 
   const socialMediaLinks = {
     github: {
@@ -34,12 +34,12 @@ import { myStudiesContent } from "../my-studies/index.js";
   };
 
   const contentMe_ES = {
-    greetingText_ES: `Kellbis Salazar 🗿`,
+    greetingText_ES: `Kellbis Salazar`,
     contentMeText_ES: `Desarrollador autodidacta especializado en desarrollo frontend con conocimientos de backend.`,
     copiedTextElement_ES: `¡Copiado!`,
   };
   const contentMe_EN = {
-    greetingText_EN: `Kellbis Salazar 🗿`,
+    greetingText_EN: `Kellbis Salazar`,
     contentMeText_EN: `Self-taught developer specialized in frontend development with backend knowledge.`,
     copiedTextElement_EN: `Copied!`,
   };
