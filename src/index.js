@@ -4,14 +4,14 @@
 
     // ### MAIN CONTENT ### //
     const mainModuleScripts = [
+      "src/components/layout-initializer/index.js",
       "src/language/index.js",
       "src/components/content-me-filtered/index.js",
-      "src/components/navbar/index.js",
+      "src/components/technologies/index.js",
       "src/components/preview-me/index.js",
-      "src/components/projects/index.js",
     ]; // MAIN JS SCRIPTS COMPONENTS
 
-    const mainCssFiles = ["src/index.css", "src/components/index.css", "src/components/navbar/index.css", "src/components/preview-me/index.css", "src/components/projects/index.css"]; // MAIN CSS STYLES;
+    const mainCssFiles = ["src/index.css", "src/components/index.css", "src/components/layout-initializer/index.css", "src/components/preview-me/index.css", "src/components/projects/index.css"]; // MAIN CSS STYLES;
 
     const loadScripts = (scripts, type, callback) => {
       let loadedData = 0;
@@ -97,7 +97,7 @@
     const cdnScripts = ["https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"]; // CDNS SCRIPTS
 
     const deferredModuleScripts = [
-      "src/components/technologies/index.js",
+      "src/components/projects/index.js",
       "src/components/my-studies/index.js",
       "src/components/about-me/index.js",
       "src/components/contact-me/index.js",

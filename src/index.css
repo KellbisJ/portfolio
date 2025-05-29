@@ -34,7 +34,7 @@ body {
 
 h1 {
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 800;
 }
 h2 {
   font-size: 16px;
@@ -43,7 +43,6 @@ h2 {
 h3,
 h4 {
   font-size: 14px;
-  font-weight: 800;
 }
 h1,
 h2,
@@ -53,32 +52,39 @@ h5,
 h6 {
   color: #000;
 }
+h3 {
+  color: #131313;
+}
 p,
 span,
-label {
+label,
+button {
   color: #131313;
 }
 .layout {
   display: flex;
   flex-direction: column;
   height: 95vh;
-  margin-right: 10vw;
-  margin-left: 10vw;
+  max-width: 300px;
+  /* margin-right: 10vw;
+  margin-left: 10vw; */
   color: #000;
   /* color: #021526;
   color: #1b2430; */
   z-index: 1;
   background-color: #fff;
-  padding: 12px;
+  padding: 18px;
   border-radius: 28px;
-  /* margin-top: 32px;
-  margin-bottom: 32px; */
+  /* gap: 18px; */
+  /* margin-top: 18px; */
+  /* margin-bottom: 32px; */
   overflow-y: scroll;
 }
 
 .content {
   margin-top: 8px;
   width: 100%;
+  min-height: 100vh;
 }
 
 @media (min-width: 768px) {
@@ -88,8 +94,8 @@ label {
   h2 {
     font-size: 16px;
   }
-  .content {
-    margin-top: 80px;
+  .layout {
+    max-width: 680px;
   }
 }
 
@@ -104,8 +110,7 @@ label {
     font-size: 16px;
   }
   .layout {
-    margin-right: 20vw;
-    margin-left: 20vw;
+    max-width: 780px;
   }
 }
 
@@ -117,7 +122,10 @@ label {
     font-size: 24px;
   }
   h3 {
-    font-size: 20px;
+    font-weight: bold;
+  }
+  .layout {
+    max-width: 1080px;
   }
 }
 
@@ -132,7 +140,6 @@ label {
 
 @media (min-width: 1920px) {
   .layout {
-    margin-right: 24vw;
-    margin-left: 24vw;
+    max-width: 1280px;
   }
 }

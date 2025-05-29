@@ -1,0 +1,86 @@
+button {
+  outline: none;
+  border: none;
+  text-align: center;
+  cursor: pointer;
+  background: none;
+}
+
+/* decor */
+.decor {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  gap: 12px;
+}
+
+.wave__decor {
+  flex: 1;
+}
+
+.box__left__lg__wave {
+  height: 16px;
+  width: 100%;
+  border-radius: 8px;
+  background: linear-gradient(90deg, transparent, #dcec92, #aaec92, transparent);
+  background-size: 200% 100%;
+  animation: wave 10s linear infinite;
+  box-shadow: 0 2px 8px rgba(170, 236, 146, 0.3);
+}
+
+@keyframes wave {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+.dots__decor {
+  display: flex;
+  gap: 12px;
+}
+
+.dot__circle {
+  border-radius: 50%;
+  background: linear-gradient(135deg, #dcec92, #aaec92);
+  border: 2px solid #dcec92;
+}
+
+.box__dot__sm {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+/* decor */
+
+@media (min-width: 768px) {
+  .decor {
+    gap: 20px;
+  }
+
+  .box__left__lg__wave {
+    height: 18px;
+  }
+  .box__dot__sm {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .box__left__lg__wave {
+    height: 20px;
+  }
+
+  .box__dot__sm {
+    width: 20px;
+    height: 20px;
+  }
+}

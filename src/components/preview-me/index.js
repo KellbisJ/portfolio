@@ -20,7 +20,7 @@ import { myStudiesContent } from "../my-studies/index.js";
     mailIcon: ["fa-solid", "fa-envelope"],
   };
 
-  const categoryBtnIcons = ["fa-solid fa-microchip", "fa-solid fa-code", "fa-solid fa-book", "fa-solid fa-user-tie"];
+  const categoryBtnIcons = ["fa-solid fa-microchip", "fa-solid fa-code", "fa-solid fa-book", "fa-solid fa-user"];
 
   const socialMediaLinks = {
     github: {
@@ -35,12 +35,12 @@ import { myStudiesContent } from "../my-studies/index.js";
 
   const contentMe_ES = {
     greetingText_ES: `Kellbis Salazar`,
-    contentMeText_ES: `Desarrollador autodidacta especializado en desarrollo frontend con conocimientos de backend.`,
+    contentMeText_ES: `Desarrollador web full-stack con +3 años de experiencia`,
     copiedTextElement_ES: `¡Copiado!`,
   };
   const contentMe_EN = {
     greetingText_EN: `Kellbis Salazar`,
-    contentMeText_EN: `Self-taught developer specialized in frontend development with backend knowledge.`,
+    contentMeText_EN: `Full-stack web developer with +3 years of experience.`,
     copiedTextElement_EN: `Copied!`,
   };
   const myContentCategories_ES = ["Tecnologías", "Proyectos", "Certificaciones", "Contacto"];
@@ -54,7 +54,7 @@ import { myStudiesContent } from "../my-studies/index.js";
     const contentMePresentation = document.createElement("div");
     contentMePresentation.classList.add("content__me__presentation");
 
-    const contentMeBrand = document.createElement("div");
+    const contentMeBrand = document.createElement("section");
     contentMeBrand.classList.add("content__me__brand");
 
     const contentImg = document.createElement("div");
@@ -84,7 +84,7 @@ import { myStudiesContent } from "../my-studies/index.js";
     contentMeBrand.appendChild(greetingTextH1);
     contentMeBrand.appendChild(greetingTextH1);
 
-    const emailCopyElement = document.createElement("div");
+    const emailCopyElement = document.createElement("button");
     emailCopyElement.classList.add("social-media-element", "email__copy");
 
     const copiedMailText = document.createElement("p");
@@ -92,9 +92,9 @@ import { myStudiesContent } from "../my-studies/index.js";
     copiedMailText.id = "copyMailPreview";
     copiedMailText.ariaLive = "polite";
 
-    const copyMailFieldIcon = document.createElement("i");
-    copyMailFieldIcon.classList.add(...icons.copyIcon);
-    copyMailFieldIcon.id = "copyMailPreviewField";
+    // const copyMailFieldIcon = document.createElement("i");
+    // copyMailFieldIcon.classList.add(...icons.copyIcon);
+    // copyMailFieldIcon.id = "copyMailPreviewField";
 
     const mailICon = document.createElement("i");
     mailICon.classList.add(...icons.mailIcon);
@@ -114,7 +114,8 @@ import { myStudiesContent } from "../my-studies/index.js";
       aElement.target = "_blank";
       aElement.rel = "noopener noreferrer";
 
-      const socialMediaElement = document.createElement("div");
+      const socialMediaElement = document.createElement("button");
+      socialMediaElement.type = "button";
       socialMediaElement.classList.add("social-media-element");
 
       const socialMediaIcon = document.createElement("i");
@@ -129,20 +130,20 @@ import { myStudiesContent } from "../my-studies/index.js";
     fineLine.classList.add("fine__line");
 
     emailCopyElement.appendChild(copiedMailText);
-    emailCopyElement.appendChild(copyMailFieldIcon);
+    // emailCopyElement.appendChild(copyMailFieldIcon);
     emailCopyElement.appendChild(mailICon);
     emailCopyElement.appendChild(inputMailField);
     contentMeSocialMedia.appendChild(emailCopyElement);
 
     //listeners
-    copyMailFieldIcon.addEventListener("click", () => {
-      copyFieldText(inputMailField, copyMailFieldIcon, copiedMailText);
+    emailCopyElement.addEventListener("click", () => {
+      copyFieldText(inputMailField, emailCopyElement, copiedMailText);
     }); // CopyMail
 
-    mailICon.addEventListener("click", () => {
-      const emailAddress = "kellbisdevsw@gmail.com";
-      window.location.href = `mailto:${emailAddress}`;
-    }); // SendEmail
+    // mailICon.addEventListener("click", () => {
+    //   const emailAddress = "kellbisdevsw@gmail.com";
+    //   window.location.href = `mailto:${emailAddress}`;
+    // }); // SendEmail
 
     contentMeBrand.appendChild(contentMeSocialMedia);
     contentMePresentation.appendChild(contentMeBrand);
