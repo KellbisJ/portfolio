@@ -11,9 +11,11 @@
 
 .content__technologies__img__grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: auto;
+  grid-template-columns: repeat(auto-fill, minmax(85px, 1fr));
   gap: 4px;
   /* padding: 8px; */
+  justify-content: start;
   justify-items: center;
   margin-top: 4px;
 }
@@ -27,13 +29,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%;
   height: 100%;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
   text-align: center;
   padding: 6px;
-
-  backdrop-filter: blur(8px);
   border: 1.5px solid #ffffff26;
 }
 
@@ -81,9 +79,5 @@
 @media (min-width: 1440px) {
   .technologies__img {
     width: 64px;
-  }
-  .content__technologies__img__grid {
-    grid-template-columns: repeat(5, 1fr);
-    gap: 12px;
   }
 }

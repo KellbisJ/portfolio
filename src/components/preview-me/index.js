@@ -2,9 +2,9 @@ import { languageEmitter } from "../../language/eventEmitter.js";
 import { selectedLanguage, LANGUAGES } from "../../language/index.js";
 import { copyFieldText } from "../../utils/copy-field/index.js";
 import { filteredContent } from "../content-me-filtered/index.js";
-import { technologiesContent } from "../technologies/index.js";
-import { projectsContent } from "../projects/index.js";
-import { myStudiesContent } from "../my-studies/index.js";
+import { technologiesContent, TECH_CONTENT_KEY } from "../technologies/index.js";
+import { projectsContent, PROJECTS_CONTENT_KEY } from "../projects/index.js";
+import { myStudiesContent, STUDIES_CONTENT_KEY } from "../my-studies/index.js";
 
 (() => {
   const general = {
@@ -198,15 +198,15 @@ import { myStudiesContent } from "../my-studies/index.js";
         switch (btnTextContent) {
           case "Tecnologías":
           case "Technologies":
-            filteredContent(technologiesContent());
+            filteredContent(technologiesContent, TECH_CONTENT_KEY);
             break;
           case "Proyectos":
           case "Projects":
-            filteredContent(projectsContent());
+            filteredContent(projectsContent, PROJECTS_CONTENT_KEY);
             break;
           case "Certificaciones":
           case "Certifications":
-            filteredContent(myStudiesContent());
+            filteredContent(myStudiesContent, STUDIES_CONTENT_KEY);
             break;
           default:
             console.warn("A fucking error occurred");

@@ -1,38 +1,38 @@
 import { LANGUAGES, selectedLanguage, setSelectedLanguage } from "../../language/index.js";
 import { languageEmitter } from "../../language/eventEmitter.js";
 
+const TECH_CONTENT_KEY = "technologies";
+
 const technologiesContent = () => {
   const technologiesMaterial = [
     {
       name: selectedLanguage === LANGUAGES.SPANISH ? "Lenguajes de programación" : "Programming Languages",
       icons: [
-        { src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg", name: "HTML5" },
         { src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg", name: "JavaScript" },
         { src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg", name: "TypeScript" },
-        { src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original-wordmark.svg", name: "Node.js" },
+        { src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg", name: "Python" },
       ],
     },
     {
-      name: selectedLanguage === LANGUAGES.SPANISH ? "Frameworks y bibliotecas" : "Frameworks & Libraries",
+      name: "Frontend",
       icons: [
         { src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg", name: "React.js" },
         { src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg", name: "Vue.js" },
-        { src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg", name: "Express.js" },
-      ],
-    },
-    {
-      name: selectedLanguage === LANGUAGES.SPANISH ? "Tecnologías de diseño" : "Design Technologies",
-      icons: [
         { src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg", name: "CSS3" },
         { src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg", name: "Tailwind CSS" },
       ],
     },
     {
-      name: selectedLanguage === LANGUAGES.SPANISH ? "Tecnologías de bases de datos" : "Database technologies",
-      icons: [{ src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg", name: "PostgreSQL" }],
+      name: "Backend",
+      icons: [
+        { src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original-wordmark.svg", name: "Node.js" },
+        { src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg", name: "Express.js" },
+        { src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/django/django-plain.svg", name: "Django" },
+        { src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg", name: "PostgreSQL" },
+      ],
     },
     {
-      name: selectedLanguage === LANGUAGES.SPANISH ? "Tecnologías adicionales" : "Additional Technologies",
+      name: selectedLanguage === LANGUAGES.SPANISH ? "Herramientas" : "Tools",
       icons: [
         { src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg", name: "Git" },
         { src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg", name: "GitHub" },
@@ -118,4 +118,4 @@ const technologiesContent = () => {
   return CONTENT_TECHNOLOGIES;
 };
 
-export { technologiesContent };
+export { technologiesContent, TECH_CONTENT_KEY };

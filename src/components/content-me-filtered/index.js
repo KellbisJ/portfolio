@@ -1,10 +1,10 @@
-import { filterContent } from "../../utils/filter-content/index.js";
-import { technologiesContent } from "../technologies/index.js";
+import { filterContent, contentCache } from "../../utils/filter-content/index.js";
+import { technologiesContent, TECH_CONTENT_KEY } from "../technologies/index.js";
 
-const filteredContent = (content = technologiesContent()) => {
+const filteredContent = (contentGenerator = technologiesContent, contentKey = TECH_CONTENT_KEY) => {
   const CONTENT_ME_FILTERED = document.querySelector(".content__me__filtered");
 
-  filterContent(CONTENT_ME_FILTERED, content);
+  filterContent(CONTENT_ME_FILTERED, contentGenerator, contentKey);
   return CONTENT_ME_FILTERED;
 };
 

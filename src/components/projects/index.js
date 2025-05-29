@@ -1,6 +1,8 @@
 import { LANGUAGES, selectedLanguage, setSelectedLanguage } from "../../language/index.js";
 import { languageEmitter } from "../../language/eventEmitter.js";
 
+const PROJECTS_CONTENT_KEY = "projects";
+
 const projectsContent = () => {
   const techImageUrl = {
     vitejs: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitejs/vitejs-original.svg",
@@ -203,4 +205,4 @@ const projectsContent = () => {
   return CONTENT_PROJECTS;
 };
 
-export { projectsContent };
+export { projectsContent, PROJECTS_CONTENT_KEY };

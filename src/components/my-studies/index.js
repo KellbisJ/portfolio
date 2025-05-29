@@ -1,6 +1,8 @@
 import { LANGUAGES, selectedLanguage, setSelectedLanguage } from "../../language/index.js";
 import { languageEmitter } from "../../language/eventEmitter.js";
 
+const STUDIES_CONTENT_KEY = "studies";
+
 const myStudiesContent = () => {
   // MY STUDIES CONTENT
 
@@ -107,4 +109,4 @@ const myStudiesContent = () => {
   return CONTENT_MY_STUDIES;
 };
 
-export { myStudiesContent };
+export { myStudiesContent, STUDIES_CONTENT_KEY };
