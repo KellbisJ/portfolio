@@ -5,6 +5,7 @@ import { filteredContent } from "../content-me-filtered/index.js";
 import { technologiesContent, TECH_CONTENT_KEY } from "../technologies/index.js";
 import { projectsContent, PROJECTS_CONTENT_KEY } from "../projects/index.js";
 import { myStudiesContent, STUDIES_CONTENT_KEY } from "../my-studies/index.js";
+import { contactMeContent, CONTACT_CONTENT_KEY } from "../contact-me/index.js";
 
 (() => {
   const general = {
@@ -77,7 +78,7 @@ import { myStudiesContent, STUDIES_CONTENT_KEY } from "../my-studies/index.js";
     const greetingTextH1 = document.createElement("h1");
     greetingTextH1.classList.add("greeting-text");
 
-    const contentMeText = document.createElement("p");
+    const contentMeText = document.createElement("h2");
     contentMeText.classList.add("content__me__text");
 
     contentMeBrand.appendChild(contentImg);
@@ -207,6 +208,10 @@ import { myStudiesContent, STUDIES_CONTENT_KEY } from "../my-studies/index.js";
           case "Certificaciones":
           case "Certifications":
             filteredContent(myStudiesContent, STUDIES_CONTENT_KEY);
+            break;
+          case "Contacto":
+          case "Contact":
+            filteredContent(contactMeContent, CONTACT_CONTENT_KEY);
             break;
           default:
             console.warn("A fucking error occurred");

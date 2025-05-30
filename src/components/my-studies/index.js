@@ -80,7 +80,7 @@ const myStudiesContent = () => {
         const studyDetailsReferences = document.createElement("p");
         refLink.appendChild(studyDetailsReferences);
         studiesRefs.appendChild(refLink);
-        studyDetailsReferences.textContent = Object.keys(studiesInformationReferences)[index];
+        studyDetailsReferences.textContent = Object.keys(studiesInformationReferences)[index].toUpperCase();
       });
 
       const studyYear = document.createElement("p");

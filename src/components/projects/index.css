@@ -2,20 +2,8 @@
 .content__projects {
   display: flex;
   flex-direction: column;
-  margin-top: 32px;
-}
-.projects-title,
-.content__technologies__title,
-.my-studies-title,
-.about-me-title,
-.contact__title {
-  display: flex;
-  align-items: center;
-  padding: 18px;
-  background-color: transparent;
-  border: 2px solid #1a2647;
-  /* border-radius: 6px; */
-  margin-bottom: 32px;
+  margin-top: 18px;
+  margin-bottom: 18px;
 }
 .projects-title i {
   margin-right: 8px;
@@ -34,10 +22,8 @@
   width: 100%;
   text-align: center;
   transition: transform 0.3s ease;
-
-  background-color: #ffffff1a;
-  backdrop-filter: blur(8px);
-  border: 1.5px solid #ffffff26;
+  border-radius: 14px;
+  background-color: #aaec92;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
@@ -110,19 +96,26 @@
 }
 /* PROJECTS */
 
-@media (min-width: 450px) {
+@media (min-width: 768px) {
+  .project-title {
+    font-size: 16px;
+  }
   .content__project__info__container {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
   }
 }
-
-@media (min-width: 640px) {
-  .content__project__info__container {
-    grid-template-columns: 1fr 1fr;
-  }
+@media (min-width: 1440px) {
   .project-title {
-    font-size: 16px;
+    font-size: 18px;
+  }
+  .content__project__info__container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .project-description {
+    font-size: 14px;
   }
 }
