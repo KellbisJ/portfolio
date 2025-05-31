@@ -8,6 +8,9 @@ const filteredContent = (contentGenerator = technologiesContent, contentKey = TE
   return CONTENT_ME_FILTERED;
 };
 
-filteredContent();
+window.addEventListener("load", () => {
+  filteredContent();
+});
+// filteredContent();
 
 export { filteredContent };

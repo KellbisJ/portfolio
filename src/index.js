@@ -1,6 +1,6 @@
 (() => {
   document.addEventListener("DOMContentLoaded", () => {
-    let mainContentLoaded = false;
+    let dataLoaded = false;
 
     // ### MAIN CONTENT ### //
     const mainModuleScripts = [
@@ -11,7 +11,7 @@
       "src/components/content-me-filtered/index.js",
     ]; // MAIN JS SCRIPTS COMPONENTS
 
-    const mainCssFiles = ["src/index.css", "src/components/index.css", "src/components/layout-initializer/index.css", "src/components/preview-me/index.css", "src/components/projects/index.css"]; // MAIN CSS STYLES;
+    const mainCssFiles = ["src/index.css", "src/components/index.css", "src/components/layout-initializer/index.css", "src/components/preview-me/index.css", "src/components/technologies/index.css"]; // MAIN CSS STYLES;
 
     const loadScripts = (scripts, type, callback) => {
       let loadedData = 0;
@@ -69,10 +69,26 @@
       });
     };
 
+    const hideLoadingMetaData = () => {
+      if (dataLoaded === true) {
+        const loadingMetadata = document.getElementById("loading__metadata");
+        if (loadingMetadata) {
+          loadingMetadata.classList.add("hidden");
+          loadingMetadata.addEventListener(
+            "transitionend",
+            () => {
+              loadingMetadata.remove();
+            },
+            { once: true }
+          );
+        }
+      }
+    }; // hide <div id="loading-metadata" class="loading-metadata"> when page is loaded
+
     const loadMainContent = () => {
       loadScripts(mainCssFiles, "text/css", () => {
         loadScripts(mainModuleScripts, "module", () => {
-          mainContentLoaded = true;
+          loadDeferredContent();
         });
       });
     };
@@ -105,44 +121,19 @@
       // "src/scripts/particles-js/index.js",
     ]; // DEFERRED JS SCRIPTS COMPONENTS
 
-    const deferredCSS = ["src/components/technologies/index.css", "src/components/my-studies/index.css", "src/components/about-me/index.css", "src/components/contact-me/index.css"]; // DEFERRED CSS STYLES
-
-    let loadingMetadataTimeout;
-
-    const hideLoadingMetaData = () => {
-      const loadingMetadata = document.getElementById("loading-metadata");
-      if (loadingMetadata) {
-        loadingMetadata.classList.add("hidden");
-        loadingMetadata.addEventListener(
-          "transitionend",
-          () => {
-            loadingMetadata.remove();
-          },
-          { once: true }
-        );
-      }
-    }; // hide <div id="loading-metadata" class="loading-metadata"> when page is loaded
+    const deferredCSS = ["src/components/projects/index.css", "src/components/my-studies/index.css", "src/components/about-me/index.css", "src/components/contact-me/index.css"]; // DEFERRED CSS STYLES
 
     const loadDeferredContent = () => {
       loadLinkStylesheetResources();
       loadScripts(deferredCSS, "stylesheet", () => {
         loadScripts(deferredModuleScripts, "module", () => {
-          if (loadingMetadataTimeout) {
-            clearTimeout(loadingMetadataTimeout);
-          }
-          loadingMetadataTimeout = setTimeout(() => {
-            hideLoadingMetaData();
-          }, 500);
+          dataLoaded = true;
+
+          hideLoadingMetaData();
         });
       });
     };
 
-    if (!mainContentLoaded) loadMainContent();
-
-    window.addEventListener("load", () => {
-      // console.log(mainContentLoaded);
-
-      if (mainContentLoaded) loadDeferredContent();
-    });
+    if (!dataLoaded) loadMainContent();
   });
 })();
