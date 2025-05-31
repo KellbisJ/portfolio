@@ -11,7 +11,7 @@
 .content__me__filtered {
   display: grid;
   position: relative;
-  min-height: 300px;
+  min-height: 1000px; /* THIS IS COVERING A BUG THAT NEEDS TO BE SOLVED IN A FUTURE */
 }
 .content-item {
   grid-area: 1 / 1;

@@ -3,9 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" href="src/language/index.js" as="script" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png" />
@@ -13,17 +14,8 @@
     <title>KS_PORTFOLIO</title>
   </head>
   <body>
-    <!-- <div id="loading-metadata" class="loading-metadata">
-      <div class="loader">
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-      </div>
-    </div> -->
+    <!-- <div id="loading-indicator" class="loading-indicator"></div> -->
 
-    <footer></footer>
-    <div id="loading-indicator" class="loading-indicator"></div>
-    <!-- <div id="particles-js"></div> -->
     <script type="module" src="src/index.js"></script>
   </body>
 </html>

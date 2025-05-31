@@ -42,27 +42,11 @@ const technologiesContent = () => {
     },
   ];
 
-  // globeTechIcon: "fa-solid fa-globe",
-
-  // const technologiesText = {
-  //   spanish: "Tecnologías",
-  //   english: "Technologies",
-  // };
-
   const CONTENT_TECHNOLOGIES = document.createElement("div");
   CONTENT_TECHNOLOGIES.classList.add("content__technologies");
 
   const createTechnologiesContent = () => {
-    // const contentTechnologiesTitle = document.createElement("div");
-    // contentTechnologiesTitle.className = "content__technologies__title";
-
-    // const titleIcon = document.createElement("i");
-    // titleIcon.className = technologiesMaterial.globeTechIcon;
-    // contentTechnologiesTitle.appendChild(titleIcon);
-
-    // const title = document.createElement("h2");
-    // title.classList.add("tech-title");
-    // contentTechnologiesTitle.appendChild(title);
+    CONTENT_TECHNOLOGIES.innerHTML = "";
 
     technologiesMaterial.forEach((tech) => {
       const techCategoryContainer = document.createElement("section");
@@ -96,22 +80,9 @@ const technologiesContent = () => {
       techCategoryContainer.appendChild(contentTechnologiesGrid);
       CONTENT_TECHNOLOGIES.appendChild(techCategoryContainer);
     });
-
-    // CONTENT_TECHNOLOGIES.appendChild(contentTechnologiesTitle);
-
-    // updateContentBasedOnSelectedLanguage();
   };
 
-  // const updateContentBasedOnSelectedLanguage = () => {
-  //   const techTitle = document.querySelector(".tech-title");
-  //   if (selectedLanguage === LANGUAGES.SPANISH) {
-  //     techTitle.textContent = technologiesText.spanish;
-  //   } else if (selectedLanguage === LANGUAGES.ENGLISH) {
-  //     techTitle.textContent = technologiesText.english;
-  //   }
-  // };
-
-  // languageEmitter.on("languageChanged", updateContentBasedOnSelectedLanguage);
+  languageEmitter.on("languageChanged", createTechnologiesContent);
 
   createTechnologiesContent();
 
