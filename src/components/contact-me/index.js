@@ -23,7 +23,7 @@ const formData = [
 ];
 
 const contactMeContent = () => {
-  const CONTENT_CONTACT = document.createElement("div");
+  const CONTENT_CONTACT = document.createElement("section");
   CONTENT_CONTACT.classList.add("content__contact");
 
   const createContactMeContent = () => {

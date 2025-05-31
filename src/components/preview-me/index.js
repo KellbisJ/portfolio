@@ -155,6 +155,8 @@ import { contactMeContent, CONTACT_CONTENT_KEY } from "../contact-me/index.js";
     CONTENT_ME.appendChild(fineLine);
 
     updateContentBasedOnSelectedLanguage();
+
+    return CONTENT_ME;
   };
 
   const updateContentBasedOnSelectedLanguage = () => {

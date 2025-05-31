@@ -50,7 +50,7 @@ const myStudiesContent = () => {
     CONTENT_MY_STUDIES.appendChild(studiesGrid);
 
     STUDIES_CONTENT.forEach((studiesContent) => {
-      const studyCard = document.createElement("div");
+      const studyCard = document.createElement("article");
       studyCard.classList.add("study__card");
 
       const studyInfo = document.createElement("div");

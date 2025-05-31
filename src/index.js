@@ -6,9 +6,9 @@
     const mainModuleScripts = [
       "src/components/layout-initializer/index.js",
       "src/language/index.js",
-      "src/components/content-me-filtered/index.js",
-      "src/components/technologies/index.js",
       "src/components/preview-me/index.js",
+      "src/components/technologies/index.js",
+      "src/components/content-me-filtered/index.js",
     ]; // MAIN JS SCRIPTS COMPONENTS
 
     const mainCssFiles = ["src/index.css", "src/components/index.css", "src/components/layout-initializer/index.css", "src/components/preview-me/index.css", "src/components/projects/index.css"]; // MAIN CSS STYLES;

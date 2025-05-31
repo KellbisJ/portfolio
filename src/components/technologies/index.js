@@ -65,7 +65,7 @@ const technologiesContent = () => {
     // contentTechnologiesTitle.appendChild(title);
 
     technologiesMaterial.forEach((tech) => {
-      const techCategoryContainer = document.createElement("div");
+      const techCategoryContainer = document.createElement("section");
       techCategoryContainer.className = "technology__category";
 
       const techCategoryTitle = document.createElement("h3");
