@@ -1,0 +1,16 @@
+.translate__menu__container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background-color: #000;
+  position: absolute;
+  visibility: hidden;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.translate__menu__container.show {
+  visibility: visible;
+  pointer-events: auto;
+  opacity: 1;
+}

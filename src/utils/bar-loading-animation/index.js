@@ -3,7 +3,10 @@ let showLoadingTimeout;
 let resetLoadingBarTimeout;
 
 function barLoadingAnimation() {
-  const loadingIndicator = document.getElementById("loading-indicator");
+  const layout = document.querySelector(".layout");
+
+  const loadingIndicator = document.createElement("div");
+  loadingIndicator.id = "loading-indicator";
   loadingIndicator.classList.add("show");
 
   const progressBar = document.createElement("div");
@@ -14,6 +17,7 @@ function barLoadingAnimation() {
 
   progressBar.appendChild(progressBarFill);
   loadingIndicator.appendChild(progressBar);
+  layout.appendChild(loadingIndicator);
 
   if (loadingAnimationTimeout) {
     clearTimeout(loadingAnimationTimeout);

@@ -6,11 +6,12 @@ import { technologiesContent, TECH_CONTENT_KEY } from "../technologies/index.js"
 import { projectsContent, PROJECTS_CONTENT_KEY } from "../projects/index.js";
 import { myStudiesContent, STUDIES_CONTENT_KEY } from "../my-studies/index.js";
 import { contactMeContent, CONTACT_CONTENT_KEY } from "../contact-me/index.js";
+import { translateMenu } from "../translate-menu/index.js";
 
 const general = {
   meImgUrl: "https://ik.imagekit.io/137/Portfolio/mainCWEBP.webp?updatedAt=1744037093889",
   gitHubProfile: "https://github.com/KellbisJ",
-  linkedinProfile: "https://linkedin.com/in/kellbis-salazar-arnaez-3a844833a",
+  linkedinProfile: "www.linkedin.com/in/kellbisj",
 };
 
 const icons = {
@@ -20,7 +21,7 @@ const icons = {
   mailIcon: ["fa-solid", "fa-envelope"],
 };
 
-const categoryBtnIcons = ["fa-solid fa-microchip", "fa-solid fa-code", "fa-solid fa-book", "fa-solid fa-user"];
+const categoryBtnIcons = ["fa-solid fa-microchip", "fa-solid fa-code", "fa-solid fa-book", "fa-solid fa-briefcase"];
 
 const socialMediaLinks = {
   github: {
@@ -43,8 +44,8 @@ const contentMe_EN = {
   contentMeText_EN: `Full-stack web developer with +3 years of experience.`,
   copiedTextElement_EN: `Copied!`,
 };
-const myContentCategories_ES = ["Tecnologías", "Proyectos", "Certificaciones", "Contacto"];
-const myContentCategories_EN = ["Technologies", "Projects", "Certifications", "Contact"];
+const myContentCategories_ES = ["Tecnologías", "Proyectos", "Certificaciones", "¡Contrátame!"];
+const myContentCategories_EN = ["Technologies", "Projects", "Certifications", "Hire me!"];
 
 const CONTENT_ME = document.querySelector(".content__me");
 const my_content_categories = document.createElement("div");
@@ -57,15 +58,19 @@ const createPreviewMe = () => {
   const contentMeBrand = document.createElement("section");
   contentMeBrand.classList.add("content__me__brand");
 
+  const contentMeDescriptionInfo = document.createElement("div");
+  contentMeDescriptionInfo.classList.add("content__me__descriptionInfo");
+
   const contentImg = document.createElement("div");
   contentImg.classList.add("content__img");
   const meImg = document.createElement("img");
   meImg.classList.add("meImg");
-  document.addEventListener("allMainImagesPreloaded", (event) => {
-    if (event.detail.previewMeImg) {
-      meImg.src = event.detail.previewMeImg;
-    }
-  });
+
+  // document.addEventListener("allMainImagesPreloaded", (event) => {
+  //   if (event.detail.previewMeImg) {
+  //     meImg.src = event.detail.previewMeImg;
+  //   }
+  // });
   meImg.src = general.meImgUrl;
   meImg.alt = "meImg";
 
@@ -80,9 +85,18 @@ const createPreviewMe = () => {
   const contentMeText = document.createElement("h2");
   contentMeText.classList.add("content__me__text");
 
+  const descriptionInfoAccesibility = document.createElement("div");
+  descriptionInfoAccesibility.classList.add("description__info_accesibility");
+
+  // const translateText = document.createTextNode(selectedLanguage === LANGUAGES.SPANISH ? " Traduce la página" : " Translate page");
+  // translateBtn.appendChild(translateText);
+
+  // descriptionInfoAccesibility.append(translateBtn);
+
   contentMeBrand.appendChild(contentImg);
   contentMeBrand.appendChild(greetingTextH1);
-  contentMeBrand.appendChild(greetingTextH1);
+
+  contentMeDescriptionInfo.append(contentMeText, descriptionInfoAccesibility);
 
   const emailCopyElement = document.createElement("button");
   emailCopyElement.classList.add("social-media-element", "email__copy");
@@ -147,7 +161,7 @@ const createPreviewMe = () => {
 
   contentMeBrand.appendChild(contentMeSocialMedia);
   contentMePresentation.appendChild(contentMeBrand);
-  contentMePresentation.appendChild(contentMeText);
+  contentMePresentation.appendChild(contentMeDescriptionInfo);
 
   CONTENT_ME.appendChild(contentMePresentation);
   CONTENT_ME.appendChild(my_content_categories);
@@ -176,7 +190,7 @@ const updateContentBasedOnSelectedLanguage = () => {
 
   function createContentCategoriesBtn(classs, btnTextContent, index) {
     const content_btn = document.createElement("button");
-    content_btn.classList.add(classs);
+    content_btn.classList.add("prevMeBtn", classs);
 
     const btnIcon = document.createElement("i");
     btnIcon.classList = categoryBtnIcons[index];
@@ -210,8 +224,8 @@ const updateContentBasedOnSelectedLanguage = () => {
         case "Certifications":
           filteredContent(myStudiesContent, STUDIES_CONTENT_KEY);
           break;
-        case "Contacto":
-        case "Contact":
+        case "¡Contrátame!":
+        case "Hire me!":
           filteredContent(contactMeContent, CONTACT_CONTENT_KEY);
           break;
         default:
@@ -240,6 +254,25 @@ const updateContentBasedOnSelectedLanguage = () => {
   } else {
     console.log("something weird ocurred waaaaaa");
   }
+
+  const translateBtn = document.createElement("button");
+  translateBtn.classList.add("prevMeBtn", "translateBtn");
+
+  translateBtn.addEventListener("click", () => {
+    const translateMenu = document.querySelector(".translate__menu__container");
+
+    if (translateMenu.classList.contains("show")) {
+      translateMenu.classList.remove("show");
+      return;
+    }
+    translateMenu.classList.add("show");
+  });
+
+  const translateIcon = document.createElement("i");
+  translateIcon.classList.add("fa-solid", "fa-language");
+  translateBtn.appendChild(translateIcon);
+
+  my_content_categories.appendChild(translateBtn);
 };
 
 languageEmitter.on("languageChanged", updateContentBasedOnSelectedLanguage);

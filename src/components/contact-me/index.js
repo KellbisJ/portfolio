@@ -138,7 +138,11 @@ function addFormSubmissionHandler(form, statusElement, submitButton) {
       submitButton.textContent = originalButtonText;
       submitButton.disabled = false;
 
-      setTimeout(() => {
+      let timeout;
+
+      if (timeout) clearTimeout(timeout);
+
+      timeout = setTimeout(() => {
         statusElement.textContent = "";
         statusElement.className = "form__status";
       }, 5000);

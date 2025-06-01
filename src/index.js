@@ -58,6 +58,7 @@
       ["src/components/projects/index.css", "css", { printMedia: true }],
       ["src/components/my-studies/index.css", "css", { printMedia: true }],
       ["src/components/contact-me/index.css", "css", { printMedia: true }],
+      ["src/components/translate-menu/index.css", "css", { printMedia: true }],
     ],
 
     deferredScripts: [

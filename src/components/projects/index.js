@@ -198,10 +198,6 @@ const projectsContent = () => {
 
   updateProjectDescriptions();
 
-  window.addEventListener("DOMContentLoaded", () => {
-    renderProjects();
-  });
-
   return CONTENT_PROJECTS;
 };
 
