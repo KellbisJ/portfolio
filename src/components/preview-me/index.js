@@ -6,7 +6,7 @@ import { technologiesContent, TECH_CONTENT_KEY } from "../technologies/index.js"
 import { projectsContent, PROJECTS_CONTENT_KEY } from "../projects/index.js";
 import { myStudiesContent, STUDIES_CONTENT_KEY } from "../my-studies/index.js";
 import { contactMeContent, CONTACT_CONTENT_KEY } from "../contact-me/index.js";
-import { translateMenu } from "../translate-menu/index.js";
+// import { translateMenu } from "../translate-menu/index.js";
 
 const general = {
   meImgUrl: "https://ik.imagekit.io/137/Portfolio/mainCWEBP.webp?updatedAt=1744037093889",
@@ -47,11 +47,16 @@ const contentMe_EN = {
 const myContentCategories_ES = ["Tecnologías", "Proyectos", "Certificaciones", "¡Contrátame!"];
 const myContentCategories_EN = ["Technologies", "Projects", "Certifications", "Hire me!"];
 
-const CONTENT_ME = document.querySelector(".content__me");
 const my_content_categories = document.createElement("div");
 my_content_categories.classList.add("my__content__categories");
 
 const createPreviewMe = () => {
+  const CONTENT_ME = document.querySelector(".content__me");
+  if (!CONTENT_ME) {
+    console.error("CONTENT_ME is missing");
+    return;
+  }
+
   const contentMePresentation = document.createElement("div");
   contentMePresentation.classList.add("content__me__presentation");
 
@@ -66,11 +71,6 @@ const createPreviewMe = () => {
   const meImg = document.createElement("img");
   meImg.classList.add("meImg");
 
-  // document.addEventListener("allMainImagesPreloaded", (event) => {
-  //   if (event.detail.previewMeImg) {
-  //     meImg.src = event.detail.previewMeImg;
-  //   }
-  // });
   meImg.src = general.meImgUrl;
   meImg.alt = "meImg";
 
@@ -277,4 +277,4 @@ const updateContentBasedOnSelectedLanguage = () => {
 
 languageEmitter.on("languageChanged", updateContentBasedOnSelectedLanguage);
 
-createPreviewMe();
+export { createPreviewMe };

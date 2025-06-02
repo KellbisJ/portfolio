@@ -3,44 +3,54 @@ import { languageEmitter } from "../../language/eventEmitter.js";
 
 const STUDIES_CONTENT_KEY = "studies";
 
+const STUDIES_CONTENT = [
+  {
+    title: {
+      [LANGUAGES.SPANISH]: "Full Stack Developer con JavaScript",
+      [LANGUAGES.ENGLISH]: "Full Stack Developer with JavaScript",
+    },
+    year: "2024",
+    certificateUrl: "https://ik.imagekit.io/137/certifications/Screenshot%202025-03-30%20211007.png?updatedAt=1748398553977",
+    studiesReferences: {
+      platzi: "https://platzi.com/home/",
+    },
+  },
+  {
+    title: {
+      [LANGUAGES.SPANISH]: "Inglés Avanzado C1",
+      [LANGUAGES.ENGLISH]: "Advanced English C1",
+    },
+    year: "2025",
+    certificateUrl: "https://ik.imagekit.io/137/certifications/ENG-C1.png?updatedAt=1748398554186",
+    studiesReferences: {
+      platzi: "https://platzi.com/escuela/ingles/",
+    },
+  },
+  {
+    title: {
+      [LANGUAGES.SPANISH]: "JavaScript Para Backend",
+      [LANGUAGES.ENGLISH]: "JavaScript For Backend",
+    },
+    year: "2024",
+    certificateUrl: "https://ik.imagekit.io/137/certifications/Screenshot%202025-03-30%20212130.png?updatedAt=1748398556159",
+    studiesReferences: {
+      platzi: "https://platzi.com/home/",
+    },
+  },
+  {
+    title: {
+      [LANGUAGES.SPANISH]: "Certificado de inglés EF SET",
+      [LANGUAGES.ENGLISH]: "EF SET English Certificate",
+    },
+    year: "2025",
+    certificateUrl: "https://ik.imagekit.io/137/certifications/ef-set.png?updatedAt=1748452302343",
+    studiesReferences: {
+      efSet: "https://cert.efset.org/fJy3EA",
+    },
+  },
+];
+
 const myStudiesContent = () => {
-  // MY STUDIES CONTENT
-
-  const STUDIES_CONTENT = [
-    {
-      title: selectedLanguage === LANGUAGES.SPANISH ? "Full Stack Developer con JavaScript" : "Full Stack Developer with JavaScript",
-      year: "2024",
-      certificateUrl: "https://ik.imagekit.io/137/certifications/Screenshot%202025-03-30%20211007.png?updatedAt=1748398553977",
-      studiesReferences: {
-        platzi: "https://platzi.com/home/",
-      },
-    },
-    {
-      title: LANGUAGES.SPANISH ? "Inglés Avanzado C1" : "Advanced English C1",
-      year: "2025",
-      certificateUrl: "https://ik.imagekit.io/137/certifications/ENG-C1.png?updatedAt=1748398554186",
-      studiesReferences: {
-        platzi: "https://platzi.com/escuela/ingles/",
-      },
-    },
-    {
-      title: selectedLanguage === LANGUAGES.SPANISH ? "JavaScript Para Backend" : "JavaScript For Backend",
-      year: "2024",
-      certificateUrl: "https://ik.imagekit.io/137/certifications/Screenshot%202025-03-30%20212130.png?updatedAt=1748398556159",
-      studiesReferences: {
-        platzi: "https://platzi.com/home/",
-      },
-    },
-    {
-      title: selectedLanguage === LANGUAGES.SPANISH ? "Certificado de inglés EF SET" : "EF SET English Certificate",
-      year: "2025",
-      certificateUrl: "https://ik.imagekit.io/137/certifications/ef-set.png?updatedAt=1748452302343",
-      studiesReferences: {
-        efSet: "https://cert.efset.org/fJy3EA",
-      },
-    },
-  ];
-
   const CONTENT_MY_STUDIES = document.createElement("div");
   CONTENT_MY_STUDIES.classList.add("content__my__studies");
 
@@ -68,8 +78,16 @@ const myStudiesContent = () => {
       studyInfoImg.appendChild(certificateImg);
 
       const studyDetailsTitle = document.createElement("h3");
-      studyDetailsTitle.textContent = studiesContent.title;
+      // studyDetailsTitle.textContent = studiesContent.title;
       studyInfo.appendChild(studyDetailsTitle);
+
+      if (typeof studiesContent.title === "object") {
+        studyDetailsTitle.textContent = studiesContent.title[selectedLanguage];
+        // Store reference for dynamic titles only
+        // dynamicTitleElements[tech.id] = techCategoryTitle;
+      } else {
+        studyDetailsTitle.textContent = studiesContent.title;
+      }
 
       const studiesInformationReferences = studiesContent.studiesReferences;
       Object.values(studiesInformationReferences).forEach((studyRef, index) => {

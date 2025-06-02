@@ -1,69 +1,83 @@
-import { LANGUAGES, selectedLanguage, setSelectedLanguage } from "../../language/index.js";
-import { languageEmitter } from "../../language/eventEmitter.js";
+import { createPreviewMe } from "../preview-me/index.js";
+import { translateMenu } from "../translate-menu/index.js";
 
-const pageLayout = () => {
-  const body = document.body;
+const pageLayout = () =>
+  new Promise((resolve, reject) => {
+    const body = document.body;
 
-  const LAYOUT = document.createElement("main");
-  LAYOUT.classList.add("layout");
+    const LAYOUT = document.createElement("main");
+    LAYOUT.classList.add("layout");
 
-  // Loading effect
+    // Loading effect
 
-  const loadingMetadata = document.createElement("div");
-  loadingMetadata.id = "loading__metadata";
-  loadingMetadata.classList.add("loading__metadata");
+    const loadingMetadata = document.createElement("div");
+    loadingMetadata.id = "loading__metadata";
+    loadingMetadata.classList.add("loading__metadata");
 
-  const loader = document.createElement("div");
-  loader.classList.add("loader");
+    const loader = document.createElement("div");
+    loader.classList.add("loader");
 
-  for (let i = 0; i < 3; i++) {
-    const dot = document.createElement("div");
-    dot.classList.add("dot");
-    loader.appendChild(dot);
-  }
+    for (let i = 0; i < 3; i++) {
+      const dot = document.createElement("div");
+      dot.classList.add("dot");
+      loader.appendChild(dot);
+    }
 
-  loadingMetadata.appendChild(loader);
-  LAYOUT.appendChild(loadingMetadata);
+    loadingMetadata.appendChild(loader);
+    LAYOUT.appendChild(loadingMetadata);
 
-  // DECOR
-  const decor = document.createElement("div");
-  decor.classList.add("decor");
+    // DECOR
+    const decor = document.createElement("div");
+    decor.classList.add("decor");
 
-  const waveDecor = document.createElement("div");
-  waveDecor.classList.add("wave__decor");
+    const waveDecor = document.createElement("div");
+    waveDecor.classList.add("wave__decor");
 
-  const waveBox = document.createElement("div");
-  waveBox.classList.add("box__left__lg__wave");
-  waveDecor.appendChild(waveBox);
+    const waveBox = document.createElement("div");
+    waveBox.classList.add("box__left__lg__wave");
+    waveDecor.appendChild(waveBox);
 
-  decor.appendChild(waveDecor);
+    decor.appendChild(waveDecor);
 
-  // Three simple circled dots!
-  const dotsDecor = document.createElement("div");
-  dotsDecor.classList.add("dots__decor");
+    // Three simple circled dots!
+    const dotsDecor = document.createElement("div");
+    dotsDecor.classList.add("dots__decor");
 
-  for (let i = 0; i < 3; i++) {
-    const dot = document.createElement("div");
-    dot.classList.add("box__dot__sm", "dot__circle");
-    dotsDecor.appendChild(dot);
-  }
+    for (let i = 0; i < 3; i++) {
+      const dot = document.createElement("div");
+      dot.classList.add("box__dot__sm", "dot__circle");
+      dotsDecor.appendChild(dot);
+    }
 
-  decor.appendChild(dotsDecor);
+    decor.appendChild(dotsDecor);
 
-  LAYOUT.appendChild(decor);
-  // DECOR
+    LAYOUT.appendChild(decor);
+    // DECOR
 
-  const CONTENT_ME = document.createElement("div");
-  CONTENT_ME.classList.add("content__me");
+    const CONTENT_ME = document.createElement("div");
+    CONTENT_ME.classList.add("content__me");
 
-  const CONTENT_ME_FILTERED = document.createElement("div");
-  CONTENT_ME_FILTERED.classList.add("content__me__filtered");
+    const CONTENT_ME_FILTERED = document.createElement("div");
+    CONTENT_ME_FILTERED.classList.add("content__me__filtered");
 
-  LAYOUT.appendChild(CONTENT_ME);
-  LAYOUT.appendChild(CONTENT_ME_FILTERED);
-  body.appendChild(LAYOUT);
+    LAYOUT.append(CONTENT_ME, CONTENT_ME_FILTERED);
+    body.appendChild(LAYOUT);
 
-  return LAYOUT;
-};
+    const layoutExistsInBody = Array.from(document.body.children).some((child) => child.classList.contains("layout"));
 
-pageLayout();
+    if (layoutExistsInBody) {
+      if (LAYOUT?.querySelector(".content__me") !== null && LAYOUT?.querySelector(".content__me__filtered")) {
+        resolve();
+      }
+    } else {
+      reject("Error when creating DOM essential elements");
+    }
+
+    return LAYOUT;
+  });
+
+pageLayout()
+  // All this is to avoid, cannot read properties of null errors.
+  .then(() => createPreviewMe())
+  .then(() => translateMenu())
+  .catch((err) => console.error(err));

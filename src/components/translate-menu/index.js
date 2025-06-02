@@ -3,6 +3,10 @@ import { selectedLanguage, LANGUAGES, setSelectedLanguage } from "../../language
 
 const translateMenu = () => {
   const layout = document.querySelector(".layout");
+  if (!layout) {
+    console.error("Layout element missing");
+    return;
+  }
 
   const TRANSLATE_MENU_CONTAINER = document.createElement("div");
   TRANSLATE_MENU_CONTAINER.classList.add("translate__menu__container");
@@ -29,6 +33,5 @@ const translateMenu = () => {
 
   return TRANSLATE_MENU_CONTAINER;
 };
-document.addEventListener("load", translateMenu());
 
 export { translateMenu };
