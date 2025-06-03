@@ -6,7 +6,7 @@ import { technologiesContent, TECH_CONTENT_KEY } from "../technologies/index.js"
 import { projectsContent, PROJECTS_CONTENT_KEY } from "../projects/index.js";
 import { myStudiesContent, STUDIES_CONTENT_KEY } from "../my-studies/index.js";
 import { contactMeContent, CONTACT_CONTENT_KEY } from "../contact-me/index.js";
-// import { translateMenu } from "../translate-menu/index.js";
+import { translateMenu } from "../translate-menu/index.js";
 
 const general = {
   meImgUrl: "https://ik.imagekit.io/137/Portfolio/mainCWEBP.webp?updatedAt=1744037093889",
@@ -203,13 +203,14 @@ const updateContentBasedOnSelectedLanguage = () => {
     if (btnTextContent === "Tecnologías" || btnTextContent === "Technologies") content_btn.classList.add("btn_my_content__selected");
 
     content_btn.addEventListener("click", (e) => {
-      const btns = document.querySelectorAll(`.${classs}`);
+      const clickedBtn = e.target.closest(`.${classs}`);
 
+      const btns = document.querySelectorAll(`.${classs}`);
       btns.forEach((btn) => {
         btn.classList.remove("btn_my_content__selected");
       });
 
-      e.target.classList.add("btn_my_content__selected");
+      clickedBtn.classList.add("btn_my_content__selected");
 
       switch (btnTextContent) {
         case "Tecnologías":
@@ -257,22 +258,26 @@ const updateContentBasedOnSelectedLanguage = () => {
 
   const translateBtn = document.createElement("button");
   translateBtn.classList.add("prevMeBtn", "translateBtn");
+  const translateIcon = document.createElement("i");
+  translateIcon.classList.add("fa-solid", "fa-language");
+  translateBtn.appendChild(translateIcon);
+  my_content_categories.appendChild(translateBtn);
+
+  translateMenu();
+
+  let showTranslateMenu = false;
 
   translateBtn.addEventListener("click", () => {
     const translateMenu = document.querySelector(".translate__menu__container");
 
-    if (translateMenu.classList.contains("show")) {
+    if (!showTranslateMenu) {
+      translateMenu.classList.add("show");
+      showTranslateMenu = true;
+    } else {
       translateMenu.classList.remove("show");
-      return;
+      showTranslateMenu = false;
     }
-    translateMenu.classList.add("show");
   });
-
-  const translateIcon = document.createElement("i");
-  translateIcon.classList.add("fa-solid", "fa-language");
-  translateBtn.appendChild(translateIcon);
-
-  my_content_categories.appendChild(translateBtn);
 };
 
 languageEmitter.on("languageChanged", updateContentBasedOnSelectedLanguage);

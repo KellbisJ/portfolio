@@ -131,6 +131,7 @@
   background-color: #0a9396;
   color: #f6f0f0;
   font-size: 16px;
+  position: relative;
 }
 
 .my__content__categories {
@@ -149,6 +150,11 @@
   color: #fff;
   transition-duration: 300ms;
 }
+
+.btn_my_content i {
+  pointer-events: none;
+}
+
 .btn_my_content__selected {
   background-color: #25282a;
   color: #fff;

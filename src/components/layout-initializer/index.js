@@ -1,5 +1,6 @@
 import { createPreviewMe } from "../preview-me/index.js";
 import { translateMenu } from "../translate-menu/index.js";
+import { filteredContent } from "../content-me-filtered/index.js";
 
 const pageLayout = () =>
   new Promise((resolve, reject) => {
@@ -78,6 +79,9 @@ const pageLayout = () =>
 
 pageLayout()
   // All this is to avoid, cannot read properties of null errors.
-  .then(() => createPreviewMe())
-  .then(() => translateMenu())
+  .then(() => {
+    createPreviewMe();
+    filteredContent();
+    translateMenu();
+  })
   .catch((err) => console.error(err));

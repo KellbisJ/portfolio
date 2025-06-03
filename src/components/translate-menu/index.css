@@ -1,16 +1,51 @@
 .translate__menu__container {
   display: flex;
-  align-items: center;
-  width: 100%;
+  align-items: start;
+  width: 260px;
   background-color: #000;
   position: absolute;
   visibility: hidden;
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.3s ease;
+  padding: 8px;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 2;
+  top: 34px;
+  left: -30px;
+  border-radius: 8px;
+}
+.translate__menu__container h3 {
+  color: #f6f0f0;
+}
+.translate__options__btn {
+  text-align: center;
 }
 .translate__menu__container.show {
   visibility: visible;
   pointer-events: auto;
   opacity: 1;
+}
+.lang__select {
+  padding: 6px;
+  color: #f6f0f0;
+  background-color: #0a9396;
+  width: auto;
+  margin-left: 6px;
+  display: inline;
+}
+
+@media (min-width: 768px) {
+  .translate__menu__container {
+    top: 42px;
+    left: -174px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .translate__menu__container {
+    top: 56px;
+    left: -124px;
+  }
 }

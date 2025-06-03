@@ -91,10 +91,6 @@
       // Phase 2: Load main scripts
       await loadBatch(RESOURCES.mainScripts);
 
-      // Phase 2.5: Initialize content after main scripts are loaded
-      const { filteredContent } = await import("./components/content-me-filtered/index.js");
-      filteredContent();
-
       // Phase 3: Load deferred resources
       await Promise.all([loadBatch(RESOURCES.deferredCSS), loadBatch(RESOURCES.deferredScripts)]);
 
