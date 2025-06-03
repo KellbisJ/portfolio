@@ -19,6 +19,9 @@ function barLoadingAnimation() {
   loadingIndicator.appendChild(progressBar);
   layout.appendChild(loadingIndicator);
 
+  layout.scrollTo(0, 0);
+  layout.style.overflow = "hidden";
+
   if (loadingAnimationTimeout) {
     clearTimeout(loadingAnimationTimeout);
   }
@@ -38,7 +41,8 @@ function barLoadingAnimation() {
   }, 550);
 
   resetLoadingBarTimeout = setTimeout(() => {
-    loadingIndicator.innerHTML = "";
+    layout.style.overflow = "auto";
+    loadingIndicator.remove();
   }, 600);
 }
 

@@ -80,6 +80,28 @@ button {
   position: relative;
 }
 
+/* Glass scrollbar styles */
+.layout::-webkit-scrollbar {
+  width: 8px;
+}
+
+.layout::-webkit-scrollbar-track {
+  background: rgba(240, 240, 240, 0.15);
+  border-radius: 0 20px 20px 0;
+  margin: 16px 0;
+}
+
+.layout::-webkit-scrollbar-thumb {
+  background: rgba(180, 180, 180, 0.6);
+  backdrop-filter: blur(8px);
+  border-radius: 7px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.layout::-webkit-scrollbar-thumb:hover {
+  background: rgba(200, 200, 200, 0.8);
+}
+
 .content {
   margin-top: 8px;
   width: 100%;

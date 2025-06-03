@@ -1,5 +1,5 @@
-import { languageEmitter } from "../../language/eventEmitter.js";
 import { selectedLanguage, LANGUAGES, setSelectedLanguage } from "../../language/index.js";
+import { filteredContent } from "../content-me-filtered/index.js";
 
 const translateMenuData = [];
 
@@ -15,7 +15,7 @@ const translateMenu = () => {
   TRANSLATE_MENU_CONTAINER.classList.add("translate__menu__container");
 
   const translateMenuTitle = document.createElement("h3");
-  translateMenuTitle.textContent = "Traducir la página:";
+  translateMenuTitle.textContent = selectedLanguage === LANGUAGES.SPANISH ? "Traducir la página:" : "Translate page:";
   TRANSLATE_MENU_CONTAINER.append(translateMenuTitle);
 
   const translateOptionsBtn = document.createElement("div");
@@ -34,6 +34,7 @@ const translateMenu = () => {
       } else {
         setSelectedLanguage(lang);
         TRANSLATE_MENU_CONTAINER.classList.remove("show");
+        filteredContent();
       }
     });
 
