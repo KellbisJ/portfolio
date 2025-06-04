@@ -236,6 +236,7 @@
   .content__me__text {
     font-size: 32px;
     width: 70%;
+    font-weight: bolder;
   }
   .my__content__categories {
     display: flex;

@@ -12,7 +12,7 @@ const STUDIES_CONTENT = [
     year: "2024",
     certificateUrl: "https://ik.imagekit.io/137/certifications/Screenshot%202025-03-30%20211007.png?updatedAt=1748398553977",
     studiesReferences: {
-      platzi: "https://platzi.com/home/",
+      platzi: "https://platzi.com/p/SalazarKellbis/ruta/100-javascript-full-stack/diploma/detalle/",
     },
   },
   {
@@ -23,7 +23,7 @@ const STUDIES_CONTENT = [
     year: "2025",
     certificateUrl: "https://ik.imagekit.io/137/certifications/ENG-C1.png?updatedAt=1748398554186",
     studiesReferences: {
-      platzi: "https://platzi.com/escuela/ingles/",
+      platzi: "https://platzi.com/p/SalazarKellbis/ruta/8311-advanced-core/diploma/detalle/",
     },
   },
   {
@@ -34,7 +34,7 @@ const STUDIES_CONTENT = [
     year: "2024",
     certificateUrl: "https://ik.imagekit.io/137/certifications/Screenshot%202025-03-30%20212130.png?updatedAt=1748398556159",
     studiesReferences: {
-      platzi: "https://platzi.com/home/",
+      platzi: "https://platzi.com/p/SalazarKellbis/ruta/23278-backend-js/diploma/detalle/",
     },
   },
   {
@@ -55,9 +55,9 @@ const myStudiesContent = () => {
   CONTENT_MY_STUDIES.classList.add("content__my__studies");
 
   const createStudiesContents = () => {
-    const studiesGrid = document.createElement("div");
-    studiesGrid.classList.add("studies__grid");
-    CONTENT_MY_STUDIES.appendChild(studiesGrid);
+    // const studiesGrid = document.createElement("div");
+    // studiesGrid.classList.add("studies__grid");
+    // CONTENT_MY_STUDIES.appendChild(studiesGrid);
 
     STUDIES_CONTENT.forEach((studiesContent) => {
       const studyCard = document.createElement("article");
@@ -109,7 +109,8 @@ const myStudiesContent = () => {
       studyCard.appendChild(studyInfoImg);
       studyCard.appendChild(studiesRefs);
 
-      studiesGrid.appendChild(studyCard);
+      CONTENT_MY_STUDIES.appendChild(studyCard);
+      // studiesGrid.appendChild(studyCard);
     });
     return CONTENT_MY_STUDIES;
   };

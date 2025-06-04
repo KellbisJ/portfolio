@@ -79,8 +79,9 @@ const createPreviewMe = () => {
   const contentMeSocialMedia = document.createElement("div");
   contentMeSocialMedia.classList.add("content__me__socialMedia");
 
-  const greetingTextH1 = document.createElement("h1");
-  greetingTextH1.classList.add("greeting-text");
+  const myName = document.createElement("h1");
+  myName.classList.add("my__name");
+  myName.textContent = "Kellbis Salazar";
 
   const contentMeText = document.createElement("h2");
   contentMeText.classList.add("content__me__text");
@@ -94,7 +95,7 @@ const createPreviewMe = () => {
   // descriptionInfoAccesibility.append(translateBtn);
 
   contentMeBrand.appendChild(contentImg);
-  contentMeBrand.appendChild(greetingTextH1);
+  contentMeBrand.appendChild(myName);
 
   contentMeDescriptionInfo.append(contentMeText, descriptionInfoAccesibility);
 
@@ -174,16 +175,13 @@ const createPreviewMe = () => {
 
 const updateContentBasedOnSelectedLanguage = () => {
   my_content_categories.innerHTML = "";
-  const greetingTextH1 = document.querySelector(".greeting-text");
   const contentMeText = document.querySelector(".content__me__text");
   const copiedMailText = document.querySelector(".copy-mail-text");
 
   if (selectedLanguage === LANGUAGES.SPANISH) {
-    greetingTextH1.textContent = contentMe_ES.greetingText_ES;
     contentMeText.textContent = contentMe_ES.contentMeText_ES;
     copiedMailText.textContent = contentMe_ES.copiedTextElement_ES;
   } else if (selectedLanguage === LANGUAGES.ENGLISH) {
-    greetingTextH1.textContent = contentMe_EN.greetingText_EN;
     contentMeText.textContent = contentMe_EN.contentMeText_EN;
     copiedMailText.textContent = contentMe_EN.copiedTextElement_EN;
   }
