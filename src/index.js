@@ -73,14 +73,20 @@
     const loadingMetadata = document.getElementById("loading__metadata");
     if (!loadingMetadata) return;
 
-    loadingMetadata.classList.add("hidden");
-    loadingMetadata.addEventListener(
-      "transitionend",
-      () => {
-        loadingMetadata.remove();
-      },
-      { once: true }
-    );
+    let loadingTimeout;
+
+    if (loadingMetadata) clearTimeout(loadingTimeout);
+
+    loadingTimeout = setTimeout(() => {
+      loadingMetadata.classList.add("hidden");
+      loadingMetadata.addEventListener(
+        "transitionend",
+        () => {
+          loadingMetadata.remove();
+        },
+        { once: true }
+      );
+    }, 800);
   }; // hide <div id="loading-metadata" class="loading-metadata"> when page is loaded
 
   const LOAD_PAGE_CONTENT_PROTOCOL = async () => {

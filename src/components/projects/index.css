@@ -22,7 +22,7 @@
   text-align: center;
   transition: transform 0.3s ease;
   border-radius: 14px;
-  background-color: #aaec92;
+  background-color: #d3d3d3;
 }
 
 .content__project__info:hover {
