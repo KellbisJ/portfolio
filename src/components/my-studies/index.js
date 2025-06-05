@@ -55,9 +55,9 @@ const myStudiesContent = () => {
   CONTENT_MY_STUDIES.classList.add("content__my__studies");
 
   const createStudiesContents = () => {
-    // const studiesGrid = document.createElement("div");
-    // studiesGrid.classList.add("studies__grid");
-    // CONTENT_MY_STUDIES.appendChild(studiesGrid);
+    const studiesGrid = document.createElement("div");
+    studiesGrid.classList.add("studies__grid");
+    CONTENT_MY_STUDIES.appendChild(studiesGrid);
 
     STUDIES_CONTENT.forEach((studiesContent) => {
       const studyCard = document.createElement("article");
@@ -74,17 +74,16 @@ const myStudiesContent = () => {
 
       const certificateImg = document.createElement("img");
       certificateImg.src = studiesContent.certificateUrl;
+      certificateImg.alt = "certificate";
+      certificateImg.loading = "lazy";
 
       studyInfoImg.appendChild(certificateImg);
 
       const studyDetailsTitle = document.createElement("h3");
-      // studyDetailsTitle.textContent = studiesContent.title;
       studyInfo.appendChild(studyDetailsTitle);
 
       if (typeof studiesContent.title === "object") {
         studyDetailsTitle.textContent = studiesContent.title[selectedLanguage];
-        // Store reference for dynamic titles only
-        // dynamicTitleElements[tech.id] = techCategoryTitle;
       } else {
         studyDetailsTitle.textContent = studiesContent.title;
       }
@@ -105,12 +104,11 @@ const myStudiesContent = () => {
       studyYear.textContent = studiesContent.year;
       studiesRefs.appendChild(studyYear);
 
-      studyCard.appendChild(studyInfo);
+      studyInfo.appendChild(studiesRefs);
       studyCard.appendChild(studyInfoImg);
-      studyCard.appendChild(studiesRefs);
+      studyCard.appendChild(studyInfo);
 
-      CONTENT_MY_STUDIES.appendChild(studyCard);
-      // studiesGrid.appendChild(studyCard);
+      studiesGrid.appendChild(studyCard);
     });
     return CONTENT_MY_STUDIES;
   };
