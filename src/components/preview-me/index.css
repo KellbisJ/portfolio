@@ -1,4 +1,20 @@
 /* ABOUT ME PREVIEW */
+
+@keyframes pulse-animation {
+  0% {
+    background-color: #d3d3d3;
+  }
+  25% {
+    background-color: #ccc9c9;
+  }
+  50% {
+    background-color: #b4b3b3;
+  }
+  100% {
+    background-color: #8a8989;
+  }
+}
+
 .prevMeBtn {
   display: flex;
   flex-direction: column;
@@ -64,7 +80,12 @@
   height: 100%;
   object-fit: cover;
   object-position: center;
-  border-radius: 50%;
+  /* border-radius: 50%; */
+  filter: drop-shadow(0 0 2px #25282a);
+  border-radius: 16px;
+}
+.meImg.loading {
+  animation: pulse-animation 3s infinite, reverse;
 }
 
 .content__me__descriptionInfo {

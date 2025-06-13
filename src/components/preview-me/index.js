@@ -50,6 +50,11 @@ const myContentCategories_EN = ["Technologies", "Projects", "Certifications", "H
 const my_content_categories = document.createElement("div");
 my_content_categories.classList.add("my__content__categories");
 
+const contentImg = document.createElement("div");
+contentImg.classList.add("content__img");
+
+const meImg = document.createElement("img");
+
 const createPreviewMe = () => {
   const CONTENT_ME = document.querySelector(".content__me");
   if (!CONTENT_ME) {
@@ -66,15 +71,15 @@ const createPreviewMe = () => {
   const contentMeDescriptionInfo = document.createElement("div");
   contentMeDescriptionInfo.classList.add("content__me__descriptionInfo");
 
-  const contentImg = document.createElement("div");
-  contentImg.classList.add("content__img");
-  const meImg = document.createElement("img");
+  const imgLoadingSkeletonPulse = document.createElement("div");
+  imgLoadingSkeletonPulse.classList.add("meImg", "loading");
+
+  contentImg.appendChild(imgLoadingSkeletonPulse);
+
   meImg.classList.add("meImg");
 
   meImg.src = general.meImgUrl;
   meImg.alt = "meImg";
-
-  contentImg.appendChild(meImg);
 
   const contentMeSocialMedia = document.createElement("div");
   contentMeSocialMedia.classList.add("content__me__socialMedia");
@@ -277,6 +282,13 @@ const updateContentBasedOnSelectedLanguage = () => {
     }
   });
 };
+
+window.onload = () => {
+  contentImg.firstChild.remove();
+  contentImg.appendChild(meImg);
+};
+
+// const meImg = document.createElement("img");
 
 languageEmitter.on("languageChanged", updateContentBasedOnSelectedLanguage);
 
