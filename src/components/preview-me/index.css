@@ -75,31 +75,42 @@
   height: 80px;
 }
 
+.img__wrapper {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+.meImgSk,
 .meImg {
   width: 100%;
   height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: opacity 0.3s ease-in-out;
   object-fit: cover;
   object-position: center;
-  /* border-radius: 50%; */
   filter: drop-shadow(0 0 2px #25282a);
   border-radius: 16px;
 }
-.meImg.loading {
-  animation: pulse-animation 3s infinite, reverse;
-}
 
+.meImg.hidden {
+  opacity: 0;
+  /* Remove visibility: hidden */
+  pointer-events: none;
+}
 .content__me__descriptionInfo {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-
 .content__me__text {
   font-size: 26px;
   width: 100%;
   text-align: center;
 }
-
 .description__info_accesibility {
   display: flex;
   flex-direction: column;

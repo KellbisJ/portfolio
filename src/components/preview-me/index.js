@@ -7,6 +7,7 @@ import { projectsContent, PROJECTS_CONTENT_KEY } from "../projects/index.js";
 import { myStudiesContent, STUDIES_CONTENT_KEY } from "../my-studies/index.js";
 import { contactMeContent, CONTACT_CONTENT_KEY } from "../contact-me/index.js";
 import { translateMenu } from "../translate-menu/index.js";
+import { imgCreator } from "../../utils/img-creator/index.js";
 
 const general = {
   meImgUrl: "https://ik.imagekit.io/137/Portfolio/mainCWEBP.webp?updatedAt=1744037093889",
@@ -53,8 +54,6 @@ my_content_categories.classList.add("my__content__categories");
 const contentImg = document.createElement("div");
 contentImg.classList.add("content__img");
 
-const meImg = document.createElement("img");
-
 const createPreviewMe = () => {
   const CONTENT_ME = document.querySelector(".content__me");
   if (!CONTENT_ME) {
@@ -72,14 +71,10 @@ const createPreviewMe = () => {
   contentMeDescriptionInfo.classList.add("content__me__descriptionInfo");
 
   const imgLoadingSkeletonPulse = document.createElement("div");
-  imgLoadingSkeletonPulse.classList.add("meImg", "loading");
-
+  imgLoadingSkeletonPulse.classList.add("meImgSk");
   contentImg.appendChild(imgLoadingSkeletonPulse);
 
-  meImg.classList.add("meImg");
-
-  meImg.src = general.meImgUrl;
-  meImg.alt = "meImg";
+  imgCreator("meImg", general.meImgUrl, contentImg, imgLoadingSkeletonPulse);
 
   const contentMeSocialMedia = document.createElement("div");
   contentMeSocialMedia.classList.add("content__me__socialMedia");
@@ -94,11 +89,6 @@ const createPreviewMe = () => {
   const descriptionInfoAccesibility = document.createElement("div");
   descriptionInfoAccesibility.classList.add("description__info_accesibility");
 
-  // const translateText = document.createTextNode(selectedLanguage === LANGUAGES.SPANISH ? " Traduce la página" : " Translate page");
-  // translateBtn.appendChild(translateText);
-
-  // descriptionInfoAccesibility.append(translateBtn);
-
   contentMeBrand.appendChild(contentImg);
   contentMeBrand.appendChild(myName);
 
@@ -111,10 +101,6 @@ const createPreviewMe = () => {
   copiedMailText.classList.add("copy-mail-text", "hidden");
   copiedMailText.id = "copyMailPreview";
   copiedMailText.ariaLive = "polite";
-
-  // const copyMailFieldIcon = document.createElement("i");
-  // copyMailFieldIcon.classList.add(...icons.copyIcon);
-  // copyMailFieldIcon.id = "copyMailPreviewField";
 
   const mailICon = document.createElement("i");
   mailICon.classList.add(...icons.mailIcon);
@@ -282,13 +268,6 @@ const updateContentBasedOnSelectedLanguage = () => {
     }
   });
 };
-
-window.onload = () => {
-  contentImg.firstChild.remove();
-  contentImg.appendChild(meImg);
-};
-
-// const meImg = document.createElement("img");
 
 languageEmitter.on("languageChanged", updateContentBasedOnSelectedLanguage);
 

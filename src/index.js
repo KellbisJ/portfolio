@@ -86,7 +86,7 @@
         },
         { once: true }
       );
-    }, 800);
+    }, 200);
   }; // hide <div id="loading-metadata" class="loading-metadata"> when page is loaded
 
   const LOAD_PAGE_CONTENT_PROTOCOL = async () => {
@@ -100,7 +100,7 @@
       // Phase 3: Load deferred resources
       await Promise.all([loadBatch(RESOURCES.deferredCSS), loadBatch(RESOURCES.deferredScripts)]);
 
-      // Anddddd... Open! (Finalize)
+      // Anddddd... Open! (Finalized)
       dataLoaded = true;
       hideLoadingMetaData();
     } catch (error) {
