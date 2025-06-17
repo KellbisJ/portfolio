@@ -11,21 +11,21 @@ const pageLayout = () =>
 
     // Loading effect
 
-    const loadingMetadata = document.createElement("div");
-    loadingMetadata.id = "loading__metadata";
-    loadingMetadata.classList.add("loading__metadata");
+    // const loadingMetadata = document.createElement("div");
+    // loadingMetadata.id = "loading__metadata";
+    // loadingMetadata.classList.add("loading__metadata");
 
-    const loader = document.createElement("div");
-    loader.classList.add("loader");
+    // const loader = document.createElement("div");
+    // loader.classList.add("loader");
 
-    for (let i = 0; i < 3; i++) {
-      const dot = document.createElement("div");
-      dot.classList.add("dot");
-      loader.appendChild(dot);
-    }
+    // for (let i = 0; i < 3; i++) {
+    //   const dot = document.createElement("div");
+    //   dot.classList.add("dot");
+    //   loader.appendChild(dot);
+    // }
 
-    loadingMetadata.appendChild(loader);
-    LAYOUT.appendChild(loadingMetadata);
+    // loadingMetadata.appendChild(loader);
+    // LAYOUT.appendChild(loadingMetadata);
 
     // DECOR
     const decor = document.createElement("div");

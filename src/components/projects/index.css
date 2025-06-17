@@ -1,4 +1,5 @@
 /* PROJECTS */
+
 .content__projects {
   display: flex;
   flex-direction: column;
@@ -30,14 +31,29 @@
 }
 
 .content__project__img {
+  display: flex;
   position: relative;
   margin: 0;
+  flex-direction: column;
+  justify-content: space-between;
 }
-
+.projectSk {
+  width: 100%;
+  background-color: #a6aebf;
+  height: 200%;
+  transition: opacity 0.3s ease-in-out;
+  position: absolute;
+  z-index: 2;
+}
 .project-img {
   width: 100%;
-  height: auto;
-  display: block;
+  height: 100%;
+  transition: opacity 0.3s ease-in-out;
+}
+.projectSk.hidden,
+.project-img.hidden {
+  opacity: 0;
+  pointer-events: none;
 }
 .link-to-project-arrow {
   position: absolute;

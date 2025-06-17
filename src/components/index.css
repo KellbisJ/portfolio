@@ -104,3 +104,18 @@
   background: #f6f0f0;
   transition: width 0.4s linear;
 }
+@keyframes loading-skeleton-1 {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.skeleton-animation {
+  background-color: #a6aebf;
+  background-image: linear-gradient(90deg, #a6aebf 0%, #b0b7cb 40%, #a6aebf 80%);
+  background-size: 200% 100%;
+  animation: loading-skeleton-1 1.5s linear infinite;
+}

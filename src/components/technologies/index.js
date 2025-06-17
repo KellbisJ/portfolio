@@ -1,5 +1,6 @@
 import { LANGUAGES, selectedLanguage, setSelectedLanguage } from "../../language/index.js";
 import { languageEmitter } from "../../language/eventEmitter.js";
+import { imgCreator } from "../../utils/img-creator/index.js";
 
 const TECH_CONTENT_KEY = "technologies";
 
@@ -84,15 +85,20 @@ const technologiesContent = () => {
         const technologyImgContainer = document.createElement("div");
         technologyImgContainer.className = "technologies__img__container";
 
-        const iconImg = document.createElement("img");
-        iconImg.className = "technologies__img";
-        iconImg.src = iconData.src;
-        iconImg.alt = iconData.name;
+        const techIconSkeleton = document.createElement("div");
+        techIconSkeleton.classList.add("techImgSk");
+        // technologyImgContainer.appendChild(techIconSkeleton);
+
+        imgCreator("technologies__img", iconData.src, technologyImgContainer, techIconSkeleton);
+        // const iconImg = document.createElement("img");
+        // iconImg.className = ;
+        // iconImg.src =
+        // iconImg.alt = iconData.name;
 
         const technologyName = document.createElement("p");
         technologyName.textContent = iconData.name;
 
-        technologyImgContainer.appendChild(iconImg);
+        // technologyImgContainer.appendChild(techImage);
         technologyImgContainer.appendChild(technologyName);
 
         contentTechnologiesGrid.appendChild(technologyImgContainer);

@@ -1,20 +1,5 @@
 /* ABOUT ME PREVIEW */
 
-@keyframes pulse-animation {
-  0% {
-    background-color: #d3d3d3;
-  }
-  25% {
-    background-color: #ccc9c9;
-  }
-  50% {
-    background-color: #b4b3b3;
-  }
-  100% {
-    background-color: #8a8989;
-  }
-}
-
 .prevMeBtn {
   display: flex;
   flex-direction: column;
@@ -73,32 +58,23 @@
 .content__img {
   width: 80px;
   height: 80px;
-}
-
-.img__wrapper {
   position: relative;
-  display: inline-block;
-  width: 100%;
-  height: 100%;
 }
-
 .meImgSk,
 .meImg {
   width: 100%;
   height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
   transition: opacity 0.3s ease-in-out;
   object-fit: cover;
   object-position: center;
   filter: drop-shadow(0 0 2px #25282a);
   border-radius: 16px;
+  background-color: #a6aebf;
+  position: absolute;
 }
-
+.meImgSk.hidden,
 .meImg.hidden {
   opacity: 0;
-  /* Remove visibility: hidden */
   pointer-events: none;
 }
 .content__me__descriptionInfo {

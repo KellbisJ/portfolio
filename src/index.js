@@ -69,25 +69,25 @@
     ],
   };
 
-  const hideLoadingMetaData = () => {
-    const loadingMetadata = document.getElementById("loading__metadata");
-    if (!loadingMetadata) return;
+  // const hideLoadingMetaData = () => {
+  //   const loadingMetadata = document.getElementById("loading__metadata");
+  //   if (!loadingMetadata) return;
 
-    let loadingTimeout;
+  //   let loadingTimeout;
 
-    if (loadingMetadata) clearTimeout(loadingTimeout);
+  //   if (loadingMetadata) clearTimeout(loadingTimeout);
 
-    loadingTimeout = setTimeout(() => {
-      loadingMetadata.classList.add("hidden");
-      loadingMetadata.addEventListener(
-        "transitionend",
-        () => {
-          loadingMetadata.remove();
-        },
-        { once: true }
-      );
-    }, 200);
-  }; // hide <div id="loading-metadata" class="loading-metadata"> when page is loaded
+  //   loadingTimeout = setTimeout(() => {
+  //     loadingMetadata.classList.add("hidden");
+  //     loadingMetadata.addEventListener(
+  //       "transitionend",
+  //       () => {
+  //         loadingMetadata.remove();
+  //       },
+  //       { once: true }
+  //     );
+  //   }, 200);
+  // }; // hide <div id="loading-metadata" class="loading-metadata"> when page is loaded
 
   const LOAD_PAGE_CONTENT_PROTOCOL = async () => {
     try {
@@ -102,7 +102,7 @@
 
       // Anddddd... Open! (Finalized)
       dataLoaded = true;
-      hideLoadingMetaData();
+      // hideLoadingMetaData();
     } catch (error) {
       console.error("Resource loading failed:", error);
       const fallbackLoader = document.createElement("div");

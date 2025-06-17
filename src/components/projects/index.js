@@ -1,5 +1,6 @@
 import { LANGUAGES, selectedLanguage, setSelectedLanguage } from "../../language/index.js";
 import { languageEmitter } from "../../language/eventEmitter.js";
+import { imgCreator } from "../../utils/img-creator/index.js";
 
 const PROJECTS_CONTENT_KEY = "projects";
 
@@ -100,10 +101,16 @@ const projectsContent = () => {
     const figure = document.createElement("figure");
     figure.classList.add("content__project__img");
 
-    const img = document.createElement("img");
-    img.classList.add("project-img");
-    img.src = project.imageSrc;
-    img.alt = "Project";
+    const projectSk = document.createElement("div");
+    projectSk.classList.add("projectSk");
+    figure.appendChild(projectSk);
+
+    imgCreator("project-img", project.imageSrc, figure, projectSk);
+
+    // const img = document.createElement("img");
+    // img.classList.add("project-img");
+    // img.src = project.imageSrc;
+    // img.alt = "Project";
 
     const projectLink = document.createElement("a");
     projectLink.href = project.projectUrl;
@@ -127,7 +134,7 @@ const projectsContent = () => {
 
     projectLink.appendChild(diagonalArrowIcon);
     repositoryLink.appendChild(githubIcon);
-    figure.appendChild(img);
+    // figure.appendChild(img);
     figure.appendChild(projectLink);
     figure.appendChild(repositoryLink);
     figure.appendChild(figcaption);

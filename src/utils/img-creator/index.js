@@ -3,52 +3,40 @@ function imgCreator(clasz, src, container, skeleton) {
   img.classList.add(clasz, "hidden");
   img.alt = clasz;
 
-  const wrapper = document.createElement("div");
-  wrapper.classList.add("img__wrapper");
-  container.replaceChild(wrapper, skeleton);
-  wrapper.appendChild(skeleton);
-  wrapper.appendChild(img);
+  skeleton.classList.add("skeleton-animation");
 
-  let fallback;
+  let timeout;
 
-  const cleanUpSkeleton = () => {
-    clearTimeout(fallback);
+  const removeSkeleton = () => {
+    if (!skeleton.isConnected) return;
+
     skeleton.classList.add("hidden");
-    skeleton.addEventListener(
-      "transitionend",
-      () => {
-        if (skeleton.isConnected) skeleton.remove();
-      },
-      { once: true }
-    );
+
+    const removeElement = () => skeleton.remove();
+
+    skeleton.addEventListener("transitionend", removeElement, { once: true });
+
+    setTimeout(removeElement, 1000);
   };
 
-  const showImage = () => {
-    img.classList.remove("hidden");
-  };
-
-  skeleton.addEventListener("transitionend", cleanUpSkeleton, { once: true });
-  fallback = setTimeout(cleanUpSkeleton, 1000);
+  container.append(skeleton, img);
 
   img.onload = () => {
-    if (skeleton.isConnected) {
-      skeleton.classList.add("hidden");
-    } else {
-      cleanUpSkeleton();
-    }
+    if (timeout) clearTimeout(timeout);
 
-    requestAnimationFrame(() => {
-      setTimeout(showImage, 10);
-    });
+    timeout = setTimeout(() => {
+      removeSkeleton();
+      requestAnimationFrame(() => img.classList.remove("hidden"));
+    }, 1000);
   };
 
   img.onerror = () => {
-    clearTimeout(fallback);
     skeleton.remove();
     console.error("Image failed to load");
   };
 
   img.src = src;
+
   return img;
 }
 

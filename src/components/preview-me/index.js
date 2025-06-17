@@ -72,7 +72,7 @@ const createPreviewMe = () => {
 
   const imgLoadingSkeletonPulse = document.createElement("div");
   imgLoadingSkeletonPulse.classList.add("meImgSk");
-  contentImg.appendChild(imgLoadingSkeletonPulse);
+  // contentImg.appendChild(imgLoadingSkeletonPulse);
 
   imgCreator("meImg", general.meImgUrl, contentImg, imgLoadingSkeletonPulse);
 

@@ -1,5 +1,6 @@
 import { LANGUAGES, selectedLanguage, setSelectedLanguage } from "../../language/index.js";
 import { languageEmitter } from "../../language/eventEmitter.js";
+import { imgCreator } from "../../utils/img-creator/index.js";
 
 const STUDIES_CONTENT_KEY = "studies";
 
@@ -69,15 +70,20 @@ const myStudiesContent = () => {
       const studiesRefs = document.createElement("div");
       studiesRefs.classList.add("studies__ref");
 
+      const studyInfoSk = document.createElement("div");
+      studyInfoSk.classList.add("studyInfoSk");
+
       const studyInfoImg = document.createElement("div");
       studyInfoImg.classList.add("study__info__img");
 
-      const certificateImg = document.createElement("img");
-      certificateImg.src = studiesContent.certificateUrl;
-      certificateImg.alt = "certificate";
-      certificateImg.loading = "lazy";
+      imgCreator("cert__ifica__te", studiesContent.certificateUrl, studyInfoImg, studyInfoSk);
 
-      studyInfoImg.appendChild(certificateImg);
+      // const certificateImg = document.createElement("img");
+      // certificateImg.src = studiesContent.certificateUrl;
+      // certificateImg.alt = "certificate";
+      // certificateImg.loading = "lazy";
+
+      // studyInfoImg.appendChild(certificateImg);
 
       const studyDetailsTitle = document.createElement("h3");
       studyInfo.appendChild(studyDetailsTitle);
