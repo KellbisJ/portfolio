@@ -18,7 +18,7 @@
   background: #25282a;
   border-radius: 8px;
   width: 100%;
-  /* max-width: 260px; */
+  max-width: 260px;
 }
 
 .form__group {

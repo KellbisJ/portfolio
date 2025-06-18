@@ -40,7 +40,7 @@
 .projectSk {
   width: 100%;
   background-color: #a6aebf;
-  height: 200%;
+  height: 100%;
   transition: opacity 0.3s ease-in-out;
   position: absolute;
   z-index: 2;
@@ -83,11 +83,12 @@
   text-align: left;
   height: 100%;
   flex: 1;
+  gap: 12px;
 }
 .project-description {
   flex: 8;
   font-size: 14px;
-  margin-bottom: 14px;
+  /* margin-bottom: 14px; */
 }
 .project-technologies {
   flex: 2;

@@ -26,7 +26,7 @@ button {
   border-radius: 8px;
   background: linear-gradient(90deg, transparent, #dcec92, #aaec92, transparent);
   background-size: 200% 100%;
-  animation: wave 10s linear infinite;
+  animation: wave 12s linear infinite;
   box-shadow: 0 2px 8px rgba(170, 236, 146, 0.3);
 }
 

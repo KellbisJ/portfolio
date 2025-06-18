@@ -27,7 +27,7 @@ function imgCreator(clasz, src, container, skeleton) {
     timeout = setTimeout(() => {
       removeSkeleton();
       requestAnimationFrame(() => img.classList.remove("hidden"));
-    }, 1000);
+    }, 300);
   };
 
   img.onerror = () => {

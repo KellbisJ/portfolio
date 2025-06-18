@@ -128,16 +128,16 @@ const projectsContent = () => {
     const githubIcon = document.createElement("i");
     githubIcon.className = projectsContentIcons.githubIcon;
 
-    const figcaption = document.createElement("figcaption");
-    figcaption.classList.add("project-title");
-    figcaption.textContent = project.title;
+    const projectTitle = document.createElement("h3");
+    // figcaption.classList.add("project-title");
+    projectTitle.textContent = project.title;
 
     projectLink.appendChild(diagonalArrowIcon);
     repositoryLink.appendChild(githubIcon);
     // figure.appendChild(img);
     figure.appendChild(projectLink);
     figure.appendChild(repositoryLink);
-    figure.appendChild(figcaption);
+    // figure.appendChild(figcaption);
 
     const projectDetails = document.createElement("div");
     projectDetails.classList.add("project-details");
@@ -171,11 +171,9 @@ const projectsContent = () => {
       projectTechnologies.appendChild(techBadge);
     });
 
-    projectDetails.appendChild(projectDescription);
-    projectDetails.appendChild(projectTechnologies);
+    projectDetails.append(projectTitle, projectDescription, projectTechnologies);
 
-    projectInfoContainer.appendChild(figure);
-    projectInfoContainer.appendChild(projectDetails);
+    projectInfoContainer.append(figure, projectDetails);
 
     return projectInfoContainer;
   };
