@@ -71,6 +71,7 @@
 @media (min-width: 1024px) {
   .techImgSk {
     width: 54px;
+    height: 50%;
   }
   .technologies__img {
     width: 54px;
@@ -83,6 +84,7 @@
 @media (min-width: 1440px) {
   .techImgSk {
     width: 64px;
+    height: 60%;
   }
   .technologies__img {
     width: 64px;
