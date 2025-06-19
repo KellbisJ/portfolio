@@ -1,6 +1,6 @@
 import { LANGUAGES, selectedLanguage, setSelectedLanguage } from "../../language/index.js";
 import { languageEmitter } from "../../language/eventEmitter.js";
-import { imgCreator } from "../../utils/img-creator/index.js";
+import { imgCreatorDisplayer } from "../../utils/img-creator-displayer/index.js";
 
 const TECH_CONTENT_KEY = "technologies";
 
@@ -89,7 +89,7 @@ const technologiesContent = () => {
         techIconSkeleton.classList.add("techImgSk");
         // technologyImgContainer.appendChild(techIconSkeleton);
 
-        imgCreator("technologies__img", iconData.src, technologyImgContainer, techIconSkeleton);
+        imgCreatorDisplayer("technologies__img", iconData.src, technologyImgContainer, techIconSkeleton);
         // const iconImg = document.createElement("img");
         // iconImg.className = ;
         // iconImg.src =

@@ -1,6 +1,6 @@
 import { LANGUAGES, selectedLanguage, setSelectedLanguage } from "../../language/index.js";
 import { languageEmitter } from "../../language/eventEmitter.js";
-import { imgCreator } from "../../utils/img-creator/index.js";
+import { imgCreatorDisplayer } from "../../utils/img-creator-displayer/index.js";
 
 const PROJECTS_CONTENT_KEY = "projects";
 
@@ -105,7 +105,7 @@ const projectsContent = () => {
     projectSk.classList.add("projectSk");
     figure.appendChild(projectSk);
 
-    imgCreator("project-img", project.imageSrc, figure, projectSk);
+    imgCreatorDisplayer("project-img", project.imageSrc, figure, projectSk);
 
     // const img = document.createElement("img");
     // img.classList.add("project-img");

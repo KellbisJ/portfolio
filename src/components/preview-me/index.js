@@ -7,7 +7,7 @@ import { projectsContent, PROJECTS_CONTENT_KEY } from "../projects/index.js";
 import { myStudiesContent, STUDIES_CONTENT_KEY } from "../my-studies/index.js";
 import { contactMeContent, CONTACT_CONTENT_KEY } from "../contact-me/index.js";
 import { translateMenu } from "../translate-menu/index.js";
-import { imgCreator } from "../../utils/img-creator/index.js";
+import { imgCreatorDisplayer } from "../../utils/img-creator-displayer/index.js";
 
 const general = {
   meImgUrl: "https://ik.imagekit.io/137/Portfolio/mainCWEBP.webp?updatedAt=1744037093889",
@@ -74,7 +74,7 @@ const createPreviewMe = () => {
   imgLoadingSkeletonPulse.classList.add("meImgSk");
   // contentImg.appendChild(imgLoadingSkeletonPulse);
 
-  imgCreator("meImg", general.meImgUrl, contentImg, imgLoadingSkeletonPulse);
+  imgCreatorDisplayer("meImg", general.meImgUrl, contentImg, imgLoadingSkeletonPulse);
 
   const contentMeSocialMedia = document.createElement("div");
   contentMeSocialMedia.classList.add("content__me__socialMedia");

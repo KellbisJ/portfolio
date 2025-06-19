@@ -1,4 +1,4 @@
-function imgCreator(clasz, src, container, skeleton) {
+function imgCreatorDisplayer(clasz, src, container, skeleton) {
   const img = new Image();
   img.classList.add(clasz, "hidden");
   img.alt = clasz;
@@ -40,4 +40,4 @@ function imgCreator(clasz, src, container, skeleton) {
   return img;
 }
 
-export { imgCreator };
+export { imgCreatorDisplayer };
