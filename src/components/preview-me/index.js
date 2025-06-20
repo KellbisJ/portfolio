@@ -156,119 +156,116 @@ const createPreviewMe = () => {
   contentMePresentation.appendChild(contentMeDescriptionInfo);
 
   CONTENT_ME.appendChild(contentMePresentation);
-  CONTENT_ME.appendChild(my_content_categories);
   CONTENT_ME.appendChild(fineLine);
+
+  let updateTranslateMenu;
+
+  const updateContentBasedOnSelectedLanguage = () => {
+    my_content_categories.innerHTML = "";
+
+    const contentMeText = document.querySelector(".content__me__text");
+    const copiedMailText = document.querySelector(".copy-mail-text");
+
+    if (selectedLanguage === LANGUAGES.SPANISH) {
+      contentMeText.textContent = contentMe_ES.contentMeText_ES;
+      copiedMailText.textContent = contentMe_ES.copiedTextElement_ES;
+    } else if (selectedLanguage === LANGUAGES.ENGLISH) {
+      contentMeText.textContent = contentMe_EN.contentMeText_EN;
+      copiedMailText.textContent = contentMe_EN.copiedTextElement_EN;
+    }
+
+    function createContentCategoriesBtn(classs, btnTextContent, index) {
+      const content_btn = document.createElement("button");
+      content_btn.classList.add("prevMeBtn", classs);
+
+      const btnIcon = document.createElement("i");
+      btnIcon.classList = categoryBtnIcons[index];
+      btnIcon.style.background = "none";
+      content_btn.appendChild(btnIcon);
+
+      const textBtn = document.createTextNode(" " + btnTextContent);
+      content_btn.appendChild(textBtn);
+
+      if (btnTextContent === "Tecnologías" || btnTextContent === "Technologies") content_btn.classList.add("btn_my_content__selected");
+
+      content_btn.addEventListener("click", (e) => {
+        const clickedBtn = e.target.closest(`.${classs}`);
+
+        const btns = document.querySelectorAll(`.${classs}`);
+        btns.forEach((btn) => {
+          btn.classList.remove("btn_my_content__selected");
+        });
+
+        clickedBtn.classList.add("btn_my_content__selected");
+
+        switch (btnTextContent) {
+          case "Tecnologías":
+          case "Technologies":
+            filteredContent(technologiesContent, TECH_CONTENT_KEY);
+            break;
+          case "Proyectos":
+          case "Projects":
+            filteredContent(projectsContent, PROJECTS_CONTENT_KEY);
+            break;
+          case "Certificaciones":
+          case "Certifications":
+            filteredContent(myStudiesContent, STUDIES_CONTENT_KEY);
+            break;
+          case "¡Contrátame!":
+          case "Hire me!":
+            filteredContent(contactMeContent, CONTACT_CONTENT_KEY);
+            break;
+          default:
+            console.warn("A fucking error occurred");
+        }
+      });
+      return content_btn;
+    }
+
+    if (selectedLanguage === LANGUAGES.SPANISH) {
+      myContentCategories_ES.forEach((content, index) => {
+        const classs = "btn_my_content";
+
+        const myContentBtn = createContentCategoriesBtn(classs, content, index);
+
+        my_content_categories.appendChild(myContentBtn);
+      });
+    } else if (selectedLanguage === LANGUAGES.ENGLISH) {
+      myContentCategories_EN.forEach((content, index) => {
+        const classs = "btn_my_content";
+
+        const myContentBtn = createContentCategoriesBtn(classs, content, index);
+
+        my_content_categories.appendChild(myContentBtn);
+      });
+    } else {
+      console.log("something weird ocurred waaaaaa");
+    }
+
+    const translateBtn = document.createElement("button");
+    translateBtn.classList.add("prevMeBtn", "translateBtn");
+    const translateIcon = document.createElement("i");
+    translateIcon.classList.add("fa-solid", "fa-language");
+    translateBtn.appendChild(translateIcon);
+    my_content_categories.appendChild(translateBtn);
+
+    updateTranslateMenu = translateMenu(translateBtn);
+
+    if (updateTranslateMenu) updateTranslateMenu();
+
+    window.addEventListener("load", () => {
+      CONTENT_ME.insertBefore(my_content_categories, fineLine);
+    });
+  };
 
   updateContentBasedOnSelectedLanguage();
 
+  languageEmitter.on("languageChanged", () => {
+    updateContentBasedOnSelectedLanguage();
+    if (updateTranslateMenu) updateTranslateMenu();
+  });
+
   return CONTENT_ME;
 };
-
-const updateContentBasedOnSelectedLanguage = () => {
-  my_content_categories.innerHTML = "";
-  const contentMeText = document.querySelector(".content__me__text");
-  const copiedMailText = document.querySelector(".copy-mail-text");
-
-  if (selectedLanguage === LANGUAGES.SPANISH) {
-    contentMeText.textContent = contentMe_ES.contentMeText_ES;
-    copiedMailText.textContent = contentMe_ES.copiedTextElement_ES;
-  } else if (selectedLanguage === LANGUAGES.ENGLISH) {
-    contentMeText.textContent = contentMe_EN.contentMeText_EN;
-    copiedMailText.textContent = contentMe_EN.copiedTextElement_EN;
-  }
-
-  function createContentCategoriesBtn(classs, btnTextContent, index) {
-    const content_btn = document.createElement("button");
-    content_btn.classList.add("prevMeBtn", classs);
-
-    const btnIcon = document.createElement("i");
-    btnIcon.classList = categoryBtnIcons[index];
-    btnIcon.style.background = "none";
-    content_btn.appendChild(btnIcon);
-
-    const textBtn = document.createTextNode(" " + btnTextContent);
-    content_btn.appendChild(textBtn);
-
-    if (btnTextContent === "Tecnologías" || btnTextContent === "Technologies") content_btn.classList.add("btn_my_content__selected");
-
-    content_btn.addEventListener("click", (e) => {
-      const clickedBtn = e.target.closest(`.${classs}`);
-
-      const btns = document.querySelectorAll(`.${classs}`);
-      btns.forEach((btn) => {
-        btn.classList.remove("btn_my_content__selected");
-      });
-
-      clickedBtn.classList.add("btn_my_content__selected");
-
-      switch (btnTextContent) {
-        case "Tecnologías":
-        case "Technologies":
-          filteredContent(technologiesContent, TECH_CONTENT_KEY);
-          break;
-        case "Proyectos":
-        case "Projects":
-          filteredContent(projectsContent, PROJECTS_CONTENT_KEY);
-          break;
-        case "Certificaciones":
-        case "Certifications":
-          filteredContent(myStudiesContent, STUDIES_CONTENT_KEY);
-          break;
-        case "¡Contrátame!":
-        case "Hire me!":
-          filteredContent(contactMeContent, CONTACT_CONTENT_KEY);
-          break;
-        default:
-          console.warn("A fucking error occurred");
-      }
-    });
-    return content_btn;
-  }
-
-  if (selectedLanguage === LANGUAGES.SPANISH) {
-    myContentCategories_ES.forEach((content, index) => {
-      const classs = "btn_my_content";
-
-      const myContentBtn = createContentCategoriesBtn(classs, content, index);
-
-      my_content_categories.appendChild(myContentBtn);
-    });
-  } else if (selectedLanguage === LANGUAGES.ENGLISH) {
-    myContentCategories_EN.forEach((content, index) => {
-      const classs = "btn_my_content";
-
-      const myContentBtn = createContentCategoriesBtn(classs, content, index);
-
-      my_content_categories.appendChild(myContentBtn);
-    });
-  } else {
-    console.log("something weird ocurred waaaaaa");
-  }
-
-  const translateBtn = document.createElement("button");
-  translateBtn.classList.add("prevMeBtn", "translateBtn");
-  const translateIcon = document.createElement("i");
-  translateIcon.classList.add("fa-solid", "fa-language");
-  translateBtn.appendChild(translateIcon);
-  my_content_categories.appendChild(translateBtn);
-
-  translateMenu();
-
-  let showTranslateMenu = false;
-
-  translateBtn.addEventListener("click", () => {
-    const translateMenu = document.querySelector(".translate__menu__container");
-
-    if (!showTranslateMenu) {
-      translateMenu.classList.add("show");
-      showTranslateMenu = true;
-    } else {
-      translateMenu.classList.remove("show");
-      showTranslateMenu = false;
-    }
-  });
-};
-
-languageEmitter.on("languageChanged", updateContentBasedOnSelectedLanguage);
 
 export { createPreviewMe };

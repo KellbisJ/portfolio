@@ -64,6 +64,6 @@ pageLayout()
   .then(() => {
     createPreviewMe();
     filteredContent();
-    translateMenu();
+    // translateMenu();
   })
   .catch((err) => console.error(err));
