@@ -43,6 +43,13 @@ const translateMenu = (translateBtn) => {
   TRANSLATE_MENU_CONTAINER.append(translateMenuTitle, translateOptionsBtn);
   translateBtn.appendChild(TRANSLATE_MENU_CONTAINER);
 
+  document.addEventListener("click", (e) => {
+    if (!translateBtn.contains(e.target) && !TRANSLATE_MENU_CONTAINER.contains(e.target)) {
+      TRANSLATE_MENU_CONTAINER.classList.remove("show");
+      showTranslateMenu = false;
+    }
+  });
+
   return updateMenuText;
 };
 
