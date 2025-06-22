@@ -1,5 +1,15 @@
 /* PROJECTS */
+:root {
+  --case-color: #1c1c1c;
+  --screen-bezel: 1.2vh;
+  --screen-radius: 2.5vh;
+}
 
+/* body {
+  background-color: rgb(135, 135, 235);
+  margin: 0;
+  padding: 0;
+} */
 .content__projects {
   display: flex;
   flex-direction: column;
@@ -15,6 +25,77 @@
   grid-template-columns: 1fr;
   gap: 24px;
 }
+
+.cellphone__visualizer {
+  background-color: #232323;
+  border: 3px solid #552387;
+  border-bottom: 18px solid #552387;
+  border-radius: 3.8vh;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4), 0 0 0 5px var(--case-color);
+  height: 63.5vh;
+  margin: 15vh auto;
+  position: relative;
+  width: 36.5vh;
+  overflow: hidden;
+}
+
+.cellphone__screen {
+  position: absolute;
+  top: var(--bezel-size);
+  left: var(--bezel-size);
+  right: var(--bezel-size);
+  bottom: calc(var(--bezel-size) + 1.2vh);
+  border-radius: var(--screen-radius);
+  overflow: hidden;
+  background-color: #000000;
+  height: 100%;
+}
+.cellphone__visualizer::after {
+  background-color: #000000;
+  border: 1px solid #ebebeb33;
+  border-radius: 100%;
+  box-shadow: 0 0 4px #000000aa;
+  content: "";
+  position: absolute;
+  top: 1.8vh;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 1.8vh;
+  width: 1.8vh;
+  z-index: 10;
+}
+
+.cellphone__info {
+  background-color: var(--case-color);
+  border-radius: 1.8vh;
+  height: 8vh;
+  position: absolute;
+  right: -0.9vh;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0.7vh;
+  z-index: 10;
+}
+
+.cellphone__info::after,
+.cellphone__info::before {
+  content: "";
+  position: absolute;
+  background-color: var(--case-color);
+  border-radius: 1.8vh;
+  height: 5.5vh;
+  width: 0.7vh;
+  right: 0;
+}
+
+.cellphone__info::after {
+  top: -6.5vh;
+}
+
+.cellphone__info::before {
+  bottom: -6.5vh;
+}
+
 .content__project__info {
   display: flex;
   flex-direction: column;

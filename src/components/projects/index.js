@@ -47,7 +47,7 @@ const projectsContent = () => {
   const myProjects = [
     {
       title: "MoviesKS",
-      imageSrc: "https://ik.imagekit.io/137/Portfolio/MoviesKSCARD.webp?updatedAt=1744037093138",
+      imageSrc: "https://ik.imagekit.io/137/Portfolio/mobmoviesk.webp?updatedAt=1750621094027",
       projectUrl: "https://movies-ks-frontend.vercel.app/",
       repositoryUrl: "https://github.com/KellbisJ/MoviesKS",
       description: projectDescription.moviesKs.spanish,
@@ -96,6 +96,18 @@ const projectsContent = () => {
 
   const createProjectElement = (project) => {
     const projectInfoContainer = document.createElement("article");
+
+    const cellphoneVisualizer = document.createElement("div");
+    cellphoneVisualizer.classList.add("cellphone__visualizer");
+
+    const cellphoneScreen = document.createElement("div");
+    cellphoneScreen.classList.add("cellphone__screen");
+
+    const cellphoneInfo = document.createElement("div");
+    cellphoneInfo.classList.add("cellphone__info");
+
+    cellphoneVisualizer.append(cellphoneScreen, cellphoneInfo);
+
     projectInfoContainer.classList.add("content__project__info");
 
     const figure = document.createElement("figure");
@@ -105,7 +117,7 @@ const projectsContent = () => {
     projectSk.classList.add("projectSk");
     figure.appendChild(projectSk);
 
-    imgCreatorDisplayer("project-img", project.imageSrc, figure, projectSk);
+    imgCreatorDisplayer("project-img", project.imageSrc, cellphoneScreen, projectSk);
 
     // const img = document.createElement("img");
     // img.classList.add("project-img");
@@ -173,7 +185,7 @@ const projectsContent = () => {
 
     projectDetails.append(projectTitle, projectDescription, projectTechnologies);
 
-    projectInfoContainer.append(figure, projectDetails);
+    projectInfoContainer.append(figure, projectDetails, cellphoneVisualizer);
 
     return projectInfoContainer;
   };
