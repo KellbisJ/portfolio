@@ -103,10 +103,7 @@ const projectsContent = () => {
     const cellphoneScreen = document.createElement("div");
     cellphoneScreen.classList.add("cellphone__screen");
 
-    const cellphoneInfo = document.createElement("div");
-    cellphoneInfo.classList.add("cellphone__info");
-
-    cellphoneVisualizer.append(cellphoneScreen, cellphoneInfo);
+    cellphoneVisualizer.append(cellphoneScreen); // cellphone model
 
     projectInfoContainer.classList.add("content__project__info");
 
@@ -118,11 +115,6 @@ const projectsContent = () => {
     figure.appendChild(projectSk);
 
     imgCreatorDisplayer("project-img", project.imageSrc, cellphoneScreen, projectSk);
-
-    // const img = document.createElement("img");
-    // img.classList.add("project-img");
-    // img.src = project.imageSrc;
-    // img.alt = "Project";
 
     const projectLink = document.createElement("a");
     projectLink.href = project.projectUrl;
