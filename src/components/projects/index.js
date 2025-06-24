@@ -47,35 +47,39 @@ const projectsContent = () => {
   const myProjects = [
     {
       title: "MoviesKS",
-      imageSrc: "https://ik.imagekit.io/137/Portfolio/mobmoviesk.webp?updatedAt=1750621094027",
+      imageSrc: ["https://ik.imagekit.io/137/Portfolio/MoviesKSBACKGROUND.webp?updatedAt=1744037093527", "https://ik.imagekit.io/137/Portfolio/mobmoviesk.webp?updatedAt=1750621094027"],
       projectUrl: "https://movies-ks-frontend.vercel.app/",
       repositoryUrl: "https://github.com/KellbisJ/MoviesKS",
       description: projectDescription.moviesKs.spanish,
       technologies: ["react", "vite", "typescript", "tailwindcss", "express"],
+      bgColor: "#DBEAFE",
     },
     {
       title: "MyEcm (fake ecommerce)",
-      imageSrc: "https://ik.imagekit.io/137/Portfolio/MyEcmCARD.webp?updatedAt=1744037093039",
+      imageSrc: ["https://ik.imagekit.io/137/Portfolio/MyEcmCARD.webp?updatedAt=1744037093039", "https://ik.imagekit.io/137/Portfolio/MyEcmCARD.webp?updatedAt=1744037093039"],
       projectUrl: "https://fakeshopiecm.netlify.app",
       repositoryUrl: "https://github.com/KellbisJ/my-ecm",
       description: projectDescription.myEcm.spanish,
       technologies: ["react", "vite", "tailwindcss", "javascript"],
+      bgColor: "#1E293B",
     },
     {
       title: "To-do list",
-      imageSrc: "https://ik.imagekit.io/137/Portfolio/TodoCARD.webp?updatedAt=1744037092983",
+      imageSrc: ["https://ik.imagekit.io/137/Portfolio/TodoCARD.webp?updatedAt=1744037092983", "https://ik.imagekit.io/137/Portfolio/TodoCARD.webp?updatedAt=1744037092983"],
       projectUrl: "https://kellbisj.github.io/TODO-FOR-DO/",
       repositoryUrl: "https://github.com/KellbisJ/TODO-FOR-DO",
       description: projectDescription.toDo.spanish,
       technologies: ["react", "javascript", "css"],
+      bgColor: "#131f24",
     },
     {
       title: "English Journey Blog",
-      imageSrc: "https://ik.imagekit.io/137/Portfolio/engjourneyCARD.webp?updatedAt=1744037093009",
+      imageSrc: ["https://ik.imagekit.io/137/Portfolio/engjourneyCARD.webp?updatedAt=1744037093009", "https://ik.imagekit.io/137/Portfolio/engjourneyCARD.webp?updatedAt=1744037093009"],
       projectUrl: "https://my-english-journey.vercel.app",
       repositoryUrl: "https://github.com/KellbisJ/my-english-journey",
       description: projectDescription.englishJourney.spanish,
       technologies: ["react", "typescript", "tailwindcss", "vite"],
+      bgColor: "linear-gradient(to right, #4299e1, #9f7aea, #f56565)",
     },
   ];
 
@@ -96,6 +100,20 @@ const projectsContent = () => {
 
   const createProjectElement = (project) => {
     const projectInfoContainer = document.createElement("article");
+    projectInfoContainer.classList.add("content__project__info");
+
+    const projectTitle = document.createElement("h3");
+    projectTitle.textContent = project.title;
+    projectTitle.classList.add("project__title");
+
+    const projectInfoWrapper = document.createElement("div");
+    projectInfoWrapper.classList.add("project__info__wrapper");
+
+    const projectVisualizer = document.createElement("div");
+    projectVisualizer.classList.add("project__visualizer");
+
+    const normalCardVisualizer = document.createElement("div");
+    normalCardVisualizer.classList.add("normal__card__visualizer");
 
     const cellphoneVisualizer = document.createElement("div");
     cellphoneVisualizer.classList.add("cellphone__visualizer");
@@ -105,16 +123,57 @@ const projectsContent = () => {
 
     cellphoneVisualizer.append(cellphoneScreen); // cellphone model
 
-    projectInfoContainer.classList.add("content__project__info");
+    const projectDetails = document.createElement("div");
+    projectDetails.classList.add("project-details");
 
-    const figure = document.createElement("figure");
-    figure.classList.add("content__project__img");
+    const projectDescription = document.createElement("div");
+    projectDescription.classList.add("project-description");
 
+    const descriptionParagraph = document.createElement("p");
+    descriptionParagraph.textContent = project.description;
+    descriptionParagraph.classList.add("description__paragraph");
+
+    const projectTechnologies = document.createElement("div");
+    projectTechnologies.classList.add("project-technologies");
+
+    projectDetails.append(projectDescription, projectTechnologies);
+    projectDescription.appendChild(descriptionParagraph);
+
+    projectInfoWrapper.appendChild(projectVisualizer);
+
+    projectInfoContainer.append(projectTitle, projectInfoWrapper);
+
+    // IMAGE LOADING
     const projectSk = document.createElement("div");
     projectSk.classList.add("projectSk");
-    figure.appendChild(projectSk);
 
-    imgCreatorDisplayer("project-img", project.imageSrc, cellphoneScreen, projectSk);
+    if (window.innerWidth >= 768) {
+      imgCreatorDisplayer("project-img", project.imageSrc[1], cellphoneScreen, projectSk);
+
+      projectInfoWrapper.appendChild(projectDetails);
+
+      projectVisualizer.appendChild(cellphoneVisualizer);
+
+      const shadowing = document.createElement("div");
+      shadowing.classList.add("shadowing");
+
+      projectInfoContainer.style.backgroundImage = `url(${project.imageSrc[0]})`;
+      projectInfoContainer.appendChild(shadowing);
+    } else if (window.innerWidth <= 767) {
+      const fog = document.createElement("div");
+      fog.classList.add("fog");
+      projectInfoContainer.appendChild(fog);
+
+      imgCreatorDisplayer("project-img", project.imageSrc[0], normalCardVisualizer, projectSk);
+      projectVisualizer.appendChild(normalCardVisualizer);
+
+      projectInfoContainer.appendChild(projectDetails);
+      if (project.bgColor.includes("gradient")) {
+        projectInfoContainer.style.backgroundImage = project.bgColor;
+      } else {
+        projectInfoContainer.style.backgroundColor = project.bgColor;
+      }
+    }
 
     const projectLink = document.createElement("a");
     projectLink.href = project.projectUrl;
@@ -132,30 +191,8 @@ const projectsContent = () => {
     const githubIcon = document.createElement("i");
     githubIcon.className = projectsContentIcons.githubIcon;
 
-    const projectTitle = document.createElement("h3");
-    // figcaption.classList.add("project-title");
-    projectTitle.textContent = project.title;
-
     projectLink.appendChild(diagonalArrowIcon);
     repositoryLink.appendChild(githubIcon);
-    // figure.appendChild(img);
-    figure.appendChild(projectLink);
-    figure.appendChild(repositoryLink);
-    // figure.appendChild(figcaption);
-
-    const projectDetails = document.createElement("div");
-    projectDetails.classList.add("project-details");
-
-    const projectDescription = document.createElement("div");
-    projectDescription.classList.add("project-description");
-
-    const descriptionParagraph = document.createElement("p");
-    descriptionParagraph.textContent = project.description;
-
-    projectDescription.appendChild(descriptionParagraph);
-
-    const projectTechnologies = document.createElement("div");
-    projectTechnologies.classList.add("project-technologies");
 
     project.technologies.forEach((tech) => {
       const techBadge = document.createElement("span");
@@ -174,10 +211,6 @@ const projectsContent = () => {
 
       projectTechnologies.appendChild(techBadge);
     });
-
-    projectDetails.append(projectTitle, projectDescription, projectTechnologies);
-
-    projectInfoContainer.append(figure, projectDetails, cellphoneVisualizer);
 
     return projectInfoContainer;
   };
