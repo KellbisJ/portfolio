@@ -39,7 +39,7 @@ const projectsContent = () => {
     vite: techImageUrl.vitejs,
     typescript: "devicon-typescript-plain colored",
     tailwindcss: "devicon-tailwindcss-original colored",
-    express: "devicon-express-original",
+    expressjs: "devicon-express-original",
     javascript: "devicon-javascript-plain colored",
     css: "devicon-css3-plain-wordmark colored",
   };
@@ -51,7 +51,7 @@ const projectsContent = () => {
       projectUrl: "https://movies-ks-frontend.vercel.app/",
       repositoryUrl: "https://github.com/KellbisJ/MoviesKS",
       description: projectDescription.moviesKs.spanish,
-      technologies: ["react", "vite", "typescript", "tailwindcss", "express"],
+      technologies: ["React", "Vite", "TypeScript", "TailwindCSS", "ExpressJS"],
       bgColor: "#DBEAFE",
     },
     {
@@ -60,7 +60,7 @@ const projectsContent = () => {
       projectUrl: "https://fakeshopiecm.netlify.app",
       repositoryUrl: "https://github.com/KellbisJ/my-ecm",
       description: projectDescription.myEcm.spanish,
-      technologies: ["react", "vite", "tailwindcss", "javascript"],
+      technologies: ["React", "Vite", "TailwindCSS", "JavaScript"],
       bgColor: "#1E293B",
     },
     {
@@ -69,7 +69,7 @@ const projectsContent = () => {
       projectUrl: "https://kellbisj.github.io/TODO-FOR-DO/",
       repositoryUrl: "https://github.com/KellbisJ/TODO-FOR-DO",
       description: projectDescription.toDo.spanish,
-      technologies: ["react", "javascript", "css"],
+      technologies: ["React", "JavaScript", "CSS"],
       bgColor: "#131f24",
     },
     {
@@ -78,7 +78,7 @@ const projectsContent = () => {
       projectUrl: "https://my-english-journey.vercel.app",
       repositoryUrl: "https://github.com/KellbisJ/my-english-journey",
       description: projectDescription.englishJourney.spanish,
-      technologies: ["react", "typescript", "tailwindcss", "vite"],
+      technologies: ["React", "TypeScript", "TailwindCSS", "Vite"],
       bgColor: "linear-gradient(to right, #4299e1, #9f7aea, #f56565)",
     },
   ];
@@ -104,7 +104,7 @@ const projectsContent = () => {
 
     const projectTitle = document.createElement("h3");
     projectTitle.textContent = project.title;
-    projectTitle.classList.add("project__title");
+    projectTitle.classList.add("project__title", "textCardM");
 
     const projectInfoWrapper = document.createElement("div");
     projectInfoWrapper.classList.add("project__info__wrapper");
@@ -131,10 +131,19 @@ const projectsContent = () => {
 
     const descriptionParagraph = document.createElement("p");
     descriptionParagraph.textContent = project.description;
-    descriptionParagraph.classList.add("description__paragraph");
+    descriptionParagraph.classList.add("description__paragraph", "textCardM");
 
     const projectTechnologies = document.createElement("div");
-    projectTechnologies.classList.add("project-technologies");
+    projectTechnologies.classList.add("project__technologies");
+
+    const TechnologiesTitle = document.createElement("h4");
+    TechnologiesTitle.classList.add("textCardM");
+    TechnologiesTitle.textContent = selectedLanguage === LANGUAGES.SPANISH ? "Tecnologías utilizadas:" : "Technologies used:";
+
+    const techContainer = document.createElement("div");
+    techContainer.classList.add("tech__container");
+
+    projectTechnologies.append(TechnologiesTitle, techContainer);
 
     projectDetails.append(projectDescription, projectTechnologies);
     projectDescription.appendChild(descriptionParagraph);
@@ -154,16 +163,8 @@ const projectsContent = () => {
 
       projectVisualizer.appendChild(cellphoneVisualizer);
 
-      const shadowing = document.createElement("div");
-      shadowing.classList.add("shadowing");
-
       projectInfoContainer.style.backgroundImage = `url(${project.imageSrc[0]})`;
-      projectInfoContainer.appendChild(shadowing);
     } else if (window.innerWidth <= 767) {
-      const fog = document.createElement("div");
-      fog.classList.add("fog");
-      projectInfoContainer.appendChild(fog);
-
       imgCreatorDisplayer("project-img", project.imageSrc[0], normalCardVisualizer, projectSk);
       projectVisualizer.appendChild(normalCardVisualizer);
 
@@ -197,19 +198,23 @@ const projectsContent = () => {
     project.technologies.forEach((tech) => {
       const techBadge = document.createElement("span");
       techBadge.classList.add("tech-badge");
+      const techName = document.createElement("p");
+      techName.classList.add("tech__name", "textCardM");
+      techName.textContent = tech;
+      techBadge.appendChild(techName);
 
-      if (projectsMaterial[tech] && projectsMaterial[tech].startsWith("http")) {
+      if (projectsMaterial[tech.toLowerCase()] && projectsMaterial[tech.toLowerCase()].startsWith("http")) {
         const techImg = document.createElement("img");
         techImg.classList.add("tech-img");
-        techImg.src = projectsMaterial[tech];
+        techImg.src = projectsMaterial[tech.toLowerCase()];
         techBadge.appendChild(techImg);
       } else {
         const techIcon = document.createElement("i");
-        techIcon.className = projectsMaterial[tech];
+        techIcon.className = projectsMaterial[tech.toLowerCase()];
         techBadge.appendChild(techIcon);
       }
 
-      projectTechnologies.appendChild(techBadge);
+      techContainer.appendChild(techBadge);
     });
 
     return projectInfoContainer;

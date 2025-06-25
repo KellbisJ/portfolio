@@ -14,51 +14,48 @@
   grid-template-columns: 1fr;
   gap: 24px;
 }
-.shadowing {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #15111da2;
-  backdrop-filter: blur(1.5px) saturate(150%);
-  -webkit-backdrop-filter: blur(1.5px) saturate(150%);
-  pointer-events: none;
-  z-index: 1;
-  transition: all 0.4s ease;
-}
+/* .shadowing,
 .fog {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: #15111d36;
-  backdrop-filter: blur(1px) saturate(150%);
-  -webkit-backdrop-filter: blur(1px) saturate(150%);
+  background: rgba(21, 17, 29, 0.365);
+  transform: translate3d(0, 0, 0);
   pointer-events: none;
   z-index: 1;
-  transition: all 0.4s ease;
+} */
+.fog {
+  border-radius: 14px;
 }
-
+.textCardM {
+  color: #fdfaf6;
+}
 .content__project__info {
   display: flex;
   flex-direction: column;
   overflow: hidden;
   position: relative;
   width: 100%;
-  height: 380px;
+  height: 100%;
   text-align: center;
-  transition: transform 0.3s ease;
   border-radius: 14px;
-  background-color: #ac5656;
-  /* border: 1px solid #15111da2; */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   padding: 18px;
   outline: none;
   justify-content: center;
+  isolation: isolate;
+}
+.content__project__info::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(21, 17, 29, 0.144) 0%, rgba(21, 17, 29, 0.144) 80%);
+  pointer-events: none;
+  z-index: 1;
 }
 
 .project__info__wrapper {
@@ -78,7 +75,7 @@
 }
 .normal__card__visualizer {
   width: 100%;
-  height: 100%;
+  height: 160px;
 }
 .normal__card__visualizer img {
   border-radius: 7px;
@@ -181,14 +178,31 @@
 
 .project__title,
 .description__paragraph,
-.normal__card__visualizer {
-  color: #fff;
+.normal__card__visualizer,
+.project__technologies {
   z-index: 2;
   position: relative;
 }
 
+.project__technologies {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.tech__container {
+  display: flex;
+  flex-wrap: wrap;
+}
+.tech__name {
+  font-size: 14px;
+  color: #fdfaf6;
+}
 .tech-badge {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 4px;
+  gap: 4px;
   border-radius: 4px;
   font-size: 18px;
 }
@@ -199,9 +213,14 @@
 /* PROJECTS */
 
 @media (min-width: 768px) {
-  /* .project-title {
-    font-size: 16px;
-  } */
+  .content__project__info::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(21, 17, 29, 0.4) 0%, rgba(21, 17, 29, 0.6) 80%);
+    pointer-events: none;
+    z-index: 1;
+  }
   .project__info__wrapper {
     flex-direction: row;
   }
