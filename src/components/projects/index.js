@@ -10,9 +10,8 @@ const projectsContent = () => {
   };
 
   const projectsContentIcons = {
-    codeIcon: "fa-solid fa-code",
-    diagonalArrowIcon: "fa-solid fa-up-right-from-square link-to-project-arrow",
-    githubIcon: "devicon-github-original link-to-project-repository",
+    fileCodeIcon: ["fa-solid", "fa-file-code"],
+    diagonalArrowIcon: ["fa-solid", "fa-arrow-up-right-from-square"],
   };
 
   const projectDescription = {
@@ -104,7 +103,7 @@ const projectsContent = () => {
 
     const projectTitle = document.createElement("h3");
     projectTitle.textContent = project.title;
-    projectTitle.classList.add("project__title", "textCardM");
+    projectTitle.classList.add("project__title", "textCardColor");
 
     const projectInfoWrapper = document.createElement("div");
     projectInfoWrapper.classList.add("project__info__wrapper");
@@ -124,28 +123,76 @@ const projectsContent = () => {
     cellphoneVisualizer.append(cellphoneScreen); // cellphone model
 
     const projectDetails = document.createElement("div");
-    projectDetails.classList.add("project-details");
+    projectDetails.classList.add("project__details");
 
     const projectDescription = document.createElement("div");
-    projectDescription.classList.add("project-description");
+    projectDescription.classList.add("project__description");
 
     const descriptionParagraph = document.createElement("p");
     descriptionParagraph.textContent = project.description;
-    descriptionParagraph.classList.add("description__paragraph", "textCardM");
+    descriptionParagraph.classList.add("description__paragraph", "textCardColor", "textCardAdditionalParameters");
 
     const projectTechnologies = document.createElement("div");
     projectTechnologies.classList.add("project__technologies");
 
     const TechnologiesTitle = document.createElement("h4");
-    TechnologiesTitle.classList.add("textCardM");
+    TechnologiesTitle.classList.add("textCardColor");
     TechnologiesTitle.textContent = selectedLanguage === LANGUAGES.SPANISH ? "Tecnologías utilizadas:" : "Technologies used:";
 
     const techContainer = document.createElement("div");
     techContainer.classList.add("tech__container");
 
+    const projectNavigator = document.createElement("div");
+    projectNavigator.classList.add("project__navigator");
+
     projectTechnologies.append(TechnologiesTitle, techContainer);
 
     projectDetails.append(projectDescription, projectTechnologies);
+
+    if (project.projectUrl) {
+      const navigatorBtn = document.createElement("button");
+      navigatorBtn.classList.add("navigator__btn");
+
+      const projectPageLink = document.createElement("a");
+      projectPageLink.classList.add("project__page__link", "textCardColor", "textCardAdditionalParameters");
+
+      const linkIcon = document.createElement("i");
+      linkIcon.classList.add(...projectsContentIcons.diagonalArrowIcon, "textCardColor", "textCardAdditionalParameters");
+
+      projectPageLink.href = project.projectUrl;
+      projectPageLink.textContent = selectedLanguage === LANGUAGES.SPANISH ? "Echa un vistazo a este proyecto" : "Take a look to this project";
+      projectPageLink.title = "Navigate to the project page";
+      projectPageLink.rel = "noopener noreferrer";
+      projectPageLink.target = "_blank";
+      projectPageLink.setAttribute("aria-label", "NavigateToProjectPage");
+
+      projectPageLink.appendChild(linkIcon);
+      navigatorBtn.appendChild(projectPageLink);
+      projectNavigator.appendChild(navigatorBtn);
+    }
+    if (project.repositoryUrl) {
+      const navigatorBtn = document.createElement("button");
+      navigatorBtn.classList.add("navigator__btn");
+
+      const projectSourceCode = document.createElement("a");
+      projectSourceCode.classList.add("project__source__code", "textCardColor", "textCardAdditionalParameters");
+
+      const codeIcon = document.createElement("i");
+      codeIcon.classList.add(...projectsContentIcons.fileCodeIcon, "textCardAdditionalParameters");
+
+      projectSourceCode.href = project.repositoryUrl;
+      projectSourceCode.textContent = selectedLanguage === LANGUAGES.SPANISH ? "Código fuente" : "Source code";
+      projectSourceCode.title = "Navigate to the project source code";
+      projectSourceCode.rel = "noopener noreferrer";
+      projectSourceCode.target = "_blank";
+      projectSourceCode.setAttribute("aria-label", "NavigateToProjectSourceCode");
+
+      projectSourceCode.appendChild(codeIcon);
+      navigatorBtn.appendChild(projectSourceCode);
+      projectNavigator.appendChild(navigatorBtn);
+    }
+
+    projectDetails.appendChild(projectNavigator);
     projectDescription.appendChild(descriptionParagraph);
 
     projectInfoWrapper.appendChild(projectVisualizer);
@@ -176,30 +223,11 @@ const projectsContent = () => {
       }
     }
 
-    const projectLink = document.createElement("a");
-    projectLink.href = project.projectUrl;
-    projectLink.target = "_blank";
-    projectLink.rel = "noopener noreferrer";
-
-    const diagonalArrowIcon = document.createElement("i");
-    diagonalArrowIcon.className = projectsContentIcons.diagonalArrowIcon;
-
-    const repositoryLink = document.createElement("a");
-    repositoryLink.href = project.repositoryUrl;
-    repositoryLink.target = "_blank";
-    repositoryLink.rel = "noopener noreferrer";
-
-    const githubIcon = document.createElement("i");
-    githubIcon.className = projectsContentIcons.githubIcon;
-
-    projectLink.appendChild(diagonalArrowIcon);
-    repositoryLink.appendChild(githubIcon);
-
     project.technologies.forEach((tech) => {
       const techBadge = document.createElement("span");
       techBadge.classList.add("tech-badge");
       const techName = document.createElement("p");
-      techName.classList.add("tech__name", "textCardM");
+      techName.classList.add("tech__name", "textCardColor", "textCardAdditionalParameters");
       techName.textContent = tech;
       techBadge.appendChild(techName);
 
