@@ -203,25 +203,70 @@ const projectsContent = () => {
     const projectSk = document.createElement("div");
     projectSk.classList.add("projectSk");
 
-    if (window.innerWidth >= 768) {
-      imgCreatorDisplayer("project-img", project.imageSrc[1], cellphoneScreen, projectSk);
+    let currentImageContainer = null;
+    let lastLayoutMode = null;
 
-      projectInfoWrapper.appendChild(projectDetails);
+    function handleResponsiveProjectCards() {
+      const width = window.innerWidth;
 
-      projectVisualizer.appendChild(cellphoneVisualizer);
+      const isWide = width >= 768;
 
-      projectInfoContainer.style.backgroundImage = `url(${project.imageSrc[0]})`;
-    } else if (window.innerWidth <= 767) {
-      imgCreatorDisplayer("project-img", project.imageSrc[0], normalCardVisualizer, projectSk);
-      projectVisualizer.appendChild(normalCardVisualizer);
+      if (lastLayoutMode === (isWide ? "wide" : "small")) return;
 
-      projectInfoContainer.appendChild(projectDetails);
-      if (project.bgColor.includes("gradient")) {
-        projectInfoContainer.style.backgroundImage = project.bgColor;
+      lastLayoutMode = isWide ? "wide" : "small";
+
+      if (currentImageContainer) {
+        currentImageContainer.innerHTML = "";
+      }
+
+      projectVisualizer.innerHTML = "";
+      projectInfoWrapper.innerHTML = "";
+
+      projectInfoContainer.innerHTML = "";
+      projectInfoContainer.append(projectTitle, projectInfoWrapper);
+      projectInfoWrapper.appendChild(projectVisualizer);
+
+      if (isWide) {
+        // Desktop layout
+
+        currentImageContainer = cellphoneScreen;
+
+        imgCreatorDisplayer("project-img", project.imageSrc[1], cellphoneScreen, projectSk);
+
+        projectVisualizer.appendChild(cellphoneVisualizer);
+        projectInfoWrapper.appendChild(projectDetails);
+
+        projectInfoContainer.style.backgroundImage = `url(${project.imageSrc[0]})`;
+        projectInfoContainer.style.backgroundColor = "";
       } else {
-        projectInfoContainer.style.backgroundColor = project.bgColor;
+        // Mobile layout
+
+        currentImageContainer = normalCardVisualizer;
+
+        imgCreatorDisplayer("project-img", project.imageSrc[0], normalCardVisualizer, projectSk);
+
+        projectVisualizer.appendChild(normalCardVisualizer);
+        projectInfoContainer.appendChild(projectDetails);
+
+        projectInfoContainer.style.backgroundImage = "";
+
+        if (project.bgColor.includes("gradient")) {
+          projectInfoContainer.style.backgroundImage = project.bgColor;
+        } else {
+          projectInfoContainer.style.backgroundColor = project.bgColor;
+        }
       }
     }
+
+    handleResponsiveProjectCards();
+
+    // Debounced resize handler
+
+    let resizeTimeout;
+    window.addEventListener("resize", () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(handleResponsiveProjectCards, 150);
+    });
 
     project.technologies.forEach((tech) => {
       const techBadge = document.createElement("span");
