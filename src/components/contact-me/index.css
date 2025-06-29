@@ -34,6 +34,7 @@
 
 .form__group input,
 .form__group textarea {
+  font-family: "Manrope", sans-serif;
   padding: 16px;
   border: 2px solid #4a5568;
   border-radius: 8px;

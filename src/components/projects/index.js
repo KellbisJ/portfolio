@@ -55,7 +55,7 @@ const projectsContent = () => {
     },
     {
       title: "MyEcm (fake ecommerce)",
-      imageSrc: ["https://ik.imagekit.io/137/Portfolio/MyEcmCARD.webp?updatedAt=1744037093039", "https://ik.imagekit.io/137/Portfolio/MyEcmCARD.webp?updatedAt=1744037093039"],
+      imageSrc: ["https://ik.imagekit.io/137/Portfolio/MyEcmCARD.webp?updatedAt=1744037093039", "https://ik.imagekit.io/137/Portfolio/mobFakeECM.jpeg?updatedAt=1751209918875"],
       projectUrl: "https://fakeshopiecm.netlify.app",
       repositoryUrl: "https://github.com/KellbisJ/my-ecm",
       description: projectDescription.myEcm.spanish,
@@ -64,7 +64,7 @@ const projectsContent = () => {
     },
     {
       title: "To-do list",
-      imageSrc: ["https://ik.imagekit.io/137/Portfolio/TodoCARD.webp?updatedAt=1744037092983", "https://ik.imagekit.io/137/Portfolio/TodoCARD.webp?updatedAt=1744037092983"],
+      imageSrc: ["https://ik.imagekit.io/137/Portfolio/TodoCARD.webp?updatedAt=1744037092983", "https://ik.imagekit.io/137/Portfolio/mobTODOFORDO.jpeg?updatedAt=1751209918648"],
       projectUrl: "https://kellbisj.github.io/TODO-FOR-DO/",
       repositoryUrl: "https://github.com/KellbisJ/TODO-FOR-DO",
       description: projectDescription.toDo.spanish,
@@ -73,7 +73,7 @@ const projectsContent = () => {
     },
     {
       title: "English Journey Blog",
-      imageSrc: ["https://ik.imagekit.io/137/Portfolio/engjourneyCARD.webp?updatedAt=1744037093009", "https://ik.imagekit.io/137/Portfolio/engjourneyCARD.webp?updatedAt=1744037093009"],
+      imageSrc: ["https://ik.imagekit.io/137/Portfolio/engjourneyCARD.webp?updatedAt=1744037093009", "https://ik.imagekit.io/137/Portfolio/mobMyEnglishJourney.jpeg?updatedAt=1751209918757"],
       projectUrl: "https://my-english-journey.vercel.app",
       repositoryUrl: "https://github.com/KellbisJ/my-english-journey",
       description: projectDescription.englishJourney.spanish,

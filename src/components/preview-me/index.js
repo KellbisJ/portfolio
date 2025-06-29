@@ -86,13 +86,13 @@ const createPreviewMe = () => {
   const contentMeText = document.createElement("h2");
   contentMeText.classList.add("content__me__text");
 
-  const descriptionInfoAccesibility = document.createElement("div");
-  descriptionInfoAccesibility.classList.add("description__info_accesibility");
+  // const descriptionInfoAccesibility = document.createElement("div");
+  // descriptionInfoAccesibility.classList.add("description__info_accesibility");
 
   contentMeBrand.appendChild(contentImg);
   contentMeBrand.appendChild(myName);
 
-  contentMeDescriptionInfo.append(contentMeText, descriptionInfoAccesibility);
+  contentMeDescriptionInfo.append(contentMeText);
 
   const emailCopyElement = document.createElement("button");
   emailCopyElement.classList.add("social-media-element", "email__copy");

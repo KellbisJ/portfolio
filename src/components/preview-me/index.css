@@ -234,7 +234,7 @@
     width: 85%;
   }
   .content__me__descriptionInfo {
-    justify-content: space-between;
+    justify-content: center;
   }
 
   .content__me__brand {
