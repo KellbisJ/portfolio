@@ -8,6 +8,7 @@
 .project__title {
   /* z-index: 2; */
   font-size: 20px;
+  margin-bottom: 24px;
 }
 .content__project__info__container {
   display: grid;
@@ -51,6 +52,7 @@
   flex-direction: column;
   gap: 12px;
   z-index: 2;
+  margin-bottom: 24px;
 }
 .project__visualizer {
   display: flex;
@@ -282,6 +284,9 @@
 /* PROJECTS */
 
 @media (min-width: 768px) {
+  .project__title {
+    margin-bottom: 0;
+  }
   .content__project__info::after {
     content: "";
     position: absolute;
@@ -293,6 +298,7 @@
   .project__info__wrapper {
     flex-direction: row;
     margin-top: 32px;
+    margin-bottom: 0;
   }
   .project__visualizer {
     align-items: center;

@@ -31,6 +31,10 @@ const projectsContent = () => {
       spanish: "Un blog para plasmar y documentar las muchas cosas aprendidas en inglés.",
       english: "A blog to capture and document the many things learned in English.",
     },
+    rpercussion: {
+      spanish: "Página hecha para un cliente que es un artista percusionista, marca personal [Rospercussion].",
+      english: "Page made for a client who is a percussion artist, personal brand [Rospercussion].",
+    },
   };
 
   const projectsMaterial = {
@@ -44,6 +48,15 @@ const projectsContent = () => {
   };
 
   const myProjects = [
+    {
+      title: "Rospercussion Website",
+      imageSrc: ["https://ik.imagekit.io/137/Portfolio/webrpercussionbg.webp?updatedAt=1766627504063", "https://ik.imagekit.io/137/Portfolio/cardwebrpercussion.webp?updatedAt=1766627503890"],
+      projectUrl: "https://www.rospercussion.com/",
+      repositoryUrl: "https://github.com/KellbisJ/rospercussionwebsite",
+      description: projectDescription.rpercussion.spanish,
+      technologies: ["React", "TypeScript", "TailwindCSS", "Vite"],
+      bgColor: "#3B82F6",
+    },
     {
       title: "MoviesKS",
       imageSrc: ["https://ik.imagekit.io/137/Portfolio/MoviesKSBACKGROUND.webp?updatedAt=1744037093527", "https://ik.imagekit.io/137/Portfolio/mobmoviesk.webp?updatedAt=1750621094027"],
@@ -83,6 +96,7 @@ const projectsContent = () => {
   ];
 
   const projectTitleMapping = {
+    "Rospercussion Website": "rpercussion",
     MoviesKS: "moviesKs",
     "MyEcm (fake ecommerce)": "myEcm",
     "To-do list": "toDo",
