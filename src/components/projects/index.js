@@ -1,107 +1,20 @@
 import { LANGUAGES, selectedLanguage, setSelectedLanguage } from "../../language/index.js";
 import { languageEmitter } from "../../language/eventEmitter.js";
 import { imgCreatorDisplayer } from "../../utils/img-creator-displayer/index.js";
+import { projectsData } from "./projects.data.js";
 
 const PROJECTS_CONTENT_KEY = "projects";
 
 const projectsContent = () => {
-  const techImageUrl = {
-    vitejs: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitejs/vitejs-original.svg",
-  };
+  const projectAdditionalIconsDataExtract = projectsData.projectAdditionalIcons();
 
-  const projectsContentIcons = {
-    fileCodeIcon: ["fa-solid", "fa-file-code"],
-    diagonalArrowIcon: ["fa-solid", "fa-arrow-up-right-from-square"],
-  };
+  const projectDescriptionDataExtract = projectsData.projectDescription();
 
-  const projectDescription = {
-    moviesKs: {
-      spanish: "Este proyecto es un sitio web que permite a los usuarios consumir información sobre películas y series.",
-      english: "This project is a website that allows users to consume information about movies and series.",
-    },
-    myEcm: {
-      spanish: "Un prototipo de ecommerce básico.",
-      english: "A basic ecommerce prototype.",
-    },
-    toDo: {
-      spanish: "Un simple to-do list.",
-      english: "A simple to-do list.",
-    },
-    englishJourney: {
-      spanish: "Un blog para plasmar y documentar las muchas cosas aprendidas en inglés.",
-      english: "A blog to capture and document the many things learned in English.",
-    },
-    rpercussion: {
-      spanish: "Página hecha para un cliente que es un artista percusionista, marca personal [Rospercussion].",
-      english: "Page made for a client who is a percussion artist, personal brand [Rospercussion].",
-    },
-  };
+  const projectTechIconsDataExtract = projectsData.projectTechIcons();
 
-  const projectsMaterial = {
-    react: "devicon-react-original colored",
-    vite: techImageUrl.vitejs,
-    typescript: "devicon-typescript-plain colored",
-    tailwindcss: "devicon-tailwindcss-original colored",
-    expressjs: "devicon-express-original",
-    javascript: "devicon-javascript-plain colored",
-    css: "devicon-css3-plain-wordmark colored",
-  };
+  const myProjects = projectsData.myProjectsData();
 
-  const myProjects = [
-    {
-      title: "Rospercussion Website",
-      imageSrc: ["https://ik.imagekit.io/137/Portfolio/webrpercussionbg.webp?updatedAt=1766627504063", "https://ik.imagekit.io/137/Portfolio/cardwebrpercussion.webp?updatedAt=1766627503890"],
-      projectUrl: "https://www.rospercussion.com/",
-      repositoryUrl: "https://github.com/KellbisJ/rospercussionwebsite",
-      description: projectDescription.rpercussion.spanish,
-      technologies: ["React", "TypeScript", "TailwindCSS", "Vite"],
-      bgColor: "#3B82F6",
-    },
-    {
-      title: "MoviesKS",
-      imageSrc: ["https://ik.imagekit.io/137/Portfolio/MoviesKSBACKGROUND.webp?updatedAt=1744037093527", "https://ik.imagekit.io/137/Portfolio/mobmoviesk.webp?updatedAt=1750621094027"],
-      projectUrl: "https://movies-ks-frontend.vercel.app/",
-      repositoryUrl: "https://github.com/KellbisJ/MoviesKS",
-      description: projectDescription.moviesKs.spanish,
-      technologies: ["React", "Vite", "TypeScript", "TailwindCSS", "ExpressJS"],
-      bgColor: "#DBEAFE",
-    },
-    {
-      title: "MyEcm (fake ecommerce)",
-      imageSrc: ["https://ik.imagekit.io/137/Portfolio/MyEcmCARD.webp?updatedAt=1744037093039", "https://ik.imagekit.io/137/Portfolio/mobFakeECM.jpeg?updatedAt=1751209918875"],
-      projectUrl: "https://fakeshopiecm.netlify.app",
-      repositoryUrl: "https://github.com/KellbisJ/my-ecm",
-      description: projectDescription.myEcm.spanish,
-      technologies: ["React", "Vite", "TailwindCSS", "JavaScript"],
-      bgColor: "#1E293B",
-    },
-    {
-      title: "To-do list",
-      imageSrc: ["https://ik.imagekit.io/137/Portfolio/TodoCARD.webp?updatedAt=1744037092983", "https://ik.imagekit.io/137/Portfolio/mobTODOFORDO.jpeg?updatedAt=1751209918648"],
-      projectUrl: "https://kellbisj.github.io/TODO-FOR-DO/",
-      repositoryUrl: "https://github.com/KellbisJ/TODO-FOR-DO",
-      description: projectDescription.toDo.spanish,
-      technologies: ["React", "JavaScript", "CSS"],
-      bgColor: "#131f24",
-    },
-    {
-      title: "English Journey Blog",
-      imageSrc: ["https://ik.imagekit.io/137/Portfolio/engjourneyCARD.webp?updatedAt=1744037093009", "https://ik.imagekit.io/137/Portfolio/mobMyEnglishJourney.jpeg?updatedAt=1751209918757"],
-      projectUrl: "https://my-english-journey.vercel.app",
-      repositoryUrl: "https://github.com/KellbisJ/my-english-journey",
-      description: projectDescription.englishJourney.spanish,
-      technologies: ["React", "TypeScript", "TailwindCSS", "Vite"],
-      bgColor: "linear-gradient(to right, #4299e1, #9f7aea, #f56565)",
-    },
-  ];
-
-  const projectTitleMapping = {
-    "Rospercussion Website": "rpercussion",
-    MoviesKS: "moviesKs",
-    "MyEcm (fake ecommerce)": "myEcm",
-    "To-do list": "toDo",
-    "English Journey Blog": "englishJourney",
-  };
+  const projectTitleMapping = projectsData.projectTitleMapping();
 
   const CONTENT_PROJECTS = document.createElement("div");
   CONTENT_PROJECTS.classList.add("content__projects");
@@ -171,7 +84,7 @@ const projectsContent = () => {
       projectPageLink.classList.add("project__page__link", "textCardColor", "textCardAdditionalParameters");
 
       const linkIcon = document.createElement("i");
-      linkIcon.classList.add(...projectsContentIcons.diagonalArrowIcon, "textCardColor", "textCardAdditionalParameters");
+      linkIcon.classList.add(...projectAdditionalIconsDataExtract.diagonalArrowIcon, "textCardColor", "textCardAdditionalParameters");
 
       projectPageLink.href = project.projectUrl;
       projectPageLink.textContent = selectedLanguage === LANGUAGES.SPANISH ? "Echa un vistazo a este proyecto" : "Take a look to this project";
@@ -192,7 +105,7 @@ const projectsContent = () => {
       projectSourceCode.classList.add("project__source__code", "textCardColor", "textCardAdditionalParameters");
 
       const codeIcon = document.createElement("i");
-      codeIcon.classList.add(...projectsContentIcons.fileCodeIcon, "textCardAdditionalParameters");
+      codeIcon.classList.add(...projectAdditionalIconsDataExtract.fileCodeIcon, "textCardAdditionalParameters");
 
       projectSourceCode.href = project.repositoryUrl;
       projectSourceCode.textContent = selectedLanguage === LANGUAGES.SPANISH ? "Código fuente" : "Source code";
@@ -290,14 +203,14 @@ const projectsContent = () => {
       techName.textContent = tech;
       techBadge.appendChild(techName);
 
-      if (projectsMaterial[tech.toLowerCase()] && projectsMaterial[tech.toLowerCase()].startsWith("http")) {
+      if (projectTechIconsDataExtract[tech.toLowerCase()] && projectTechIconsDataExtract[tech.toLowerCase()].startsWith("http")) {
         const techImg = document.createElement("img");
         techImg.classList.add("tech-img");
-        techImg.src = projectsMaterial[tech.toLowerCase()];
+        techImg.src = projectTechIconsDataExtract[tech.toLowerCase()];
         techBadge.appendChild(techImg);
       } else {
         const techIcon = document.createElement("i");
-        techIcon.className = projectsMaterial[tech.toLowerCase()];
+        techIcon.className = projectTechIconsDataExtract[tech.toLowerCase()];
         techBadge.appendChild(techIcon);
       }
 
@@ -311,9 +224,9 @@ const projectsContent = () => {
     myProjects.forEach((project) => {
       const descriptionKey = projectTitleMapping[project.title];
       if (selectedLanguage === LANGUAGES.SPANISH) {
-        project.description = projectDescription[descriptionKey].spanish;
+        project.description = projectDescriptionDataExtract[descriptionKey].spanish;
       } else if (selectedLanguage === LANGUAGES.ENGLISH) {
-        project.description = projectDescription[descriptionKey].english;
+        project.description = projectDescriptionDataExtract[descriptionKey].english;
       }
     });
     renderProjects();
