@@ -8,45 +8,7 @@ import { myStudiesContent, STUDIES_CONTENT_KEY } from "../my-studies/index.js";
 import { contactMeContent, CONTACT_CONTENT_KEY } from "../contact-me/index.js";
 import { translateMenu } from "../translate-menu/index.js";
 import { imgCreatorDisplayer } from "../../utils/img-creator-displayer/index.js";
-
-const general = {
-  meImgUrl: "https://ik.imagekit.io/137/Portfolio/mainCWEBP.webp?updatedAt=1744037093889",
-  gitHubProfile: "https://github.com/KellbisJ",
-  linkedinProfile: "www.linkedin.com/in/kellbisj",
-};
-
-const icons = {
-  gitHubIcon: "devicon-github-original",
-  linkedinIcon: "devicon-linkedin-plain",
-  copyIcon: ["fa-regular", "fa-copy"],
-  mailIcon: ["fa-solid", "fa-envelope"],
-};
-
-const categoryBtnIcons = ["fa-solid fa-microchip", "fa-solid fa-code", "fa-solid fa-book", "fa-solid fa-briefcase"];
-
-const socialMediaLinks = {
-  github: {
-    url: general.gitHubProfile,
-    icon: icons.gitHubIcon,
-  },
-  linkedin: {
-    url: general.linkedinProfile,
-    icon: icons.linkedinIcon,
-  },
-};
-
-const contentMe_ES = {
-  greetingText_ES: `Kellbis Salazar`,
-  contentMeText_ES: `Desarrollador web full-stack con +3 años de experiencia`,
-  copiedTextElement_ES: `¡Copiado!`,
-};
-const contentMe_EN = {
-  greetingText_EN: `Kellbis Salazar`,
-  contentMeText_EN: `Full-stack web developer with +3 years of experience.`,
-  copiedTextElement_EN: `Copied!`,
-};
-const myContentCategories_ES = ["Tecnologías", "Proyectos", "Certificaciones", "¡Contrátame!"];
-const myContentCategories_EN = ["Technologies", "Projects", "Certifications", "Hire me!"];
+import { previewMeData } from "./previewMe.data.js";
 
 const my_content_categories = document.createElement("div");
 my_content_categories.classList.add("my__content__categories");
@@ -61,6 +23,12 @@ const createPreviewMe = () => {
     return;
   }
 
+  const previewMeImgUrl = previewMeData.meImgUrl();
+  const previewMeIcons = previewMeData.icons();
+  const previewMeSocialMediaBox = previewMeData.contentMeSocialMediaBox();
+  const previewMeContentMeTranlations = previewMeData.contentMeTranslations();
+  const previewMeBtnIconsOrdered = previewMeData.categoryBtnIconsOrdered();
+
   const contentMePresentation = document.createElement("div");
   contentMePresentation.classList.add("content__me__presentation");
 
@@ -74,7 +42,7 @@ const createPreviewMe = () => {
   imgLoadingSkeletonPulse.classList.add("meImgSk");
   // contentImg.appendChild(imgLoadingSkeletonPulse);
 
-  imgCreatorDisplayer("meImg", general.meImgUrl, contentImg, imgLoadingSkeletonPulse);
+  imgCreatorDisplayer("meImg", previewMeImgUrl, contentImg, imgLoadingSkeletonPulse);
 
   const contentMeSocialMedia = document.createElement("div");
   contentMeSocialMedia.classList.add("content__me__socialMedia");
@@ -103,7 +71,7 @@ const createPreviewMe = () => {
   copiedMailText.ariaLive = "polite";
 
   const mailICon = document.createElement("i");
-  mailICon.classList.add(...icons.mailIcon);
+  mailICon.classList.add(previewMeIcons.mailIcon);
   mailICon.id = "mailIcon";
 
   const inputMailField = document.createElement("input");
@@ -112,11 +80,9 @@ const createPreviewMe = () => {
   // inputMailField.id = "emailInputField";
   inputMailField.style = "position: absolute; left: -9999px";
 
-  Object.keys(socialMediaLinks).forEach((socialMediaLink) => {
-    const { url, icon } = socialMediaLinks[socialMediaLink];
-
+  previewMeSocialMediaBox.forEach((socialMediaLink) => {
     const aElement = document.createElement("a");
-    aElement.href = url;
+    aElement.href = socialMediaLink.url;
     aElement.target = "_blank";
     aElement.rel = "noopener noreferrer";
 
@@ -125,7 +91,7 @@ const createPreviewMe = () => {
     socialMediaElement.classList.add("social-media-element");
 
     const socialMediaIcon = document.createElement("i");
-    socialMediaIcon.classList.add(icon);
+    socialMediaIcon.classList.add(socialMediaLink.icon);
 
     socialMediaElement.appendChild(socialMediaIcon);
     aElement.appendChild(socialMediaElement);
@@ -167,11 +133,11 @@ const createPreviewMe = () => {
     const copiedMailText = document.querySelector(".copy-mail-text");
 
     if (selectedLanguage === LANGUAGES.SPANISH) {
-      contentMeText.textContent = contentMe_ES.contentMeText_ES;
-      copiedMailText.textContent = contentMe_ES.copiedTextElement_ES;
+      contentMeText.textContent = previewMeContentMeTranlations.contentMe_ES.contentMeText_ES;
+      copiedMailText.textContent = previewMeContentMeTranlations.contentMe_ES.copiedTextElement_ES;
     } else if (selectedLanguage === LANGUAGES.ENGLISH) {
-      contentMeText.textContent = contentMe_EN.contentMeText_EN;
-      copiedMailText.textContent = contentMe_EN.copiedTextElement_EN;
+      contentMeText.textContent = previewMeContentMeTranlations.contentMe_EN.contentMeText_EN;
+      copiedMailText.textContent = previewMeContentMeTranlations.contentMe_EN.copiedTextElement_EN;
     }
 
     function createContentCategoriesBtn(classs, btnTextContent, index) {
@@ -179,7 +145,7 @@ const createPreviewMe = () => {
       content_btn.classList.add("prevMeBtn", classs);
 
       const btnIcon = document.createElement("i");
-      btnIcon.classList = categoryBtnIcons[index];
+      btnIcon.classList = previewMeBtnIconsOrdered[index];
       btnIcon.style.background = "none";
       content_btn.appendChild(btnIcon);
 
@@ -223,7 +189,7 @@ const createPreviewMe = () => {
     }
 
     if (selectedLanguage === LANGUAGES.SPANISH) {
-      myContentCategories_ES.forEach((content, index) => {
+      previewMeContentMeTranlations.myContentCategories_ES.forEach((content, index) => {
         const classs = "btn_my_content";
 
         const myContentBtn = createContentCategoriesBtn(classs, content, index);
@@ -231,7 +197,7 @@ const createPreviewMe = () => {
         my_content_categories.appendChild(myContentBtn);
       });
     } else if (selectedLanguage === LANGUAGES.ENGLISH) {
-      myContentCategories_EN.forEach((content, index) => {
+      previewMeContentMeTranlations.myContentCategories_EN.forEach((content, index) => {
         const classs = "btn_my_content";
 
         const myContentBtn = createContentCategoriesBtn(classs, content, index);

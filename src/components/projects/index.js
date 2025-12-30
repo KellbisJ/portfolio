@@ -6,11 +6,11 @@ import { projectsData } from "./projects.data.js";
 const PROJECTS_CONTENT_KEY = "projects";
 
 const projectsContent = () => {
-  const projectAdditionalIconsDataExtract = projectsData.projectAdditionalIcons();
+  const projectAdditionalIcons = projectsData.projectAdditionalIcons();
 
-  const projectDescriptionDataExtract = projectsData.projectDescription();
+  const projectDescription = projectsData.projectDescription();
 
-  const projectTechIconsDataExtract = projectsData.projectTechIcons();
+  const projectTechIcons = projectsData.projectTechIcons();
 
   const myProjects = projectsData.myProjectsData();
 
@@ -84,7 +84,7 @@ const projectsContent = () => {
       projectPageLink.classList.add("project__page__link", "textCardColor", "textCardAdditionalParameters");
 
       const linkIcon = document.createElement("i");
-      linkIcon.classList.add(...projectAdditionalIconsDataExtract.diagonalArrowIcon, "textCardColor", "textCardAdditionalParameters");
+      linkIcon.classList.add(...projectAdditionalIcons.diagonalArrowIcon, "textCardColor", "textCardAdditionalParameters");
 
       projectPageLink.href = project.projectUrl;
       projectPageLink.textContent = selectedLanguage === LANGUAGES.SPANISH ? "Echa un vistazo a este proyecto" : "Take a look to this project";
@@ -105,7 +105,7 @@ const projectsContent = () => {
       projectSourceCode.classList.add("project__source__code", "textCardColor", "textCardAdditionalParameters");
 
       const codeIcon = document.createElement("i");
-      codeIcon.classList.add(...projectAdditionalIconsDataExtract.fileCodeIcon, "textCardAdditionalParameters");
+      codeIcon.classList.add(...projectAdditionalIcons.fileCodeIcon, "textCardAdditionalParameters");
 
       projectSourceCode.href = project.repositoryUrl;
       projectSourceCode.textContent = selectedLanguage === LANGUAGES.SPANISH ? "Código fuente" : "Source code";
@@ -203,14 +203,14 @@ const projectsContent = () => {
       techName.textContent = tech;
       techBadge.appendChild(techName);
 
-      if (projectTechIconsDataExtract[tech.toLowerCase()] && projectTechIconsDataExtract[tech.toLowerCase()].startsWith("http")) {
+      if (projectTechIcons[tech.toLowerCase()] && projectTechIcons[tech.toLowerCase()].startsWith("http")) {
         const techImg = document.createElement("img");
         techImg.classList.add("tech-img");
-        techImg.src = projectTechIconsDataExtract[tech.toLowerCase()];
+        techImg.src = projectTechIcons[tech.toLowerCase()];
         techBadge.appendChild(techImg);
       } else {
         const techIcon = document.createElement("i");
-        techIcon.className = projectTechIconsDataExtract[tech.toLowerCase()];
+        techIcon.className = projectTechIcons[tech.toLowerCase()];
         techBadge.appendChild(techIcon);
       }
 
@@ -224,9 +224,9 @@ const projectsContent = () => {
     myProjects.forEach((project) => {
       const descriptionKey = projectTitleMapping[project.title];
       if (selectedLanguage === LANGUAGES.SPANISH) {
-        project.description = projectDescriptionDataExtract[descriptionKey].spanish;
+        project.description = projectDescription[descriptionKey].spanish;
       } else if (selectedLanguage === LANGUAGES.ENGLISH) {
-        project.description = projectDescriptionDataExtract[descriptionKey].english;
+        project.description = projectDescription[descriptionKey].english;
       }
     });
     renderProjects();
