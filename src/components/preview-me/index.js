@@ -71,7 +71,7 @@ const createPreviewMe = () => {
   copiedMailText.ariaLive = "polite";
 
   const mailICon = document.createElement("i");
-  mailICon.classList.add(previewMeIcons.mailIcon);
+  mailICon.classList.add(...previewMeIcons.mailIcon);
   mailICon.id = "mailIcon";
 
   const inputMailField = document.createElement("input");
