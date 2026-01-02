@@ -4,7 +4,6 @@ import { imgCreatorDisplayer } from "../../utils/img-creator-displayer/index.js"
 
 const TECH_CONTENT_KEY = "technologies";
 
-// Move static data outside the component function
 const technologiesMaterial = [
   {
     id: "programming",
