@@ -245,6 +245,7 @@
     font-size: 32px;
     width: 70%;
     font-weight: bolder;
+    text-align: left;
   }
   .my__content__categories {
     display: flex;

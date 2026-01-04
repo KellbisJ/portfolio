@@ -8,7 +8,7 @@ import { myStudiesContent, STUDIES_CONTENT_KEY } from "../my-studies/index.js";
 import { contactMeContent, CONTACT_CONTENT_KEY } from "../contact-me/index.js";
 import { translateMenu } from "../translate-menu/index.js";
 import { imgCreatorDisplayer } from "../../utils/img-creator-displayer/index.js";
-import { previewMeData } from "./previewMe.data.js";
+import { previewMeData, previewContentMeSocialMediaBox } from "./previewMe.data.js";
 
 const my_content_categories = document.createElement("div");
 my_content_categories.classList.add("my__content__categories");
@@ -23,11 +23,10 @@ const createPreviewMe = () => {
     return;
   }
 
-  const previewMeImgUrl = previewMeData.meImgUrl();
-  const previewMeIcons = previewMeData.icons();
-  const previewMeSocialMediaBox = previewMeData.contentMeSocialMediaBox();
-  const previewMeContentMeTranlations = previewMeData.contentMeTranslations();
-  const previewMeBtnIconsOrdered = previewMeData.categoryBtnIconsOrdered();
+  const previewMeImgUrl = previewMeData.meImgUrl;
+  const previewMeIcons = previewMeData.icons;
+  const previewMeContentMeTranlations = previewMeData.contentMeTranslations;
+  const previewMeBtnIconsOrdered = previewMeData.categoryBtnIconsOrdered;
 
   const contentMePresentation = document.createElement("div");
   contentMePresentation.classList.add("content__me__presentation");
@@ -80,7 +79,7 @@ const createPreviewMe = () => {
   // inputMailField.id = "emailInputField";
   inputMailField.style = "position: absolute; left: -9999px";
 
-  previewMeSocialMediaBox.forEach((socialMediaLink) => {
+  previewContentMeSocialMediaBox.forEach((socialMediaLink) => {
     const aElement = document.createElement("a");
     aElement.href = socialMediaLink.url;
     aElement.target = "_blank";

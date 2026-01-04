@@ -1,60 +1,43 @@
-class PreviewMeData {
-  constructor() {}
+const previewMeData = {
+  meImgUrl: "https://ik.imagekit.io/137/Portfolio/mainCWEBP.webp?updatedAt=1744037093889",
 
-  meImgUrl() {
-    return "https://ik.imagekit.io/137/Portfolio/mainCWEBP.webp?updatedAt=1744037093889";
-  }
+  socialMediaLinks: {
+    gitHubProfile: "https://github.com/KellbisJ",
+    linkedinProfile: "www.linkedin.com/in/kellbisj",
+  },
+  icons: {
+    gitHubIcon: "devicon-github-original",
+    linkedinIcon: "devicon-linkedin-plain",
+    copyIcon: ["fa-regular", "fa-copy"],
+    mailIcon: ["fa-solid", "fa-envelope"],
+  },
+  categoryBtnIconsOrdered: ["fa-solid fa-microchip", "fa-solid fa-code", "fa-solid fa-book", "fa-solid fa-briefcase"],
 
-  socialMediaLinks() {
-    return {
-      gitHubProfile: "https://github.com/KellbisJ",
-      linkedinProfile: "www.linkedin.com/in/kellbisj",
-    };
-  }
+  contentMeTranslations: {
+    contentMe_ES: {
+      greetingText_ES: `Kellbis Salazar`,
+      contentMeText_ES: `Aprendiz de programación, desarrollador web.`,
+      copiedTextElement_ES: `¡Copiado!`,
+    },
+    contentMe_EN: {
+      greetingText_EN: `Kellbis Salazar`,
+      contentMeText_EN: `Programming apprentice, web developer.`,
+      copiedTextElement_EN: `Copied!`,
+    },
+    myContentCategories_ES: ["Tecnologías", "Proyectos", "Certificaciones", "¡Contrátame!"],
+    myContentCategories_EN: ["Technologies", "Projects", "Certifications", "Hire me!"],
+  },
+};
 
-  icons() {
-    return {
-      gitHubIcon: "devicon-github-original",
-      linkedinIcon: "devicon-linkedin-plain",
-      copyIcon: ["fa-regular", "fa-copy"],
-      mailIcon: ["fa-solid", "fa-envelope"],
-    };
-  }
-  categoryBtnIconsOrdered() {
-    return ["fa-solid fa-microchip", "fa-solid fa-code", "fa-solid fa-book", "fa-solid fa-briefcase"];
-  }
+const previewContentMeSocialMediaBox = [
+  {
+    url: previewMeData.socialMediaLinks.gitHubProfile,
+    icon: previewMeData.icons.gitHubIcon,
+  },
+  {
+    url: previewMeData.socialMediaLinks.linkedinProfile,
+    icon: previewMeData.icons.linkedinIcon,
+  },
+];
 
-  contentMeTranslations() {
-    return {
-      contentMe_ES: {
-        greetingText_ES: `Kellbis Salazar`,
-        contentMeText_ES: `Desarrollador web full-stack con +3 años de experiencia`,
-        copiedTextElement_ES: `¡Copiado!`,
-      },
-      contentMe_EN: {
-        greetingText_EN: `Kellbis Salazar`,
-        contentMeText_EN: `Full-stack web developer with +3 years of experience.`,
-        copiedTextElement_EN: `Copied!`,
-      },
-      myContentCategories_ES: ["Tecnologías", "Proyectos", "Certificaciones", "¡Contrátame!"],
-      myContentCategories_EN: ["Technologies", "Projects", "Certifications", "Hire me!"],
-    };
-  }
-
-  contentMeSocialMediaBox() {
-    return [
-      {
-        url: this.socialMediaLinks().gitHubProfile,
-        icon: this.icons().gitHubIcon,
-      },
-      {
-        url: this.socialMediaLinks().linkedinProfile,
-        icon: this.icons().linkedinIcon,
-      },
-    ];
-  }
-}
-
-const previewMeData = new PreviewMeData();
-
-export { previewMeData };
+export { previewMeData, previewContentMeSocialMediaBox };
