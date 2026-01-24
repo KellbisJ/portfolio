@@ -64,19 +64,6 @@ const projectsMaterial = [
     bgColor: "#1E293B",
   },
   {
-    title: "To-do list",
-    imageCard: "https://ik.imagekit.io/137/Portfolio/mobTODOFORDO.jpeg?updatedAt=1751209918648",
-    imageBackground: "https://ik.imagekit.io/137/Portfolio/TodoCARD.webp?updatedAt=1744037092983",
-    projectUrl: "https://kellbisj.github.io/TODO-FOR-DO/",
-    repositoryUrl: "https://github.com/KellbisJ/TODO-FOR-DO",
-    descriptions: {
-      [LANGUAGES.SPANISH]: "Un simple to-do list.",
-      [LANGUAGES.ENGLISH]: "A simple to-do list.",
-    },
-    technologies: { React: projectTechIcons.react, JavaScript: projectTechIcons.javascript, CSS: projectTechIcons.css },
-    bgColor: "#131f24",
-  },
-  {
     title: "English Journey Blog",
     imageCard: "https://ik.imagekit.io/137/Portfolio/mobMyEnglishJourney.jpeg?updatedAt=1751209918757",
     imageBackground: "https://ik.imagekit.io/137/Portfolio/engjourneyCARD.webp?updatedAt=1744037093009",
