@@ -162,7 +162,7 @@ const projectsContent = () => {
 
           currentImageContainer = normalCardVisualizer;
 
-          imgCreatorDisplayer("project-img", project.imageSrc[0], normalCardVisualizer, projectSk);
+          imgCreatorDisplayer("project-img", project.imageBackground, normalCardVisualizer, projectSk);
 
           projectVisualizer.appendChild(normalCardVisualizer);
           projectInfoContainer.appendChild(projectDetails);
