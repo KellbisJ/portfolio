@@ -3,11 +3,9 @@ const previewMeData = {
 
   socialMediaLinks: {
     gitHubProfile: "https://github.com/KellbisJ",
-    linkedinProfile: "www.linkedin.com/in/kellbisj",
   },
   icons: {
     gitHubIcon: "devicon-github-original",
-    linkedinIcon: "devicon-linkedin-plain",
     copyIcon: ["fa-regular", "fa-copy"],
     mailIcon: ["fa-solid", "fa-envelope"],
   },
@@ -24,8 +22,8 @@ const previewMeData = {
       contentMeText_EN: `Programming apprentice, web developer.`,
       copiedTextElement_EN: `Copied!`,
     },
-    myContentCategories_ES: ["Tecnologías", "Proyectos", "Certificaciones", "¡Contrátame!"],
-    myContentCategories_EN: ["Technologies", "Projects", "Certifications", "Hire me!"],
+    myContentCategories_ES: ["Tecnologías", "Proyectos", "Certificaciones"],
+    myContentCategories_EN: ["Technologies", "Projects", "Certifications"],
   },
 };
 
@@ -33,10 +31,6 @@ const previewContentMeSocialMediaBox = [
   {
     url: previewMeData.socialMediaLinks.gitHubProfile,
     icon: previewMeData.icons.gitHubIcon,
-  },
-  {
-    url: previewMeData.socialMediaLinks.linkedinProfile,
-    icon: previewMeData.icons.linkedinIcon,
   },
 ];
 

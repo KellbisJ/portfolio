@@ -57,14 +57,14 @@
     deferredCSS: [
       ["src/components/projects/index.css", "css", { printMedia: true }],
       ["src/components/my-studies/index.css", "css", { printMedia: true }],
-      ["src/components/contact-me/index.css", "css", { printMedia: true }],
+      // ["src/components/contact-me/index.css", "css", { printMedia: true }],
       ["src/components/translate-menu/index.css", "css", { printMedia: true }],
     ],
 
     deferredScripts: [
       ["src/components/projects/index.js", "script", { module: true, defer: true }],
       ["src/components/my-studies/index.js", "script", { module: true, defer: true }],
-      ["src/components/contact-me/index.js", "script", { module: true, defer: true }],
+      // ["src/components/contact-me/index.js", "script", { module: true, defer: true }],
       ["src/language/eventEmitter.js", "script", { module: true, defer: true }],
     ],
   };

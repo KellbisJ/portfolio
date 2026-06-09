@@ -5,7 +5,6 @@ import { filteredContent } from "../content-me-filtered/index.js";
 import { technologiesContent, TECH_CONTENT_KEY } from "../technologies/index.js";
 import { projectsContent, PROJECTS_CONTENT_KEY } from "../projects/index.js";
 import { myStudiesContent, STUDIES_CONTENT_KEY } from "../my-studies/index.js";
-import { contactMeContent, CONTACT_CONTENT_KEY } from "../contact-me/index.js";
 import { translateMenu } from "../translate-menu/index.js";
 import { imgCreatorDisplayer } from "../../utils/img-creator-displayer/index.js";
 import { previewMeData, previewContentMeSocialMediaBox } from "./previewMe.data.js";
@@ -175,10 +174,6 @@ const createPreviewMe = () => {
           case "Certificaciones":
           case "Certifications":
             filteredContent(myStudiesContent, STUDIES_CONTENT_KEY);
-            break;
-          case "¡Contrátame!":
-          case "Hire me!":
-            filteredContent(contactMeContent, CONTACT_CONTENT_KEY);
             break;
           default:
             console.warn("A fucking error occurred");

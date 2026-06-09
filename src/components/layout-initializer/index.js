@@ -14,14 +14,14 @@ const pageLayout = () =>
     const decor = document.createElement("div");
     decor.classList.add("decor");
 
-    const waveDecor = document.createElement("div");
-    waveDecor.classList.add("wave__decor");
+    // const waveDecor = document.createElement("div");
+    // waveDecor.classList.add("wave__decor");
 
-    const waveBox = document.createElement("div");
-    waveBox.classList.add("box__left__lg__wave");
-    waveDecor.appendChild(waveBox);
+    // const waveBox = document.createElement("div");
+    // waveBox.classList.add("box__left__lg__wave");
+    // waveDecor.appendChild(waveBox);
 
-    decor.appendChild(waveDecor);
+    // decor.appendChild(waveDecor);
 
     // Three simple circled dots!
     const dotsDecor = document.createElement("div");
