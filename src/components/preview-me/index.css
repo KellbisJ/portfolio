@@ -6,12 +6,21 @@
   justify-content: center;
   align-items: center;
   font-family: "Manrope", sans-serif;
-  padding: 6px;
+  padding: 6px 12px;
   border-radius: 8px;
+  border: 1px solid transparent;
   outline: none;
   border: none;
   cursor: pointer;
   font-size: 12px;
+  transition: all 0.2s ease-out;
+  background-color: rgba(170, 236, 146, 0.5);
+  color: #131313;
+}
+.lang-label {
+  font-size: 14px;
+  font-weight: 400;
+  color: rgb(19, 19, 19);
 }
 
 .content__me {
@@ -32,7 +41,9 @@
   grid-area: 1 / 1;
   opacity: 1;
   visibility: visible;
-  transition: opacity 300ms ease, visibility 300ms;
+  transition:
+    opacity 300ms ease,
+    visibility 300ms;
 }
 .content-item.content-hidden {
   opacity: 0;
@@ -83,7 +94,6 @@
   align-items: center;
 }
 .content__me__text {
-  font-size: 26px;
   width: 100%;
   text-align: center;
 }
@@ -136,9 +146,9 @@
 }
 
 .translateBtn {
-  background-color: #0a9396;
-  color: #f6f0f0;
-  font-size: 16px;
+  color: rgb(19, 19, 19);
+  background-color: #aaec92;
+  font-weight: bold;
   position: relative;
 }
 
@@ -166,6 +176,9 @@
 .btn_my_content__selected {
   background-color: #25282a;
   color: #fff;
+  border-bottom-left-radius: 14px;
+  border-bottom-right-radius: 14px;
+  transform: translateY(2px);
 }
 
 .fine__line {
@@ -242,7 +255,6 @@
     align-items: normal;
   }
   .content__me__text {
-    font-size: 32px;
     width: 70%;
     font-weight: bolder;
     text-align: left;

@@ -14,15 +14,6 @@ const pageLayout = () =>
     const decor = document.createElement("div");
     decor.classList.add("decor");
 
-    // const waveDecor = document.createElement("div");
-    // waveDecor.classList.add("wave__decor");
-
-    // const waveBox = document.createElement("div");
-    // waveBox.classList.add("box__left__lg__wave");
-    // waveDecor.appendChild(waveBox);
-
-    // decor.appendChild(waveDecor);
-
     // Three simple circled dots!
     const dotsDecor = document.createElement("div");
     dotsDecor.classList.add("dots__decor");
@@ -62,40 +53,14 @@ const pageLayout = () =>
   });
 
 function createCanvasElement() {
-  const canvas = document.createElement("canvas");
-  canvas.id = "canvas";
-  const ctx = canvas.getContext("2d");
+  const canvasBg = new CanvasBackground();
 
-  document.body.appendChild(canvas);
-
-  function resizeCanvas() {
-    const dpr = window.devicePixelRatio || 1;
-    canvas.width = window.innerWidth * dpr;
-    canvas.height = window.innerHeight * dpr;
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  const bg = new TopographicBackground(canvasBg);
+  if (window.innerWidth <= 768) {
+    bg.setAnimationEnabled(false);
+  } else {
+    bg.animate(); // Keep animation on desktop
   }
-
-  resizeCanvas();
-
-  const bg = new TopographicBackground(canvas, canvas.width, canvas.height, ctx, 0, 0);
-  bg.animate();
-
-  window.addEventListener("resize", () => {
-    resizeCanvas();
-    bg.fitCanvas();
-
-    bg.isMobile = window.innerWidth <= 768;
-
-    if (bg.isMobile) {
-      bg.noiseScale = 0.03;
-      bg.lineCount = 15;
-      bg.lineSpacing = 50;
-    } else {
-      bg.noiseScale = 0.02;
-      bg.lineCount = 35;
-      bg.lineSpacing = 30;
-    }
-  });
 }
 
 createCanvasElement();

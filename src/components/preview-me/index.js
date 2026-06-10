@@ -38,7 +38,6 @@ const createPreviewMe = () => {
 
   const imgLoadingSkeletonPulse = document.createElement("div");
   imgLoadingSkeletonPulse.classList.add("meImgSk");
-  // contentImg.appendChild(imgLoadingSkeletonPulse);
 
   imgCreatorDisplayer("meImg", previewMeImgUrl, contentImg, imgLoadingSkeletonPulse);
 
@@ -51,9 +50,6 @@ const createPreviewMe = () => {
 
   const contentMeText = document.createElement("h2");
   contentMeText.classList.add("content__me__text");
-
-  // const descriptionInfoAccesibility = document.createElement("div");
-  // descriptionInfoAccesibility.classList.add("description__info_accesibility");
 
   contentMeBrand.appendChild(contentImg);
   contentMeBrand.appendChild(myName);
@@ -75,7 +71,6 @@ const createPreviewMe = () => {
   const inputMailField = document.createElement("input");
   inputMailField.type = "text";
   inputMailField.value = "kellbisdevsw@gmail.com";
-  // inputMailField.id = "emailInputField";
   inputMailField.style = "position: absolute; left: -9999px";
 
   previewContentMeSocialMediaBox.forEach((socialMediaLink) => {
@@ -100,7 +95,7 @@ const createPreviewMe = () => {
   fineLine.classList.add("fine__line");
 
   emailCopyElement.appendChild(copiedMailText);
-  // emailCopyElement.appendChild(copyMailFieldIcon);
+
   emailCopyElement.appendChild(mailICon);
   emailCopyElement.appendChild(inputMailField);
   contentMeSocialMedia.appendChild(emailCopyElement);
@@ -109,11 +104,6 @@ const createPreviewMe = () => {
   emailCopyElement.addEventListener("click", () => {
     copyFieldText(inputMailField, emailCopyElement, copiedMailText);
   }); // CopyMail
-
-  // mailICon.addEventListener("click", () => {
-  //   const emailAddress = "kellbisdevsw@gmail.com";
-  //   window.location.href = `mailto:${emailAddress}`;
-  // }); // SendEmail
 
   contentMeBrand.appendChild(contentMeSocialMedia);
   contentMePresentation.appendChild(contentMeBrand);
@@ -204,9 +194,16 @@ const createPreviewMe = () => {
 
     const translateBtn = document.createElement("button");
     translateBtn.classList.add("prevMeBtn", "translateBtn");
+    translateBtn.ariaLabel = "Change Language";
+
     const translateIcon = document.createElement("i");
     translateIcon.classList.add("fa-solid", "fa-language");
-    translateBtn.appendChild(translateIcon);
+
+    const langText = document.createElement("span");
+    langText.classList.add("lang-label");
+    langText.textContent = selectedLanguage || LANGUAGES.SPANISH;
+
+    translateBtn.append(translateIcon, langText);
     my_content_categories.appendChild(translateBtn);
 
     updateTranslateMenu = translateMenu(translateBtn);

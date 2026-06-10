@@ -2,6 +2,8 @@ function imgCreatorDisplayer(clasz, src, container, skeleton) {
   const img = new Image();
   img.classList.add(clasz, "hidden");
   img.alt = clasz;
+  img.loading = "lazy";
+  img.decoding = "async";
 
   skeleton.classList.add("skeleton-animation");
 
