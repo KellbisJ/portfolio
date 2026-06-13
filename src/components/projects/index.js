@@ -1,4 +1,4 @@
-import { LANGUAGES, selectedLanguage, setSelectedLanguage } from "../../language/index.js";
+import { LANGUAGES, selectedLanguage } from "../../language/index.js";
 import { languageEmitter } from "../../language/eventEmitter.js";
 import { imgCreatorDisplayer } from "../../utils/img-creator-displayer/index.js";
 import { projectsMaterial, projectTechIcons } from "./projects.data.js";
@@ -11,14 +11,17 @@ const projectsContent = () => {
 
   const contentProjectInfoContainer = document.createElement("div");
   contentProjectInfoContainer.classList.add("content__project__info__container");
-
   CONTENT_PROJECTS.appendChild(contentProjectInfoContainer);
 
   const createProjectElement = () => {
-    contentProjectInfoContainer.innerHTML = ""; // Clean for translation issues
+    contentProjectInfoContainer.innerHTML = "";
+
     projectsMaterial.forEach((project) => {
       const projectInfoContainer = document.createElement("article");
       projectInfoContainer.classList.add("content__project__info");
+      projectInfoContainer.style.setProperty("--article-bg-color", project.bgColor.includes("gradient") ? "transparent" : project.bgColor);
+      projectInfoContainer.style.setProperty("--project-background-img", `url(${project.imageBackground})`);
+      projectInfoContainer.style.setProperty("--project-card-img", `url(${project.imageCard})`);
 
       const projectTitle = document.createElement("h3");
       projectTitle.textContent = project.title;
@@ -30,16 +33,16 @@ const projectsContent = () => {
       const projectVisualizer = document.createElement("div");
       projectVisualizer.classList.add("project__visualizer");
 
-      const normalCardVisualizer = document.createElement("div");
-      normalCardVisualizer.classList.add("normal__card__visualizer");
+      // This container acts as the phone frame and mobile card
+      const projectImageContainer = document.createElement("div");
+      projectImageContainer.classList.add("project__image__container");
 
-      const cellphoneVisualizer = document.createElement("div");
-      cellphoneVisualizer.classList.add("cellphone__visualizer");
+      const projectSk = document.createElement("div");
+      projectSk.classList.add("projectSk");
 
-      const cellphoneScreen = document.createElement("div");
-      cellphoneScreen.classList.add("cellphone__screen");
+      imgCreatorDisplayer("project-img", project.imageBackground, projectImageContainer, projectSk);
 
-      cellphoneVisualizer.append(cellphoneScreen); // cellphone model
+      projectVisualizer.appendChild(projectImageContainer);
 
       const projectDetails = document.createElement("div");
       projectDetails.classList.add("project__details");
@@ -50,173 +53,100 @@ const projectsContent = () => {
       const descriptionParagraph = document.createElement("p");
       descriptionParagraph.textContent = project.descriptions[selectedLanguage];
       descriptionParagraph.classList.add("description__paragraph", "textCardColor", "textCardAdditionalParameters");
+      projectDescription.appendChild(descriptionParagraph);
 
       const projectTechnologies = document.createElement("div");
       projectTechnologies.classList.add("project__technologies");
 
-      const TechnologiesTitle = document.createElement("h4");
-      TechnologiesTitle.classList.add("textCardColor");
-      TechnologiesTitle.textContent = selectedLanguage === LANGUAGES.SPANISH ? "Tecnologías utilizadas:" : "Technologies used:";
+      const technologiesTitle = document.createElement("h4");
+      technologiesTitle.classList.add("textCardColor");
+      technologiesTitle.textContent = selectedLanguage === LANGUAGES.SPANISH ? "Tecnologías utilizadas:" : "Technologies used:";
 
       const techContainer = document.createElement("div");
       techContainer.classList.add("tech__container");
 
-      const projectNavigator = document.createElement("div");
-      projectNavigator.classList.add("project__navigator");
-
-      projectTechnologies.append(TechnologiesTitle, techContainer);
-
-      projectDetails.append(projectDescription, projectTechnologies);
-
-      if (project.projectUrl) {
-        const navigatorBtn = document.createElement("button");
-        navigatorBtn.classList.add("navigator__btn");
-
-        const projectPageLink = document.createElement("a");
-        projectPageLink.classList.add("project__page__link", "textCardColor", "textCardAdditionalParameters");
-
-        const linkIcon = document.createElement("i");
-        linkIcon.classList.add(...["fa-solid", "fa-arrow-up-right-from-square"], "textCardColor", "textCardAdditionalParameters");
-
-        projectPageLink.href = project.projectUrl;
-        projectPageLink.textContent = selectedLanguage === LANGUAGES.SPANISH ? "Echa un vistazo a este proyecto" : "Take a look to this project";
-        projectPageLink.title = "Navigate to the project page";
-        projectPageLink.rel = "noopener noreferrer";
-        projectPageLink.target = "_blank";
-        projectPageLink.setAttribute("aria-label", "NavigateToProjectPage");
-
-        projectPageLink.appendChild(linkIcon);
-        navigatorBtn.appendChild(projectPageLink);
-        projectNavigator.appendChild(navigatorBtn);
-      }
-      if (project.repositoryUrl) {
-        const navigatorBtn = document.createElement("button");
-        navigatorBtn.classList.add("navigator__btn");
-
-        const projectSourceCode = document.createElement("a");
-        projectSourceCode.classList.add("project__source__code", "textCardColor", "textCardAdditionalParameters");
-
-        const codeIcon = document.createElement("i");
-        codeIcon.classList.add(...["fa-solid", "fa-file-code"], "textCardAdditionalParameters");
-
-        projectSourceCode.href = project.repositoryUrl;
-        projectSourceCode.textContent = selectedLanguage === LANGUAGES.SPANISH ? "Código fuente" : "Source code";
-        projectSourceCode.title = "Navigate to the project source code";
-        projectSourceCode.rel = "noopener noreferrer";
-        projectSourceCode.target = "_blank";
-        projectSourceCode.setAttribute("aria-label", "NavigateToProjectSourceCode");
-
-        projectSourceCode.appendChild(codeIcon);
-        navigatorBtn.appendChild(projectSourceCode);
-        projectNavigator.appendChild(navigatorBtn);
-      }
-
-      projectDetails.appendChild(projectNavigator);
-      projectDescription.appendChild(descriptionParagraph);
-
-      projectInfoWrapper.appendChild(projectVisualizer);
-
-      projectInfoContainer.append(projectTitle, projectInfoWrapper);
-
-      // IMAGE LOADING
-      const projectSk = document.createElement("div");
-      projectSk.classList.add("projectSk");
-
-      let currentImageContainer = null;
-      let lastLayoutMode = null;
-
-      function handleResponsiveProjectCards() {
-        const width = window.innerWidth;
-
-        const isWide = width >= 768;
-
-        if (lastLayoutMode === (isWide ? "wide" : "small")) return;
-
-        lastLayoutMode = isWide ? "wide" : "small";
-
-        if (currentImageContainer) {
-          currentImageContainer.innerHTML = "";
-        }
-
-        projectVisualizer.innerHTML = "";
-        projectInfoWrapper.innerHTML = "";
-
-        projectInfoContainer.innerHTML = "";
-        projectInfoContainer.append(projectTitle, projectInfoWrapper);
-        projectInfoWrapper.appendChild(projectVisualizer);
-
-        if (isWide) {
-          // Desktop layout
-
-          currentImageContainer = cellphoneScreen;
-
-          imgCreatorDisplayer("project-img", project.imageCard, cellphoneScreen, projectSk);
-
-          projectVisualizer.appendChild(cellphoneVisualizer);
-          projectInfoWrapper.appendChild(projectDetails);
-
-          projectInfoContainer.style.backgroundImage = `url(${project.imageBackground})`;
-          projectInfoContainer.style.backgroundColor = "";
-        } else {
-          // Mobile layout
-
-          currentImageContainer = normalCardVisualizer;
-
-          imgCreatorDisplayer("project-img", project.imageBackground, normalCardVisualizer, projectSk);
-
-          projectVisualizer.appendChild(normalCardVisualizer);
-          projectInfoContainer.appendChild(projectDetails);
-
-          projectInfoContainer.style.backgroundImage = "";
-
-          if (project.bgColor.includes("gradient")) {
-            projectInfoContainer.style.backgroundImage = project.bgColor;
-          } else {
-            projectInfoContainer.style.backgroundColor = project.bgColor;
-          }
-        }
-      }
-
-      handleResponsiveProjectCards();
-
-      // Debounced resize handler
-
-      let resizeTimeout;
-      window.addEventListener("resize", () => {
-        clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(handleResponsiveProjectCards, 150);
-      });
-
       Object.keys(project.technologies).forEach((tech) => {
         const techBadge = document.createElement("span");
         techBadge.classList.add("tech-badge");
+
         const techName = document.createElement("p");
         techName.classList.add("tech__name", "textCardColor", "textCardAdditionalParameters");
         techName.textContent = tech;
         techBadge.appendChild(techName);
 
-        if (projectTechIcons[tech.toLowerCase()] && projectTechIcons[tech.toLowerCase()].startsWith("http")) {
+        const techKey = tech.toLowerCase();
+        const iconPath = projectTechIcons[techKey];
+
+        if (iconPath && iconPath.startsWith("http")) {
           const techImg = document.createElement("img");
           techImg.classList.add("tech-img");
-          techImg.src = projectTechIcons[tech.toLowerCase()];
+          techImg.src = iconPath;
+          techImg.alt = tech;
+          techImg.loading = "lazy";
           techBadge.appendChild(techImg);
-        } else {
+        } else if (iconPath) {
           const techIcon = document.createElement("i");
-          techIcon.className = projectTechIcons[tech.toLowerCase()];
+          techIcon.className = iconPath;
           techBadge.appendChild(techIcon);
         }
 
         techContainer.appendChild(techBadge);
       });
 
-      contentProjectInfoContainer.appendChild(projectInfoContainer);
+      projectTechnologies.append(technologiesTitle, techContainer);
+      projectDetails.append(projectDescription, projectTechnologies);
 
-      // return contentProjectInfoContainer;
+      const projectNavigator = document.createElement("div");
+      projectNavigator.classList.add("project__navigator");
+
+      const addNavBtn = (url, classes, text, iconClass, ariaLabel) => {
+        const btn = document.createElement("button");
+        btn.classList.add("navigator__btn");
+
+        const link = document.createElement("a");
+        link.classList.add(...classes, "textCardColor", "textCardAdditionalParameters");
+        link.href = url;
+        link.textContent = text;
+        link.title = url.includes("source") ? "Navigate to the project source code" : "Navigate to the project page";
+        link.rel = "noopener noreferrer";
+        link.target = "_blank";
+        link.setAttribute("aria-label", ariaLabel);
+
+        const icon = document.createElement("i");
+        icon.classList.add(...iconClass, "textCardColor", "textCardAdditionalParameters");
+        link.appendChild(icon);
+
+        btn.appendChild(link);
+        projectNavigator.appendChild(btn);
+      };
+
+      if (project.projectUrl) {
+        addNavBtn(
+          project.projectUrl,
+          ["project__page__link"],
+          selectedLanguage === LANGUAGES.SPANISH ? "Echa un vistazo a este proyecto" : "Take a look to this project",
+          ["fa-solid", "fa-arrow-up-right-from-square"],
+          "NavigateToProjectPage",
+        );
+      }
+      if (project.repositoryUrl) {
+        addNavBtn(
+          project.repositoryUrl,
+          ["project__source__code"],
+          selectedLanguage === LANGUAGES.SPANISH ? "Código fuente" : "Source code",
+          ["fa-solid", "fa-file-code"],
+          "NavigateToProjectSourceCode",
+        );
+      }
+
+      projectDetails.appendChild(projectNavigator);
+      projectInfoContainer.append(projectTitle, projectInfoWrapper);
+      projectInfoWrapper.append(projectVisualizer, projectDetails);
+      contentProjectInfoContainer.appendChild(projectInfoContainer);
     });
   };
 
   createProjectElement();
-
   languageEmitter.on("languageChanged", createProjectElement);
 
   return CONTENT_PROJECTS;
