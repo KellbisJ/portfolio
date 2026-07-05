@@ -1,127 +1,127 @@
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-  line-height: 1.5;
-}
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-family: "Manrope", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
-  overflow-x: hidden;
-  min-height: 100vh;
-  overflow-y: auto;
-  contain: layout style paint;
-}
-
-h1 {
-  /* Fluid scale: min 20px, ideal 4vw, max 28px */
-  font-size: clamp(1.25rem, 4vw, 1.75rem);
-}
-
-h2 {
-  font-size: clamp(1.1rem, 3.5vw, 1.25rem);
-}
-
-h3,
-h4 {
-  font-size: clamp(0.875rem, 3vw, 0.95rem);
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  color: #25282a;
-}
-p,
-span,
-label,
-button {
-  color: #25282a;
-}
-.layout {
-  display: flex;
-  flex-direction: column;
-  width: 85vw;
-  height: 95vh;
-  /* width: fit-content; */
-  color: #25282a;
-  z-index: 1;
-  background-color: rgba(234, 234, 234, 0.85);
-  backdrop-filter: blur(12px) saturate(180%);
-
-  padding: 18px;
-  border-radius: 28px;
-  overflow-y: auto;
-  overflow-x: hidden;
-  -webkit-overflow-scrolling: touch;
-  position: relative;
-  transform: translateZ(0);
-  backface-visibility: hidden;
-  perspective: 1000px;
-  box-shadow:
-    0 10px 30px rgba(0, 0, 0, 0.05),
-    0 4px 10px rgba(0, 0, 0, 0.02);
-  will-change: transform;
-  contain: layout style paint;
-}
-
-/* Glass scrollbar styles */
-.layout::-webkit-scrollbar {
-  width: 8px;
-}
-
-.layout::-webkit-scrollbar-track {
-  background: transparent;
-  margin: 16px 0;
-}
-
-.layout::-webkit-scrollbar-thumb {
-  background: rgba(180, 180, 180, 0.4);
-  backdrop-filter: blur(4px);
-  border-radius: 3px;
-  transition: background 0.3s ease;
-}
-
-.layout::-webkit-scrollbar-thumb:hover {
-  background: rgba(150, 150, 150, 0.6);
-}
-
-.content {
-  margin-top: 8px;
-  width: 100%;
-  min-height: 100vh;
-  content-visibility: auto;
-  contain: style layout;
-}
-
-.img__wrapper {
-  display: flex;
-  position: relative;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-}
-
-@media (min-width: 1024px) {
-  .layout {
-    width: 50vw;
-  }
-}
-
-@media (min-width: 1440px) {
-  .layout {
-    width: 40vw;
-  }
-}
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  line-height: 1.5;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "Manrope", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  overflow-x: hidden;
+  min-height: 100vh;
+  overflow-y: auto;
+  contain: layout style paint;
+}
+
+h1 {
+  /* Fluid scale: min 20px, ideal 4vw, max 28px */
+  font-size: clamp(1.25rem, 4vw, 1.75rem);
+}
+
+h2 {
+  font-size: clamp(1.1rem, 3.5vw, 1.25rem);
+}
+
+h3,
+h4 {
+  font-size: clamp(0.875rem, 3vw, 0.95rem);
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--color-dark);
+}
+p,
+span,
+label,
+button {
+  color: var(--color-dark);
+}
+.layout {
+  display: flex;
+  flex-direction: column;
+  width: 85vw;
+  height: 95vh;
+  /* width: fit-content; */
+  color: var(--color-dark);
+  z-index: 1;
+  background-color: var(--color-bg-glass);
+  backdrop-filter: blur(12px) saturate(180%);
+
+  padding: 18px;
+  border-radius: 28px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  position: relative;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.05),
+    0 4px 10px rgba(0, 0, 0, 0.02);
+  will-change: transform;
+  contain: layout style paint;
+}
+
+/* Glass scrollbar styles */
+.layout::-webkit-scrollbar {
+  width: 8px;
+}
+
+.layout::-webkit-scrollbar-track {
+  background: transparent;
+  margin: 16px 0;
+}
+
+.layout::-webkit-scrollbar-thumb {
+  background: rgba(180, 180, 180, 0.4);
+  backdrop-filter: blur(4px);
+  border-radius: 3px;
+  transition: background 0.3s ease;
+}
+
+.layout::-webkit-scrollbar-thumb:hover {
+  background: rgba(150, 150, 150, 0.6);
+}
+
+.content {
+  margin-top: 8px;
+  width: 100%;
+  min-height: 100vh;
+  content-visibility: auto;
+  contain: style layout;
+}
+
+.img__wrapper {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+@media (min-width: 1024px) {
+  .layout {
+    width: 50vw;
+  }
+}
+
+@media (min-width: 1440px) {
+  .layout {
+    width: 40vw;
+  }
+}

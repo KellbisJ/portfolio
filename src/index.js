@@ -1,5 +1,6 @@
 // main .css
 import "./index.css";
+import "./styles/colors.css";
 import "./components/index.css";
 import "./components/layout-initializer/index.css";
 import "./components/preview-me/index.css";

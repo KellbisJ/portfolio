@@ -4,8 +4,8 @@
   width: 120px;
   left: -10px;
   position: absolute;
-  background-color: #ffffff;
-  color: #25282a;
+  background-color: var(--color-white);
+  color: var(--color-dark);
   box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.3);
   border-radius: 16px;
   padding: 8px;
@@ -46,7 +46,7 @@
 .translate__menu__container h3 {
   font-size: 14px;
   font-weight: 700;
-  color: #5a5e64;
+  color: var(--color-menu-heading);
   padding: 0 8px;
   margin-top: 4px;
   margin-bottom: 4px;
@@ -70,7 +70,7 @@
   padding: 8px 12px;
   border-radius: 8px;
   background: transparent;
-  color: #25282a;
+  color: var(--color-dark);
   font-size: 13px;
   font-weight: 500;
   display: flex;
@@ -89,7 +89,7 @@
   }
   &.active {
     background-color: rgba(10, 147, 150, 0.1);
-    color: #0a9396;
+    color: var(--color-teal);
     font-weight: 600;
   }
   &:focus-visible {

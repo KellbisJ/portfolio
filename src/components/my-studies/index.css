@@ -19,7 +19,7 @@
 .study__card {
   display: flex;
   flex-direction: column;
-  background: #d3d3d3;
+  background: var(--color-study-card);
   width: 100%;
   max-width: 450px;
   /* gap: 12px; */

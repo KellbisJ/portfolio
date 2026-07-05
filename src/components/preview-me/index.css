@@ -15,7 +15,7 @@
   font-size: 12px;
   transition: all 0.2s ease-out;
   background-color: rgba(170, 236, 146, 0.5);
-  color: #131313;
+  color: var(--color-dark-alt);
 }
 .lang-label {
   font-size: 14px;
@@ -30,7 +30,7 @@
   width: 100%;
   box-sizing: border-box;
   gap: 18px;
-  color: #f6f0f0;
+  color: var(--color-light-text);
 }
 .content__me__filtered {
   display: grid;
@@ -78,9 +78,9 @@
   transition: opacity 0.3s ease-in-out;
   object-fit: cover;
   object-position: center;
-  filter: drop-shadow(0 0 2px #25282a);
+  filter: drop-shadow(0 0 2px var(--color-dark));
   border-radius: 16px;
-  background-color: #a6aebf;
+  background-color: var(--color-skeleton);
   position: absolute;
 }
 .meImgSk.hidden,
@@ -122,7 +122,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #aaec92;
+  background-color: var(--color-green);
   padding: 6px;
   border-radius: 6px;
   position: relative;
@@ -130,7 +130,7 @@
   text-decoration: none;
 }
 .social-media-element:hover {
-  background-color: #25282a;
+  background-color: var(--color-dark);
   color: #fff;
 }
 
@@ -146,8 +146,8 @@
 }
 
 .translateBtn {
-  color: rgb(19, 19, 19);
-  background-color: #aaec92;
+  color: var(--color-dark-alt);
+  background-color: var(--color-green);
   font-weight: bold;
   position: relative;
 }
@@ -160,11 +160,11 @@
 
 .btn_my_content {
   width: 100%;
-  background-color: #aaec92;
-  color: #131313;
+  background-color: var(--color-green);
+  color: var(--color-dark-alt);
 }
 .btn_my_content:hover {
-  background-color: #25282a;
+  background-color: var(--color-dark);
   color: #fff;
   transition-duration: 300ms;
 }
@@ -174,7 +174,7 @@
 }
 
 .btn_my_content__selected {
-  background-color: #25282a;
+  background-color: var(--color-dark);
   color: #fff;
   border-bottom-left-radius: 14px;
   border-bottom-right-radius: 14px;
@@ -185,7 +185,7 @@
   width: 100%;
   border: none;
   height: 1px;
-  background-color: #aaec92;
+  background-color: var(--color-green);
   /* margin: 12px 0 12px 0; */
 }
 
@@ -212,7 +212,7 @@
   top: -10px;
   right: -36px;
   color: #fff;
-  background-color: #16c47f;
+  background-color: var(--color-copy-success);
   padding: 4px;
   font-size: 8px;
   border-radius: 20px;
@@ -224,7 +224,7 @@
   visibility: hidden;
 }
 .copy-success {
-  color: #16c47f;
+  color: var(--color-copy-success);
   transition: color 0.3s ease-in-out;
 }
 /* ABOUT ME PREVIEW */

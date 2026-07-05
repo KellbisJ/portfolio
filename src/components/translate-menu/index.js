@@ -44,12 +44,14 @@ const translateMenu = (translateBtn) => {
       btn.classList.add("active");
     }
 
-    btn.addEventListener("click", () => {
-      if (selectedLanguage !== lang.key) {
-        setSelectedLanguage(lang.key);
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation(); // visual bug (event bubbling fixed).
 
+      if (selectedLanguage !== lang.key) {
         TRANSLATE_MENU_CONTAINER.classList.remove("show");
         showTranslateMenu = false;
+
+        setSelectedLanguage(lang.key);
       }
     });
 

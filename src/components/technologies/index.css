@@ -30,7 +30,7 @@
   width: 34px;
   height: 35%;
   transition: opacity 0.3s ease-in-out;
-  background-color: #a6aebf;
+  background-color: var(--color-skeleton);
   position: absolute;
   top: 0;
   border-radius: 8px;

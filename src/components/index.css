@@ -20,7 +20,7 @@
   width: 100%;
   height: 100%;
   min-height: 100vh;
-  background-color: #eaeaea;
+  background-color: var(--color-bg-light);
   z-index: 40;
   opacity: 1;
   transition: opacity 0.4s ease-in-out;
@@ -43,7 +43,7 @@
 .dot {
   width: 14px;
   height: 14px;
-  background-color: #25282a;
+  background-color: var(--color-dark);
   border-radius: 50%;
   animation: bounce 0.4s infinite alternate;
 }
@@ -76,7 +76,7 @@
   transition: opacity 0.2s ease;
   pointer-events: none;
   z-index: 10;
-  color: #f6f0f0;
+  color: var(--color-light-text);
 }
 
 #loading-indicator.show {
@@ -101,7 +101,7 @@
   left: 0;
   width: 0;
   height: 100%;
-  background: #f6f0f0;
+  background: var(--color-light-text);
   transition: width 0.4s linear;
 }
 @keyframes loading-skeleton-1 {
@@ -114,8 +114,8 @@
 }
 
 .skeleton-animation {
-  background-color: #a6aebf;
-  background-image: linear-gradient(90deg, #a6aebf 0%, #b0b7cb 40%, #a6aebf 80%);
+  background-color: var(--color-skeleton);
+  background-image: linear-gradient(90deg, var(--color-skeleton) 0%, var(--color-skeleton-lt) 40%, var(--color-skeleton) 80%);
   background-size: 200% 100%;
   animation: loading-skeleton-1 1.5s linear infinite;
 }

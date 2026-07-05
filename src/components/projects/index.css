@@ -18,7 +18,7 @@
 }
 
 .textCardColor {
-  color: #fdfaf6;
+  color: var(--color-off-white);
 }
 
 .textCardAdditionalParameters {
@@ -51,7 +51,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at center, rgba(21, 17, 29, 0.144) 0%, rgba(21, 17, 29, 0.144) 80%);
+  background: radial-gradient(circle at center, var(--color-overlay) 0%, var(--color-overlay) 80%);
   pointer-events: none;
   z-index: 1;
 }
@@ -90,7 +90,7 @@
   }
 
   .content__project__info::after {
-    background: radial-gradient(circle at center, rgba(21, 17, 29, 0.4) 0%, rgba(21, 17, 29, 0.6) 80%);
+    background: radial-gradient(circle at center, var(--color-overlay-dark) 0%, var(--color-overlay-darker) 80%);
   }
 
   .project__info__wrapper {
@@ -108,12 +108,12 @@
     height: 380px;
     background-image: var(--project-card-img);
     border-radius: 28px;
-    background-color: #232323;
-    border: 3px solid #363636;
-    border-bottom: 11.5px solid #363636;
+    background-color: var(--color-phone-bg);
+    border: 3px solid var(--color-phone-border);
+    border-bottom: 11.5px solid var(--color-phone-border);
     box-shadow:
       0 6px 20px rgba(0, 0, 0, 0.4),
-      0 0 0 5px #1c1c1c;
+      0 0 0 5px var(--color-phone-bezel);
     position: relative;
   }
 
@@ -134,7 +134,7 @@
 }
 
 .projectSk {
-  background-color: #e0e4ea;
+  background-color: var(--color-skeleton-card);
   border-radius: 8px;
   position: absolute;
   inset: 0;
@@ -220,7 +220,7 @@
   padding: 4px 8px;
   gap: 4px;
   border-radius: 20px;
-  background-color: rgba(70, 70, 70, 0.15);
+  background-color: var(--color-tech-badge);
   will-change: transform;
 }
 
@@ -265,7 +265,7 @@
   text-decoration: none;
   transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
   outline: none;
-  color: #fdfaf6;
+  color: var(--color-off-white);
   padding: 8px;
   border-radius: 8px;
   overflow: hidden;
@@ -291,26 +291,26 @@
 }
 
 .project__page__link {
-  background: linear-gradient(135deg, #0a9396 0%, #087b7e 100%);
+  background: linear-gradient(135deg, var(--color-teal) 0%, var(--color-teal-dark) 100%);
 }
 
 .project__page__link:hover {
-  background: linear-gradient(135deg, #087b7e 0%, #066163 100%);
+  background: linear-gradient(135deg, var(--color-teal-dark) 0%, var(--color-teal-darker) 100%);
 }
 
 .project__source__code {
   background: rgba(10, 147, 150, 0.15);
-  border: 1px solid rgba(10, 147, 150, 0.4);
+  border: 1px solid var(--color-border-light);
 }
 
 .project__source__code:hover {
   background: rgba(10, 147, 150, 0.25);
-  border-color: #0a9396;
+  border-color: var(--color-teal);
 }
 
 .project__page__link:focus-visible,
 .project__source__code:focus-visible {
-  outline: 2px solid #0a9396;
+  outline: 2px solid var(--color-teal);
   outline-offset: 2px;
   box-shadow: 0 0 0 4px rgba(10, 147, 150, 0.3);
 }

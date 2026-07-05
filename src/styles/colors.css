@@ -1,0 +1,41 @@
+:root {
+  /* --- Primary palette --- */
+  --color-dark: #25282a;
+  --color-dark-alt: #131313;
+  --color-green: #aaec92;
+  --color-blue: #7fb5ff;
+  --color-coral: #fb9b8f;
+  --color-teal: #0a9396;
+  --color-teal-dark: #087b7e;
+  --color-teal-darker: #066163;
+
+  /* --- Neutrals --- */
+  --color-white: #ffffff;
+  --color-off-white: #fdfaf6;
+  --color-light-text: #f6f0f0;
+  --color-bg-light: #eaeaea;
+  --color-bg-glass: rgba(234, 234, 234, 0.85);
+  --color-skeleton: #a6aebf;
+  --color-skeleton-lt: #b0b7cb;
+  --color-skeleton-card: #e0e4ea;
+
+  /* --- Component-specific --- */
+  --color-menu-heading: #5a5e64;
+  --color-study-card: #d3d3d3;
+  --color-phone-bg: #232323;
+  --color-phone-border: #363636;
+  --color-phone-bezel: #1c1c1c;
+  --color-tech-badge: rgba(70, 70, 70, 0.15);
+  --color-copy-success: #16c47f;
+
+  /* --- Semantic aliases --- */
+  --color-text-primary: var(--color-dark);
+  --color-text-on-dark: var(--color-off-white);
+  --color-accent: var(--color-green);
+  --color-accent-teal: var(--color-teal);
+  --color-border-light: rgba(10, 147, 150, 0.4);
+  --color-overlay: rgba(21, 17, 29, 0.144);
+  --color-overlay-dark: rgba(21, 17, 29, 0.4);
+  --color-overlay-darker: rgba(21, 17, 29, 0.6);
+  --color-btn-hover: var(--color-dark);
+}
