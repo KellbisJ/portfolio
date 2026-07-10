@@ -48,13 +48,8 @@ const createPreviewMe = () => {
   myName.classList.add("my__name");
   myName.textContent = "Kellbis Salazar";
 
-  const contentMeText = document.createElement("h2");
-  contentMeText.classList.add("content__me__text");
-
   contentMeBrand.appendChild(contentImg);
   contentMeBrand.appendChild(myName);
-
-  contentMeDescriptionInfo.append(contentMeText);
 
   const emailCopyElement = document.createElement("button");
   emailCopyElement.classList.add("social-media-element", "email__copy");
@@ -109,6 +104,25 @@ const createPreviewMe = () => {
   contentMePresentation.appendChild(contentMeBrand);
   contentMePresentation.appendChild(contentMeDescriptionInfo);
 
+  const githubCard = document.createElement("div");
+  githubCard.classList.add("github-card");
+
+  const heading = document.createElement("h3");
+  heading.classList.add("github-card__heading");
+  heading.id = "githubCardHeading";
+  heading.textContent = "My GitHub Contributions";
+
+  const githubImg = document.createElement("img");
+  githubImg.src = "https://ghchart.rshah.org/KellbisJ";
+  githubImg.alt = "GitHub Contributions Chart";
+  githubImg.loading = "lazy";
+  githubImg.width = 700;
+  githubImg.height = 128;
+
+  githubCard.appendChild(heading);
+  githubCard.appendChild(githubImg);
+  contentMeDescriptionInfo.appendChild(githubCard);
+
   CONTENT_ME.appendChild(contentMePresentation);
   CONTENT_ME.appendChild(fineLine);
 
@@ -117,15 +131,15 @@ const createPreviewMe = () => {
   const updateContentBasedOnSelectedLanguage = () => {
     my_content_categories.innerHTML = "";
 
-    const contentMeText = document.querySelector(".content__me__text");
     const copiedMailText = document.querySelector(".copy-mail-text");
+    const githubHeading = document.getElementById("githubCardHeading");
 
     if (selectedLanguage === LANGUAGES.SPANISH) {
-      contentMeText.textContent = previewMeContentMeTranlations.contentMe_ES.contentMeText_ES;
       copiedMailText.textContent = previewMeContentMeTranlations.contentMe_ES.copiedTextElement_ES;
+      if (githubHeading) githubHeading.textContent = "Mis Contribuciones de GitHub";
     } else if (selectedLanguage === LANGUAGES.ENGLISH) {
-      contentMeText.textContent = previewMeContentMeTranlations.contentMe_EN.contentMeText_EN;
       copiedMailText.textContent = previewMeContentMeTranlations.contentMe_EN.copiedTextElement_EN;
+      if (githubHeading) githubHeading.textContent = "My GitHub Contributions";
     }
 
     function createContentCategoriesBtn(classs, btnTextContent, index) {
@@ -210,9 +224,7 @@ const createPreviewMe = () => {
 
     if (updateTranslateMenu) updateTranslateMenu();
 
-    window.addEventListener("load", () => {
-      CONTENT_ME.insertBefore(my_content_categories, fineLine);
-    });
+    CONTENT_ME.insertBefore(my_content_categories, fineLine);
   };
 
   updateContentBasedOnSelectedLanguage();

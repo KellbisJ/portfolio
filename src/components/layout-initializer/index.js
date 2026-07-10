@@ -8,7 +8,7 @@ const body = document.body;
 const pageLayout = () =>
   new Promise((resolve, reject) => {
     const LAYOUT = document.createElement("main");
-    LAYOUT.classList.add("layout");
+    LAYOUT.classList.add("layout", "layout-hidden"); // Start hidden to prevent layout shift
 
     // DECOR
     const decor = document.createElement("div");
@@ -69,6 +69,13 @@ pageLayout()
   .then(() => {
     createPreviewMe();
     filteredContent();
-    // translateMenu();
+
+    // Fadeee
+    requestAnimationFrame(() => {
+      const layout = document.querySelector(".layout");
+      if (layout) {
+        layout.classList.remove("layout-hidden");
+      }
+    });
   })
   .catch((err) => console.error(err));

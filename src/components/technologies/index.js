@@ -1,124 +1,83 @@
-import { LANGUAGES, selectedLanguage, setSelectedLanguage } from "../../language/index.js";
+import { LANGUAGES, selectedLanguage } from "../../language/index.js";
 import { languageEmitter } from "../../language/eventEmitter.js";
-import { imgCreatorDisplayer } from "../../utils/img-creator-displayer/index.js";
 
 const TECH_CONTENT_KEY = "technologies";
 
-const technologiesMaterial = [
-  {
-    id: "programming",
-    name: {
-      [LANGUAGES.SPANISH]: "Lenguajes de programación",
-      [LANGUAGES.ENGLISH]: "Programming Languages",
-    },
-    icons: [
-      { src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg", name: "JavaScript" },
-      { src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg", name: "TypeScript" },
-      { src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg", name: "Python" },
-    ],
-  },
-  {
-    id: "frontend",
-    name: "Frontend", // Static title doesn't need translation
-    icons: [
-      { src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg", name: "React.js" },
-      { src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg", name: "Vue.js" },
-      { src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg", name: "CSS3" },
-      { src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg", name: "Tailwind CSS" },
-    ],
-  },
-  {
-    id: "backend",
-    name: "Backend", // Static title
-    icons: [
-      { src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original-wordmark.svg", name: "Node.js" },
-      { src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg", name: "Express.js" },
-      { src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/django/django-plain.svg", name: "Django" },
-      { src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg", name: "PostgreSQL" },
-    ],
-  },
-  {
-    id: "tools",
-    name: {
-      [LANGUAGES.SPANISH]: "Herramientas",
-      [LANGUAGES.ENGLISH]: "Tools",
-    },
-    icons: [
-      { src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg", name: "Git" },
-      { src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg", name: "GitHub" },
-      { src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitejs/vitejs-original.svg", name: "Vite.js" },
-      { src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-plain-wordmark.svg", name: "Docker" },
-    ],
-  },
+const techStack = [
+  { name: "JavaScript", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" },
+  { name: "TypeScript", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg" },
+  { name: "Python", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" },
+  { name: "React", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" },
+  { name: "Vue.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg" },
+  { name: "Astro", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/astro/astro-original.svg" },
+  { name: "Vite", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitejs/vitejs-original.svg" },
+  { name: "CSS3", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" },
+  { name: "Tailwind CSS", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" },
+  { name: "Node.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg" },
+  { name: "Express", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg" },
+  { name: "Django", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/django/django-plain.svg" },
+  { name: "PostgreSQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg" },
+  { name: "Docker", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" },
+  { name: "Git", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" },
+  { name: "GitHub", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg" },
+  { name: "Vercel", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vercel/vercel-original.svg" },
+  { name: "Netlify", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/netlify/netlify-original.svg" },
 ];
 
 const technologiesContent = () => {
   const CONTENT_TECHNOLOGIES = document.createElement("div");
   CONTENT_TECHNOLOGIES.classList.add("content__technologies");
 
-  const dynamicTitleElements = {};
+  const heading = document.createElement("h2");
+  heading.classList.add("tech-section__heading");
+  heading.textContent = selectedLanguage === LANGUAGES.SPANISH ? "Habilidades y Tecnologías" : "Skills & Technologies";
+  CONTENT_TECHNOLOGIES.appendChild(heading);
 
-  const createTechnologiesContent = () => {
-    technologiesMaterial.forEach((tech) => {
-      const techCategoryContainer = document.createElement("section");
-      techCategoryContainer.className = "technology__category";
-      techCategoryContainer.id = tech.id;
+  const grid = document.createElement("div");
+  grid.classList.add("tech-grid");
+  CONTENT_TECHNOLOGIES.appendChild(grid);
 
-      const techCategoryTitle = document.createElement("h3");
-      techCategoryTitle.className = "tech__category__title";
+  const buildGrid = () => {
+    grid.innerHTML = "";
 
-      if (typeof tech.name === "object") {
-        techCategoryTitle.textContent = tech.name[selectedLanguage];
-        // Store reference for dynamic titles only
-        dynamicTitleElements[tech.id] = techCategoryTitle;
-      } else {
-        techCategoryTitle.textContent = tech.name;
-      }
+    techStack.forEach((item, index) => {
+      const delay = Math.min(index * 45, 700);
 
-      techCategoryContainer.appendChild(techCategoryTitle);
+      const badge = document.createElement("button");
+      badge.className = "tech-badge";
+      badge.type = "button";
+      badge.tabIndex = -1;
+      badge.style.setProperty("--delay", `${delay}ms`);
 
-      const contentTechnologiesGrid = document.createElement("div");
-      contentTechnologiesGrid.className = "content__technologies__img__grid";
+      const iconEl = document.createElement("span");
+      iconEl.className = "tech-badge__icon";
 
-      tech.icons.forEach((iconData) => {
-        const technologyImgContainer = document.createElement("div");
-        technologyImgContainer.className = "technologies__img__container";
+      const img = document.createElement("img");
+      img.src = item.icon;
+      img.alt = `${item.name} logo`;
+      img.width = 20;
+      img.height = 20;
+      img.loading = "lazy";
 
-        const techIconSkeleton = document.createElement("div");
-        techIconSkeleton.classList.add("techImgSk");
-        // technologyImgContainer.appendChild(techIconSkeleton);
+      iconEl.appendChild(img);
 
-        imgCreatorDisplayer("technologies__img", iconData.src, technologyImgContainer, techIconSkeleton);
-        // const iconImg = document.createElement("img");
-        // iconImg.className = ;
-        // iconImg.src =
-        // iconImg.alt = iconData.name;
+      const label = document.createElement("span");
+      label.className = "tech-badge__label";
+      label.textContent = item.name;
 
-        const technologyName = document.createElement("p");
-        technologyName.textContent = iconData.name;
-
-        // technologyImgContainer.appendChild(techImage);
-        technologyImgContainer.appendChild(technologyName);
-
-        contentTechnologiesGrid.appendChild(technologyImgContainer);
-      });
-
-      techCategoryContainer.appendChild(contentTechnologiesGrid);
-      CONTENT_TECHNOLOGIES.appendChild(techCategoryContainer);
+      badge.appendChild(iconEl);
+      badge.appendChild(label);
+      grid.appendChild(badge);
     });
   };
 
-  const updateTitles = () => {
-    technologiesMaterial.forEach((tech) => {
-      if (typeof tech.name === "object" && dynamicTitleElements[tech.id]) {
-        dynamicTitleElements[tech.id].textContent = tech.name[selectedLanguage];
-      }
-    });
+  const updateHeading = () => {
+    heading.textContent = selectedLanguage === LANGUAGES.SPANISH ? "Habilidades y Tecnologías" : "Skills & Technologies";
   };
 
-  createTechnologiesContent();
+  buildGrid();
 
-  languageEmitter.on("languageChanged", updateTitles);
+  languageEmitter.on("languageChanged", updateHeading);
 
   return CONTENT_TECHNOLOGIES;
 };

@@ -1,5 +1,5 @@
 const previewMeData = {
-  meImgUrl: "https://ik.imagekit.io/137/Portfolio/mainCWEBP.webp?updatedAt=1744037093889",
+  meImgUrl: "https://avatars.githubusercontent.com/u/106561967?v=4",
 
   socialMediaLinks: {
     gitHubProfile: "https://github.com/KellbisJ",

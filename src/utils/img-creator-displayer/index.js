@@ -4,6 +4,8 @@ function imgCreatorDisplayer(clasz, src, container, skeleton) {
   img.alt = clasz;
   img.loading = "lazy";
   img.decoding = "async";
+  img.width = 80;
+  img.height = 80;
 
   skeleton.classList.add("skeleton-animation");
 
