@@ -2,9 +2,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: clamp(1.5rem, 5vw, 2.5rem);
+  gap: 32px;
   width: 100%;
-  margin-top: 18px;
 }
 
 .studies__section__title {
@@ -28,7 +27,7 @@
 .studies__grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: clamp(1.25rem, 3vw, 1.75rem);
+  gap: 28px;
   width: 100%;
   justify-items: center;
 }

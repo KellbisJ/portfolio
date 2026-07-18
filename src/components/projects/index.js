@@ -3,11 +3,14 @@ import { languageEmitter } from "../../language/eventEmitter.js";
 import { imgCreatorDisplayer } from "../../utils/img-creator-displayer/index.js";
 import { projectsMaterial, projectTechIcons } from "./projects.data.js";
 
-const PROJECTS_CONTENT_KEY = "projects";
-
 const projectsContent = () => {
   const CONTENT_PROJECTS = document.createElement("div");
   CONTENT_PROJECTS.classList.add("content__projects");
+
+  const sectionHeading = document.createElement("h2");
+  sectionHeading.classList.add("tech-section__heading");
+  sectionHeading.textContent = selectedLanguage === LANGUAGES.SPANISH ? "Proyectos" : "Projects";
+  CONTENT_PROJECTS.appendChild(sectionHeading);
 
   const contentProjectInfoContainer = document.createElement("div");
   contentProjectInfoContainer.classList.add("content__project__info__container");
@@ -147,9 +150,15 @@ const projectsContent = () => {
   };
 
   createProjectElement();
-  languageEmitter.on("languageChanged", createProjectElement);
+
+  const updateHeading = () => {
+    sectionHeading.textContent = selectedLanguage === LANGUAGES.SPANISH ? "Proyectos" : "Projects";
+    createProjectElement();
+  };
+
+  languageEmitter.on("languageChanged", updateHeading);
 
   return CONTENT_PROJECTS;
 };
 
-export { projectsContent, PROJECTS_CONTENT_KEY };
+export { projectsContent };

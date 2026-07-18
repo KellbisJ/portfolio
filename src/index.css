@@ -1,10 +1,7 @@
 * {
   box-sizing: border-box;
-
   padding: 0;
-
   margin: 0;
-
   line-height: 1.5;
 }
 
@@ -13,41 +10,21 @@ html {
 }
 
 body {
-  display: flex;
-
-  flex-direction: column;
-
-  justify-content: center;
-
-  align-items: center;
-
   font-family: "Manrope", sans-serif;
-
   font-optical-sizing: auto;
-
   font-weight: 400;
-
   font-style: normal;
-
   overflow-x: hidden;
-
-  min-height: 100vh;
-
   overflow-y: auto;
-
-  contain: layout style paint;
+  min-height: 100vh;
 }
 
 h1 {
-  /* Fluid scale: min 20px, ideal 4vw, max 28px */
-
   font-size: clamp(1.25rem, 4vw, 1.75rem);
 }
-
 h2 {
   font-size: clamp(1.1rem, 3.5vw, 1.25rem);
 }
-
 h3,
 h4 {
   font-size: clamp(0.875rem, 3vw, 0.95rem);
@@ -58,10 +35,7 @@ h2,
 h3,
 h4,
 h5,
-h6 {
-  color: var(--color-dark);
-}
-
+h6,
 p,
 span,
 label,
@@ -72,32 +46,18 @@ button {
 .layout {
   display: flex;
   flex-direction: column;
-  width: 85vw;
-  height: 95vh;
-  /* width: fit-content; */
+  width: 100%;
+  min-height: 100vh;
   color: var(--color-dark);
   z-index: 1;
   background-color: var(--color-bg-glass);
   backdrop-filter: blur(12px) saturate(180%);
-
   padding: 18px;
-  border-radius: 28px;
-  overflow-y: auto;
-  overflow-x: hidden;
-  -webkit-overflow-scrolling: touch;
+  border-radius: 0;
   position: relative;
-  transform: translateZ(0);
-  backface-visibility: hidden;
-  perspective: 1000px;
   box-shadow:
     0 10px 30px rgba(0, 0, 0, 0.05),
     0 4px 10px rgba(0, 0, 0, 0.02);
-  will-change: transform;
-  contain: layout style paint;
-
-  /* Fadeeeee */
-  opacity: 1;
-  transition: opacity 0.4s ease-in-out;
 }
 
 .layout-hidden {
@@ -105,64 +65,109 @@ button {
   pointer-events: none;
 }
 
-/* Glass scrollbar styles */
-
-.layout::-webkit-scrollbar {
-  width: 8px;
-}
-
-.layout::-webkit-scrollbar-track {
-  background: transparent;
-
-  margin: 16px 0;
-}
-
-.layout::-webkit-scrollbar-thumb {
-  background: rgba(180, 180, 180, 0.4);
-
-  backdrop-filter: blur(4px);
-
-  border-radius: 3px;
-
-  transition: background 0.3s ease;
-}
-
-.layout::-webkit-scrollbar-thumb:hover {
-  background: rgba(150, 150, 150, 0.6);
-}
-
 .content {
   margin-top: 8px;
-
   width: 100%;
-
-  min-height: 100vh;
-
+  overflow: visible;
   content-visibility: auto;
-
   contain: style layout;
 }
 
 .img__wrapper {
   display: flex;
-
   position: relative;
-
   justify-content: center;
-
   align-items: center;
-
   width: 100%;
 }
 
-@media (min-width: 1024px) {
+/* Section containers */
+.parallax-section {
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  contain: layout style;
+  /* Removed content-visibility to prevent getBoundingClientRect bugs */
+}
+
+.parallax-content {
+  will-change: transform, opacity;
+  opacity: 0; /* Start invisible so JS can fade it in elegantly */
+}
+
+/* Mobile fallback: Since parallax JS is disabled on mobile, force visible */
+@media (max-width: 768px) {
+  .parallax-content {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* Inner elements reveal */
+.reveal-hidden {
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Nav links */
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--color-dark-alt);
+  background-color: rgba(170, 236, 146, 0.5);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  font-family: "Manrope", sans-serif;
+}
+
+.nav-link:hover,
+.nav-link:hover i,
+.nav-link:hover span,
+.nav-link.active,
+.nav-link.active i,
+.nav-link.active span {
+  background-color: var(--color-dark);
+  color: #fff;
+}
+
+.nav-link i {
+  pointer-events: none;
+}
+
+/* Responsive Layout */
+@media (max-width: 768px) {
   .layout {
-    width: 50vw;
+    width: 100%;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1439px) {
+  .layout {
+    width: 95vw;
+    margin: 0 auto;
   }
 }
 
 @media (min-width: 1440px) {
   .layout {
-    width: 40vw;
+    max-width: 1200px;
+    margin: 0 auto;
+    border-radius: 28px;
   }
 }

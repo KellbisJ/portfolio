@@ -1,9 +1,8 @@
 .content__projects {
   display: flex;
   flex-direction: column;
-  margin-top: 18px;
-  margin-bottom: 18px;
-  contain: layout style paint;
+  gap: 32px;
+  width: 100%;
 }
 
 .project__title {
@@ -14,7 +13,7 @@
 .content__project__info__container {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 24px;
+  gap: 32px;
 }
 
 .textCardColor {
@@ -28,7 +27,7 @@
 .content__project__info {
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  overflow: visible;
   position: relative;
   width: 100%;
   min-height: auto;
@@ -38,13 +37,14 @@
   background-position: center;
   background-repeat: no-repeat;
   padding: 20px;
+  padding-bottom: 28px;
   outline: none;
   justify-content: flex-start;
   /* Mobile default: uses CSS variable --article-bg-color specified at projects/index.js  (projectInfoContainer.style.setProperty) */
   background-color: var(--article-bg-color);
   background-image: none;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  contain: layout style paint;
+  contain: layout style;
 }
 
 .content__project__info::after {
@@ -236,6 +236,7 @@
   justify-content: center;
   align-items: center;
   gap: 12px;
+  margin-bottom: 16px;
 }
 
 .navigator__btn {

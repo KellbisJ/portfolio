@@ -1,31 +1,17 @@
 import { languageEmitter } from "../../language/eventEmitter.js";
 import { selectedLanguage, LANGUAGES } from "../../language/index.js";
 import { copyFieldText } from "../../utils/copy-field/index.js";
-import { filteredContent } from "../content-me-filtered/index.js";
-import { technologiesContent, TECH_CONTENT_KEY } from "../technologies/index.js";
-import { projectsContent, PROJECTS_CONTENT_KEY } from "../projects/index.js";
-import { myStudiesContent, STUDIES_CONTENT_KEY } from "../my-studies/index.js";
 import { translateMenu } from "../translate-menu/index.js";
 import { imgCreatorDisplayer } from "../../utils/img-creator-displayer/index.js";
 import { previewMeData, previewContentMeSocialMediaBox } from "./previewMe.data.js";
-
-const my_content_categories = document.createElement("div");
-my_content_categories.classList.add("my__content__categories");
 
 const contentImg = document.createElement("div");
 contentImg.classList.add("content__img");
 
 const createPreviewMe = () => {
-  const CONTENT_ME = document.querySelector(".content__me");
-  if (!CONTENT_ME) {
-    console.error("CONTENT_ME is missing");
-    return;
-  }
-
   const previewMeImgUrl = previewMeData.meImgUrl;
   const previewMeIcons = previewMeData.icons;
   const previewMeContentMeTranlations = previewMeData.contentMeTranslations;
-  const previewMeBtnIconsOrdered = previewMeData.categoryBtnIconsOrdered;
 
   const contentMePresentation = document.createElement("div");
   contentMePresentation.classList.add("content__me__presentation");
@@ -48,8 +34,12 @@ const createPreviewMe = () => {
   myName.classList.add("my__name");
   myName.textContent = "Kellbis Salazar";
 
+  const contentMeDescription = document.createElement("p");
+  contentMeDescription.classList.add("content__me__description");
+
   contentMeBrand.appendChild(contentImg);
   contentMeBrand.appendChild(myName);
+  contentMeDescriptionInfo.appendChild(contentMeDescription);
 
   const emailCopyElement = document.createElement("button");
   emailCopyElement.classList.add("social-media-element", "email__copy");
@@ -90,151 +80,52 @@ const createPreviewMe = () => {
   fineLine.classList.add("fine__line");
 
   emailCopyElement.appendChild(copiedMailText);
-
   emailCopyElement.appendChild(mailICon);
   emailCopyElement.appendChild(inputMailField);
   contentMeSocialMedia.appendChild(emailCopyElement);
 
-  //listeners
   emailCopyElement.addEventListener("click", () => {
     copyFieldText(inputMailField, emailCopyElement, copiedMailText);
-  }); // CopyMail
+  });
 
   contentMeBrand.appendChild(contentMeSocialMedia);
   contentMePresentation.appendChild(contentMeBrand);
   contentMePresentation.appendChild(contentMeDescriptionInfo);
 
-  const githubCard = document.createElement("div");
-  githubCard.classList.add("github-card");
+  const updateCopiedText = (lang) => {
+    const copiedMailTextEl = document.querySelector(".copy-mail-text");
+    if (!copiedMailTextEl) return;
 
-  const heading = document.createElement("h3");
-  heading.classList.add("github-card__heading");
-  heading.id = "githubCardHeading";
-  heading.textContent = "My GitHub Contributions";
+    if (lang === LANGUAGES.SPANISH) {
+      copiedMailTextEl.textContent = previewMeContentMeTranlations.contentMe_ES.copiedTextElement_ES;
+    } else if (lang === LANGUAGES.ENGLISH) {
+      copiedMailTextEl.textContent = previewMeContentMeTranlations.contentMe_EN.copiedTextElement_EN;
+    }
+  };
 
-  const githubImg = document.createElement("img");
-  githubImg.src = "https://ghchart.rshah.org/KellbisJ";
-  githubImg.alt = "GitHub Contributions Chart";
-  githubImg.loading = "lazy";
-  githubImg.width = 700;
-  githubImg.height = 128;
+  const updateDescription = (lang) => {
+    if (lang === LANGUAGES.SPANISH) {
+      contentMeDescription.textContent = previewMeContentMeTranlations.contentMe_ES.contentMeText_ES;
+    } else if (lang === LANGUAGES.ENGLISH) {
+      contentMeDescription.textContent = previewMeContentMeTranlations.contentMe_EN.contentMeText_EN;
+    }
+  };
 
-  githubCard.appendChild(heading);
-  githubCard.appendChild(githubImg);
-  contentMeDescriptionInfo.appendChild(githubCard);
+  updateCopiedText(selectedLanguage);
+  updateDescription(selectedLanguage);
+
+  languageEmitter.on("languageChanged", (lang) => {
+    updateDescription(lang);
+    updateCopiedText(lang);
+  });
 
   CONTENT_ME.appendChild(contentMePresentation);
   CONTENT_ME.appendChild(fineLine);
 
-  let updateTranslateMenu;
-
-  const updateContentBasedOnSelectedLanguage = () => {
-    my_content_categories.innerHTML = "";
-
-    const copiedMailText = document.querySelector(".copy-mail-text");
-    const githubHeading = document.getElementById("githubCardHeading");
-
-    if (selectedLanguage === LANGUAGES.SPANISH) {
-      copiedMailText.textContent = previewMeContentMeTranlations.contentMe_ES.copiedTextElement_ES;
-      if (githubHeading) githubHeading.textContent = "Mis Contribuciones de GitHub";
-    } else if (selectedLanguage === LANGUAGES.ENGLISH) {
-      copiedMailText.textContent = previewMeContentMeTranlations.contentMe_EN.copiedTextElement_EN;
-      if (githubHeading) githubHeading.textContent = "My GitHub Contributions";
-    }
-
-    function createContentCategoriesBtn(classs, btnTextContent, index) {
-      const content_btn = document.createElement("button");
-      content_btn.classList.add("prevMeBtn", classs);
-
-      const btnIcon = document.createElement("i");
-      btnIcon.classList = previewMeBtnIconsOrdered[index];
-      btnIcon.style.background = "none";
-      content_btn.appendChild(btnIcon);
-
-      const textBtn = document.createTextNode(" " + btnTextContent);
-      content_btn.appendChild(textBtn);
-
-      if (btnTextContent === "Tecnologías" || btnTextContent === "Technologies") content_btn.classList.add("btn_my_content__selected");
-
-      content_btn.addEventListener("click", (e) => {
-        const clickedBtn = e.target.closest(`.${classs}`);
-
-        const btns = document.querySelectorAll(`.${classs}`);
-        btns.forEach((btn) => {
-          btn.classList.remove("btn_my_content__selected");
-        });
-
-        clickedBtn.classList.add("btn_my_content__selected");
-
-        switch (btnTextContent) {
-          case "Tecnologías":
-          case "Technologies":
-            filteredContent(technologiesContent, TECH_CONTENT_KEY);
-            break;
-          case "Proyectos":
-          case "Projects":
-            filteredContent(projectsContent, PROJECTS_CONTENT_KEY);
-            break;
-          case "Certificaciones":
-          case "Certifications":
-            filteredContent(myStudiesContent, STUDIES_CONTENT_KEY);
-            break;
-          default:
-            console.warn("A fucking error occurred");
-        }
-      });
-      return content_btn;
-    }
-
-    if (selectedLanguage === LANGUAGES.SPANISH) {
-      previewMeContentMeTranlations.myContentCategories_ES.forEach((content, index) => {
-        const classs = "btn_my_content";
-
-        const myContentBtn = createContentCategoriesBtn(classs, content, index);
-
-        my_content_categories.appendChild(myContentBtn);
-      });
-    } else if (selectedLanguage === LANGUAGES.ENGLISH) {
-      previewMeContentMeTranlations.myContentCategories_EN.forEach((content, index) => {
-        const classs = "btn_my_content";
-
-        const myContentBtn = createContentCategoriesBtn(classs, content, index);
-
-        my_content_categories.appendChild(myContentBtn);
-      });
-    } else {
-      console.log("something weird ocurred waaaaaa");
-    }
-
-    const translateBtn = document.createElement("button");
-    translateBtn.classList.add("prevMeBtn", "translateBtn");
-    translateBtn.ariaLabel = "Change Language";
-
-    const translateIcon = document.createElement("i");
-    translateIcon.classList.add("fa-solid", "fa-language");
-
-    const langText = document.createElement("span");
-    langText.classList.add("lang-label");
-    langText.textContent = selectedLanguage || LANGUAGES.SPANISH;
-
-    translateBtn.append(translateIcon, langText);
-    my_content_categories.appendChild(translateBtn);
-
-    updateTranslateMenu = translateMenu(translateBtn);
-
-    if (updateTranslateMenu) updateTranslateMenu();
-
-    CONTENT_ME.insertBefore(my_content_categories, fineLine);
-  };
-
-  updateContentBasedOnSelectedLanguage();
-
-  languageEmitter.on("languageChanged", () => {
-    updateContentBasedOnSelectedLanguage();
-    if (updateTranslateMenu) updateTranslateMenu();
-  });
-
   return CONTENT_ME;
 };
+
+const CONTENT_ME = document.createElement("div");
+CONTENT_ME.classList.add("content__me");
 
 export { createPreviewMe };

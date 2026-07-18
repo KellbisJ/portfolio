@@ -1,7 +1,7 @@
 import { selectedLanguage, LANGUAGES, setSelectedLanguage } from "../../language/index.js";
 import { languageEmitter } from "../../language/eventEmitter.js";
 
-const translateMenu = (translateBtn) => {
+const translateMenu = (translateBtn, langLabel) => {
   const TRANSLATE_MENU_CONTAINER = document.createElement("div");
   TRANSLATE_MENU_CONTAINER.classList.add("translate__menu__container");
 
@@ -17,6 +17,9 @@ const translateMenu = (translateBtn) => {
 
   const updateMenuText = () => {
     translateMenuTitle.textContent = selectedLanguage === LANGUAGES.SPANISH ? "Idioma:" : "Language:";
+    if (langLabel) {
+      langLabel.textContent = selectedLanguage === LANGUAGES.SPANISH ? "ES" : "EN";
+    }
   };
 
   const translateMenuTitle = document.createElement("h3");

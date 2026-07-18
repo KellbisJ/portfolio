@@ -2,7 +2,7 @@ import { LANGUAGES, selectedLanguage, setSelectedLanguage } from "../../language
 import { languageEmitter } from "../../language/eventEmitter.js";
 import { imgCreatorDisplayer } from "../../utils/img-creator-displayer/index.js";
 
-const STUDIES_CONTENT_KEY = "studies";
+
 
 const STUDIES_CONTENT = [
   {
@@ -139,4 +139,4 @@ const myStudiesContent = () => {
   return CONTAINER;
 };
 
-export { myStudiesContent, STUDIES_CONTENT_KEY };
+export { myStudiesContent };

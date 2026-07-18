@@ -1,8 +1,6 @@
 import { LANGUAGES, selectedLanguage } from "../../language/index.js";
 import { languageEmitter } from "../../language/eventEmitter.js";
 
-const TECH_CONTENT_KEY = "technologies";
-
 const techStack = [
   { name: "JavaScript", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" },
   { name: "TypeScript", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg" },
@@ -41,13 +39,10 @@ const technologiesContent = () => {
     grid.innerHTML = "";
 
     techStack.forEach((item, index) => {
-      const delay = Math.min(index * 45, 700);
-
       const badge = document.createElement("button");
       badge.className = "tech-badge";
       badge.type = "button";
       badge.tabIndex = -1;
-      badge.style.setProperty("--delay", `${delay}ms`);
 
       const iconEl = document.createElement("span");
       iconEl.className = "tech-badge__icon";
@@ -69,10 +64,35 @@ const technologiesContent = () => {
       badge.appendChild(label);
       grid.appendChild(badge);
     });
+
+    // if (!CONTENT_TECHNOLOGIES.querySelector(".github-card")) {
+    //   const githubCard = document.createElement("div");
+    //   githubCard.classList.add("github-card");
+
+    //   const githubHeading = document.createElement("h3");
+    //   githubHeading.classList.add("github-card__heading");
+    //   githubHeading.id = "githubCardHeading";
+    //   githubHeading.textContent = selectedLanguage === LANGUAGES.SPANISH ? "Mis Contribuciones de GitHub" : "My GitHub Contributions";
+
+    //   const githubImg = document.createElement("img");
+    //   githubImg.src = "https://ghchart.rshah.org/KellbisJ";
+    //   githubImg.alt = "GitHub Contributions Chart";
+    //   githubImg.loading = "lazy";
+    //   githubImg.width = 700;
+    //   githubImg.height = 128;
+
+    //   githubCard.appendChild(githubHeading);
+    //   githubCard.appendChild(githubImg);
+    //   CONTENT_TECHNOLOGIES.appendChild(githubCard);
+    // }
   };
 
   const updateHeading = () => {
     heading.textContent = selectedLanguage === LANGUAGES.SPANISH ? "Habilidades y Tecnologías" : "Skills & Technologies";
+    const githubHeadingEl = document.getElementById("githubCardHeading");
+    if (githubHeadingEl) {
+      githubHeadingEl.textContent = selectedLanguage === LANGUAGES.SPANISH ? "Mis Contribuciones de GitHub" : "My GitHub Contributions";
+    }
   };
 
   buildGrid();
@@ -82,4 +102,4 @@ const technologiesContent = () => {
   return CONTENT_TECHNOLOGIES;
 };
 
-export { technologiesContent, TECH_CONTENT_KEY };
+export { technologiesContent };

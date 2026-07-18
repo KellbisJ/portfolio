@@ -14,12 +14,12 @@ const previewMeData = {
   contentMeTranslations: {
     contentMe_ES: {
       greetingText_ES: `Kellbis Salazar`,
-      contentMeText_ES: `Aprendiz de programación, desarrollador web.`,
+      contentMeText_ES: `Aprendiz de programador de software.`,
       copiedTextElement_ES: `¡Copiado!`,
     },
     contentMe_EN: {
       greetingText_EN: `Kellbis Salazar`,
-      contentMeText_EN: `Programming apprentice, web developer.`,
+      contentMeText_EN: `Software Programmer Apprentice.`,
       copiedTextElement_EN: `Copied!`,
     },
     myContentCategories_ES: ["Tecnologías", "Proyectos", "Certificaciones"],

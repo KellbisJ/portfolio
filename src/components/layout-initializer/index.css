@@ -6,6 +6,29 @@ button {
   background: none;
 }
 
+/* Sticky Navigation */
+.sticky-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: rgba(234, 234, 234, 0.92);
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  border-radius: 18px;
+  padding: 8px 12px;
+  margin-bottom: 12px;
+  border: 1px solid rgba(30, 35, 42, 0.06);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+.sticky-nav__links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
 /* decor */
 .decor {
   display: flex;
@@ -21,16 +44,6 @@ button {
   flex: 1;
 }
 
-/* .box__left__lg__wave {
-  height: 16px;
-  width: 100%;
-  border-radius: 8px;
-  background: linear-gradient(90deg, transparent, #dcec92, #aaec92, transparent);
-  background-size: 200% 100%;
-  animation: wave 12s linear infinite;
-  box-shadow: 0 2px 8px rgba(170, 236, 146, 0.3);
-} */
-
 @keyframes wave {
   0% {
     background-position: 200% 0;
@@ -39,6 +52,7 @@ button {
     background-position: -200% 0;
   }
 }
+
 .dots__decor {
   display: flex;
   gap: 12px;
@@ -67,16 +81,18 @@ button {
   height: 100vh;
   transform: translateZ(0);
   backface-visibility: hidden;
-  perspective: 1000;
   touch-action: none;
   image-rendering: optimizeSpeed;
   image-rendering: -moz-crisp-edges;
   image-rendering: -webkit-optimize-contrast;
-  /* image-rendering: optimize-contrast; */
-  will-change: transform;
+  z-index: 0;
+  pointer-events: none;
 }
 
-/* decor */
+/* Hero header */
+.hero-header {
+  margin-bottom: 24px;
+}
 
 @media (min-width: 768px) {
   .decor {
@@ -84,20 +100,22 @@ button {
     margin-bottom: 16px;
   }
 
-  .box__left__lg__wave {
-    height: 18px;
-  }
   .box__dot__sm {
     width: 18px;
     height: 18px;
   }
+
+  .sticky-nav {
+    border-radius: 20px;
+    padding: 10px 16px;
+  }
+
+  .sticky-nav__links {
+    gap: 8px;
+  }
 }
 
 @media (min-width: 1440px) {
-  .box__left__lg__wave {
-    height: 20px;
-  }
-
   .box__dot__sm {
     width: 20px;
     height: 20px;

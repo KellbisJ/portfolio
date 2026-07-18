@@ -11,11 +11,35 @@ class CanvasBackground {
     this.resize(window.innerWidth, window.innerHeight);
     this.setDPR();
 
-    document.body.appendChild(this.canvas);
+    this.canvas.style.position = "fixed";
+    this.canvas.style.inset = "0";
 
-    window.addEventListener("resize", () => {
-      this.resize(window.innerWidth, window.innerHeight);
+    this.resizeObserver = new MutationObserver(() => {
+      requestAnimationFrame(() => {
+        this.resize(window.innerWidth, window.innerHeight);
+        if (this.onResize) this.onResize();
+      });
     });
+
+    this.resizeObserver.observe(document.body, {
+      childList: true,
+      subtree: true,
+      attributes: true,
+      characterData: true,
+    });
+
+    this.debouncedResize = null;
+    window.addEventListener("resize", () => {
+      if (this.debouncedResize) cancelAnimationFrame(this.debouncedResize);
+      this.debouncedResize = requestAnimationFrame(() => {
+        this.resize(window.innerWidth, window.innerHeight);
+        if (this.onResize) this.onResize();
+      });
+    });
+  }
+
+  setResizeCallback(callback) {
+    this.onResize = callback;
   }
 
   setDPR() {
@@ -61,22 +85,24 @@ class TopographicBackground {
     this.configureForMobile();
     this.initResizeHandler();
 
+    canvas.setResizeCallback(() => this.draw());
+
     this.draw();
   }
 
   configureForMobile() {
     this.isMobile = window.innerWidth <= 768;
     if (this.isMobile) {
-      this.lineCount = 8;
-      this.lineSpacing = 50;
-      this.pointStep = 24;
+      this.lineCount = 6;
+      this.lineSpacing = 55;
+      this.pointStep = 28;
       this.amplitude = 12;
       this.lineWidth = 1.5;
       this.noiseScale = 0.04;
     } else {
-      this.lineCount = 35;
-      this.lineSpacing = 35;
-      this.pointStep = 8;
+      this.lineCount = 18;
+      this.lineSpacing = 45;
+      this.pointStep = 14;
       this.amplitude = 25;
       this.lineWidth = 1.5;
       this.noiseScale = 0.02;
@@ -108,6 +134,7 @@ class TopographicBackground {
       this.ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
       this.draw();
+      if (this.onResize) this.onResize();
     });
   }
 
@@ -121,17 +148,20 @@ class TopographicBackground {
   }
 
   gradient() {
-    const gradient = this.ctx.createLinearGradient(0, 0, this.width, this.height);
+    const w = window.innerWidth;
+    const h = window.innerHeight;
+    const gradient = this.ctx.createLinearGradient(0, 0, w, h);
     gradient.addColorStop(0, "#FB9B8F");
     gradient.addColorStop(1, "#7FB5FF");
     this.ctx.fillStyle = gradient;
-    this.ctx.fillRect(0, 0, this.width, this.height);
+    this.ctx.fillRect(0, 0, w, h);
   }
 
   topographicLines() {
     const pointStep = this.isMobile ? this.pointStep : this.pointStep;
     const amplitude = this.isMobile ? this.amplitude : this.amplitude;
     const lineWidth = this.lineWidth;
+    const w = window.innerWidth;
 
     this.ctx.save();
     this.ctx.lineJoin = "round";
@@ -142,7 +172,7 @@ class TopographicBackground {
       this.ctx.beginPath();
 
       let startX = -pointStep * 2;
-      let endX = this.width + pointStep * 4;
+      let endX = w + pointStep * 4;
       let firstPoint = true;
 
       for (let x = startX; x < endX; x += pointStep) {
